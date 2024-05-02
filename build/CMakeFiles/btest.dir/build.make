@@ -111,11 +111,446 @@ CMakeFiles/btest.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp-test-bootloader/src/main.cpp -o CMakeFiles/btest.dir/src/main.cpp.s
 
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/register.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/register.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/register.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/register.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o: /usr/local/src/VSCP/vscp/src/common/sockettcp.c
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o -c /usr/local/src/VSCP/vscp/src/common/sockettcp.c
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /usr/local/src/VSCP/vscp/src/common/sockettcp.c > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /usr/local/src/VSCP/vscp/src/common/sockettcp.c -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o: /usr/local/src/VSCP/vscp/src/common/vscpbase64.c
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o -c /usr/local/src/VSCP/vscp/src/common/vscpbase64.c
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /usr/local/src/VSCP/vscp/src/common/vscpbase64.c > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /usr/local/src/VSCP/vscp/src/common/vscpbase64.c -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o: /usr/local/src/VSCP/vscp/src/common/vscp_aes.c
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o -c /usr/local/src/VSCP/vscp/src/common/vscp_aes.c
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /usr/local/src/VSCP/vscp/src/common/vscp_aes.c > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /usr/local/src/VSCP/vscp/src/common/vscp_aes.c -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o: /usr/local/src/VSCP/vscp/src/common/crc.c
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o -c /usr/local/src/VSCP/vscp/src/common/crc.c
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /usr/local/src/VSCP/vscp/src/common/crc.c > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /usr/local/src/VSCP/vscp/src/common/crc.c -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o: /usr/local/src/VSCP/vscp/src/common/crc8.c
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o -c /usr/local/src/VSCP/vscp/src/common/crc8.c
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /usr/local/src/VSCP/vscp/src/common/crc8.c > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /usr/local/src/VSCP/vscp/src/common/crc8.c -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o: /usr/local/src/VSCP/vscp/src/common/vscpmd5.c
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o -c /usr/local/src/VSCP/vscp/src/common/vscpmd5.c
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /usr/local/src/VSCP/vscp/src/common/vscpmd5.c > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /usr/local/src/VSCP/vscp/src/common/vscpmd5.c -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o: /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o -MF CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o.d -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o -c /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp > CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i
+
+CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp -o CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s
+
+CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o: CMakeFiles/btest.dir/flags.make
+CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o: /usr/local/src/VSCP/vscp-test-bootloader/third_party/fastpbkdf2/fastpbkdf2.c
+CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o: CMakeFiles/btest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o -MF CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o.d -o CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o -c /usr/local/src/VSCP/vscp-test-bootloader/third_party/fastpbkdf2/fastpbkdf2.c
+
+CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /usr/local/src/VSCP/vscp-test-bootloader/third_party/fastpbkdf2/fastpbkdf2.c > CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.i
+
+CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /usr/local/src/VSCP/vscp-test-bootloader/third_party/fastpbkdf2/fastpbkdf2.c -o CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.s
+
 # Object files for target btest
 btest_OBJECTS = \
 "CMakeFiles/btest.dir/btest_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/btest.dir/src/mainwindow.cpp.o" \
-"CMakeFiles/btest.dir/src/main.cpp.o"
+"CMakeFiles/btest.dir/src/main.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o" \
+"CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o" \
+"CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o"
 
 # External object files for target btest
 btest_EXTERNAL_OBJECTS =
@@ -123,14 +558,51 @@ btest_EXTERNAL_OBJECTS =
 btest: CMakeFiles/btest.dir/btest_autogen/mocs_compilation.cpp.o
 btest: CMakeFiles/btest.dir/src/mainwindow.cpp.o
 btest: CMakeFiles/btest.dir/src/main.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o
+btest: CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o
+btest: CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o
 btest: CMakeFiles/btest.dir/build.make
-btest: /home/akhe/Qt/6.6.2/gcc_64/lib/libQt6Widgets.so.6.6.2
-btest: /home/akhe/Qt/6.6.2/gcc_64/lib/libQt6Gui.so.6.6.2
-btest: /home/akhe/Qt/6.6.2/gcc_64/lib/libQt6Core.so.6.6.2
+btest: /home/akhe/Qt/6.7.1/gcc_64/lib/libQt6Widgets.so.6.7.1
+btest: /usr/lib/x86_64-linux-gnu/libssl.so
+btest: /usr/lib/x86_64-linux-gnu/libcrypto.so
+btest: /usr/lib/x86_64-linux-gnu/libssl.so
+btest: /usr/lib/x86_64-linux-gnu/libcrypto.so
+btest: /usr/lib/x86_64-linux-gnu/libmosquitto.so
+btest: /usr/lib/x86_64-linux-gnu/libwebsockets.so
+btest: /usr/lib/x86_64-linux-gnu/libexpat.so
+btest: /usr/lib/x86_64-linux-gnu/libcurl.so
+btest: /home/akhe/Qt/6.7.1/gcc_64/lib/libQt6Gui.so.6.7.1
+btest: /home/akhe/Qt/6.7.1/gcc_64/lib/libQt6Core.so.6.7.1
 btest: /usr/lib/x86_64-linux-gnu/libGLX.so
 btest: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 btest: CMakeFiles/btest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable btest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Linking CXX executable btest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/btest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

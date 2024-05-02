@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.6.2
+** Created by: Qt User Interface Compiler version 6.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -11,6 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFormLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
 
@@ -20,14 +22,34 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
+    QWidget *formLayoutWidget;
+    QFormLayout *formLayout;
+    QLabel *label;
+    QLabel *lblQtVersion;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(640, 480);
+        MainWindow->resize(858, 752);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        formLayoutWidget = new QWidget(centralwidget);
+        formLayoutWidget->setObjectName("formLayoutWidget");
+        formLayoutWidget->setGeometry(QRect(9, 9, 841, 741));
+        formLayout = new QFormLayout(formLayoutWidget);
+        formLayout->setObjectName("formLayout");
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(formLayoutWidget);
+        label->setObjectName("label");
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, label);
+
+        lblQtVersion = new QLabel(formLayoutWidget);
+        lblQtVersion->setObjectName("lblQtVersion");
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, lblQtVersion);
+
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -37,7 +59,9 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Main Window", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "VSCP Bootloader test app.", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Qt Version: ", nullptr));
+        lblQtVersion->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

@@ -345,6 +345,7 @@
 #define __FLT_NORM_MAX__ 3.40282346638528859811704183484516925e+38F
 #define __FLT32_HAS_INFINITY__ 1
 #define __FLT64X_MAX_EXP__ 16384
+#define OPENSSL_API_3_0 1
 #define __UINT_FAST64_TYPE__ long unsigned int
 #define __cpp_inline_variables 201606L
 #define __BFLT16_MIN_EXP__ (-125)
