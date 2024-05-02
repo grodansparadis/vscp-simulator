@@ -1,0 +1,4 @@
+/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles/btest.dir
+/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles/edit_cache.dir
+/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles/rebuild_cache.dir
+/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles/btest_autogen.dir
