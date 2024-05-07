@@ -166,6 +166,750 @@ btest_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/btest_autogen/mocs_compilation.cpp.s
 .PHONY : btest_autogen/mocs_compilation.cpp.s
 
+home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.o: home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.o
+.PHONY : home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.o
+.PHONY : home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.o
+
+home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.i: home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.i
+.PHONY : home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.i
+.PHONY : home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.i
+
+home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.s: home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.s
+.PHONY : home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.s
+.PHONY : home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.c.s
+
+home/akhe/development/VSCP/vscp/src/common/crc.o: home/akhe/development/VSCP/vscp/src/common/crc.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/common/crc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/crc.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc.c.o
+
+home/akhe/development/VSCP/vscp/src/common/crc.i: home/akhe/development/VSCP/vscp/src/common/crc.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/common/crc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/crc.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc.c.i
+
+home/akhe/development/VSCP/vscp/src/common/crc.s: home/akhe/development/VSCP/vscp/src/common/crc.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/common/crc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/crc.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc.c.s
+
+home/akhe/development/VSCP/vscp/src/common/crc8.o: home/akhe/development/VSCP/vscp/src/common/crc8.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc8.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/common/crc8.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/crc8.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc8.c.o
+
+home/akhe/development/VSCP/vscp/src/common/crc8.i: home/akhe/development/VSCP/vscp/src/common/crc8.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc8.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/common/crc8.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/crc8.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc8.c.i
+
+home/akhe/development/VSCP/vscp/src/common/crc8.s: home/akhe/development/VSCP/vscp/src/common/crc8.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc8.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/common/crc8.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/crc8.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/crc8.c.s
+
+home/akhe/development/VSCP/vscp/src/common/sockettcp.o: home/akhe/development/VSCP/vscp/src/common/sockettcp.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/sockettcp.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/common/sockettcp.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/sockettcp.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/sockettcp.c.o
+
+home/akhe/development/VSCP/vscp/src/common/sockettcp.i: home/akhe/development/VSCP/vscp/src/common/sockettcp.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/sockettcp.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/common/sockettcp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/sockettcp.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/sockettcp.c.i
+
+home/akhe/development/VSCP/vscp/src/common/sockettcp.s: home/akhe/development/VSCP/vscp/src/common/sockettcp.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/sockettcp.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/common/sockettcp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/sockettcp.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/sockettcp.c.s
+
+home/akhe/development/VSCP/vscp/src/common/vscp_aes.o: home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscp_aes.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.o
+
+home/akhe/development/VSCP/vscp/src/common/vscp_aes.i: home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscp_aes.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.i
+
+home/akhe/development/VSCP/vscp/src/common/vscp_aes.s: home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscp_aes.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscp_aes.c.s
+
+home/akhe/development/VSCP/vscp/src/common/vscpbase64.o: home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpbase64.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.o
+
+home/akhe/development/VSCP/vscp/src/common/vscpbase64.i: home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpbase64.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.i
+
+home/akhe/development/VSCP/vscp/src/common/vscpbase64.s: home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpbase64.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpbase64.c.s
+
+home/akhe/development/VSCP/vscp/src/common/vscpmd5.o: home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpmd5.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.o
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.o
+
+home/akhe/development/VSCP/vscp/src/common/vscpmd5.i: home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpmd5.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.i
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.i
+
+home/akhe/development/VSCP/vscp/src/common/vscpmd5.s: home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpmd5.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.s
+.PHONY : home/akhe/development/VSCP/vscp/src/common/vscpmd5.c.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/guid.o: home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/guid.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/guid.i: home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/guid.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/guid.s: home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/guid.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/guid.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/mdf.o: home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/mdf.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/mdf.i: home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/mdf.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/mdf.s: home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/mdf.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/mdf.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/register.o: home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/register.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/register.i: home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/register.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/register.s: home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/register.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/register.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.o: home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.o
+
+# target to build an object file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.o
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.o
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.i: home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.i
+
+# target to preprocess a source file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.i
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.i
+
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.s: home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.s
+
+# target to generate assembly for a file
+home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.s
+.PHONY : home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.cpp.s
+
+src/btest.o: src/btest.cpp.o
+.PHONY : src/btest.o
+
+# target to build an object file
+src/btest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/src/btest.cpp.o
+.PHONY : src/btest.cpp.o
+
+src/btest.i: src/btest.cpp.i
+.PHONY : src/btest.i
+
+# target to preprocess a source file
+src/btest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/src/btest.cpp.i
+.PHONY : src/btest.cpp.i
+
+src/btest.s: src/btest.cpp.s
+.PHONY : src/btest.s
+
+# target to generate assembly for a file
+src/btest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/src/btest.cpp.s
+.PHONY : src/btest.cpp.s
+
+src/hardware.o: src/hardware.cpp.o
+.PHONY : src/hardware.o
+
+# target to build an object file
+src/hardware.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/src/hardware.cpp.o
+.PHONY : src/hardware.cpp.o
+
+src/hardware.i: src/hardware.cpp.i
+.PHONY : src/hardware.i
+
+# target to preprocess a source file
+src/hardware.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/src/hardware.cpp.i
+.PHONY : src/hardware.cpp.i
+
+src/hardware.s: src/hardware.cpp.s
+.PHONY : src/hardware.s
+
+# target to generate assembly for a file
+src/hardware.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/src/hardware.cpp.s
+.PHONY : src/hardware.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -214,702 +958,6 @@ src/mainwindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/src/mainwindow.cpp.s
 .PHONY : src/mainwindow.cpp.s
 
-third_party/fastpbkdf2/fastpbkdf2.o: third_party/fastpbkdf2/fastpbkdf2.c.o
-.PHONY : third_party/fastpbkdf2/fastpbkdf2.o
-
-# target to build an object file
-third_party/fastpbkdf2/fastpbkdf2.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.o
-.PHONY : third_party/fastpbkdf2/fastpbkdf2.c.o
-
-third_party/fastpbkdf2/fastpbkdf2.i: third_party/fastpbkdf2/fastpbkdf2.c.i
-.PHONY : third_party/fastpbkdf2/fastpbkdf2.i
-
-# target to preprocess a source file
-third_party/fastpbkdf2/fastpbkdf2.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.i
-.PHONY : third_party/fastpbkdf2/fastpbkdf2.c.i
-
-third_party/fastpbkdf2/fastpbkdf2.s: third_party/fastpbkdf2/fastpbkdf2.c.s
-.PHONY : third_party/fastpbkdf2/fastpbkdf2.s
-
-# target to generate assembly for a file
-third_party/fastpbkdf2/fastpbkdf2.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/third_party/fastpbkdf2/fastpbkdf2.c.s
-.PHONY : third_party/fastpbkdf2/fastpbkdf2.c.s
-
-usr/local/src/VSCP/vscp/src/common/crc.o: usr/local/src/VSCP/vscp/src/common/crc.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/common/crc.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc.c.o
-
-usr/local/src/VSCP/vscp/src/common/crc.i: usr/local/src/VSCP/vscp/src/common/crc.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/common/crc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc.c.i
-
-usr/local/src/VSCP/vscp/src/common/crc.s: usr/local/src/VSCP/vscp/src/common/crc.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/common/crc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc.c.s
-
-usr/local/src/VSCP/vscp/src/common/crc8.o: usr/local/src/VSCP/vscp/src/common/crc8.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc8.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/common/crc8.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc8.c.o
-
-usr/local/src/VSCP/vscp/src/common/crc8.i: usr/local/src/VSCP/vscp/src/common/crc8.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc8.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/common/crc8.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc8.c.i
-
-usr/local/src/VSCP/vscp/src/common/crc8.s: usr/local/src/VSCP/vscp/src/common/crc8.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc8.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/common/crc8.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/crc8.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/crc8.c.s
-
-usr/local/src/VSCP/vscp/src/common/sockettcp.o: usr/local/src/VSCP/vscp/src/common/sockettcp.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/sockettcp.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/common/sockettcp.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/sockettcp.c.o
-
-usr/local/src/VSCP/vscp/src/common/sockettcp.i: usr/local/src/VSCP/vscp/src/common/sockettcp.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/sockettcp.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/common/sockettcp.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/sockettcp.c.i
-
-usr/local/src/VSCP/vscp/src/common/sockettcp.s: usr/local/src/VSCP/vscp/src/common/sockettcp.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/sockettcp.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/common/sockettcp.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/sockettcp.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/sockettcp.c.s
-
-usr/local/src/VSCP/vscp/src/common/vscp_aes.o: usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscp_aes.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscp_aes.c.o
-
-usr/local/src/VSCP/vscp/src/common/vscp_aes.i: usr/local/src/VSCP/vscp/src/common/vscp_aes.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscp_aes.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/common/vscp_aes.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscp_aes.c.i
-
-usr/local/src/VSCP/vscp/src/common/vscp_aes.s: usr/local/src/VSCP/vscp/src/common/vscp_aes.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscp_aes.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/common/vscp_aes.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscp_aes.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscp_aes.c.s
-
-usr/local/src/VSCP/vscp/src/common/vscpbase64.o: usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpbase64.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpbase64.c.o
-
-usr/local/src/VSCP/vscp/src/common/vscpbase64.i: usr/local/src/VSCP/vscp/src/common/vscpbase64.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpbase64.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/common/vscpbase64.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpbase64.c.i
-
-usr/local/src/VSCP/vscp/src/common/vscpbase64.s: usr/local/src/VSCP/vscp/src/common/vscpbase64.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpbase64.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/common/vscpbase64.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpbase64.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpbase64.c.s
-
-usr/local/src/VSCP/vscp/src/common/vscpmd5.o: usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpmd5.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpmd5.c.o
-
-usr/local/src/VSCP/vscp/src/common/vscpmd5.i: usr/local/src/VSCP/vscp/src/common/vscpmd5.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpmd5.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/common/vscpmd5.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.i
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpmd5.c.i
-
-usr/local/src/VSCP/vscp/src/common/vscpmd5.s: usr/local/src/VSCP/vscp/src/common/vscpmd5.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpmd5.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/common/vscpmd5.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/common/vscpmd5.c.s
-.PHONY : usr/local/src/VSCP/vscp/src/common/vscpmd5.c.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/guid.o: usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/guid.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/guid.i: usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/guid.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/guid.s: usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/guid.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/guid.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/mdf.o: usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/mdf.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/mdf.i: usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/mdf.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/mdf.s: usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/mdf.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/mdf.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/register.o: usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/register.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/register.i: usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/register.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/register.s: usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/register.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/register.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.o: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.i: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.s: usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.o: usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.i: usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.s: usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.o: usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.i: usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.s: usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.o: usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.i: usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.s: usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.o: usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.i: usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.s: usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.cpp.s
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.o: usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.o
-
-# target to build an object file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.o
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.i: usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.i
-
-# target to preprocess a source file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.i
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.i
-
-usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.s: usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.s
-
-# target to generate assembly for a file
-usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btest.dir/build.make CMakeFiles/btest.dir/usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.s
-.PHONY : usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -923,99 +971,105 @@ help:
 	@echo "... btest_autogen/mocs_compilation.o"
 	@echo "... btest_autogen/mocs_compilation.i"
 	@echo "... btest_autogen/mocs_compilation.s"
+	@echo "... home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.o"
+	@echo "... home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.i"
+	@echo "... home/akhe/development/VSCP/vscp-firmware/common/vscp-bootloader.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/crc.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/crc.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/crc.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/crc8.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/crc8.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/crc8.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/sockettcp.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/sockettcp.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/sockettcp.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscp_aes.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscp_aes.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscp_aes.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscpbase64.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscpbase64.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscpbase64.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscpmd5.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscpmd5.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/common/vscpmd5.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/guid.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/guid.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/guid.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/mdf.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/mdf.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/mdf.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/register.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/register.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/register.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_base.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_canal.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_mqtt.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_multicast.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawcan.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_socketcan.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_tcp.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_udp.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws1.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscp_client_ws2.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpdatetime.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscphelper.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpremotetcpif.s"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.o"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.i"
+	@echo "... home/akhe/development/VSCP/vscp/src/vscp/common/vscpunit.s"
+	@echo "... src/btest.o"
+	@echo "... src/btest.i"
+	@echo "... src/btest.s"
+	@echo "... src/hardware.o"
+	@echo "... src/hardware.i"
+	@echo "... src/hardware.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/mainwindow.o"
 	@echo "... src/mainwindow.i"
 	@echo "... src/mainwindow.s"
-	@echo "... third_party/fastpbkdf2/fastpbkdf2.o"
-	@echo "... third_party/fastpbkdf2/fastpbkdf2.i"
-	@echo "... third_party/fastpbkdf2/fastpbkdf2.s"
-	@echo "... usr/local/src/VSCP/vscp/src/common/crc.o"
-	@echo "... usr/local/src/VSCP/vscp/src/common/crc.i"
-	@echo "... usr/local/src/VSCP/vscp/src/common/crc.s"
-	@echo "... usr/local/src/VSCP/vscp/src/common/crc8.o"
-	@echo "... usr/local/src/VSCP/vscp/src/common/crc8.i"
-	@echo "... usr/local/src/VSCP/vscp/src/common/crc8.s"
-	@echo "... usr/local/src/VSCP/vscp/src/common/sockettcp.o"
-	@echo "... usr/local/src/VSCP/vscp/src/common/sockettcp.i"
-	@echo "... usr/local/src/VSCP/vscp/src/common/sockettcp.s"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscp_aes.o"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscp_aes.i"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscp_aes.s"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscpbase64.o"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscpbase64.i"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscpbase64.s"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscpmd5.o"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscpmd5.i"
-	@echo "... usr/local/src/VSCP/vscp/src/common/vscpmd5.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/guid.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/guid.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/guid.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/mdf.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/mdf.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/mdf.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/register.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/register.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/register.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_pic1.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_bootdevice_vscp.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_base.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_canal.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_mqtt.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_multicast.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawcan.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_rawmqtt.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_socketcan.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_tcp.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_udp.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws1.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscp_client_ws2.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpcanaldeviceif.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpdatetime.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscphelper.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpremotetcpif.s"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.o"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.i"
-	@echo "... usr/local/src/VSCP/vscp/src/vscp/common/vscpunit.s"
 .PHONY : help
 
 

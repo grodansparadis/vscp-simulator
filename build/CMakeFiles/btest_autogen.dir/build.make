@@ -68,7 +68,7 @@ include CMakeFiles/btest_autogen.dir/progress.make
 
 CMakeFiles/btest_autogen:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target btest"
-	/usr/bin/cmake -E cmake_autogen /usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles/btest_autogen.dir/AutogenInfo.json ""
+	/usr/bin/cmake -E cmake_autogen /usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles/btest_autogen.dir/AutogenInfo.json Debug
 
 btest_autogen: CMakeFiles/btest_autogen
 btest_autogen: CMakeFiles/btest_autogen.dir/build.make

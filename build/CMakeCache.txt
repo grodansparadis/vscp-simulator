@@ -20,23 +20,23 @@ CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//Choose the type of build, options are: None Debug Release RelWithDebInfo
-// MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+//No help, variable specified on the command line.
+CMAKE_BUILD_TYPE:STRING=Debug
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+//No help, variable specified on the command line.
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/clang++
 
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-13
+//LLVM archiver
+CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/llvm-ar-16
 
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-13
+//`clang-scan-deps` dependency scanner
+CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS:FILEPATH=CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND
+
+//Generate index for LLVM archive
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/llvm-ranlib-16
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -53,16 +53,17 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+//No help, variable specified on the command line.
+CMAKE_C_COMPILER:FILEPATH=/usr/bin/clang
 
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-13
+//LLVM archiver
+CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/llvm-ar-16
 
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-13
+//`clang-scan-deps` dependency scanner
+CMAKE_C_COMPILER_CLANG_SCAN_DEPS:FILEPATH=CMAKE_C_COMPILER_CLANG_SCAN_DEPS-NOTFOUND
+
+//Generate index for LLVM archive
+CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/llvm-ranlib-16
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -97,8 +98,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
+//No help, variable specified on the command line.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/usr/local/src/VSCP/vscp-test-bootloader/build/CMakeFiles/pkgRedirects
@@ -188,9 +189,6 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 
 //Path to a program.
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
-
-//No help, variable specified on the command line.
-CMAKE_PREFIX_PATH:UNINITIALIZED=~/Qt/6.7.1/gcc_64
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -373,31 +371,31 @@ QT_ADDITIONAL_HOST_PACKAGES_PREFIX_PATH:STRING=
 QT_ADDITIONAL_PACKAGES_PREFIX_PATH:STRING=
 
 //The directory containing a CMake configuration file for Qt6CoreTools.
-Qt6CoreTools_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6CoreTools
+Qt6CoreTools_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6CoreTools
 
 //The directory containing a CMake configuration file for Qt6Core.
-Qt6Core_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6Core
+Qt6Core_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6Core
 
 //The directory containing a CMake configuration file for Qt6DBusTools.
-Qt6DBusTools_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6DBusTools
+Qt6DBusTools_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6DBusTools
 
 //The directory containing a CMake configuration file for Qt6DBus.
-Qt6DBus_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6DBus
+Qt6DBus_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6DBus
 
 //The directory containing a CMake configuration file for Qt6GuiTools.
-Qt6GuiTools_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6GuiTools
+Qt6GuiTools_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6GuiTools
 
 //The directory containing a CMake configuration file for Qt6Gui.
-Qt6Gui_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6Gui
+Qt6Gui_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6Gui
 
 //The directory containing a CMake configuration file for Qt6WidgetsTools.
-Qt6WidgetsTools_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6WidgetsTools
+Qt6WidgetsTools_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6WidgetsTools
 
 //The directory containing a CMake configuration file for Qt6Widgets.
-Qt6Widgets_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6Widgets
+Qt6Widgets_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6Widgets
 
 //The directory containing a CMake configuration file for Qt6.
-Qt6_DIR:PATH=/home/akhe/Qt/6.7.1/gcc_64/lib/cmake/Qt6
+Qt6_DIR:PATH=/home/akhe/Qt/6.7.0/gcc_64/lib/cmake/Qt6
 
 //Path to a program.
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-NOTFOUND
@@ -467,6 +465,8 @@ CMAKE_CTEST_COMMAND:INTERNAL=/usr/bin/ctest
 CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_COMPILER_AR
 CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS
+CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB
 CMAKE_CXX_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
@@ -483,6 +483,8 @@ CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_AR
 CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_CLANG_SCAN_DEPS
+CMAKE_C_COMPILER_CLANG_SCAN_DEPS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
 CMAKE_C_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS
@@ -509,8 +511,6 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
-CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -972,7 +972,7 @@ QT_FEATURE_eglfs_brcm:INTERNAL=OFF
 //Qt feature: eglfs_egldevice (from target Qt6::Gui)
 QT_FEATURE_eglfs_egldevice:INTERNAL=ON
 //Qt feature: eglfs_gbm (from target Qt6::Gui)
-QT_FEATURE_eglfs_gbm:INTERNAL=ON
+QT_FEATURE_eglfs_gbm:INTERNAL=OFF
 //Qt feature: eglfs_mali (from target Qt6::Gui)
 QT_FEATURE_eglfs_mali:INTERNAL=OFF
 //Qt feature: eglfs_openwfd (from target Qt6::Gui)
@@ -987,8 +987,6 @@ QT_FEATURE_eglfs_viv_wl:INTERNAL=OFF
 QT_FEATURE_eglfs_vsp2:INTERNAL=OFF
 //Qt feature: eglfs_x11 (from target Qt6::Gui)
 QT_FEATURE_eglfs_x11:INTERNAL=ON
-//Qt feature: elf_private_full_version (from target Qt6::Core)
-QT_FEATURE_elf_private_full_version:INTERNAL=OFF
 //Qt feature: enable_new_dtags (from target Qt6::Core)
 QT_FEATURE_enable_new_dtags:INTERNAL=ON
 //Qt feature: errormessage (from target Qt6::Widgets)
@@ -1031,8 +1029,6 @@ QT_FEATURE_fscompleter:INTERNAL=ON
 QT_FEATURE_futimens:INTERNAL=ON
 //Qt feature: future (from target Qt6::Core)
 QT_FEATURE_future:INTERNAL=ON
-//Qt feature: gbm (from target Qt6::Gui)
-QT_FEATURE_gbm:INTERNAL=ON
 //Qt feature: gc_binaries (from target Qt6::Core)
 QT_FEATURE_gc_binaries:INTERNAL=OFF
 //Qt feature: gestures (from target Qt6::Core)
@@ -1526,7 +1522,7 @@ QT_FEATURE_xmlstreamwriter:INTERNAL=ON
 //Qt feature: xrender (from target Qt6::Gui)
 QT_FEATURE_xrender:INTERNAL=OFF
 //Qt feature: zstd (from target Qt6::Core)
-QT_FEATURE_zstd:INTERNAL=OFF
+QT_FEATURE_zstd:INTERNAL=ON
 //ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_GLSLC_EXECUTABLE

@@ -1,0 +1,59 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+    {
+      "type": "cmake",
+      "label": "CMake: build",
+      "command": "build",
+      "targets": [
+        "all"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": {
+        "owner": "cpp",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      },
+      "detail": "CMake template build task"
+    },
+    {
+      "taskName": "clean rebuild",
+      "type": "cmake",
+      "label": "CMake: clean rebuild",
+      "command": "cleanRebuild",
+      "targets": [
+        "all"
+      ],
+      "group": "build",
+      "problemMatcher": {
+        "owner": "cpp",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      },
+      "detail": "CMake template clean rebuild task"
+    }
+  ]
+}

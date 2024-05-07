@@ -7,13 +7,21 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
+if (MSVC)
+    # warning level 4
+    add_compile_options(/W4)
+else()
+    # additional warnings
+    #add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
 # --- Path to vscp --- 
 if (NOT DEFINED VSCP_PATH)
   set (VSCP_PATH "${PROJECT_SOURCE_DIR}/../vscp")
 endif()
 
-file(TO_CMAKE_PATH "${VSCP_PATH}" VSCP_PATH)
-message(STATUS "VSCP path = ${VSCP_PATH}")
+file(TO_CMAKE_PATH "$ENV{VSCP_ROOT}" VSCP_PATH)
+message(STATUS "VSCP path = $ENV{VSCP_ROOT}")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -89,8 +97,9 @@ endif()
 include_directories( PUBLIC ./src 
   ./build
   ./ui
-  ${VSCP_PATH}/src/vscp/common/  
-  ${VSCP_PATH}/src/common
+  $ENV{VSCP_ROOT}/src/vscp/common/  
+  $ENV{VSCP_ROOT}/src/common
+  $ENV{VSCP_FIRMWARE}/common
   ./third_party
   ./third_party/nlohmann/include/
   ./third_party/spdlog/include/
@@ -108,69 +117,69 @@ qt_add_executable(btest
     src/mainwindow.ui
     src/mainwindow.cpp
     src/main.cpp
-    ${VSCP_PATH}/src/vscp/common/version.h
-    ${VSCP_PATH}/src/vscp/common/vscp.h
-    ${VSCP_PATH}/src/vscp/common/vscpremotetcpif.h
-    ${VSCP_PATH}/src/vscp/common/vscpremotetcpif.cpp
-    ${VSCP_PATH}/src/vscp/common/vscpdatetime.h
-    ${VSCP_PATH}/src/vscp/common/vscpdatetime.cpp
-    ${VSCP_PATH}/src/vscp/common/guid.h
-    ${VSCP_PATH}/src/vscp/common/guid.cpp
-    ${VSCP_PATH}/src/vscp/common/register.h
-    ${VSCP_PATH}/src/vscp/common/register.cpp
-    ${VSCP_PATH}/src/vscp/common/mdf.h
-    ${VSCP_PATH}/src/vscp/common/mdf.cpp
-    ${VSCP_PATH}/src/vscp/common/vscphelper.h
-    ${VSCP_PATH}/src/vscp/common/vscphelper.cpp
-    ${VSCP_PATH}/src/vscp/common/vscpunit.h
-    ${VSCP_PATH}/src/vscp/common/vscpunit.cpp
-    ${VSCP_PATH}/src/vscp/common/canaldlldef.h
-    ${VSCP_PATH}/src/vscp/common/vscpcanaldeviceif.h
-    ${VSCP_PATH}/src/vscp/common/vscpcanaldeviceif.cpp
-    ${VSCP_PATH}/src/common/sockettcp.h
-    ${VSCP_PATH}/src/common/sockettcp.c
-    ${VSCP_PATH}/src/common/vscpbase64.h
-    ${VSCP_PATH}/src/common/vscpbase64.c
-    ${VSCP_PATH}/src/common/vscp_aes.h
-    ${VSCP_PATH}/src/common/vscp_aes.c
-    ${VSCP_PATH}/src/common/crc.h
-    ${VSCP_PATH}/src/common/crc.c
-    ${VSCP_PATH}/src/common/crc8.h
-    ${VSCP_PATH}/src/common/crc8.c
-    ${VSCP_PATH}/src/common/vscpmd5.h
-    ${VSCP_PATH}/src/common/vscpmd5.c
-    ${VSCP_PATH}/src/vscp/common/vscp_client_base.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_base.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_client_canal.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_canal.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_client_mqtt.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_mqtt.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_client_tcp.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_tcp.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_client_socketcan.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_socketcan.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_client_ws1.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_ws1.cpp 
-    ${VSCP_PATH}/src/vscp/common/vscp_client_ws2.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_ws2.cpp 
-    ${VSCP_PATH}/src/vscp/common/vscp_client_udp.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_udp.cpp 
-    ${VSCP_PATH}/src/vscp/common/vscp_client_multicast.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_multicast.cpp 
-    ${VSCP_PATH}/src/vscp/common/vscp_client_rawcan.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_rawcan.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_client_rawmqtt.h
-    ${VSCP_PATH}/src/vscp/common/vscp_client_rawmqtt.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_bootdevice.h
-    ${VSCP_PATH}/src/vscp/common/vscp_bootdevice.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_bootdevice_pic1.h
-    ${VSCP_PATH}/src/vscp/common/vscp_bootdevice_pic1.cpp
-    ${VSCP_PATH}/src/vscp/common/vscp_bootdevice_vscp.h
-    ${VSCP_PATH}/src/vscp/common/vscp_bootdevice_vscp.cpp
-#   ./third_party/Mustache/mustache.hpp
-#   ./third_party/spdlog/include/
-    ./third_party/fastpbkdf2/fastpbkdf2.h
-    ./third_party/fastpbkdf2/fastpbkdf2.c
+    src/btest.cpp
+    src/hardware.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/version.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscpremotetcpif.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscpremotetcpif.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscpdatetime.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscpdatetime.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/guid.h
+    $ENV{VSCP_ROOT}/src/vscp/common/guid.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/register.h
+    $ENV{VSCP_ROOT}/src/vscp/common/register.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/mdf.h
+    $ENV{VSCP_ROOT}/src/vscp/common/mdf.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscphelper.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscphelper.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscpunit.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscpunit.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/canaldlldef.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscpcanaldeviceif.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscpcanaldeviceif.cpp
+    $ENV{VSCP_ROOT}/src/common/sockettcp.h
+    $ENV{VSCP_ROOT}/src/common/sockettcp.c
+    $ENV{VSCP_ROOT}/src/common/vscpbase64.h
+    $ENV{VSCP_ROOT}/src/common/vscpbase64.c
+    $ENV{VSCP_ROOT}/src/common/vscp_aes.h
+    $ENV{VSCP_ROOT}/src/common/vscp_aes.c
+    $ENV{VSCP_ROOT}/src/common/crc.h
+    $ENV{VSCP_ROOT}/src/common/crc.c
+    $ENV{VSCP_ROOT}/src/common/crc8.h
+    $ENV{VSCP_ROOT}/src/common/crc8.c
+    $ENV{VSCP_ROOT}/src/common/vscpmd5.h
+    $ENV{VSCP_ROOT}/src/common/vscpmd5.c
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_base.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_base.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_canal.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_canal.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_mqtt.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_mqtt.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_tcp.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_tcp.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_socketcan.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_socketcan.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_ws1.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_ws1.cpp 
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_ws2.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_ws2.cpp 
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_udp.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_udp.cpp 
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_multicast.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_multicast.cpp 
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_rawcan.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_rawcan.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_rawmqtt.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_rawmqtt.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice_pic1.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice_pic1.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice_vscp.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice_vscp.cpp
+    $ENV{VSCP_FIRMWARE}/common/vscp-bootloader.h
+    $ENV{VSCP_FIRMWARE}/common/vscp-bootloader.c
 )
 
 

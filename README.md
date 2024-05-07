@@ -12,4 +12,4 @@ use
 
   cmake -DCMAKE_PREFIX_PATH=~/Qt/6.6.2/gcc_64 ..
 
-to (or similar) build
+to (or similar) build or set it in cmake: configure environment in the settings for vscode.
