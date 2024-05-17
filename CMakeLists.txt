@@ -28,7 +28,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # set the module path
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Widgets Qml)
 qt_standard_project_setup()
 
 # pthreads
@@ -142,48 +142,53 @@ qt_add_executable(btest
     $ENV{VSCP_ROOT}/src/common/sockettcp.c
     $ENV{VSCP_ROOT}/src/common/vscpbase64.h
     $ENV{VSCP_ROOT}/src/common/vscpbase64.c
-    $ENV{VSCP_ROOT}/src/common/vscp_aes.h
-    $ENV{VSCP_ROOT}/src/common/vscp_aes.c
+    $ENV{VSCP_ROOT}/src/common/vscp-aes.h
+    $ENV{VSCP_ROOT}/src/common/vscp-aes.c
     $ENV{VSCP_ROOT}/src/common/crc.h
     $ENV{VSCP_ROOT}/src/common/crc.c
     $ENV{VSCP_ROOT}/src/common/crc8.h
     $ENV{VSCP_ROOT}/src/common/crc8.c
     $ENV{VSCP_ROOT}/src/common/vscpmd5.h
     $ENV{VSCP_ROOT}/src/common/vscpmd5.c
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_base.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_base.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_canal.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_canal.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_mqtt.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_mqtt.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_tcp.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_tcp.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_socketcan.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_socketcan.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_ws1.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_ws1.cpp 
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_ws2.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_ws2.cpp 
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_udp.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_udp.cpp 
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_multicast.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_multicast.cpp 
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_rawcan.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_rawcan.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_rawmqtt.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_client_rawmqtt.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice_pic1.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice_pic1.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice_vscp.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp_bootdevice_vscp.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-base.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-base.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-canal.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-canal.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-mqtt.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-mqtt.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-tcp.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-tcp.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-socketcan.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-socketcan.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-ws1.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-ws1.cpp 
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-ws2.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-ws2.cpp 
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-udp.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-udp.cpp 
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-multicast.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-multicast.cpp 
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-rawcan.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-rawcan.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-rawmqtt.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-rawmqtt.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice-pic1.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice-pic1.cpp
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice-vscp.h
+    $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice-vscp.cpp
     $ENV{VSCP_FIRMWARE}/common/vscp-bootloader.h
     $ENV{VSCP_FIRMWARE}/common/vscp-bootloader.c
+    $ENV{VSCP_FIRMWARE}/common/vscp-firmware-helper.h
+    $ENV{VSCP_FIRMWARE}/common/vscp-firmware-helper.c
+    $ENV{VSCP_FIRMWARE}/common/vscp-firmware-level2.h
+    $ENV{VSCP_FIRMWARE}/common/vscp-firmware-level2.c
 )
 
 
 target_link_libraries(btest PRIVATE Qt6::Widgets
+  Qt6::Qml
   Threads::Threads
   OpenSSL::SSL 
   OpenSSL::Crypto

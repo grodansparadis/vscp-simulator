@@ -1,6 +1,22 @@
 {
   "files.associations": {
     "ostream": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "*.tcc": "cpp",
+    "optional": "cpp",
+    "system_error": "cpp",
+    "regex": "cpp",
+    "chrono": "cpp",
+    "format": "cpp",
+    "vscp.h": "c",
+    "array": "c",
+    "string": "c",
+    "string_view": "c",
+    "ranges": "c",
+    "span": "c",
+    "random": "c"
+  },
+  "cmake.configureEnvironment": {
+    "CMAKE_PREFIX_PATH": "~/Qt/6.7.0/gcc_64"
   }
 }

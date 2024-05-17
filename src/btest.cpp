@@ -36,25 +36,28 @@
 #include <windows.h>
 #endif
 
+#include <string.h>
+
 #include "btest.h"
 #include <vscp.h>
 #include <vscphelper.h>
 
-#include "vscp_client_socketcan.h"
+#include "vscp-client-socketcan.h"
+
+#include <vscp-bootloader.h>
 
 #include <mustache.hpp>
 
 #include <QDebug>
 #include <QDir>
 #include <QFile>
-// #include <QJSEngine>
+#include <QJSEngine>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QSemaphore>
 #include <QSettings>
-// #include <QSqlDatabase>
-// #include <QSqlQuery>
 #include <QStandardPaths>
 #include <QTextDocument>
 #include <QUuid>
@@ -70,6 +73,10 @@
 using json = nlohmann::json;
 using namespace kainjow::mustache;
 
+// Prototype
+void*
+workerThread(void* pData);
+
 ///////////////////////////////////////////////////////////////////////////////
 // btest
 //
@@ -77,6 +84,11 @@ using namespace kainjow::mustache;
 btest::btest(int& argc, char** argv)
   : QApplication(argc, argv)
 {
+  m_bootflag = BOOTLOADER; // Start the bootloader
+
+  m_bootloader_cfg.vscpLevel  = VSCP_LEVEL2;
+  m_bootloader_cfg.blockSize  = 0x100;
+  m_bootloader_cfg.blockCount = 0xffff;
 
   // Logging defaults
   m_fileLogLevel   = spdlog::level::info;
@@ -90,17 +102,59 @@ btest::btest(int& argc, char** argv)
   m_maxFileLogFiles = 7;
 
   m_bEnableConsoleLog = true;
-  m_consoleLogLevel   = spdlog::level::info;
+  m_consoleLogLevel   = spdlog::level::debug;
   m_consoleLogPattern = "[btest] [%^%l%$] %v";
 
   pClient = nullptr;
+
+  sem_init(&m_semReceiveQueue, 0, 0);
+
+  if (0 != pthread_mutex_init(&m_mutexReceiveQueue, NULL)) {
+    spdlog::error("\n mutex init of input mutex has failed\n");
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // ~btest
 //
 
-btest::~btest() {}
+btest::~btest()
+{
+  int rv;
+
+  // pthread_cancel(m_threadWork);
+  m_bRun = false;
+  pthread_join(m_threadWork, NULL);
+
+  // if (VSCP_ERROR_SUCCESS != (rv = vscpboot_release_hardware())) {
+  //   spdlog::error("Failed to release hardware rv={}", rv);
+  //   return;
+  // }
+
+  while (!m_inqueue.isEmpty()) {
+    vscpEventEx* pex = m_inqueue.dequeue();
+    delete pex;
+  }
+
+  sem_destroy(&m_semReceiveQueue);
+  pthread_mutex_destroy(&m_mutexReceiveQueue);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// startWorkerThread *
+//
+
+int
+btest::startWorkerThread(void)
+{
+  // Start the bootloader workerthread
+  m_bRun = true; // Workerthread should run, run, run...
+  if (pthread_create(&m_threadWork, NULL, workerThread, this)) {
+    spdlog::critical("BTEST: Failed to start workerthread");
+    return VSCP_ERROR_ERROR;
+  }
+  return VSCP_ERROR_SUCCESS;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // loadSettings *
@@ -322,6 +376,137 @@ btest::getMainWindow()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// receiveCallback
+//
+
+void
+btest::receiveCallback(vscpEventEx& ex, void* pobj)
+{
+  vscpEventEx* pexnew = new vscpEventEx;
+  if (nullptr != pexnew) {
+    pexnew->sizeData = 0;
+    vscp_copyEventEx(pexnew, &ex);
+    pthread_mutex_lock(&m_mutexReceiveQueue);
+    m_inqueue.append(pexnew);
+    sem_post(&m_semReceiveQueue);
+    pthread_mutex_unlock(&m_mutexReceiveQueue);
+  }
+
+  printf("Data received %03X:%02X size=%d\n", ex.vscp_class, ex.vscp_type, ex.sizeData);
+  // emit dataReceived(&ex);
+
+  // Alternative method for reference
+  // CFrmSession* pSession = (CFrmSession*)pobj;
+  // pSession->threadReceive(pevnew);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//                  Handlers for VSCP Firmware callbacks
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+// readRegister
+//
+
+int
+btest::readRegister(uint16_t page, uint32_t reg, uint8_t* pval)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// writeRegister
+//
+
+int
+btest::writeRegister(uint16_t page, uint32_t reg, uint8_t val)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// receivedSegCtrlHeartBeat
+//
+
+int
+btest::receivedSegCtrlHeartBeat(uint16_t segcrc, uint32_t tm)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// newNodeOnline
+//
+
+int
+btest::newNodeOnline(uint16_t nickname)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// newNodeOnline
+//
+
+int
+btest::newNodeOnline(cguid& guid)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// standardRegHasChanged
+//
+
+int
+btest::standardRegHasChanged(uint32_t stdreg)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// reportDM
+//
+int
+btest::reportDM(void)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// reportEventsOfInterest
+//
+int
+btest::reportEventsOfInterest(void)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sendEmbeddedMDF
+//
+// Send embedded MDF if one is available
+//
+
+int
+btest::sendEmbeddedMDF(void)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// getMdfUrl
+//
+
+int
+btest::getMdfUrl(uint8_t* const purl)
+{
+  uint8_t buf[10];
+  memcpy(purl, buf, 10);
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 //                  Handlers for VSCP Bootloader callbacks
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -374,12 +559,20 @@ btest::vscpboot_init_hardware(void)
       return VSCP_ERROR_HARDWARE;
     }
 
+    using namespace std::placeholders;
+    auto cb = std::bind(&btest::receiveCallback, this, _1, _2);
+    // lambda version for reference
+    // auto cb = [this](auto a, auto b) { this->receiveCallback(a, b); };
+    pClient->setCallbackEx(cb, this);
+
     if (VSCP_ERROR_SUCCESS != (rv = pClient->connect())) {
       delete (vscpClientSocketCan*)pClient;
       pClient = nullptr;
       spdlog::error("Unable to initialize socketcan client {0} rv={1}", m_interface.toStdString(), rv);
       return VSCP_ERROR_HARDWARE;
     }
+
+    sleep(1);
   }
   else {
     spdlog::error("Client type is not supported {0}", m_interface.toStdString());
@@ -405,7 +598,6 @@ btest::vscpboot_release_hardware()
       return VSCP_ERROR_HARDWARE;
     }
 
-
     delete (vscpClientSocketCan*)pClient;
     pClient = nullptr;
   }
@@ -421,7 +613,7 @@ btest::vscpboot_release_hardware()
 uint8_t
 btest::vscpboot_getBootFlag(void)
 {
-  return 0;
+  return m_bootflag;
 }
 
 /*!
@@ -442,6 +634,15 @@ btest::vscpboot_setBootFlag(uint8_t bootflag)
 void
 btest::vscpboot_reboot(void)
 {
+}
+
+/*!
+  Get configuration
+*/
+vscpboot_config_t*
+btest::vscpboot_getConfig(void)
+{
+  return &m_bootloader_cfg;
 }
 
 /*!
@@ -516,7 +717,7 @@ btest::vscpboot_sendEvent(vscpEventEx* pex)
 }
 
 /*!
-  Get VSCP event
+  Get VSCP event (Block until event is received)
   -----------------------------------------------------------
   IMPORTANT!
   This routine should translate all VSCP_CLASS2_LEVEL1_PROTOCOL
@@ -528,5 +729,50 @@ btest::vscpboot_sendEvent(vscpEventEx* pex)
 int
 btest::vscpboot_getEvent(vscpEventEx* pex)
 {
+  int rv;
+
+RCVLOOP:
+  if ((-1 == (rv = vscp_sem_wait(&m_semReceiveQueue, 10))) &&
+      errno == ETIMEDOUT) {
+    goto RCVLOOP;
+  }
+
+  // Return if error
+  if (rv) {
+    return VSCP_ERROR_ERROR;
+  }
+
+  pthread_mutex_lock(&m_mutexReceiveQueue);
+  if (m_inqueue.size()) {
+    pex = m_inqueue.dequeue();
+    pthread_mutex_unlock(&m_mutexReceiveQueue);
+    printf("Event %03X:%02X\n", pex->vscp_class, pex->vscp_type);
+  }
+  else {
+    pthread_mutex_unlock(&m_mutexReceiveQueue);
+    printf("No events to fetch\n");
+    return VSCP_ERROR_FIFO_EMPTY;
+  }
   return VSCP_ERROR_SUCCESS;
+}
+
+//////////////////////////////////////////////////////////////////////
+//                     Workerthread -
+//////////////////////////////////////////////////////////////////////
+
+void*
+workerThread(void* pData)
+{
+  fd_set rdfs;
+  struct timeval tv;
+
+  btest* pObj = (btest*)pData;
+  if (NULL == pObj) {
+    spdlog::error("btest: No object data object supplied for worker thread");
+    return NULL;
+  }
+
+  vscpboot_loader();
+
+  return NULL;
 }

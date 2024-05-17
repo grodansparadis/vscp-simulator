@@ -8,6 +8,7 @@
 int
 main(int argc, char* argv[])
 {
+  int rv;
   btest app(argc, argv);
   QApplication::setApplicationName("btest");
   QApplication::setApplicationVersion("0.1");
@@ -26,12 +27,32 @@ main(int argc, char* argv[])
     "socketcan");
   parser.addOption(interfaceOption);
 
+  // config (-b, --bootmode)
+  QCommandLineOption bootOption(
+    QStringList() << "b"
+                  << "bootmode",
+    QApplication::translate("main", "Start bootloader (non zero) or application firmware (0)"),
+    "mode",
+    "255");
+  parser.addOption(bootOption);
+
+  // config (-B, --block)
+  QCommandLineOption blockOption(
+    QStringList() << "B"
+                  << "block"
+                  << "blocksize",
+    QApplication::translate("main", "Block info on the form 'size:count' where size is he size "
+                                    "of a block in bytes and count are the number of blocks of that size."),
+    "blck:cnt",
+    "");
+  parser.addOption(blockOption);
+
   // config (-c, --config)
   QCommandLineOption configOption(
     QStringList() << "c"
                   << "config",
     QApplication::translate("main", "Configuration string for interface"),
-    "config",
+    "cfg1;cfg2;cfg2;...",
     "vcan0");
   parser.addOption(configOption);
 
@@ -67,7 +88,6 @@ main(int argc, char* argv[])
 
   // user (-u, --user)
   QCommandLineOption userOption(QStringList() << "u"
-                                              << "user"
                                               << "user",
                                 QApplication::translate("main", "Username"),
                                 "user",
@@ -76,12 +96,19 @@ main(int argc, char* argv[])
 
   // password (-p, --password)
   QCommandLineOption passwordOption(QStringList() << "P"
-                                                  << "password"
                                                   << "password",
                                     QApplication::translate("main", "Password"),
                                     "password",
                                     "secret");
   parser.addOption(passwordOption);
+
+  // VSCP level (-l, --level)
+  QCommandLineOption levelOption(QStringList() << "l"
+                                               << "vscplevel",
+                                 QApplication::translate("main", "Level"),
+                                 "(0|1)",
+                                 "1");
+  parser.addOption(levelOption);
 
   /*!
    * Load flash from file.
@@ -109,21 +136,45 @@ main(int argc, char* argv[])
     std::cout << "Configuration = " << app.m_configVector[0] << std::endl;
   }
 
-  QString host = parser.value(hostOption);
+  QString bootstr = parser.value(bootOption);
   // std::cout << "Host = " << host.toStdString() << std::endl;
-  app.m_host = host;
+  app.m_bootflag = vscp_readStringValue(bootstr.toStdString()); // app.BOOTLOADER;
 
-  uint16_t port = parser.value(portOption).toInt();
+  QString hoststr = parser.value(hostOption);
+  // std::cout << "Host = " << host.toStdString() << std::endl;
+  app.m_host = hoststr;
+
+  QString portstr = parser.value(portOption);
   // std::cout << "Port = " << port << std::endl;
-  app.m_port = port;
+  app.m_port = vscp_readStringValue(portstr.toStdString());
 
-  QString user = parser.value(userOption);
+  QString userstr = parser.value(userOption);
   // std::cout << "User = " << user.toStdString() << std::endl;
-  app.m_user = user;
+  app.m_user = userstr;
 
-  QString password = parser.value(passwordOption);
+  QString passwordstr = parser.value(passwordOption);
   // std::cout << "Password = " << password.toStdString() << std::endl;
-  app.m_password = password;
+  app.m_password = passwordstr;
+
+  std::string blockstr = parser.value(blockOption).toStdString();
+  blockstr             = vscp_trim_copy(blockstr);
+  if (blockstr.size()) {
+    std::deque<std::string> blockVector;
+    vscp_split(blockVector, blockstr, ":");
+    if (blockVector.size() > 1) {
+      app.m_bootloader_cfg.blockSize  = vscp_readStringValue(blockVector[0]);
+      app.m_bootloader_cfg.blockCount = vscp_readStringValue(blockVector[1]);
+    }
+  }
+
+  QString levelstr               = parser.value(passwordOption);
+  app.m_bootloader_cfg.vscpLevel = vscp_readStringValue(levelstr.toStdString());
+
+  // Start bootloader (will in turn start app if boot flag is zero)
+  if (VSCP_ERROR_SUCCESS != (rv = app.startWorkerThread())) {
+    printf("Main: Send error: rv=%d\n", rv);
+    return 0;
+  }
 
   MainWindow mainWindow;
   mainWindow.show();

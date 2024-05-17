@@ -26,8 +26,8 @@
 // SOFTWARE.
 //
 
-#ifndef BTEST_H
-#define BTEST_H
+#ifndef ___VSCP_BTEST_H
+#define ___VSCP_BTEST_H
 
 #include <vscp.h>
 
@@ -35,8 +35,10 @@
 #include <mdf.h>
 #include <register.h>
 #include <version.h>
-#include <vscp_client_base.h>
+#include <vscp-client-base.h>
 #include <vscpunit.h>
+
+#include <vscp-bootloader.h>
 
 #include <QApplication>
 #include <QByteArray>
@@ -44,8 +46,12 @@
 #include <QMainWindow>
 #include <QMutex>
 #include <QObject>
+#include <QQueue>
 
+#include <QSemaphore>
 #include <list>
+
+#include <pthread.h>
 
 #include <mustache.hpp>
 #include <nlohmann/json.hpp>
@@ -97,9 +103,15 @@ public:
     Codes for mode we are in
   */
   enum mode {
-    BOOT_MODE,
-    FIRMWARE_MODE
+    FIRMWARE   = 0,
+    BOOTLOADER = 0xff,
   };
+
+  /*!
+    Run the workerthread
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int startWorkerThread(void);
 
   /*!
       Load configuration settings from disk
@@ -113,8 +125,40 @@ public:
 
   QMainWindow* getMainWindow();
 
+  void receiveCallback(vscpEventEx& ex, void* pobj);
+
   // ========================================================================
-  //                         Master callbacks
+  //                         Firmware callbacks
+  // ========================================================================
+
+  int readRegister(uint16_t page, uint32_t reg, uint8_t* pval);
+
+  int writeRegister(uint16_t page, uint32_t reg, uint8_t val);
+
+  int receivedSegCtrlHeartBeat(uint16_t segcrc, uint32_t tm);
+
+  int newNodeOnline(uint16_t nickname);
+
+  int newNodeOnline(cguid& guid);
+
+  int reportDM(void);
+
+  int reportEventsOfInterest(void);
+
+  int standardRegHasChanged(uint32_t stdreg);
+
+  /*!
+    Get URL for MDF (max 43 characters in length)
+  */
+  int getMdfUrl(uint8_t* const purl);
+
+  /*!
+    Send embedded MDF if one is available
+  */
+  int sendEmbeddedMDF(void);
+
+  // ========================================================================
+  //                         Bootloader callbacks
   // ========================================================================
 
   void vscpboot_goApplication(void);
@@ -128,6 +172,8 @@ public:
   int vscpboot_setBootFlag(uint8_t bootflag);
 
   void vscpboot_reboot(void);
+
+  vscpboot_config_t* vscpboot_getConfig(void);
 
   uint8_t* vscpboot_getGUID(void);
 
@@ -155,6 +201,27 @@ public:
 
   // ------------------------------------------------------------------------
 
+  /*!
+    Flag for workerthread execution
+    Set to false to end execution of thread
+  */
+  bool m_bRun;
+
+  /*!
+    The bootflag controls what code tha is executed
+    it is zero if the appcication code should be executed
+    and non-zero if the bootloader should be started.
+  */
+  bool m_bootflag;
+
+  /*!
+    Bootloader configuration
+  */
+  vscpboot_config_t m_bootloader_cfg;
+
+  /// Pointer to worker thread
+  pthread_t m_threadWork;
+
   /// Folder used for configuration
   /// Linux: ~/.configure/VSCP/(btest.conf)
   QString m_configFolder;
@@ -173,9 +240,18 @@ public:
   QString m_vscpHomeFolder;
 
   /*!
-    Thhe communication interface
+    The communication interface
   */
   CVscpClient* pClient;
+
+  sem_t m_semReceiveQueue;
+
+  pthread_mutex_t m_mutexReceiveQueue;
+
+  /*!
+    Queue holding received events
+  */
+  QQueue<vscpEventEx*> m_inqueue;
 
   // ---------------------------------------------------
 
@@ -216,6 +292,11 @@ public:
   bool m_bEnableConsoleLog;
   spdlog::level::level_enum m_consoleLogLevel;
   std::string m_consoleLogPattern;
+
+signals:
+
+  /// Data received from callback
+  void dataReceived(vscpEventEx* pex);
 };
 
-#endif
+#endif // ___VSCP_BTEST_H
