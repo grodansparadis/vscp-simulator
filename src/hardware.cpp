@@ -24,13 +24,14 @@
 /*
    ----------------------------------------------------------------------------
     This file contains the hardware callbacks for the standard
-    VSCP bootloader code and for the standard VSCP firmware code.
+    VSCP bootloader code and callbacks for the standard VSCP firmware code.
    ----------------------------------------------------------------------------
 
   We can be in two conditions in any moment.
-    * Bootloader mode. Firmware can be loaded. abd we can ente this mode
-                        by issue VSCP events.
-    * Firmware mode. A simulated hardware running as an app.
+    * Bootloader mode. Firmware can be loaded. We can go to firmware mode by
+                        write a bootflag and reboot.
+    * Firmware mode. A simulated hardware running as an app. - We can go to
+                        the bootloader by issue VSCP events to do so.
 */
 
 #include <crc.h>
@@ -40,14 +41,6 @@
 #include <vscp.h>
 
 #include "btest.h"
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-//
-//                            Firmware callbacks
-//
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -219,14 +212,14 @@ vscpboot_calcPrgCrc(void)
   @return VSCP_ERROR_SUCCESS on success
 */
 int
-vscpboot_sendEvent(vscpEventEx* pex)
+vscpboot_sendEventEx(vscpEventEx* pex)
 {
   btest* pbtest = (btest*)QApplication::instance();
-  return pbtest->vscpboot_sendEvent(pex);
+  return pbtest->vscpboot_sendEventEx(pex);
 }
 
 /*!
-  Block until VSCP event is available
+  Block until VSCP event is available or app. quits.
   -----------------------------------------------------------
   IMPORTANT!
   This routine should translate all VSCP_CLASS2_LEVEL1_PROTOCOL
@@ -236,15 +229,19 @@ vscpboot_sendEvent(vscpEventEx* pex)
    @return VSCP_ERROR_SUCCESS on success
 */
 int
-vscpboot_getEvent(vscpEventEx* pex)
+vscpboot_getEventEx(vscpEventEx* pex)
 {
   btest* pbtest = (btest*)QApplication::instance();
-  return pbtest->vscpboot_getEvent(pex);
+  return pbtest->vscpboot_getEventEx(pex);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//                              Firmware Callbacks
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//
+//                            Firmware callbacks
+//
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 /*!
  * @brief Get the time in milliseconds.
@@ -255,7 +252,7 @@ vscpboot_getEvent(vscpEventEx* pex)
  */
 
 int
-frmw2_callback_get_ms(void* const puserdata, uint32_t* ptime)
+vscp_frmw2_callback_get_ms(void* const puserdata, uint32_t* ptime)
 {
   // Check pointers
   if (nullptr == ptime) {
@@ -266,37 +263,6 @@ frmw2_callback_get_ms(void* const puserdata, uint32_t* ptime)
   return VSCP_ERROR_SUCCESS;
 }
 
-/*!
- * @brief Get pointer to GUID
- *
- * Get a pointer to the 16-byte GUID byte array.
- *
- * @param pdata Pointer to user data (typical points to context)
- * @return Pointer to the device GUID.
- *
- */
-
-const uint8_t*
-frmw2_callback_get_guid(void* const puserdata)
-{
-  btest* pbtest = (btest*)QApplication::instance();
-  return pbtest->vscpboot_getGUID();
-}
-
-/*!
-  @brief Get name of the device.  Used by the device capabilities report.
-
-  @param pdata Pointer to user data (typical points to context)
-  @param pname Pointer to MDF URL storage space. The URL should be no more than 32
-  characters including terminating zero.
-  @return VSCP_ERROR_SUCCESS on success, or error code.
-*/
-int
-frmw2_callback_get_mdf_url(void* const puserdata, uint8_t* const purl)
-{
-  btest* pbtest = (btest*)QApplication::instance();
-  return pbtest->getMdfUrl(purl);
-}
 
 /*!
   @brief Get name of the device.  Used by the device capabilities report.
@@ -307,7 +273,7 @@ frmw2_callback_get_mdf_url(void* const puserdata, uint8_t* const purl)
   @return VSCP_ERROR_SUCCESS on success, or error code.
 */
 int
-frmw2_callback_get_device_name(void* const puserdata, const char* pname)
+vscp_frmw2_callback_get_device_name(void* const puserdata, const char* pname)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -326,7 +292,7 @@ frmw2_callback_get_device_name(void* const puserdata, const char* pname)
  *
  */
 int
-frmw2_callback_read_reg(void* const puserdata, uint16_t page, uint32_t reg, uint8_t* pval)
+vscp_frmw2_callback_read_reg(void* const puserdata, uint16_t page, uint32_t reg, uint8_t* pval)
 {
   btest* pbtest = (btest*)QApplication::instance();
 
@@ -352,7 +318,7 @@ frmw2_callback_read_reg(void* const puserdata, uint16_t page, uint32_t reg, uint
  */
 
 int
-frmw2_callback_write_reg(void* const puserdata, uint16_t page, uint32_t reg, uint8_t val)
+vscp_frmw2_callback_write_reg(void* const puserdata, uint16_t page, uint32_t reg, uint8_t val)
 {
   btest* pbtest = (btest*)QApplication::instance();
   return pbtest->writeRegister(page, reg, val);
@@ -370,7 +336,7 @@ frmw2_callback_write_reg(void* const puserdata, uint16_t page, uint32_t reg, uin
 */
 
 int
-frmw2_callback_send_event(void* const puserdata, vscpEvent* pev)
+vscp_frmw2_callback_send_event(void* const puserdata, vscpEvent* pev)
 {
   // Check pointers
   if (nullptr == pev) {
@@ -379,7 +345,7 @@ frmw2_callback_send_event(void* const puserdata, vscpEvent* pev)
   vscpEventEx ex;
   vscp_convertEventToEventEx(&ex, pev);
 
-  return vscpboot_sendEvent(&ex);
+  return vscpboot_sendEventEx(&ex);
 }
 
 /*!
@@ -394,14 +360,14 @@ frmw2_callback_send_event(void* const puserdata, vscpEvent* pev)
 */
 
 int
-frmw2_callback_send_event_ex(void* const puserdata, vscpEventEx* pex)
+vscp_frmw2_callback_send_event_ex(void* const puserdata, vscpEventEx* pex)
 {
   // Check pointers
   if (nullptr == pex) {
     return VSCP_ERROR_INVALID_POINTER;
   }
 
-  return vscpboot_sendEvent(pex);
+  return vscpboot_sendEventEx(pex);
 }
 
 /*!
@@ -411,7 +377,7 @@ frmw2_callback_send_event_ex(void* const puserdata, vscpEventEx* pex)
  */
 
 void
-frmw2_callback_enter_bootloader(void* const puserdata)
+vscp_frmw2_callback_enter_bootloader(void* const puserdata)
 {
   btest* pbtest = (btest*)QApplication::instance();
   vscpboot_setBootFlag(0);
@@ -428,37 +394,14 @@ frmw2_callback_enter_bootloader(void* const puserdata)
  */
 
 int
-frmw2_callback_report_dmatrix(void* const puserdata)
+vscp_frmw2_callback_report_dmatrix(void* const puserdata)
 {
   btest* pbtest = (btest*)QApplication::instance();
   pbtest->reportDM();
   return VSCP_ERROR_SUCCESS;
 }
 
-int
-frmw2_callback_segment_ctrl_heartbeat(void* const puserdata, uint16_t segcrc, uint32_t tm)
-{
-  btest* pbtest = (btest*)QApplication::instance();
-  pbtest->receivedSegCtrlHeartBeat(segcrc, tm);
-  return VSCP_ERROR_SUCCESS;
-}
 
-int
-frmw2_callback_new_node_online_level1(void* const puserdata, uint16_t nickname)
-{
-  btest* pbtest = (btest*)QApplication::instance();
-  pbtest->newNodeOnline(nickname);
-  return VSCP_ERROR_SUCCESS;
-}
-
-int
-frmw2_callback_new_node_online_level2(void* const puserdata, const uint8_t * const pguid)
-{
-   btest* pbtest = (btest*)QApplication::instance();
-   cguid guid(pguid);
-  pbtest->newNodeOnline(guid);
-  return VSCP_ERROR_SUCCESS;
-}
 
 /*!
  * @brief Report back events that this node is interested in
@@ -468,7 +411,7 @@ frmw2_callback_new_node_online_level2(void* const puserdata, const uint8_t * con
  */
 
 int
-frmw2_callback_report_events_of_interest(void* const puserdata)
+vscp_frmw2_callback_report_events_of_interest(void* const puserdata)
 {
   btest* pbtest = (btest*)QApplication::instance();
   pbtest->reportEventsOfInterest();
@@ -483,7 +426,7 @@ frmw2_callback_report_events_of_interest(void* const puserdata)
  */
 
 uint32_t
-frmw2_callback_get_timestamp(void* const puserdata)
+vscp_frmw2_callback_get_timestamp(void* const puserdata)
 {
   uint32_t ts = vscp_makeTimeStamp();
   return ts;
@@ -501,7 +444,7 @@ frmw2_callback_get_timestamp(void* const puserdata)
  */
 
 int
-frmw2_callback_get_time(void* const puserdata, vscpEventEx* pex)
+vscp_frmw2_callback_get_time(void* const puserdata, vscpEventEx* pex)
 {
   // Check pointers
   if (nullptr == pex) {
@@ -520,7 +463,7 @@ frmw2_callback_get_time(void* const puserdata, vscpEventEx* pex)
   @param pdata Pointer to user data (typical points to context)
  */
 int
-frmw2_callback_init_persistent_storage(void* const puserdata)
+vscp_frmw2_callback_init_persistent_storage(void* const puserdata)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -533,7 +476,7 @@ frmw2_callback_init_persistent_storage(void* const puserdata)
   @return VSCP_ERROR_SUCCESS on success, or error code.
 */
 int
-frmw2_callback_feed_dm(void* const puserdata, vscpEventEx* ev)
+vscp_frmw2_callback_feed_dm(void* const puserdata, vscpEventEx* ev)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -548,7 +491,7 @@ frmw2_callback_feed_dm(void* const puserdata, vscpEventEx* ev)
 */
 
 int
-frmw2_callback_feed_app(void* const puserdata, vscpEvent* pev)
+vscp_frmw2_callback_feed_app(void* const puserdata, vscpEvent* pev)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -572,7 +515,7 @@ frmw2_callback_feed_app(void* const puserdata, vscpEvent* pev)
  */
 
 int
-frmw2_callback_send_dm_info(void* const puserdata, char* pDM)
+vscp_frmw2_callback_send_dm_info(void* const puserdata, char* pDM)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -588,7 +531,7 @@ frmw2_callback_send_dm_info(void* const puserdata, char* pDM)
   @return VSCP_ERROR_SUCCESS on success, or error code.
  */
 int
-frmw2_callback_send_embedded_mdf(void* const puserdata)
+vscp_frmw2_callback_send_embedded_mdf(void* const puserdata)
 {
   btest* pbtest = (btest*)QApplication::instance();
   return pbtest->sendEmbeddedMDF();
@@ -606,7 +549,7 @@ frmw2_callback_send_embedded_mdf(void* const puserdata)
  */
 
 int
-frmw2_callback_enter_bootloader(void* const puserdata, uint8_t* palgorithm)
+vscp_frmw2_callback_enter_bootloader(void* const puserdata, uint8_t* palgorithm)
 {
   // TODO
   return VSCP_ERROR_SUCCESS;
@@ -624,31 +567,12 @@ frmw2_callback_enter_bootloader(void* const puserdata, uint8_t* palgorithm)
  */
 
 int
-frmw2_callback_restore_defaults(void* const puserdata)
+vscp_frmw2_callback_restore_defaults(void* const puserdata)
 {
   return VSCP_ERROR_SUCCESS;
 }
 
-/**
- * @brief Return ipv6 or ipv4 address
- *
- * Return the ipv6 or ipv4 address of the interface. If the
- * interface is not tcp/ip based just return a positive
- * response or a valid address for the underlying transport protocol.
- *
- * The address is always sixteen bytes long.
- *
- * @param pdata Pointer to context.
- * @param pipaddr Pointer to 16 byte address space for (ipv6 or ipv4) address
- *                return value.
- * @return VSCP_ERROR_SUCCESS on success, error code on failure
- */
 
-int
-frmw2_callback_get_ip_addr(void* const puserdata, uint8_t* pipaddr)
-{
-  return VSCP_ERROR_SUCCESS;
-}
 
 /*!
   @brief Handle high end server response
@@ -658,7 +582,7 @@ frmw2_callback_get_ip_addr(void* const puserdata, uint8_t* pipaddr)
 */
 
 int
-frmw2_callback_high_end_server_response(void* const puserdata)
+vscp_frmw2_callback_high_end_server_response(void* const puserdata)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -667,18 +591,18 @@ frmw2_callback_high_end_server_response(void* const puserdata)
   Notification receivced that standard register has been changed.
 */
 int
-frmw2_callback_stdreg_change(void* const puserdata, uint32_t stdreg)
+vscp_frmw2_callback_stdreg_change(void* const puserdata, uint32_t stdreg)
 {
   btest* pbtest = (btest*)QApplication::instance();
   return pbtest->standardRegHasChanged(stdreg);
 }
 
 /*!
-  Feed the watchdog on systems that need to do 
+  Feed the watchdog on systems that need to do
   that during lengthy operations.
 */
 void
-frmw2_callback_feed_watchdog(void* const puserdata)
+vscp_frmw2_callback_feed_watchdog(void* const puserdata)
 {
   // We do nothing
 }
@@ -686,8 +610,8 @@ frmw2_callback_feed_watchdog(void* const puserdata)
 /*!
   Do cold reset
 */
-void frmw2_callback_reset(void* const puserdata)
+void
+vscp_frmw2_callback_reset(void* const puserdata)
 {
   // TODO
 }
-

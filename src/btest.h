@@ -38,6 +38,8 @@
 #include <vscp-client-base.h>
 #include <vscpunit.h>
 
+//#include <vscp-firmware-helper.h>
+#include <vscp-firmware-level2.h>
 #include <vscp-bootloader.h>
 
 #include <QApplication>
@@ -81,6 +83,8 @@ Q_DECLARE_METATYPE(vscpEventEx)
 #define DEFAULT_VSCP_SYSTEM_FOLDER "/var/lib/vscp/"
 #endif
 
+#define DEFAULT_CONNECT_TIMOUT  5000
+
 /*!
     Encapsulates VSCP works main settings
 */
@@ -116,14 +120,25 @@ public:
   /*!
       Load configuration settings from disk
   */
-  void loadSettings(void);
+  void loadProgramSettings(void);
 
   /*!
       Save configuration settings to disk
   */
-  void writeSettings(void);
+  void writeProgramSettings(void);
 
-  QMainWindow* getMainWindow();
+  /*!
+    Load file for firmware configuration
+    @param path Path to configuration path
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int loadFirmwareConfig(QString& path);
+
+  /*!
+    Get min window
+    @return Pointer to main window
+  */
+  QMainWindow* getMainWindow(void);
 
   void receiveCallback(vscpEventEx& ex, void* pobj);
 
@@ -185,9 +200,9 @@ public:
 
   crc vscpboot_calcPrgCrc(void);
 
-  int vscpboot_sendEvent(vscpEventEx* pex);
+  int vscpboot_sendEventEx(vscpEventEx* pex);
 
-  int vscpboot_getEvent(vscpEventEx* pex);
+  int vscpboot_getEventEx(vscpEventEx* pex);
 
   // ========================================================================
   // ========================================================================
@@ -208,18 +223,31 @@ public:
   bool m_bRun;
 
   /*!
-    The bootflag controls what code tha is executed
+    The bootflag controls what code that is executed
     it is zero if the appcication code should be executed
     and non-zero if the bootloader should be started.
   */
-  bool m_bootflag;
+  uint8_t m_bootflag;
+
+  // Path to configuration file
+  QString m_configpath;
 
   /*!
     Bootloader configuration
   */
   vscpboot_config_t m_bootloader_cfg;
 
-  /// Pointer to worker thread
+  /*!
+    Firmware configuration
+  */
+  vscp_frmw2_firmware_configt_t m_firmware_cfg;
+
+  /*! 
+    Worker thread
+    This thread do the actual work. It can be a
+    device in bootmode or a running firmware device
+    depending on the value of the bootflag.
+  */
   pthread_t m_threadWork;
 
   /// Folder used for configuration
@@ -244,8 +272,11 @@ public:
   */
   CVscpClient* pClient;
 
-  sem_t m_semReceiveQueue;
+  /// Timeout for connect in milliseconds 
+  uint32_t m_timeoutConnect;
 
+  /// protects receive queue
+  sem_t m_semReceiveQueue;
   pthread_mutex_t m_mutexReceiveQueue;
 
   /*!

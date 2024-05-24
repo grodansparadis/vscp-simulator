@@ -2,8 +2,20 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QStandardPaths>
 
 #include <iostream>
+
+#include <spdlog/async.h>
+#include <spdlog/sinks/rotating_file_sink.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/spdlog.h>
+
+#include <nlohmann/json.hpp>
+
+// for convenience
+using json = nlohmann::json;
+using namespace kainjow::mustache;
 
 int
 main(int argc, char* argv[])
@@ -13,17 +25,22 @@ main(int argc, char* argv[])
   QApplication::setApplicationName("btest");
   QApplication::setApplicationVersion("0.1");
 
+  // Load configuration file
+  app.loadProgramSettings();
+
   QCommandLineParser parser;
   parser.setApplicationDescription("VSCP Boot Test helper");
   parser.addHelpOption();
   parser.addVersionOption();
+
+  // --------------------------------------------------------------------------
 
   // interface (-i, --interface)
   QCommandLineOption interfaceOption(
     QStringList() << "i"
                   << "interface",
     QApplication::translate("main", "Client interface to use"),
-    "interface",
+    "interface (socketcan, canal, tcpip, udp, multicast, mqtt, ws1, ws2)",
     "socketcan");
   parser.addOption(interfaceOption);
 
@@ -31,9 +48,9 @@ main(int argc, char* argv[])
   QCommandLineOption bootOption(
     QStringList() << "b"
                   << "bootmode",
-    QApplication::translate("main", "Start bootloader (non zero) or application firmware (0)"),
+    QApplication::translate("main", "Start bootloader (non zero, typical 0xff) or application firmware (0)"),
     "mode",
-    "255");
+    "0xff");
   parser.addOption(bootOption);
 
   // config (-B, --block)
@@ -51,7 +68,7 @@ main(int argc, char* argv[])
   QCommandLineOption configOption(
     QStringList() << "c"
                   << "config",
-    QApplication::translate("main", "Configuration string for interface"),
+    QApplication::translate("main", "Configuration string for interface (see docs for interface)"),
     "cfg1;cfg2;cfg2;...",
     "vcan0");
   parser.addOption(configOption);
@@ -62,7 +79,7 @@ main(int argc, char* argv[])
                   << "guid",
     QApplication::translate("main", "GUID to use for this client"),
     "guid",
-    "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01");
+    "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00");
   parser.addOption(guidOption);
 
   // host (-h, --host)
@@ -83,8 +100,16 @@ main(int argc, char* argv[])
                   << "remote-port",
     QApplication::translate("main", "Port to connect to"),
     "port",
-    "1883");
+    "9598");
   parser.addOption(portOption);
+
+  // timeout (-t, --timeout)
+  QCommandLineOption timeoutOption(QStringList() << "t"
+                                                 << "timeout",
+                                   QApplication::translate("main", "Timeout in milliseconds for communiction"),
+                                   "ms",
+                                   "1000");
+  parser.addOption(timeoutOption);
 
   // user (-u, --user)
   QCommandLineOption userOption(QStringList() << "u"
@@ -105,10 +130,63 @@ main(int argc, char* argv[])
   // VSCP level (-l, --level)
   QCommandLineOption levelOption(QStringList() << "l"
                                                << "vscplevel",
-                                 QApplication::translate("main", "Level"),
+                                 QApplication::translate("main", "VSCP protocol level"),
                                  "(0|1)",
-                                 "1");
+                                 "0");
   parser.addOption(levelOption);
+
+  // Configuration file
+  QCommandLineOption fileOption(QStringList() << "f"
+                                              << "cfgfile",
+                                QApplication::translate("main", "Configuration file path"),
+                                "path",
+                                "");
+  parser.addOption(fileOption);
+
+  // --------------------------------------------------------------------------
+
+  //////////////////////////////////////////////////////////////////////////////
+  //                                spdlog
+  //////////////////////////////////////////////////////////////////////////////
+
+  // patterns - https://github.com/gabime/spdlog/wiki/3.-Custom-formatting
+  // https://github.com/gabime/spdlog/wiki/2.-Creating-loggers#creating-loggers-with-multiple-sinks
+
+  try {
+
+    // create console_sink
+    auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+    console_sink->set_level(app.m_consoleLogLevel);
+    console_sink->set_pattern(app.m_consoleLogPattern);
+
+    // create rotating file sink
+    auto file_sink =
+      std::make_shared<spdlog::sinks::rotating_file_sink_mt>(app.m_fileLogPath,
+                                                             app.m_maxFileLogSize,
+                                                             app.m_maxFileLogFiles,
+                                                             true);
+    file_sink->set_level(app.m_fileLogLevel);
+    file_sink->set_pattern(app.m_fileLogPattern);
+
+    // sink's bucket
+    spdlog::sinks_init_list sinks{ console_sink, file_sink };
+
+    // create async logger, and use global threadpool
+    spdlog::init_thread_pool(1024 * 8, 1);
+    auto logger = std::make_shared<spdlog::async_logger>("logger", sinks, spdlog::thread_pool());
+
+    // set default logger
+    spdlog::set_default_logger(logger);
+    spdlog::set_level(app.m_fileLogLevel);
+  }
+  catch (...) {
+    fprintf(stderr, "Unable to init logsystem. Logs Exiting.");
+    spdlog::drop_all();
+    spdlog::shutdown();
+    exit(EXIT_FAILURE);
+  }
+
+  // --------------------------------------------------------------------------
 
   /*!
    * Load flash from file.
@@ -122,39 +200,40 @@ main(int argc, char* argv[])
   const QStringList args = parser.positionalArguments();
   // source is args.at(0), destination is args.at(1)
 
-  QString iface = parser.value(interfaceOption);
-  // std::cout << "Interface = " << iface.toStdString() << std::endl;
+  QString iface   = parser.value(interfaceOption);
   app.m_interface = iface;
   app.m_interface = app.m_interface.trimmed();
   app.m_interface = app.m_interface.toLower();
+  spdlog::debug("Config: interface: {}", app.m_interface.toStdString());
 
-  QString cfg = parser.value(configOption);
-  // std::cout << "Configuration = " << cfg.toStdString() << std::endl;
+  QString cfg  = parser.value(configOption);
   app.m_config = cfg;
   vscp_split(app.m_configVector, cfg.toStdString(), ";");
-  if (app.m_configVector.size()) {
-    std::cout << "Configuration = " << app.m_configVector[0] << std::endl;
+  int idx = 0;
+  for (const auto& cfgopt : app.m_configVector) {
+    spdlog::debug("Config: config string item {0}: {1}", idx, app.m_config.toStdString());
+    idx++;
   }
 
   QString bootstr = parser.value(bootOption);
-  // std::cout << "Host = " << host.toStdString() << std::endl;
-  app.m_bootflag = vscp_readStringValue(bootstr.toStdString()); // app.BOOTLOADER;
+  app.m_bootflag  = vscp_readStringValue(bootstr.toStdString()); // app.BOOTLOADER;
+  spdlog::debug("Config: bootflag: {}", app.m_bootflag);
 
   QString hoststr = parser.value(hostOption);
-  // std::cout << "Host = " << host.toStdString() << std::endl;
-  app.m_host = hoststr;
+  app.m_host      = hoststr;
+  spdlog::debug("Config: Host set to: {}", app.m_host.toStdString());
 
   QString portstr = parser.value(portOption);
-  // std::cout << "Port = " << port << std::endl;
-  app.m_port = vscp_readStringValue(portstr.toStdString());
+  app.m_port      = vscp_readStringValue(portstr.toStdString());
+  spdlog::debug("Config: port: {}", app.m_port);
 
   QString userstr = parser.value(userOption);
-  // std::cout << "User = " << user.toStdString() << std::endl;
-  app.m_user = userstr;
+  app.m_user      = userstr;
+  spdlog::debug("Config: user: {}", app.m_user.toStdString());
 
   QString passwordstr = parser.value(passwordOption);
-  // std::cout << "Password = " << password.toStdString() << std::endl;
-  app.m_password = passwordstr;
+  app.m_password      = passwordstr;
+  spdlog::debug("Config: password: {}", app.m_password.toStdString());
 
   std::string blockstr = parser.value(blockOption).toStdString();
   blockstr             = vscp_trim_copy(blockstr);
@@ -164,15 +243,44 @@ main(int argc, char* argv[])
     if (blockVector.size() > 1) {
       app.m_bootloader_cfg.blockSize  = vscp_readStringValue(blockVector[0]);
       app.m_bootloader_cfg.blockCount = vscp_readStringValue(blockVector[1]);
+      spdlog::debug("Config: block: size={0} count={1}",
+                    app.m_bootloader_cfg.blockSize,
+                    app.m_bootloader_cfg.blockCount);
     }
   }
 
-  QString levelstr               = parser.value(passwordOption);
-  app.m_bootloader_cfg.vscpLevel = vscp_readStringValue(levelstr.toStdString());
+  QString levelstr = parser.value(passwordOption);
+  if (vscp_readStringValue(levelstr.toStdString()) <= 2) {
+    app.m_bootloader_cfg.vscpLevel = vscp_readStringValue(levelstr.toStdString());
+    spdlog::debug("Config: level: {}", app.m_bootloader_cfg.vscpLevel);
+  }
+
+  app.m_configpath = parser.value(fileOption).trimmed();
+  if (app.m_configpath.size() && !vscp_fileExists(app.m_configpath.toStdString())) {
+    spdlog::error("Configuration file does not exist ('{}')", app.m_configpath.toStdString());
+    exit(1);
+  }
+
+  spdlog::debug("Log to file: {}", app.m_fileLogPath);
+
+  // Load configuration file if one is specified
+  if (app.m_configpath.size()) {
+    rv = app.loadFirmwareConfig(app.m_configpath);
+  }
+
+  // Init the interface/hardware
+  if (VSCP_ERROR_SUCCESS != (rv = app.vscpboot_init_hardware())) {
+    spdlog::error("Main: Failed to init hardware, rv={}", rv);
+    return -2;
+  }
+
+  spdlog::debug("Hardware initialized OK");
+
+  // --------------------------------------------------------------------------
 
   // Start bootloader (will in turn start app if boot flag is zero)
   if (VSCP_ERROR_SUCCESS != (rv = app.startWorkerThread())) {
-    printf("Main: Send error: rv=%d\n", rv);
+    spdlog::error("Main: startWorkerThread {}", rv);
     return 0;
   }
 

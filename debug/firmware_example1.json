@@ -1,0 +1,37 @@
+{
+  "interface": {
+    "type": "socketcan",
+    "config": "vcan0;value2;value3",
+    "connect-timout": 1000
+  },
+  "bootloader": {
+    "blocks": 1000,
+    "blocksize": "0x100"
+  },
+  "device": {
+    "name": "VSCP simulated node",
+    "level": 1,
+    "guid": "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00",
+    "mdfurl": "eurosource.se/simulated01.mdf",
+    "bUse16BitNickname": false,
+    "nickname":"0xffff",
+    "bootflag": 0,
+    "hertbeat-interval": 60,
+    "caps-interval": 300,
+    "bEnableLogging": true,
+    "log-id": 123,
+    "bEnableErrorReporting": true,
+    "bSendHighEndServerProbe": true,
+    "bHighEndServerResponse": true,
+    "bEnableWriteProtectedLocations": true,
+    "user-id": [0,1,2,3],
+    "manufactured-id": [0,1,2,3],
+    "manufacturer-sub-id": [0,1,2,3],
+    "firmware-version": [0,0,1],
+    "bootloader-algorithm": 0,
+    "standard-device-family-code": [0,1,2,3],
+    "standard-device-type-code": [0,1,2,3],
+    "firmware-device-code": [0,1],
+    "ip-addr": [0,1,2,3]
+  }
+}

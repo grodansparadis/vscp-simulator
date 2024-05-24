@@ -36,7 +36,13 @@
 #include <windows.h>
 #endif
 
-#include <string.h>
+#include <deque>
+#include <fstream>
+#include <iostream>
+#include <memory>
+#include <set>
+#include <stdio.h>
+#include <string>
 
 #include "btest.h"
 #include <vscp.h>
@@ -62,12 +68,15 @@
 #include <QTextDocument>
 #include <QUuid>
 
+#include <expat.h>
+#include <maddy/parser.h> // Markdown -> HTML
+#include <mustache.hpp>
+#include <nlohmann/json.hpp>
+
 #include <spdlog/async.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
-
-#include <nlohmann/json.hpp>
 
 // for convenience
 using json = nlohmann::json;
@@ -84,25 +93,39 @@ workerThread(void* pData);
 btest::btest(int& argc, char** argv)
   : QApplication(argc, argv)
 {
+  m_threadWork = 0;
+
   m_bootflag = BOOTLOADER; // Start the bootloader
+
+  // Set default connect timout
+  m_timeoutConnect = DEFAULT_CONNECT_TIMOUT;
 
   m_bootloader_cfg.vscpLevel  = VSCP_LEVEL2;
   m_bootloader_cfg.blockSize  = 0x100;
   m_bootloader_cfg.blockCount = 0xffff;
 
+  // Config file
+  m_configFolder =
+    QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+  m_configFolder += "/VSCP/";
+  m_configFolder += QCoreApplication::applicationName();
+  m_configFolder += ".conf";
+
   // Logging defaults
   m_fileLogLevel   = spdlog::level::info;
   m_fileLogPattern = "[%^%l%$] %v";
 #ifdef WIN32
-  m_fileLogPath = "btest.log";
+  m_fileLogPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation).toStdString();
+  m_fileLogPath += "/VSCP/btest/btest.log";
 #else
-  m_fileLogPath = "~/.local/share/VSCP/btest/logs/btest.log";
+  m_fileLogPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation).toStdString();
+  m_fileLogPath += "/.local/share/VSCP/btest/logs/btest.log";
 #endif
   m_maxFileLogSize  = 5242880;
   m_maxFileLogFiles = 7;
 
   m_bEnableConsoleLog = true;
-  m_consoleLogLevel   = spdlog::level::debug;
+  m_consoleLogLevel   = spdlog::level::trace;
   m_consoleLogPattern = "[btest] [%^%l%$] %v";
 
   pClient = nullptr;
@@ -122,9 +145,12 @@ btest::~btest()
 {
   int rv;
 
-  // pthread_cancel(m_threadWork);
+  writeProgramSettings();
+
   m_bRun = false;
-  pthread_join(m_threadWork, NULL);
+  if (m_threadWork) {
+    pthread_join(m_threadWork, NULL);
+  }
 
   // if (VSCP_ERROR_SUCCESS != (rv = vscpboot_release_hardware())) {
   //   spdlog::error("Failed to release hardware rv={}", rv);
@@ -135,6 +161,9 @@ btest::~btest()
     vscpEventEx* pex = m_inqueue.dequeue();
     delete pex;
   }
+
+  spdlog::drop_all();
+  spdlog::shutdown();
 
   sem_destroy(&m_semReceiveQueue);
   pthread_mutex_destroy(&m_mutexReceiveQueue);
@@ -157,55 +186,17 @@ btest::startWorkerThread(void)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// loadSettings *
+// loadProgramSettings
 //
 
 void
-btest::loadSettings(void)
+btest::loadProgramSettings(void)
 {
   QString str;
 
-  QSettings settings(QCoreApplication::organizationName(),
-                     QCoreApplication::applicationName());
+  QSettings settings(m_configFolder, QSettings::NativeFormat);
 
-  // Configuration folder
-  // --------------------
-  // Linux: "/home/akhe/.config"                      Config file is here
-  // (VSCP/vscp-works-qt) Windows:
-  {
-    QString path =
-      QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
-    path += "/";
-    path += QCoreApplication::applicationName();
-    path += "/";
-    m_configFolder = settings.value("configFolder", path).toString();
-  }
-
-  // Share folder
-  // ------------
-  // Linux: "/home/akhe/.local/share/vscp-works-qt"   user data is here
-  // Windows:
-  {
-    QString path =
-      QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
-    path += "/";
-    m_shareFolder = settings.value("shareFolder", path).toString();
-    // If folder does not exist, create it
-    QDir dir(path);
-    if (!dir.exists()) {
-      dir.mkpath(".");
-    }
-  }
-
-// VSCP Home folder
-// ----------------
-#ifdef WIN32
-  m_vscpHomeFolder =
-    settings.value("vscpHomeFolder", "c:/program files/vscp").toString();
-#else
-  m_vscpHomeFolder =
-    settings.value("vscpHomeFolder", "/var/lib/vscp").toString();
-#endif
+  spdlog::debug("load config path {}\n", m_configFolder.toStdString());
 
   // * * * Logging * * *
   m_bEnableFileLog = true;
@@ -284,17 +275,13 @@ btest::loadSettings(void)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// writeSettings
+// writeProgramSettings
 //
 
 void
-btest::writeSettings()
+btest::writeProgramSettings()
 {
-  QSettings settings(QCoreApplication::organizationName(),
-                     QCoreApplication::applicationName());
-
-  // General settings
-  // settings.setValue("configFolder", m_configFolder);
+  QSettings settings(m_configFolder, QSettings::NativeFormat);
 
   // * * * Logging * * *
   int level = 4; // Default: 4 == "information";
@@ -361,6 +348,390 @@ btest::writeSettings()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// loadFirmwareConfig
+//
+
+int
+btest::loadFirmwareConfig(QString& path)
+{
+  int rv = VSCP_ERROR_SUCCESS;
+  json j;
+
+  spdlog::debug("Reading json firmware configuration {0}", path.toStdString());
+
+  try {
+    std::ifstream ifs(path.toStdString(), std::ifstream::in);
+    ifs >> j;
+    ifs.close();
+  }
+  catch (...) {
+    spdlog::error("Parse-firmware-config: Failed to parse JSON configuration.");
+    return false;
+  }
+
+  spdlog::trace("Firmware config: <<{}>>", j.dump());
+
+  if (j.contains("interface") && j["interface"].is_object()) {
+
+    // interface type
+    if (j["interface"].contains("type") && (j["interface"]["type"].is_string())) {
+      std::string iface = j["interface"]["type"];
+      m_interface       = iface.c_str();
+      m_interface       = m_interface.trimmed();
+      m_interface       = m_interface.toLower();
+      spdlog::debug("Parse-JSON: interface: {}", m_interface.toStdString());
+    }
+
+    // interface type
+    if (j["interface"].contains("config") && (j["interface"]["config"].is_string())) {
+      std::string cfg = j["interface"]["config"];
+      m_config        = cfg.c_str();
+      m_configVector.clear();
+      vscp_split(m_configVector, cfg, ";");
+      int idx = 0;
+      for (const auto& cfgopt : m_configVector) {
+        spdlog::debug("Parse-JSON: config string item {0}: {1}", idx, cfgopt);
+        idx++;
+      }
+    }
+
+    // Connect timeout
+    if (j["interface"].contains("connect-timout")) {
+      if (j["interface"]["connect-timout"].is_string()) {
+        m_timeoutConnect = vscp_readStringValue(j["interface"]["connect-timout"]);
+      }
+      else if (j["interface"]["connect-timout"].is_number_integer()) {
+        m_timeoutConnect = j["interface"]["connect-timout"];
+      }
+    }
+  }
+
+  // Bootloader defines
+  if (j.contains("bootloader") && j["bootloader"].is_object()) {
+
+    // Block count
+    if (j["bootloader"].contains("blocks")) {
+      if (j["bootloader"]["blocks"].is_string()) {
+        m_bootloader_cfg.blockCount = vscp_readStringValue(j["bootloader"]["blocks"]);
+      }
+      else if (j["bootloader"]["blocks"].is_number_integer()) {
+        m_bootloader_cfg.blockCount = j["bootloader"]["blocks"];
+      }
+    }
+
+    // Block size
+    if (j["bootloader"].contains("blocksize")) {
+      if (j["bootloader"]["blocksize"].is_string()) {
+        m_bootloader_cfg.blockSize = vscp_readStringValue(j["bootloader"]["blocksize"]);
+      }
+      else if (j["bootloader"]["blocksize"].is_number_integer()) {
+        m_bootloader_cfg.blockSize = j["bootloader"]["blocksize"];
+      }
+    }
+  }
+
+  // Firmware defines
+  if (j.contains("device") && j["device"].is_object()) {
+
+    json jj = j["device"];
+
+    if (jj.contains("name") && jj["name"].is_string()) {
+      std::string str = jj["name"];
+      strncpy((char*)m_firmware_cfg.m_deviceName, str.c_str(), 64);
+    }
+
+    if (jj.contains("level") && jj["level"].is_number_integer()) {
+        switch ((int)jj["level"]) {
+
+          case 2:
+            m_firmware_cfg.m_level = VSCP_LEVEL2;
+            break;
+
+          default:
+          case 1:
+            m_firmware_cfg.m_level = VSCP_LEVEL1;
+            break;
+        }
+    }
+
+    if (jj.contains("guid")) {
+      if (jj["guid"].is_string()) {
+        std::string str = jj["guid"];
+        cguid guid(str);
+        memcpy(m_firmware_cfg.m_guid, guid.getGUID(), 16);
+      }
+      else if (jj["guid"].is_array() && (jj["guid"].size() <= 16)) {
+        int idx = 0;
+        cguid guid;
+        for (auto& item : jj["guid"].items()) {
+          guid.setAt(idx, (int)item.value());
+          idx++;
+        }
+      }
+    }
+
+    if (jj.contains("mdfurl") && jj["mdfurl"].is_string()) {
+      std::string str = jj["mdfurl"];
+      strncpy((char*)m_firmware_cfg.m_mdfurl, str.c_str(), 32);
+    }
+
+    if (jj.contains("bUse16BitNickname") && jj["bUse16BitNickname"].is_boolean()) {
+      m_firmware_cfg.m_bUse16BitNickname = jj["bUse16BitNickname"];
+    }
+
+    if (jj.contains("nickname")) {
+      if (jj["nickname"].is_number_integer()) {
+        m_firmware_cfg.m_nickname = jj["nickname"];
+      }
+      else if (jj["nickname"].is_string()) {
+        m_firmware_cfg.m_nickname = vscp_readStringValue(jj["nickname"]);
+      }
+    }
+
+    if (jj.contains("bootflag")) {
+      if (jj["bootflag"].is_number_integer()) {
+        m_bootflag = (int)jj["bootflag"];
+      }
+      else if (jj["bootflag"].is_string()) {
+        m_bootflag = vscp_readStringValue(jj["bootflag"]);
+      }
+    }
+
+    if (jj.contains("hertbeat-interval")) {
+      if (jj["hertbeat-interval"].is_number_integer()) {
+        m_firmware_cfg.m_interval_heartbeat = jj["hertbeat-interval"];
+      }
+      else if (jj["hertbeat-interval"].is_string()) {
+        m_firmware_cfg.m_interval_heartbeat = vscp_readStringValue(jj["hertbeat-interval"]);
+      }
+    }
+
+    if (jj.contains("caps-interval")) {
+      if ( jj["caps-interval"].is_number_integer()) {
+        m_firmware_cfg.m_interval_caps = jj["caps-interval"];
+      }
+      else if (jj["caps-interval"].is_string()) {
+        m_firmware_cfg.m_interval_caps = vscp_readStringValue(jj["caps-interval"]);
+      }
+    }
+
+    if (jj.contains("bEnableLogging") && jj["bEnableLogging"].is_boolean()) {
+      m_firmware_cfg.m_bEnableLogging = jj["bEnableLogging"];
+    }
+
+    if (jj.contains("log-id")) {
+      if (jj["log-id"].is_number_integer()) {
+        m_firmware_cfg.m_log_id = jj["log-id"];
+      }
+      else if (jj["log-id"].is_string()) {
+        m_firmware_cfg.m_log_id = vscp_readStringValue(jj["log-id"]);
+      }
+    }
+
+    if (jj.contains("bEnableErrorReporting") && jj["bEnableErrorReporting"].is_boolean()) {
+      m_firmware_cfg.m_bEnableErrorReporting = jj["bEnableErrorReporting"];
+    }
+
+    if (jj.contains("bEnableErrorReporting") && jj["bEnableErrorReporting"].is_boolean()) {
+      m_firmware_cfg.m_bSendHighEndServerProbe = jj["bEnableErrorReporting"];
+    }
+
+    if (jj.contains("bHighEndServerResponse") && jj["bHighEndServerResponse"].is_boolean()) {
+      m_firmware_cfg.m_bHighEndServerResponse = jj["bHighEndServerResponse"];
+    }
+
+    if (jj.contains("bEnableWriteProtectedLocations") && jj["bEnableWriteProtectedLocations"].is_boolean()) {
+      m_firmware_cfg.m_bEnableWriteProtectedLocations = jj["bEnableWriteProtectedLocations"];
+    }
+
+    if (jj.contains("user-id")) {
+      if (jj["user-id"].is_number_integer()) {
+        m_firmware_cfg.m_userId = (int)jj["user-id"];
+      }
+      else if (jj["user-id"].is_string()) {
+        m_firmware_cfg.m_userId = vscp_readStringValue(jj["user-id"]);
+      }
+      else if (jj["user-id"].is_array() && (jj["user-id"].size() <= 4)) {
+        int idx = 0;
+        uint8_t userid[4];
+        for (auto& item : jj["user-id"].items()) {
+          userid[idx] = (int)item.value();
+          idx++;
+        }
+        m_firmware_cfg.m_userId = construct_unsigned32(userid[0], userid[1], userid[2], userid[3]);
+      }
+    }
+
+    if (jj.contains("manufactured-id")) {
+      if (jj["usemanufacturedr-id"].is_number_integer()) {
+        m_firmware_cfg.m_manufacturerId = (int)jj["manufactured-id"];
+      }
+      else if (jj["manufactured-id"].is_string()) {
+        m_firmware_cfg.m_manufacturerId = vscp_readStringValue(jj["manufactured-id"]);
+      }
+      else if (jj["manufactured-id"].is_array() && (jj["manufactured-id"].size() <= 4)) {
+        int idx = 0;
+        uint8_t manufacturerid[4];
+        for (auto& item : jj["manufactured-id"].items()) {
+          manufacturerid[idx] = (int)item.value();
+          idx++;
+        }
+        m_firmware_cfg.m_manufacturerId = construct_unsigned32(manufacturerid[0], manufacturerid[1], manufacturerid[2], manufacturerid[3]);
+      }
+    }
+
+    if (jj.contains("manufacturer-sub-id")) {
+      if (jj["manufacturer-sub-id"].is_number_integer()) {
+        m_firmware_cfg.m_manufacturerSubId = (int)jj["manufacturer-sub-id"];
+      }
+      else if (jj["manufacturer-sub-id"].is_string()) {
+        m_firmware_cfg.m_manufacturerSubId = vscp_readStringValue(jj["manufacturer-sub-id"]);
+      }
+      else if (jj["manufacturer-sub-id"].is_array() && (jj["manufacturer-sub-id"].size() <= 4)) {
+        int idx = 0;
+        uint8_t manufacturersubid[4];
+        for (auto& item : jj["manufacturer-sub-id"].items()) {
+          manufacturersubid[idx] = (int)item.value();
+          idx++;
+        }
+        m_firmware_cfg.m_manufacturerSubId = construct_unsigned32(manufacturersubid[0], manufacturersubid[1], manufacturersubid[2], manufacturersubid[3]);
+      }
+    }
+
+    if (jj.contains("firmware-version") && jj["firmware-version"].is_array() && (jj["firmware-version"].size() <= 3)) {
+      int idx = 0;
+      for (auto& item : jj["firmware-version"].items()) {
+        switch (idx) {
+          case 0:
+            m_firmware_cfg.m_firmware_major_version = (int)item.value();
+            break;
+
+          case 1:
+            m_firmware_cfg.m_firmware_minor_version = (int)item.value();
+            break;
+
+          case 2:
+            m_firmware_cfg.m_firmware_sub_minor_version = (int)item.value();
+            break;
+        }
+        idx++;
+      }
+    }
+
+    if (jj.contains("bootloader-algorithm")) {
+      if ( jj["bootloader-algorithm"].is_number_integer()) {
+        m_firmware_cfg.m_bootloader_algorithm = jj["bootloader-algorithm"];
+      }
+      else if (jj["bootloader-algorithm"].is_string()) {
+        m_firmware_cfg.m_bootloader_algorithm = vscp_readStringValue(jj["bootloader-algorithm"]);
+      }
+    }
+
+    if (jj.contains("standard-device-family-code")) {
+      if (jj["standard-device-family-code"].is_number_integer()) {
+        m_firmware_cfg.m_standard_device_family_code = (int)jj["standard-device-family-code"];
+      }
+      else if (jj["standard-device-family-code"].is_string()) {
+        m_firmware_cfg.m_standard_device_family_code = vscp_readStringValue(jj["standard-device-family-code"]);
+      }
+      else if (jj["standard-device-family-code"].is_array() && (jj["standard-device-family-code"].size() <= 4)) {
+        int idx = 0;
+        uint8_t val[4];
+        for (auto& item : jj["standard-device-family-code"].items()) {
+          val[idx] = (int)item.value();
+          idx++;
+        }
+        m_firmware_cfg.m_standard_device_family_code = construct_unsigned32(val[0], val[1], val[2], val[3]);
+      }
+    }
+
+    if (jj.contains("standard-device-type-code")) {
+      if (jj["standard-device-type-code"].is_number_integer()) {
+        m_firmware_cfg.m_standard_device_family_code = (int)jj["standard-device-type-code"];
+      }
+      else if (jj["standard-device-type-code"].is_string()) {
+        m_firmware_cfg.m_standard_device_family_code = vscp_readStringValue(jj["standard-device-type-code"]);
+      }
+      else if (jj["standard-device-type-code"].is_array() && (jj["standard-device-type-code"].size() <= 4)) {
+        int idx = 0;
+        uint8_t val[4];
+        for (auto& item : jj["standard-device-type-code"].items()) {
+          val[idx] = (int)item.value();
+          idx++;
+        }
+        m_firmware_cfg.m_standard_device_type_code = construct_unsigned32(val[0], val[1], val[2], val[3]);
+      }
+    }
+
+    if (jj.contains("firmware-device-code")) {
+      if (jj["standard-device-type-code"].is_number_integer()) {
+        m_firmware_cfg.m_firmware_device_code = (int)jj["firmware-device-code"];
+      }
+      else if (jj["firmware-device-code"].is_string()) {
+        m_firmware_cfg.m_firmware_device_code = vscp_readStringValue(jj["firmware-device-code"]);
+      }
+      else if (jj["firmware-device-code"].is_array() && (jj["firmware-device-code"].size() <= 2)) {
+        int idx = 0;
+        uint8_t val[2];
+        for (auto& item : jj["firmware-device-code"].items()) {
+          val[idx] = (int)item.value();
+          idx++;
+        }
+        m_firmware_cfg.m_firmware_device_code = construct_unsigned16(val[0], val[1]);
+      }
+    }
+
+    if (jj.contains("ip-addr")) {
+      if (jj["ip-addr"].is_number_integer()) {
+        // Numerical ipv4 address
+        uint32_t ipaddr            = (int)jj["ip-addr"];
+        m_firmware_cfg.m_ipaddr[0] = *((uint8_t*)&ipaddr);
+        m_firmware_cfg.m_ipaddr[1] = *((uint8_t*)&ipaddr + 1);
+        m_firmware_cfg.m_ipaddr[2] = *((uint8_t*)&ipaddr + 2);
+        m_firmware_cfg.m_ipaddr[3] = *((uint8_t*)&ipaddr + 3);
+      }
+      else if (jj["ip-addr"].is_string()) {
+        std::string str = jj["ip-addr"];
+        std::deque<std::string> parts;
+        // ipv4 address
+        vscp_split(parts, str, ".");
+        if (parts.size()) {
+          int idx = 0;
+          for (const auto& x : parts) {
+            m_firmware_cfg.m_ipaddr[idx] = atoi(x.c_str());
+            idx++;
+          }
+        }
+        else {
+          // ipv6 address
+          vscp_split(parts, str, ":");
+          if (parts.size()) {
+            int idx = 0;
+            for (const auto& x : parts) {
+              std::string str                  = "0x" + x;
+              uint16_t val                     = vscp_readStringValue(str);
+              m_firmware_cfg.m_ipaddr[idx]     = (val >> 8) & 0xff;
+              m_firmware_cfg.m_ipaddr[idx + 1] = val & 0xff;
+              idx += 2;
+            }
+          }
+        }
+      }
+      else if (jj["ip-addr"].is_array() && (jj["ip-addr"].size() <= 16)) {
+        int idx = 0;
+        for (auto& item : jj["ip-addr"].items()) {
+          m_firmware_cfg.m_ipaddr[idx] = (int)item.value();
+          idx++;
+        }
+      }
+    }
+
+  } // device
+
+  return rv;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // getMainWindow
 //
 
@@ -392,7 +763,7 @@ btest::receiveCallback(vscpEventEx& ex, void* pobj)
     pthread_mutex_unlock(&m_mutexReceiveQueue);
   }
 
-  printf("Data received %03X:%02X size=%d\n", ex.vscp_class, ex.vscp_type, ex.sizeData);
+  spdlog::trace("Data received: {0:X}:{1:X} size={2}\n", ex.vscp_class, ex.vscp_type, ex.sizeData);
   // emit dataReceived(&ex);
 
   // Alternative method for reference
@@ -540,6 +911,11 @@ btest::vscpboot_init_hardware(void)
 
   if (m_interface == "socketcan") {
 
+    if (0 == m_configVector.size()) {
+      spdlog::error("vscpboot_init_hardware: no socketcan interface given.");
+      return VSCP_ERROR_INIT_MISSING;
+    }
+
     if (!m_configVector.size()) {
       spdlog::error("Need socketcan interface but it is not given {0}", m_interface.toStdString());
       return VSCP_ERROR_PARAMETER;
@@ -572,7 +948,15 @@ btest::vscpboot_init_hardware(void)
       return VSCP_ERROR_HARDWARE;
     }
 
-    sleep(1);
+    uint32_t timeout = vscp_getMsTimeStamp();
+    while (!pClient->isConnected()) {
+      spdlog::trace("Waiting for connect...");
+      sleep(1);
+      if ((vscp_getMsTimeStamp() - timeout) > m_timeoutConnect) {
+        pClient->disconnect();
+        return VSCP_ERROR_TIMEOUT;
+      }
+    };
   }
   else {
     spdlog::error("Client type is not supported {0}", m_interface.toStdString());
@@ -625,6 +1009,7 @@ btest::vscpboot_getBootFlag(void)
 int
 btest::vscpboot_setBootFlag(uint8_t bootflag)
 {
+  m_bootflag = bootflag;
   return VSCP_ERROR_SUCCESS;
 }
 
@@ -634,6 +1019,7 @@ btest::vscpboot_setBootFlag(uint8_t bootflag)
 void
 btest::vscpboot_reboot(void)
 {
+  // We restart the workerthread
 }
 
 /*!
@@ -711,7 +1097,7 @@ btest::vscpboot_calcPrgCrc(void)
   @return VSCP_ERROR_SUCCESS on success
 */
 int
-btest::vscpboot_sendEvent(vscpEventEx* pex)
+btest::vscpboot_sendEventEx(vscpEventEx* pex)
 {
   return pClient->send(*pex);
 }
@@ -727,14 +1113,17 @@ btest::vscpboot_sendEvent(vscpEventEx* pex)
    @return VSCP_ERROR_SUCCESS on success
 */
 int
-btest::vscpboot_getEvent(vscpEventEx* pex)
+btest::vscpboot_getEventEx(vscpEventEx* pex)
 {
   int rv;
 
 RCVLOOP:
   if ((-1 == (rv = vscp_sem_wait(&m_semReceiveQueue, 10))) &&
       errno == ETIMEDOUT) {
-    goto RCVLOOP;
+    // If app. should run continue blocking operation
+    if (m_bRun) {
+      goto RCVLOOP;
+    }
   }
 
   // Return if error
@@ -742,15 +1131,21 @@ RCVLOOP:
     return VSCP_ERROR_ERROR;
   }
 
+  // If this is a proxy event then translate to standard event
+  if ((pex->vscp_class >= 512) && ((pex->vscp_class < 1024))) {
+    pex->vscp_class -= 512;                                // Standard level I class
+    memcpy(pex->data, pex->data + 16, pex->sizeData - 16); // Remove proxy interface
+  }
+
   pthread_mutex_lock(&m_mutexReceiveQueue);
   if (m_inqueue.size()) {
     pex = m_inqueue.dequeue();
     pthread_mutex_unlock(&m_mutexReceiveQueue);
-    printf("Event %03X:%02X\n", pex->vscp_class, pex->vscp_type);
+    spdlog::trace("Event {0:x}:{1:x}", pex->vscp_class, pex->vscp_type);
   }
   else {
     pthread_mutex_unlock(&m_mutexReceiveQueue);
-    printf("No events to fetch\n");
+    spdlog::trace("No events to fetch");
     return VSCP_ERROR_FIFO_EMPTY;
   }
   return VSCP_ERROR_SUCCESS;
@@ -763,16 +1158,35 @@ RCVLOOP:
 void*
 workerThread(void* pData)
 {
+  int rv;
   fd_set rdfs;
   struct timeval tv;
 
-  btest* pObj = (btest*)pData;
-  if (NULL == pObj) {
+  btest* pbtest = (btest*)pData;
+  if (NULL == pbtest) {
     spdlog::error("btest: No object data object supplied for worker thread");
     return NULL;
   }
 
-  vscpboot_loader();
+  /*!
+    Run bootloader if bootflag is non-zero
+    otherwise run the simulated firmware
+  */
+  if (pbtest->vscpboot_getBootFlag()) {
+    spdlog::info("Starting simulation software in bootloader mode");
+    vscpboot_loader();
+  }
+  else {
+
+    // * * * Simulated firmware * * *
+    spdlog::info("Starting simulation software in firmware mode");
+
+    // Initialize the firmware
+    if (VSCP_ERROR_SUCCESS != (rv = vscp_frmw2_init(&pbtest->m_firmware_cfg))) {
+      spdlog::error("workerthread: Failed to initialize firmware.");
+      return NULL;
+    }
+  }
 
   return NULL;
 }

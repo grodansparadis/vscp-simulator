@@ -168,10 +168,6 @@ qt_add_executable(btest
     $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-udp.cpp 
     $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-multicast.h
     $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-multicast.cpp 
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-rawcan.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-rawcan.cpp
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-rawmqtt.h
-    $ENV{VSCP_ROOT}/src/vscp/common/vscp-client-rawmqtt.cpp
     $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice.h
     $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice.cpp
     $ENV{VSCP_ROOT}/src/vscp/common/vscp-bootdevice-pic1.h
