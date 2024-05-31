@@ -235,6 +235,16 @@ vscpboot_getEventEx(vscpEventEx* pex)
   return pbtest->vscpboot_getEventEx(pex);
 }
 
+int
+vscp_frmw2_callback_dm_action(void* const puserdata,
+                              const vscpEventEx* const pex,
+                              uint8_t action,
+                              const uint8_t* const pparam)
+{
+  return VSCP_ERROR_SUCCESS;
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -262,7 +272,6 @@ vscp_frmw2_callback_get_ms(void* const puserdata, uint32_t* ptime)
   *ptime = vscp_getMsTimeStamp();
   return VSCP_ERROR_SUCCESS;
 }
-
 
 /*!
   @brief Get name of the device.  Used by the device capabilities report.
@@ -384,23 +393,6 @@ vscp_frmw2_callback_enter_bootloader(void* const puserdata)
   vscpboot_reboot();
 }
 
-/*!
- * @brief Reply with DM content.
- *
- * @param pdata Pointer to user data (typical points to context).
- * @return VSCP_ERROR_SUCCESS on success, or error code.
- *
- * Report full content of DM back.
- */
-
-int
-vscp_frmw2_callback_report_dmatrix(void* const puserdata)
-{
-  btest* pbtest = (btest*)QApplication::instance();
-  pbtest->reportDM();
-  return VSCP_ERROR_SUCCESS;
-}
-
 
 
 /*!
@@ -444,12 +436,14 @@ vscp_frmw2_callback_get_timestamp(void* const puserdata)
  */
 
 int
-vscp_frmw2_callback_get_time(void* const puserdata, vscpEventEx* pex)
+vscp_frmw2_callback_set_event_time(void* const puserdata, vscpEventEx* pex)
 {
   // Check pointers
   if (nullptr == pex) {
     return VSCP_ERROR_INVALID_POINTER;
   }
+
+  pex->timestamp = vscp_makeTimeStamp();
 
   time_t t     = time(NULL);
   struct tm tm = *localtime(&t);
@@ -468,33 +462,8 @@ vscp_frmw2_callback_init_persistent_storage(void* const puserdata)
   return VSCP_ERROR_SUCCESS;
 }
 
-/*!
-  @brief Feed the decision matrix with one Event
 
-  @param pdata Pointer to user data (typical points to context)
-  @param ev Event to feed the DM with.
-  @return VSCP_ERROR_SUCCESS on success, or error code.
-*/
-int
-vscp_frmw2_callback_feed_dm(void* const puserdata, vscpEventEx* ev)
-{
-  return VSCP_ERROR_SUCCESS;
-}
 
-/*!
-  @brief All events except level I/II protocol events is sent to the
-  application for handling.
-
-  @param pdata Pointer to user data (typical points to context)
-  @param pex Event to feed the DM with.
-  @return VSCP_ERROR_SUCCESS on success, or error code.
-*/
-
-int
-vscp_frmw2_callback_feed_app(void* const puserdata, vscpEvent* pev)
-{
-  return VSCP_ERROR_SUCCESS;
-}
 
 /*!
   @brief Get DM matrix info
@@ -571,8 +540,6 @@ vscp_frmw2_callback_restore_defaults(void* const puserdata)
 {
   return VSCP_ERROR_SUCCESS;
 }
-
-
 
 /*!
   @brief Handle high end server response
