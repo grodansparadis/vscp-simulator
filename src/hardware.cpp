@@ -244,7 +244,6 @@ vscp_frmw2_callback_dm_action(void* const puserdata,
   return VSCP_ERROR_SUCCESS;
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -393,23 +392,6 @@ vscp_frmw2_callback_enter_bootloader(void* const puserdata)
   vscpboot_reboot();
 }
 
-
-
-/*!
- * @brief Report back events that this node is interested in
- *
- * @param pdata Pointer to user data (typical points to context)
- * @return VSCP_ERROR_SUCCESS on success, else error code.
- */
-
-int
-vscp_frmw2_callback_report_events_of_interest(void* const puserdata)
-{
-  btest* pbtest = (btest*)QApplication::instance();
-  pbtest->reportEventsOfInterest();
-  return VSCP_ERROR_SUCCESS;
-}
-
 /*!
  * @brief Get timestamp
  *
@@ -420,8 +402,7 @@ vscp_frmw2_callback_report_events_of_interest(void* const puserdata)
 uint32_t
 vscp_frmw2_callback_get_timestamp(void* const puserdata)
 {
-  uint32_t ts = vscp_makeTimeStamp();
-  return ts;
+  return vscp_getMsTimeStamp();
 }
 
 /*!
@@ -462,50 +443,6 @@ vscp_frmw2_callback_init_persistent_storage(void* const puserdata)
   return VSCP_ERROR_SUCCESS;
 }
 
-
-
-
-/*!
-  @brief Get DM matrix info
-
-  The output message data structure should be filled with
-  the following data by this routine.
-      byte 0 - Number of DM rows. 0 if none.
-      byte 1 - offset in register space.
-      byte 2 - start page MSB
-      byte 3 - start page LSB
-      byte 4 - End page MSB
-      byte 5 - End page LSB
-      byte 6 - Level II size of DM row (Just for Level II nodes).
-
-  @param pdata Pointer to user data (typical points to context)
-  @param pDM Pointer to DM info structure.
-  @return VSCP_ERROR_SUCCESS on success, or error code.
- */
-
-int
-vscp_frmw2_callback_send_dm_info(void* const puserdata, char* pDM)
-{
-  return VSCP_ERROR_SUCCESS;
-}
-
-/*!
-  @brief Get embedded MDF info
-
-  If available this routine sends an embedded MDF file
-  in several events. See specification CLASS1.PROTOCOL
-  Type=35/36
-
-  @param pdata Pointer to user data (typical points to context)
-  @return VSCP_ERROR_SUCCESS on success, or error code.
- */
-int
-vscp_frmw2_callback_send_embedded_mdf(void* const puserdata)
-{
-  btest* pbtest = (btest*)QApplication::instance();
-  return pbtest->sendEmbeddedMDF();
-}
-
 /*!
   @brief Go boot loader mode
 
@@ -537,19 +474,6 @@ vscp_frmw2_callback_enter_bootloader(void* const puserdata, uint8_t* palgorithm)
 
 int
 vscp_frmw2_callback_restore_defaults(void* const puserdata)
-{
-  return VSCP_ERROR_SUCCESS;
-}
-
-/*!
-  @brief Handle high end server response
-
-  @param pdata Pointer to user data (typical points to context)
-  @return VSCP_ERROR_SUCCESS on success, or error code.
-*/
-
-int
-vscp_frmw2_callback_high_end_server_response(void* const puserdata)
 {
   return VSCP_ERROR_SUCCESS;
 }

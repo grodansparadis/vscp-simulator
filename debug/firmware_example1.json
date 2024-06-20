@@ -11,17 +11,16 @@
   "device": {
     "name": "VSCP simulated node",
     "level": 1,
-    "guid": "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00",
+    "guid": "00:01:02:03:04:05:06:07:08:09:0A:0B:0C:0D:0E:0F",
     "mdfurl": "eurosource.se/simulated01.mdf",
     "bUse16BitNickname": false,
     "nickname":"0xffff",
     "bootflag": 0,
-    "hertbeat-interval": 60,
-    "caps-interval": 300,
+    "hertbeat-interval": 60000,
+    "caps-interval": 300000,
     "bEnableLogging": true,
     "log-id": 123,
     "bEnableErrorReporting": true,
-    "bSendHighEndServerProbe": true,
     "bHighEndServerResponse": true,
     "bEnableWriteProtectedLocations": true,
     "user-id": [0,1,2,3],
@@ -32,6 +31,13 @@
     "standard-device-family-code": [0,1,2,3],
     "standard-device-type-code": [0,1,2,3],
     "firmware-device-code": [0,1],
-    "ip-addr": [0,1,2,3]
+    "ip-addr": [0,1,2,3],
+    "port": 9598,
+    "dm-rows":10,
+    "dm-row-size":8,
+    "dm-offset":0,
+    "dm-page-start":1,
+    "dm-data": [1,2,3,4,5,6,7,8,9],
+    "simulation": 1
   }
 }

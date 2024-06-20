@@ -49,8 +49,9 @@
 #include <vscphelper.h>
 
 #include "vscp-client-socketcan.h"
-
 #include <vscp-bootloader.h>
+
+#include "mainwindow.h"
 
 #include <mustache.hpp>
 
@@ -73,6 +74,7 @@
 #include <mustache.hpp>
 #include <nlohmann/json.hpp>
 
+#include "spdlog/fmt/bin_to_hex.h"
 #include <spdlog/async.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -128,13 +130,16 @@ btest::btest(int& argc, char** argv)
   m_consoleLogLevel   = spdlog::level::trace;
   m_consoleLogPattern = "[btest] [%^%l%$] %v";
 
-  pClient = nullptr;
+  m_pClient = nullptr;
 
   sem_init(&m_semReceiveQueue, 0, 0);
 
   if (0 != pthread_mutex_init(&m_mutexReceiveQueue, NULL)) {
     spdlog::error("\n mutex init of input mutex has failed\n");
   }
+
+  m_nSimulation = 0;
+  m_pSim        = nullptr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -147,9 +152,8 @@ btest::~btest()
 
   writeProgramSettings();
 
-  m_bRun = false;
-  if (m_threadWork) {
-    pthread_join(m_threadWork, NULL);
+  if (VSCP_ERROR_SUCCESS != (rv = stopWorkerThread())) {
+    spdlog::error("Failed to stop workerthread rv=%d", rv);
   }
 
   // if (VSCP_ERROR_SUCCESS != (rv = vscpboot_release_hardware())) {
@@ -160,6 +164,21 @@ btest::~btest()
   while (!m_inqueue.isEmpty()) {
     vscpEventEx* pex = m_inqueue.dequeue();
     delete pex;
+  }
+
+  // If event array defined - delete it
+  if (m_firmware_cfg.m_pEventsOfInterest) {
+    delete[] m_firmware_cfg.m_pEventsOfInterest;
+  }
+
+  // Clear up simulation data
+  if (nullptr != m_pSim) {
+    switch (m_nSimulation) {
+      case 1:
+      default: {
+        delete (simulation1*)m_pSim;
+      } break;
+    }
   }
 
   spdlog::drop_all();
@@ -181,6 +200,21 @@ btest::startWorkerThread(void)
   if (pthread_create(&m_threadWork, NULL, workerThread, this)) {
     spdlog::critical("BTEST: Failed to start workerthread");
     return VSCP_ERROR_ERROR;
+  }
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// stopWorkerThread
+//
+
+int
+btest::stopWorkerThread(void)
+{
+  // Start the bootloader workerthread
+  m_bRun = false; // Workerthread should end it's life
+  if (m_threadWork) {
+    pthread_join(m_threadWork, NULL);
   }
   return VSCP_ERROR_SUCCESS;
 }
@@ -441,17 +475,17 @@ btest::loadFirmwareConfig(QString& path)
     }
 
     if (jj.contains("level") && jj["level"].is_number_integer()) {
-        switch ((int)jj["level"]) {
+      switch ((int)jj["level"]) {
 
-          case 2:
-            m_firmware_cfg.m_level = VSCP_LEVEL2;
-            break;
+        case 2:
+          m_firmware_cfg.m_level = VSCP_LEVEL2;
+          break;
 
-          default:
-          case 1:
-            m_firmware_cfg.m_level = VSCP_LEVEL1;
-            break;
-        }
+        default:
+        case 1:
+          m_firmware_cfg.m_level = VSCP_LEVEL1;
+          break;
+      }
     }
 
     if (jj.contains("guid")) {
@@ -507,7 +541,7 @@ btest::loadFirmwareConfig(QString& path)
     }
 
     if (jj.contains("caps-interval")) {
-      if ( jj["caps-interval"].is_number_integer()) {
+      if (jj["caps-interval"].is_number_integer()) {
         m_firmware_cfg.m_interval_caps = jj["caps-interval"];
       }
       else if (jj["caps-interval"].is_string()) {
@@ -532,9 +566,9 @@ btest::loadFirmwareConfig(QString& path)
       m_firmware_cfg.m_bEnableErrorReporting = jj["bEnableErrorReporting"];
     }
 
-    if (jj.contains("bEnableErrorReporting") && jj["bEnableErrorReporting"].is_boolean()) {
-      m_firmware_cfg.m_bSendHighEndServerProbe = jj["bEnableErrorReporting"];
-    }
+    // if (jj.contains("bEnableErrorReporting") && jj["bEnableErrorReporting"].is_boolean()) {
+    //   m_firmware_cfg.m_bSendHighEndServerProbe = jj["bEnableErrorReporting"];
+    // }
 
     if (jj.contains("bHighEndServerResponse") && jj["bHighEndServerResponse"].is_boolean()) {
       m_firmware_cfg.m_bHighEndServerResponse = jj["bHighEndServerResponse"];
@@ -619,7 +653,7 @@ btest::loadFirmwareConfig(QString& path)
     }
 
     if (jj.contains("bootloader-algorithm")) {
-      if ( jj["bootloader-algorithm"].is_number_integer()) {
+      if (jj["bootloader-algorithm"].is_number_integer()) {
         m_firmware_cfg.m_bootloader_algorithm = jj["bootloader-algorithm"];
       }
       else if (jj["bootloader-algorithm"].is_string()) {
@@ -726,6 +760,59 @@ btest::loadFirmwareConfig(QString& path)
       }
     }
 
+    /*
+    "dm-rows":10,
+    "dm-row-size":8,
+    "dm-offset":0,
+    "dm-page-start":1,
+    "dm-data": [1,2,3,4,5,6,7,8,9],
+    */
+
+    if (jj.contains("dm-rows")) {
+      if (jj["dm-rows"].is_number_integer()) {
+        m_firmware_cfg.m_nDmRows = jj["dm-rows"];
+      }
+      else if (jj["dm-rows"].is_string()) {
+        m_firmware_cfg.m_nDmRows = vscp_readStringValue(jj["dm-rows"]);
+      }
+    }
+
+    if (VSCP_LEVEL1 == m_firmware_cfg.m_level) {
+      m_firmware_cfg.m_sizeDmRow = 8;
+    }
+    else {
+      if (jj.contains("dm-size")) {
+        if (jj["dm-size"].is_number_integer()) {
+          m_firmware_cfg.m_sizeDmRow = jj["dm-size"];
+        }
+        else if (jj["dm-size"].is_string()) {
+          m_firmware_cfg.m_sizeDmRow = vscp_readStringValue(jj["dm-size"]);
+        }
+      }
+    }
+
+    if (jj.contains("dm-offset")) {
+      if (jj["dm-offset"].is_number_integer()) {
+        m_firmware_cfg.m_regOffsetDm = jj["dm-offset"];
+      }
+      else if (jj["dm-offset"].is_string()) {
+        m_firmware_cfg.m_regOffsetDm = vscp_readStringValue(jj["dm-offset"]);
+      }
+    }
+
+    if (jj.contains("dm-page-start")) {
+      if (jj["dm-page-start"].is_number_integer()) {
+        m_firmware_cfg.m_pageDm = jj["dm-page-start"];
+      }
+      else if (jj["dm-page-start"].is_string()) {
+        m_firmware_cfg.m_pageDm = vscp_readStringValue(jj["dm-page-start"]);
+      }
+    }
+
+    if (jj.contains("simulation") && jj["simulation"].is_number_integer()) {
+      m_nSimulation = jj["simulation"];
+    }
+
   } // device
 
   return rv;
@@ -763,12 +850,411 @@ btest::receiveCallback(vscpEventEx& ex, void* pobj)
     pthread_mutex_unlock(&m_mutexReceiveQueue);
   }
 
-  spdlog::trace("Data received: {0:X}:{1:X} size={2}\n", ex.vscp_class, ex.vscp_type, ex.sizeData);
+  spdlog::trace("[receiveCallback] Data received: {0:X}:{1:X} size={2}\n", ex.vscp_class, ex.vscp_type, ex.sizeData);
   // emit dataReceived(&ex);
 
   // Alternative method for reference
   // CFrmSession* pSession = (CFrmSession*)pobj;
   // pSession->threadReceive(pevnew);
+}
+
+/*!
+  Get VSCP event (Block until event is received)
+  -----------------------------------------------------------
+  IMPORTANT!
+  This routine should translate all VSCP_CLASS2_LEVEL1_PROTOCOL
+  events to VSCP_CLASS1_PROTOCOL events.
+  -----------------------------------------------------------
+  @param Pointer to VSCP event structure.
+   @return VSCP_ERROR_SUCCESS on success
+*/
+int
+btest::getEventEx(vscpEventEx** pex)
+{
+  int rv;
+
+  if (-1 == (rv = vscp_sem_wait(&m_semReceiveQueue, 100))) {
+    if (errno == ETIMEDOUT) {
+      return VSCP_ERROR_TIMEOUT;
+    }
+    else {
+      return VSCP_ERROR_ERROR;
+    }
+  }
+
+  pthread_mutex_lock(&m_mutexReceiveQueue);
+  if (m_inqueue.size()) {
+    *pex = m_inqueue.dequeue();
+    pthread_mutex_unlock(&m_mutexReceiveQueue);
+    spdlog::trace("[btest::getEventEx] {0:X}:{1:X}", (*pex)->vscp_class, (*pex)->vscp_type);
+
+    // If this is a proxy event then translate to standard event
+    if (((*pex)->vscp_class >= 512) && (((*pex)->vscp_class < 1024))) {
+      (*pex)->vscp_class -= 512;                                      // Standard level I class
+      memcpy((*pex)->data, (*pex)->data + 16, (*pex)->sizeData - 16); // Remove proxy interface
+    }
+  }
+  else {
+    pthread_mutex_unlock(&m_mutexReceiveQueue);
+    // spdlog::trace("[btest::getEventEx] No events to fetch");
+    return VSCP_ERROR_FIFO_EMPTY;
+  }
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//                           SIMULATION 1
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+// readRegister_sim1
+//
+
+int
+btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
+{
+  int rv = VSCP_ERROR_SUCCESS;
+
+  // Pointer to value must be valid
+  if (nullptr == pval) {
+    return VSCP_ERROR_INVALID_POINTER;
+  }
+
+  // Pointer to simulation storage must be valid
+  if (nullptr == m_pSim) {
+    return VSCP_ERROR_INVALID_POINTER;
+  }
+
+  simulation1* psim1 = (simulation1*)m_pSim;
+
+  switch (page) {
+
+    case 0: {
+      switch (reg) {
+
+        case 0: // zone
+          *pval = psim1->m_reg_zone;
+          break;
+
+        case 1:  // S0 subzone
+        case 2:  // S1 subzone
+        case 3:  // S2 subzone
+        case 4:  // S3 subzone
+        case 5:  // S4 subzone
+        case 6:  // S5 subzone
+        case 7:  // S6 subzone
+        case 8:  // S7 subzone
+        case 9:  // S8 subzone
+        case 10: // S9 subzone
+          *pval = psim1->m_reg_subzone_S[reg - 1];
+          break;
+
+        case 11: // C0 subzone
+        case 12: // C1 subzone
+        case 13: // C2 subzone
+        case 14: // C3 subzone
+        case 15: // C4 subzone
+        case 16: // C5 subzone
+        case 17: // C6 subzone
+        case 18: // C7 subzone
+        case 19: // C8 subzone
+        case 20: // C9 subzone
+          *pval = psim1->m_reg_subzone_C[reg - 11];
+          break;
+
+        case 21: // R0 subzone
+        case 22: // R1 subzone
+        case 23: // R2 subzone
+        case 24: // R3 subzone
+        case 25: // R4 subzone
+        case 26: // R5 subzone
+        case 27: // R6 subzone
+        case 28: // R7 subzone
+        case 29: // R8 subzone
+        case 30: // R9 subzone
+          *pval = psim1->m_reg_subzone_R[reg - 21];
+          break;
+
+        case 31: // Slider 0 subzone
+        case 32: // Slider 1 subzone
+        case 33: // Slider 2 subzone
+        case 34: // Slider 3 subzone
+        case 35: // Slider 4 subzone
+        case 36: // Slider 5 subzone
+        case 37: // Slider 6 subzone
+        case 38: // Slider 7 subzone
+        case 39: // Slider 8 subzone
+        case 40: // Slider 9 subzone
+          *pval = psim1->m_reg_value_slider[reg - 31];
+          break;
+
+        case 41: // S0 value
+        case 42: // S1 value
+        case 43: // S2 value
+        case 44: // S3 value
+        case 45: // S4 value
+        case 46: // S5 value
+        case 47: // S6 value
+        case 48: // S7 value
+        case 49: // S8 value
+        case 50: // S9 value
+          *pval = psim1->m_reg_value_S[reg - 41];
+          break;
+
+        case 51: // C0 value
+        case 52: // C1 value
+        case 53: // C2 value
+        case 54: // C3 value
+        case 55: // C4 value
+        case 56: // C5 value
+        case 57: // C6 value
+        case 58: // C7 value
+        case 59: // C8 value
+        case 60: // C9 value
+          *pval = psim1->m_reg_value_C[reg - 51];
+          break;
+
+        case 61: // R0 value
+        case 62: // R1 value
+        case 63: // R2 value
+        case 64: // R3 value
+        case 65: // R5 value
+        case 67: // R6 value
+        case 68: // R7 value
+        case 69: // R8 value
+        case 70: // R9 value
+          *pval = psim1->m_reg_value_R[reg - 61];
+          break;
+
+        case 71: // Slider 0 value
+        case 72: // Slider 1 value
+        case 73: // Slider 2 value
+        case 74: // Slider 3 value
+        case 75: // Slider 5 value
+        case 77: // Slider 6 value
+        case 78: // Slider 7 value
+        case 79: // Slider 8 value
+        case 80: // Slider 9 value
+          *pval = psim1->m_reg_value_slider[reg - 71];
+          break;
+
+        case 81: // background color R
+        case 82: // background color G
+        case 83: // background color B
+          *pval = psim1->m_background_color[reg - 81];
+          break;
+
+        case 84: // period for status event
+          *pval = psim1->m_period_status_event;
+          break;
+
+        default:
+          if ((reg >= 0x1000) && (reg < 0x1080)) {
+            *pval = psim1->m_dm[reg - 0x1000];
+          }
+          else {
+            rv = VSCP_ERROR_INDEX_OOB;
+          }
+          break;
+      }
+    } break;
+
+    // Only for level 1 - DM
+    case 1: {
+      if (reg < 80) {
+        *pval = psim1->m_dm[reg];
+      }
+    } break;
+
+    default:
+      rv = VSCP_ERROR_INDEX_OOB;
+      break;
+  }
+
+  return rv;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// writeRegister_sim1
+//
+
+int
+btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
+{
+  int rv = VSCP_ERROR_SUCCESS;
+
+  // Pointer to simulation storage must be valid
+  if (nullptr == m_pSim) {
+    return VSCP_ERROR_INVALID_POINTER;
+  }
+
+  simulation1* psim1 = (simulation1*)m_pSim;
+
+  switch (page) {
+
+    case 0: {
+      switch (reg) {
+
+        case 0: // zone
+          psim1->m_reg_zone = val;
+          break;
+
+        case 1:  // S0 subzone
+        case 2:  // S1 subzone
+        case 3:  // S2 subzone
+        case 4:  // S3 subzone
+        case 5:  // S4 subzone
+        case 6:  // S5 subzone
+        case 7:  // S6 subzone
+        case 8:  // S7 subzone
+        case 9:  // S8 subzone
+        case 10: // S9 subzone
+          psim1->m_reg_subzone_S[reg - 1] = val;
+          break;
+
+        case 11: // C0 subzone
+        case 12: // C1 subzone
+        case 13: // C2 subzone
+        case 14: // C3 subzone
+        case 15: // C4 subzone
+        case 16: // C5 subzone
+        case 17: // C6 subzone
+        case 18: // C7 subzone
+        case 19: // C8 subzone
+        case 20: // C9 subzone
+          psim1->m_reg_subzone_C[reg - 11] = val;
+          checkValueChanged(reg - 11, val);
+          break;
+
+        case 21: // R0 subzone
+        case 22: // R1 subzone
+        case 23: // R2 subzone
+        case 24: // R3 subzone
+        case 25: // R4 subzone
+        case 26: // R5 subzone
+        case 27: // R6 subzone
+        case 28: // R7 subzone
+        case 29: // R8 subzone
+        case 30: // R9 subzone
+          psim1->m_reg_subzone_R[reg - 21] = val;
+          radioValueChanged(reg - 21, val);
+          break;
+
+        case 31:   // Slider 0 subzone
+        case 32:   // Slider 1 subzone
+        case 33:   // Slider 2 subzone
+        case 34:   // Slider 3 subzone
+        case 35:   // Slider 4 subzone
+        case 36:   // Slider 5 subzone
+        case 37:   // Slider 6 subzone
+        case 38:   // Slider 7 subzone
+        case 39:   // Slider 8 subzone
+        case 40: { // Slider 9 subzone
+          psim1->m_reg_value_slider[reg - 31] = val;
+          emit sliderValueChanged(reg - 31, val);
+        } break;
+
+        case 41: // S0 value
+        case 42: // S1 value
+        case 43: // S2 value
+        case 44: // S3 value
+        case 45: // S4 value
+        case 46: // S5 value
+        case 47: // S6 value
+        case 48: // S7 value
+        case 49: // S8 value
+        case 50: // S9 value
+          psim1->m_reg_value_S[reg - 41] = val;
+          break;
+
+        case 51: // C0 value
+        case 52: // C1 value
+        case 53: // C2 value
+        case 54: // C3 value
+        case 55: // C4 value
+        case 56: // C5 value
+        case 57: // C6 value
+        case 58: // C7 value
+        case 59: // C8 value
+        case 60: // C9 value
+          psim1->m_reg_value_C[reg - 51] = val;
+          checkValueChanged(reg - 51, val);
+          break;
+
+        case 61: // R0 value
+        case 62: // R1 value
+        case 63: // R2 value
+        case 64: // R3 value
+        case 65: // R5 value
+        case 67: // R6 value
+        case 68: // R7 value
+        case 69: // R8 value
+        case 70: // R9 value
+          psim1->m_reg_value_R[reg - 61] = val;
+          radioValueChanged(reg - 61, val);
+          break;
+
+        case 71: // Slider 0 value
+        case 72: // Slider 1 value
+        case 73: // Slider 2 value
+        case 74: // Slider 3 value
+        case 75: // Slider 5 value
+        case 77: // Slider 6 value
+        case 78: // Slider 7 value
+        case 79: // Slider 8 value
+        case 80: // Slider 9 value
+          psim1->m_reg_value_slider[reg - 71] = val;
+          sliderValueChanged(reg - 71, val);
+          break;
+
+        case 81: // background color R
+        case 82: // background color G
+        case 83: // background color B
+          psim1->m_background_color[reg - 81] = val;
+          backgroundColorChanged(construct_unsigned32(0,
+                                                  psim1->m_background_color[0],
+                                                  psim1->m_background_color[1],
+                                                  psim1->m_background_color[2]));
+          break;
+
+        case 84: // period for status event
+          psim1->m_period_status_event = val;
+          break;
+
+        default:
+          if ((reg >= 0x1000) && (reg < 0x1080)) {
+            psim1->m_dm[reg - 0x1000] = val;
+          }
+          else {
+            rv = VSCP_ERROR_INDEX_OOB;
+          }
+          break;
+      }
+    } break;
+
+    // Only for level 1 - DM
+    case 1: {
+      if (reg < 80) {
+        psim1->m_dm[reg] = val;
+      }
+    } break;
+
+    default:
+      rv = VSCP_ERROR_INDEX_OOB;
+      break;
+  }
+
+  return rv;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// reportDM_sim1
+//
+
+int
+btest::reportDM_sim1(void)
+{
+  return VSCP_ERROR_SUCCESS;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -782,6 +1268,12 @@ btest::receiveCallback(vscpEventEx& ex, void* pobj)
 int
 btest::readRegister(uint16_t page, uint32_t reg, uint8_t* pval)
 {
+  switch (m_nSimulation) {
+    case 0:
+    default:
+      return readRegister_sim1(page, reg, pval);
+  }
+
   return VSCP_ERROR_SUCCESS;
 }
 
@@ -792,6 +1284,57 @@ btest::readRegister(uint16_t page, uint32_t reg, uint8_t* pval)
 int
 btest::writeRegister(uint16_t page, uint32_t reg, uint8_t val)
 {
+  switch (m_nSimulation) {
+    case 0:
+    default:
+      return writeRegister_sim1(page, reg, val);
+  }
+
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// reportDM
+//
+int
+btest::reportDM(void)
+{
+  switch (m_nSimulation) {
+    case 0:
+    default:
+      return reportDM_sim1();
+  }
+
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sendEmbeddedMDF
+//
+// Send embedded MDF if one is available
+//
+
+int
+btest::sendEmbeddedMDF(void)
+{
+  switch (m_nSimulation) {
+    case 0:
+    default:
+      break;
+  }
+
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// getMdfUrl
+//
+
+int
+btest::getMdfUrl(uint8_t* const purl)
+{
+  uint8_t buf[10];
+  memcpy(purl, buf, 10);
   return VSCP_ERROR_SUCCESS;
 }
 
@@ -806,74 +1349,12 @@ btest::receivedSegCtrlHeartBeat(uint16_t segcrc, uint32_t tm)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// newNodeOnline
-//
-
-int
-btest::newNodeOnline(uint16_t nickname)
-{
-  return VSCP_ERROR_SUCCESS;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// newNodeOnline
-//
-
-int
-btest::newNodeOnline(cguid& guid)
-{
-  return VSCP_ERROR_SUCCESS;
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // standardRegHasChanged
 //
 
 int
 btest::standardRegHasChanged(uint32_t stdreg)
 {
-  return VSCP_ERROR_SUCCESS;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// reportDM
-//
-int
-btest::reportDM(void)
-{
-  return VSCP_ERROR_SUCCESS;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// reportEventsOfInterest
-//
-int
-btest::reportEventsOfInterest(void)
-{
-  return VSCP_ERROR_SUCCESS;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// sendEmbeddedMDF
-//
-// Send embedded MDF if one is available
-//
-
-int
-btest::sendEmbeddedMDF(void)
-{
-  return VSCP_ERROR_SUCCESS;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// getMdfUrl
-//
-
-int
-btest::getMdfUrl(uint8_t* const purl)
-{
-  uint8_t buf[10];
-  memcpy(purl, buf, 10);
   return VSCP_ERROR_SUCCESS;
 }
 
@@ -921,16 +1402,16 @@ btest::vscpboot_init_hardware(void)
       return VSCP_ERROR_PARAMETER;
     }
 
-    pClient = new vscpClientSocketCan();
-    if (nullptr == pClient) {
+    m_pClient = new vscpClientSocketCan();
+    if (nullptr == m_pClient) {
       spdlog::error("Unable to create client object {0}", m_interface.toStdString());
       return VSCP_ERROR_ERROR;
     }
 
     if (VSCP_ERROR_SUCCESS !=
-        (rv = ((vscpClientSocketCan*)pClient)->init(m_configVector[0], m_guid.toString(), 0))) {
-      delete (vscpClientSocketCan*)pClient;
-      pClient = nullptr;
+        (rv = ((vscpClientSocketCan*)m_pClient)->init(m_configVector[0], m_guid.toString(), 0))) {
+      delete (vscpClientSocketCan*)m_pClient;
+      m_pClient = nullptr;
       spdlog::error("Unable to initialize socketcan client {0} rv={1}", m_interface.toStdString(), rv);
       return VSCP_ERROR_HARDWARE;
     }
@@ -939,21 +1420,22 @@ btest::vscpboot_init_hardware(void)
     auto cb = std::bind(&btest::receiveCallback, this, _1, _2);
     // lambda version for reference
     // auto cb = [this](auto a, auto b) { this->receiveCallback(a, b); };
-    pClient->setCallbackEx(cb, this);
+    m_pClient->setCallbackEx(cb, this);
 
-    if (VSCP_ERROR_SUCCESS != (rv = pClient->connect())) {
-      delete (vscpClientSocketCan*)pClient;
-      pClient = nullptr;
+    if (VSCP_ERROR_SUCCESS != (rv = m_pClient->connect())) {
+      delete (vscpClientSocketCan*)m_pClient;
+      m_pClient = nullptr;
       spdlog::error("Unable to initialize socketcan client {0} rv={1}", m_interface.toStdString(), rv);
       return VSCP_ERROR_HARDWARE;
     }
 
     uint32_t timeout = vscp_getMsTimeStamp();
-    while (!pClient->isConnected()) {
+    while (!m_pClient->isConnected()) {
       spdlog::trace("Waiting for connect...");
       sleep(1);
       if ((vscp_getMsTimeStamp() - timeout) > m_timeoutConnect) {
-        pClient->disconnect();
+        m_pClient->disconnect();
+        spdlog::error("Timeout while waiting for connection of client {0}", m_interface.toStdString());
         return VSCP_ERROR_TIMEOUT;
       }
     };
@@ -975,15 +1457,15 @@ btest::vscpboot_release_hardware()
   int rv;
   if (m_interface == "socketcan") {
 
-    if (VSCP_ERROR_SUCCESS != (rv = pClient->disconnect())) {
-      delete (vscpClientSocketCan*)pClient;
-      pClient = nullptr;
+    if (VSCP_ERROR_SUCCESS != (rv = m_pClient->disconnect())) {
+      delete (vscpClientSocketCan*)m_pClient;
+      m_pClient = nullptr;
       spdlog::error("Unable to initialize socketcan client {0} rv={1}", m_interface.toStdString(), rv);
       return VSCP_ERROR_HARDWARE;
     }
 
-    delete (vscpClientSocketCan*)pClient;
-    pClient = nullptr;
+    delete (vscpClientSocketCan*)m_pClient;
+    m_pClient = nullptr;
   }
   return VSCP_ERROR_SUCCESS;
 }
@@ -1099,7 +1581,7 @@ btest::vscpboot_calcPrgCrc(void)
 int
 btest::vscpboot_sendEventEx(vscpEventEx* pex)
 {
-  return pClient->send(*pex);
+  return m_pClient->send(*pex);
 }
 
 /*!
@@ -1126,26 +1608,31 @@ RCVLOOP:
     }
   }
 
-  // Return if error
-  if (rv) {
-    return VSCP_ERROR_ERROR;
+  // Return if we are supposed to end work
+  if (!m_bRun) {
+    return VSCP_ERROR_TIMEOUT;
   }
 
-  // If this is a proxy event then translate to standard event
-  if ((pex->vscp_class >= 512) && ((pex->vscp_class < 1024))) {
-    pex->vscp_class -= 512;                                // Standard level I class
-    memcpy(pex->data, pex->data + 16, pex->sizeData - 16); // Remove proxy interface
+  // Return if error
+  if (rv) {
+    return rv;
   }
 
   pthread_mutex_lock(&m_mutexReceiveQueue);
   if (m_inqueue.size()) {
     pex = m_inqueue.dequeue();
     pthread_mutex_unlock(&m_mutexReceiveQueue);
-    spdlog::trace("Event {0:x}:{1:x}", pex->vscp_class, pex->vscp_type);
+    spdlog::trace("vscp_boot: getEventEx {0:X}:{1:X}", pex->vscp_class, pex->vscp_type);
+
+    // If this is a proxy event then translate to standard event
+    if ((pex->vscp_class >= 512) && ((pex->vscp_class < 1024))) {
+      pex->vscp_class -= 512;                                // Standard level I class
+      memcpy(pex->data, pex->data + 16, pex->sizeData - 16); // Remove proxy interface
+    }
   }
   else {
     pthread_mutex_unlock(&m_mutexReceiveQueue);
-    spdlog::trace("No events to fetch");
+    spdlog::trace("[vscpboot_getEventEx] No events to fetch");
     return VSCP_ERROR_FIFO_EMPTY;
   }
   return VSCP_ERROR_SUCCESS;
@@ -1181,10 +1668,49 @@ workerThread(void* pData)
     // * * * Simulated firmware * * *
     spdlog::info("Starting simulation software in firmware mode");
 
+    // Initialize hardware
+    if (VSCP_ERROR_SUCCESS != (rv = vscpboot_init_hardware())) {
+      spdlog::error("workerthread: Failed to initialize hardware. rv={}", rv);
+      pbtest->m_bRun = false;
+      return NULL;
+    }
+
     // Initialize the firmware
     if (VSCP_ERROR_SUCCESS != (rv = vscp_frmw2_init(&pbtest->m_firmware_cfg))) {
-      spdlog::error("workerthread: Failed to initialize firmware.");
+      spdlog::error("workerthread: Failed to initialize firmware. rv={}", rv);
+      pbtest->m_bRun = false;
       return NULL;
+    }
+
+    // Go to work
+
+    vscpEventEx* pex;
+
+    while (pbtest->m_bRun) {
+
+      // get event from the input queue if there is one
+      if (VSCP_ERROR_SUCCESS != (rv = pbtest->getEventEx(&pex))) {
+        if ((VSCP_ERROR_TIMEOUT != rv) && (VSCP_ERROR_FIFO_EMPTY != rv)) {
+          spdlog::error("workerthread: [getEventEx] failed in worktread. rv={0} {1}", rv, strerror(rv));
+        }
+      }
+
+      // pex is NULL here if no event received
+      if (NULL != pex) {
+        spdlog::trace("workerthread: Read event ex: {0:X}:{1:X} size={2} Data: {3:X}",
+                      pex->vscp_class,
+                      pex->vscp_type,
+                      pex->sizeData,
+                      spdlog::to_hex(std::begin(pex->data), std::begin(pex->data) + pex->sizeData));
+      }
+
+      if (VSCP_ERROR_SUCCESS != (rv = vscp_frmw2_work(pex))) {
+        spdlog::error("workerthread: [vscp_frmw2_work] Failed in worktread. rv={}", rv);
+      }
+
+      // Cleanup event
+      delete pex;
+      pex = NULL;
     }
   }
 

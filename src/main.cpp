@@ -6,11 +6,6 @@
 
 #include <iostream>
 
-#include <spdlog/async.h>
-#include <spdlog/sinks/rotating_file_sink.h>
-#include <spdlog/sinks/stdout_color_sinks.h>
-#include <spdlog/spdlog.h>
-
 #include <nlohmann/json.hpp>
 
 // for convenience
@@ -145,49 +140,6 @@ main(int argc, char* argv[])
 
   // --------------------------------------------------------------------------
 
-  //////////////////////////////////////////////////////////////////////////////
-  //                                spdlog
-  //////////////////////////////////////////////////////////////////////////////
-
-  // patterns - https://github.com/gabime/spdlog/wiki/3.-Custom-formatting
-  // https://github.com/gabime/spdlog/wiki/2.-Creating-loggers#creating-loggers-with-multiple-sinks
-
-  try {
-
-    // create console_sink
-    auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-    console_sink->set_level(app.m_consoleLogLevel);
-    console_sink->set_pattern(app.m_consoleLogPattern);
-
-    // create rotating file sink
-    auto file_sink =
-      std::make_shared<spdlog::sinks::rotating_file_sink_mt>(app.m_fileLogPath,
-                                                             app.m_maxFileLogSize,
-                                                             app.m_maxFileLogFiles,
-                                                             true);
-    file_sink->set_level(app.m_fileLogLevel);
-    file_sink->set_pattern(app.m_fileLogPattern);
-
-    // sink's bucket
-    spdlog::sinks_init_list sinks{ console_sink, file_sink };
-
-    // create async logger, and use global threadpool
-    spdlog::init_thread_pool(1024 * 8, 1);
-    auto logger = std::make_shared<spdlog::async_logger>("logger", sinks, spdlog::thread_pool());
-
-    // set default logger
-    spdlog::set_default_logger(logger);
-    spdlog::set_level(app.m_fileLogLevel);
-  }
-  catch (...) {
-    fprintf(stderr, "Unable to init logsystem. Logs Exiting.");
-    spdlog::drop_all();
-    spdlog::shutdown();
-    exit(EXIT_FAILURE);
-  }
-
-  // --------------------------------------------------------------------------
-
   /*!
    * Load flash from file.
    * Load registers from MDF file.
@@ -249,7 +201,7 @@ main(int argc, char* argv[])
     }
   }
 
-  QString levelstr = parser.value(passwordOption);
+  QString levelstr = parser.value(levelOption);
   if (vscp_readStringValue(levelstr.toStdString()) <= 2) {
     app.m_bootloader_cfg.vscpLevel = vscp_readStringValue(levelstr.toStdString());
     spdlog::debug("Config: level: {}", app.m_bootloader_cfg.vscpLevel);
@@ -268,11 +220,22 @@ main(int argc, char* argv[])
     rv = app.loadFirmwareConfig(app.m_configpath);
   }
 
-  // Init the interface/hardware
-  if (VSCP_ERROR_SUCCESS != (rv = app.vscpboot_init_hardware())) {
-    spdlog::error("Main: Failed to init hardware, rv={}", rv);
-    return -2;
+  // Create simulation data
+  if (1 == app.m_nSimulation) {
+    app.m_pSim = new simulation1;
+    app.m_firmware_cfg.m_pEventsOfInterest = nullptr;
   }
+  else {
+    // Simulation is not defined
+    spdlog::error("Invalid simulation set. Will use sumulation 1");
+    app.m_pSim = new simulation1;
+  }
+
+  // Init the interface/hardware
+  // if (VSCP_ERROR_SUCCESS != (rv = app.vscpboot_init_hardware())) {
+  //   spdlog::error("Main: Failed to init hardware, rv={}", rv);
+  //   return -2;
+  // }
 
   spdlog::debug("Hardware initialized OK");
 

@@ -38,9 +38,8 @@
 #include <vscp-client-base.h>
 #include <vscpunit.h>
 
-//#include <vscp-firmware-helper.h>
-#include <vscp-firmware-level2.h>
 #include <vscp-bootloader.h>
+#include <vscp-firmware-level2.h>
 
 #include <QApplication>
 #include <QByteArray>
@@ -60,6 +59,8 @@
 
 #include "spdlog/sinks/rotating_file_sink.h"
 #include "spdlog/spdlog.h"
+
+#include "simulation1.h"
 
 // https://github.com/nlohmann/json
 using json = nlohmann::json;
@@ -83,7 +84,7 @@ Q_DECLARE_METATYPE(vscpEventEx)
 #define DEFAULT_VSCP_SYSTEM_FOLDER "/var/lib/vscp/"
 #endif
 
-#define DEFAULT_CONNECT_TIMOUT  5000
+#define DEFAULT_CONNECT_TIMOUT 5000
 
 /*!
     Encapsulates VSCP works main settings
@@ -112,10 +113,16 @@ public:
   };
 
   /*!
-    Run the workerthread
+    Run the workerthread (simulation)
     @return VSCP_ERROR_SUCCESS if all is OK
   */
   int startWorkerThread(void);
+
+  /*!
+    Stop the workerthread (simulation)
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int stopWorkerThread(void);
 
   /*!
       Load configuration settings from disk
@@ -141,6 +148,42 @@ public:
   QMainWindow* getMainWindow(void);
 
   void receiveCallback(vscpEventEx& ex, void* pobj);
+
+  /*!
+    Get event ex from input queue
+
+    @param pex Pointer to received event or NULL if no event
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int getEventEx(vscpEventEx** pex);
+
+  // ========================================================================
+  //                        Simulation handlers
+  // ========================================================================
+
+  /*!
+    Read register for simulation 1
+    @param page Page to read from
+    @param reg Register to read from
+    @param pval Pointer to value that will get result
+    @return @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval);
+
+  /*!
+    Write register for simulation 1
+    @param page Page to write to
+    @param reg Register to write to
+    @param val value that should be written
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val);
+
+  /*!
+    report DM content
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int reportDM_sim1(void);
 
   // ========================================================================
   //                         Firmware callbacks
@@ -204,6 +247,8 @@ public:
 
   int vscpboot_getEventEx(vscpEventEx* pex);
 
+
+
   // ========================================================================
   // ========================================================================
 
@@ -242,7 +287,7 @@ public:
   */
   vscp_frmw2_firmware_configt_t m_firmware_cfg;
 
-  /*! 
+  /*!
     Worker thread
     This thread do the actual work. It can be a
     device in bootmode or a running firmware device
@@ -268,11 +313,19 @@ public:
   QString m_vscpHomeFolder;
 
   /*!
+   Active simulation
+  */
+  uint8_t m_nSimulation;
+
+  /// Pointer to active simulation structure
+  void* m_pSim;
+
+  /*!
     The communication interface
   */
-  CVscpClient* pClient;
+  CVscpClient* m_pClient;
 
-  /// Timeout for connect in milliseconds 
+  /// Timeout for connect in milliseconds
   uint32_t m_timeoutConnect;
 
   /// protects receive queue
@@ -328,6 +381,18 @@ signals:
 
   /// Data received from callback
   void dataReceived(vscpEventEx* pex);
+
+  /// Simulation checkbox value changed
+  void checkValueChanged(int idx, bool value);
+
+  /// Set slider value of slider in mainwindow
+  void sliderValueChanged(int idx, uint8_t value);
+
+  /// Simulation radio button value changed
+  void radioValueChanged(int idx, bool value);
+
+  /// Background color changed
+  void backgroundColorChanged(uint32_t color);
 };
 
 #endif // ___VSCP_BTEST_H
