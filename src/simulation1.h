@@ -43,19 +43,19 @@
 
 typedef struct simulation1 {
   uint8_t m_reg_zone;               // Zone for module
-  uint8_t m_reg_subzone_S[10];      // S0-S9
-  uint8_t m_reg_subzone_C[10];      // C0-C9
-  uint8_t m_reg_subzone_R[10];      // R0-R9
+  uint8_t m_reg_subzone_S[10];      // S0-S9  Switch button
+  uint8_t m_reg_subzone_C[10];      // C0-C9  Checkbox
+  uint8_t m_reg_subzone_R[10];      // R0-R9  Radio button
   uint8_t m_reg_subzone_slider[10]; // slider0 - slider9
 
-  uint8_t m_reg_value_S[10];      // S0-S9
-  uint8_t m_reg_value_C[10];      // C0-C9
-  uint8_t m_reg_value_R[10];      // R0-R9
+  uint8_t m_reg_value_S[10];      // S0-S9  Switch button value
+  uint8_t m_reg_value_C[10];      // C0-C9  Checkbox value
+  uint8_t m_reg_value_R[10];      // R0-R9  Radio button value
   uint8_t m_reg_value_slider[10]; // slider0 - slider9
 
-  uint8_t m_background_color[3];  // RGB color for sim tab-sheet
+  uint8_t m_background_color[3]; // RGB color for sim tab-sheet
 
-  uint8_t m_period_status_event;    // Period in seconds for status event
+  uint8_t m_period_status_event; // Period in seconds for status event
 
   uint8_t m_dm[10 * 9]; // Decision matrix 8-rows
 } simulation1;

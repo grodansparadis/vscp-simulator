@@ -76,6 +76,50 @@ private slots:
   */
   void setFirmwareMode(void);
 
+  void btnPressed_s0(void);
+  void btnPressed_s1(void);
+  void btnPressed_s2(void);
+  void btnPressed_s3(void);
+  void btnPressed_s4(void);
+  void btnPressed_s5(void);
+  void btnPressed_s6(void);
+  void btnPressed_s7(void);
+  void btnPressed_s8(void);
+  void btnPressed_s9(void);
+
+  void chkClicked_c0(void);
+  void chkClicked_c1(void);
+  void chkClicked_c2(void);
+  void chkClicked_c3(void);
+  void chkClicked_c4(void);
+  void chkClicked_c5(void);
+  void chkClicked_c6(void);
+  void chkClicked_c7(void);
+  void chkClicked_c8(void);
+  void chkClicked_c9(void);
+
+  void radioClicked_r0(bool checked);
+  void radioClicked_r1(bool checked);
+  void radioClicked_r2(bool checked);
+  void radioClicked_r3(bool checked);
+  void radioClicked_r4(bool checked);
+  void radioClicked_r5(bool checked);
+  void radioClicked_r6(bool checked);
+  void radioClicked_r7(bool checked);
+  void radioClicked_r8(bool checked);
+  void radioClicked_r9(bool checked);
+
+  void sliderChanged_s0(int value);
+  void sliderChanged_s1(int value);
+  void sliderChanged_s2(int value);
+  void sliderChanged_s3(int value);
+  void sliderChanged_s4(int value);
+  void sliderChanged_s5(int value);
+  void sliderChanged_s6(int value);
+  void sliderChanged_s7(int value);
+  void sliderChanged_s8(int value);
+  void sliderChanged_s9(int value);
+
 private:
   QScopedPointer<Ui::MainWindow> ui;
 

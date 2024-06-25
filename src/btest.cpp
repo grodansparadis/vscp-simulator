@@ -1207,15 +1207,17 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
           sliderValueChanged(reg - 71, val);
           break;
 
-        case 81: // background color R
-        case 82: // background color G
-        case 83: // background color B
+        case 81:   // background color R
+        case 82:   // background color G
+        case 83: { // background color B
           psim1->m_background_color[reg - 81] = val;
-          backgroundColorChanged(construct_unsigned32(0,
-                                                  psim1->m_background_color[0],
-                                                  psim1->m_background_color[1],
-                                                  psim1->m_background_color[2]));
-          break;
+          spdlog::info("Set background color {0:02X}{1:02X}{2:02X}",
+                       psim1->m_background_color[0],
+                       psim1->m_background_color[1],
+                       psim1->m_background_color[2]);
+          uint32_t color = construct_unsigned32(0, psim1->m_background_color[0], psim1->m_background_color[1], psim1->m_background_color[2]);
+          emit backgroundColorChanged(color);
+        } break;
 
         case 84: // period for status event
           psim1->m_period_status_event = val;
@@ -1294,6 +1296,72 @@ btest::writeRegister(uint16_t page, uint32_t reg, uint8_t val)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// writeSliderValue
+//
+
+int
+btest::writeSliderValue(uint8_t idx, int value)
+{
+  switch (m_nSimulation) {
+    case 0:
+    default:
+      return writeSliderValue_sim1(idx, value);
+  }
+
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// writeSliderValue_sim1
+//
+
+int
+btest::writeSliderValue_sim1(uint8_t idx, int value)
+{
+  // Pointer to simulation storage must be valid
+  if (nullptr == m_pSim) {
+    return VSCP_ERROR_INVALID_POINTER;
+  }
+
+  if ((idx > 9) || (idx < 0)) {
+    return VSCP_ERROR_PARAMETER;
+  }
+
+  simulation1* psim1 = (simulation1*)m_pSim;
+
+  // Save value
+  psim1->m_reg_value_slider[idx] = value;
+
+  // Send event
+  vscpEventEx ex;
+
+  memset(ex.data, 0, 512);
+  ex.head = VSCP_PRIORITY_NORMAL;
+  memcpy(ex.GUID, m_firmware_cfg.m_guid, 16);
+  /*!
+    If level I we use the GUID as a space for the nickname
+  */
+  if (VSCP_LEVEL1 == m_firmware_cfg.m_level) {
+    ex.GUID[14]   = (m_firmware_cfg.m_nickname >> 8) & 0xff;
+    ex.GUID[15]   = m_firmware_cfg.m_nickname & 0xff;
+    ex.vscp_class = VSCP_CLASS1_MEASUREMENT;
+    ex.vscp_type  = VSCP_TYPE_MEASUREMENT_RELATIVE_LEVEL;
+    ex.sizeData   = 2;
+    ex.data[0]    = 0x60 + idx;
+    ex.data[1]    = value;
+  }
+  else {
+    ex.vscp_class = VSCP_CLASS1_MEASUREMENT;
+    ex.vscp_type  = VSCP_TYPE_MEASUREMENT_RELATIVE_LEVEL;
+    ex.sizeData   = 2;
+    ex.data[0]    = 0x60 + idx;
+    ex.data[1]    = value;
+  }
+
+  return m_pClient->send(ex);
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // reportDM
 //
 int
@@ -1356,6 +1424,225 @@ int
 btest::standardRegHasChanged(uint32_t stdreg)
 {
   return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// buttonPress
+//
+
+int
+btest::buttonPress(int idx)
+{
+  switch (m_nSimulation) {
+    case 0:
+    default:
+      return buttonPress_sim1(idx);
+      break;
+  }
+
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// buttonPress_sim1
+//
+
+int
+btest::buttonPress_sim1(int idx)
+{
+  // Pointer to simulation storage must be valid
+  if (nullptr == m_pSim) {
+    return VSCP_ERROR_INVALID_POINTER;
+  }
+
+  if ((idx > 9) || (idx < 0)) {
+    return VSCP_ERROR_PARAMETER;
+  }
+
+  simulation1* psim1 = (simulation1*)m_pSim;
+
+  // Send event
+  vscpEventEx ex;
+
+  memset(ex.data, 0, 512);
+  ex.head = VSCP_PRIORITY_NORMAL;
+  memcpy(ex.GUID, m_firmware_cfg.m_guid, 16);
+  /*!
+    If level I we use the GUID as a space for the nickname
+  */
+  if (VSCP_LEVEL1 == m_firmware_cfg.m_level) {
+    ex.GUID[14]   = (m_firmware_cfg.m_nickname >> 8) & 0xff;
+    ex.GUID[15]   = m_firmware_cfg.m_nickname & 0xff;
+    ex.vscp_class = VSCP_CLASS1_CONTROL;
+    ex.vscp_type  = VSCP_TYPE_CONTROL_TURNON;
+    ex.sizeData   = 3;
+    ex.data[0]    = idx;
+    ex.data[1]    = psim1->m_reg_zone;
+    ex.data[2]    = psim1->m_reg_subzone_S[idx];
+  }
+  else {
+    ex.vscp_class = VSCP_CLASS1_CONTROL;
+    ex.vscp_type  = VSCP_TYPE_CONTROL_TURNON;
+    ex.sizeData   = 3;
+    ex.data[0]    = idx;
+    ex.data[1]    = psim1->m_reg_zone;
+    ex.data[2]    = psim1->m_reg_subzone_S[idx];
+  }
+
+  return m_pClient->send(ex);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// checkboxClick
+//
+
+int
+btest::checkboxClick(int idx, bool checked)
+{
+  switch (m_nSimulation) {
+    case 0:
+    default:
+      return checkboxClick_sim1(idx, checked);
+      break;
+  }
+
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// checkboxClick_sim1
+//
+
+int
+btest::checkboxClick_sim1(int idx, bool checked)
+{
+  // Pointer to simulation storage must be valid
+  if (nullptr == m_pSim) {
+    return VSCP_ERROR_INVALID_POINTER;
+  }
+
+  if ((idx > 9) || (idx < 0)) {
+    return VSCP_ERROR_PARAMETER;
+  }
+
+  simulation1* psim1 = (simulation1*)m_pSim;
+
+  // Set value
+  psim1->m_reg_value_C[idx] = (int)checked;
+
+  // Send event
+  vscpEventEx ex;
+
+  memset(ex.data, 0, 512);
+  ex.head = VSCP_PRIORITY_NORMAL;
+  memcpy(ex.GUID, m_firmware_cfg.m_guid, 16);
+  /*!
+    If level I we use the GUID as a space for the nickname
+  */
+  if (VSCP_LEVEL1 == m_firmware_cfg.m_level) {
+    ex.GUID[14]   = (m_firmware_cfg.m_nickname >> 8) & 0xff;
+    ex.GUID[15]   = m_firmware_cfg.m_nickname & 0xff;
+    ex.vscp_class = VSCP_CLASS1_INFORMATION;
+    if (checked) {
+      ex.vscp_type = VSCP_TYPE_INFORMATION_OPENED;
+    }
+    else {
+      ex.vscp_type = VSCP_TYPE_INFORMATION_CLOSED;
+    }
+    ex.sizeData = 3;
+    ex.data[0]  = idx;
+    ex.data[1]  = psim1->m_reg_zone;
+    ex.data[2]  = psim1->m_reg_subzone_C[idx];
+  }
+  else {
+    ex.vscp_class = VSCP_CLASS1_CONTROL;
+    ex.vscp_type  = VSCP_TYPE_CONTROL_TURNON;
+    ex.sizeData   = 3;
+    ex.data[0]    = idx;
+    ex.data[1]    = psim1->m_reg_zone;
+    ex.data[2]    = psim1->m_reg_subzone_C[idx];
+  }
+
+  return m_pClient->send(ex);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClick
+//
+
+int
+btest::radioClick(int idx, bool checked)
+{
+  switch (m_nSimulation) {
+    case 0:
+    default:
+      return radioClick_sim1(idx, checked);
+      break;
+  }
+
+  return VSCP_ERROR_SUCCESS;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClick_sim1
+//
+
+int
+btest::radioClick_sim1(int idx, bool checked)
+{
+  // Pointer to simulation storage must be valid
+  if (nullptr == m_pSim) {
+    return VSCP_ERROR_INVALID_POINTER;
+  }
+
+  if ((idx > 9) || (idx < 0)) {
+    return VSCP_ERROR_PARAMETER;
+  }
+
+  simulation1* psim1 = (simulation1*)m_pSim;
+
+  // Set value
+  psim1->m_reg_value_R[idx] = (int)checked;
+
+  // Send event
+  vscpEventEx ex;
+
+  memset(ex.data, 0, 512);
+  ex.head = VSCP_PRIORITY_NORMAL;
+  memcpy(ex.GUID, m_firmware_cfg.m_guid, 16);
+  /*!
+    If level I we use the GUID as a space for the nickname
+  */
+  if (VSCP_LEVEL1 == m_firmware_cfg.m_level) {
+    ex.GUID[14]   = (m_firmware_cfg.m_nickname >> 8) & 0xff;
+    ex.GUID[15]   = m_firmware_cfg.m_nickname & 0xff;
+    ex.vscp_class = VSCP_CLASS1_INFORMATION;
+    if (checked) {
+      ex.vscp_type = VSCP_TYPE_INFORMATION_ON;
+    }
+    else {
+      ex.vscp_type = VSCP_TYPE_INFORMATION_OFF;
+    }
+    ex.sizeData = 3;
+    ex.data[0]  = idx;
+    ex.data[1]  = psim1->m_reg_zone;
+    ex.data[2]  = psim1->m_reg_subzone_R[idx];
+  }
+  else {
+    ex.vscp_class = VSCP_CLASS1_INFORMATION;
+    if (checked) {
+      ex.vscp_type = VSCP_TYPE_INFORMATION_ON;
+    }
+    else {
+      ex.vscp_type = VSCP_TYPE_INFORMATION_OFF;
+    }
+    ex.sizeData = 3;
+    ex.data[0]  = idx;
+    ex.data[1]  = psim1->m_reg_zone;
+    ex.data[2]  = psim1->m_reg_subzone_R[idx];
+  }
+
+  return m_pClient->send(ex);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

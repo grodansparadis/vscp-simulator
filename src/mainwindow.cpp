@@ -42,6 +42,50 @@ MainWindow::MainWindow(QWidget* parent)
   connect(papp, &btest::radioValueChanged, this, &MainWindow::setRadioButtonValue);
   connect(papp, &btest::backgroundColorChanged, this, &MainWindow::setBackgroundColor);
 
+  connect(ui->btn0, SIGNAL(pressed()), this, SLOT(btnPressed_s0()));
+  connect(ui->btn1, SIGNAL(pressed()), this, SLOT(btnPressed_s1()));
+  connect(ui->btn2, SIGNAL(pressed()), this, SLOT(btnPressed_s2()));
+  connect(ui->btn3, SIGNAL(pressed()), this, SLOT(btnPressed_s3()));
+  connect(ui->btn4, SIGNAL(pressed()), this, SLOT(btnPressed_s4()));
+  connect(ui->btn5, SIGNAL(pressed()), this, SLOT(btnPressed_s5()));
+  connect(ui->btn6, SIGNAL(pressed()), this, SLOT(btnPressed_s6()));
+  connect(ui->btn7, SIGNAL(pressed()), this, SLOT(btnPressed_s7()));
+  connect(ui->btn8, SIGNAL(pressed()), this, SLOT(btnPressed_s8()));
+  connect(ui->btn9, SIGNAL(pressed()), this, SLOT(btnPressed_s9()));
+
+  connect(ui->chk0, SIGNAL(clicked()), this, SLOT(chkClicked_c0()));
+  connect(ui->chk1, SIGNAL(clicked()), this, SLOT(chkClicked_c1()));
+  connect(ui->chk2, SIGNAL(clicked()), this, SLOT(chkClicked_c2()));
+  connect(ui->chk3, SIGNAL(clicked()), this, SLOT(chkClicked_c3()));
+  connect(ui->chk4, SIGNAL(clicked()), this, SLOT(chkClicked_c4()));
+  connect(ui->chk5, SIGNAL(clicked()), this, SLOT(chkClicked_c5()));
+  connect(ui->chk6, SIGNAL(clicked()), this, SLOT(chkClicked_c6()));
+  connect(ui->chk7, SIGNAL(clicked()), this, SLOT(chkClicked_c7()));
+  connect(ui->chk8, SIGNAL(clicked()), this, SLOT(chkClicked_c8()));
+  connect(ui->chk9, SIGNAL(clicked()), this, SLOT(chkClicked_c9()));
+
+  connect(ui->radio0, &QRadioButton::toggled, this, &MainWindow::radioClicked_r0);
+  connect(ui->radio1, &QRadioButton::toggled, this, &MainWindow::radioClicked_r1);
+  connect(ui->radio2, &QRadioButton::toggled, this, &MainWindow::radioClicked_r2);
+  connect(ui->radio3, &QRadioButton::toggled, this, &MainWindow::radioClicked_r3);
+  connect(ui->radio4, &QRadioButton::toggled, this, &MainWindow::radioClicked_r4);
+  connect(ui->radio5, &QRadioButton::toggled, this, &MainWindow::radioClicked_r5);
+  connect(ui->radio6, &QRadioButton::toggled, this, &MainWindow::radioClicked_r6);
+  connect(ui->radio7, &QRadioButton::toggled, this, &MainWindow::radioClicked_r7);
+  connect(ui->radio8, &QRadioButton::toggled, this, &MainWindow::radioClicked_r8);
+  connect(ui->radio9, &QRadioButton::toggled, this, &MainWindow::radioClicked_r9);
+
+  connect(ui->slider0, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s0);
+  connect(ui->slider1, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s1);
+  connect(ui->slider2, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s2);
+  connect(ui->slider3, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s3);
+  connect(ui->slider4, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s4);
+  connect(ui->slider5, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s5);
+  connect(ui->slider6, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s6);
+  connect(ui->slider7, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s7);
+  connect(ui->slider8, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s8);
+  connect(ui->slider9, &QSlider::valueChanged, this, &MainWindow::sliderChanged_s9);
+
   //////////////////////////////////////////////////////////////////////////////
   //                                spdlog
   //////////////////////////////////////////////////////////////////////////////
@@ -240,36 +284,51 @@ MainWindow::setFirmwareMode(void)
 // setCheckboxValue
 //
 
-void MainWindow::setCheckboxValue(int idx, bool value)
+void
+MainWindow::setCheckboxValue(int idx, bool value)
 {
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
   switch (idx) {
+
     case 0:
       ui->chk0->setChecked(value);
+      papp->checkboxClick(0, value);
       break;
+
     case 1:
       ui->chk1->setChecked(value);
       break;
+
     case 2:
       ui->chk2->setChecked(value);
       break;
+
     case 3:
       ui->chk3->setChecked(value);
       break;
+
     case 4:
       ui->chk4->setChecked(value);
       break;
+
     case 5:
       ui->chk5->setChecked(value);
       break;
+
     case 6:
       ui->chk6->setChecked(value);
       break;
+
     case 7:
       ui->chk7->setChecked(value);
       break;
+
     case 8:
       ui->chk8->setChecked(value);
       break;
+
     case 9:
       ui->chk9->setChecked(value);
       break;
@@ -317,12 +376,12 @@ MainWindow::setSliderValue(int idx, uint8_t value)
   }
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////
 // setRadioButtonValue
 //
 
-void MainWindow::setRadioButtonValue(int idx, bool value)
+void
+MainWindow::setRadioButtonValue(int idx, bool value)
 {
   switch (idx) {
     case 0:
@@ -362,10 +421,557 @@ void MainWindow::setRadioButtonValue(int idx, bool value)
 // setBackgroundColor
 //
 
-void MainWindow::setBackgroundColor(uint32_t color)
+void
+MainWindow::setBackgroundColor(uint32_t color)
 {
-  QString strcolor = 
+  QString strcolor =
     QString("background-color: rgb(%0,%1,%2);").arg((color >> 16) & 0xff).arg((color >> 8) & 0xff).arg(color & 0xff);
-  //ui->tab_sim->setStyleSheet("background-color: rgb(255, 0, 0);");
   ui->tab_sim->setStyleSheet(strcolor);
+  spdlog::info("Set color {0} {1:08X}", strcolor.toStdString(), (int)color);
+}
+
+//=============================================================================
+//                                 BUTTONS
+//=============================================================================
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s0
+//
+
+void
+MainWindow::btnPressed_s0(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 0 pressed");
+  papp->buttonPress(0);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s1
+//
+
+void
+MainWindow::btnPressed_s1(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 1 pressed");
+  papp->buttonPress(1);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s2
+//
+
+void
+MainWindow::btnPressed_s2(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 2 pressed");
+  papp->buttonPress(2);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s3
+//
+
+void
+MainWindow::btnPressed_s3(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 3 pressed");
+  papp->buttonPress(3);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s4
+//
+
+void
+MainWindow::btnPressed_s4(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 4 pressed");
+  papp->buttonPress(4);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s5
+//
+
+void
+MainWindow::btnPressed_s5(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 5 pressed");
+  papp->buttonPress(5);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s6
+//
+
+void
+MainWindow::btnPressed_s6(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 6 pressed");
+  papp->buttonPress(6);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s7
+//
+
+void
+MainWindow::btnPressed_s7(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 7 pressed");
+  papp->buttonPress(7);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s8
+//
+
+void
+MainWindow::btnPressed_s8(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 8 pressed");
+  papp->buttonPress(8);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// btnPressed_s9
+//
+
+void
+MainWindow::btnPressed_s9(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Button 9 pressed");
+  papp->buttonPress(9);
+}
+
+//=============================================================================
+//                                 CHECKBOX
+//=============================================================================
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c0
+//
+
+void
+MainWindow::chkClicked_c0(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c0 clicked");
+  papp->checkboxClick(0, ui->chk0->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c1
+//
+
+void
+MainWindow::chkClicked_c1(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c1 clicked");
+  papp->checkboxClick(1, ui->chk1->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c2
+//
+
+void
+MainWindow::chkClicked_c2(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c2 clicked");
+  papp->checkboxClick(2, ui->chk2->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c3
+//
+
+void
+MainWindow::chkClicked_c3(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c3 clicked");
+  papp->checkboxClick(3, ui->chk3->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c4
+//
+
+void
+MainWindow::chkClicked_c4(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c4 clicked");
+  papp->checkboxClick(4, ui->chk4->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c5
+//
+
+void
+MainWindow::chkClicked_c5(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c5 clicked");
+  papp->checkboxClick(5, ui->chk5->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c6
+//
+
+void
+MainWindow::chkClicked_c6(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c6 clicked");
+  papp->checkboxClick(6, ui->chk6->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c7
+//
+
+void
+MainWindow::chkClicked_c7(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c7 clicked");
+  papp->checkboxClick(7, ui->chk7->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c8
+//
+
+void
+MainWindow::chkClicked_c8(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c8 clicked");
+  papp->checkboxClick(8, ui->chk8->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// chkClicked_c9
+//
+
+void
+MainWindow::chkClicked_c9(void)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox c9 clicked");
+  papp->checkboxClick(9, ui->chk9->isChecked());
+}
+
+//=============================================================================
+//                              RADIO BUTTON
+//=============================================================================
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r0
+//
+
+void
+MainWindow::radioClicked_r0(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r0 clicked");
+  papp->radioClick(0, ui->radio0->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r1
+//
+
+void
+MainWindow::radioClicked_r1(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r1 clicked");
+  papp->radioClick(1, ui->radio1->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r2
+//
+
+void
+MainWindow::radioClicked_r2(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r2 clicked");
+  papp->radioClick(2, ui->radio2->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r3
+//
+
+void
+MainWindow::radioClicked_r3(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r3 clicked");
+  papp->radioClick(3, ui->radio3->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r4
+//
+
+void
+MainWindow::radioClicked_r4(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r4 clicked");
+  papp->radioClick(4, ui->radio4->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r5
+//
+
+void
+MainWindow::radioClicked_r5(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r5 clicked");
+  papp->radioClick(5, ui->radio5->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r6
+//
+
+void
+MainWindow::radioClicked_r6(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r6 clicked");
+  papp->radioClick(6, ui->radio6->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r7
+//
+
+void
+MainWindow::radioClicked_r7(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r7 clicked");
+  papp->radioClick(7, ui->radio7->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r8
+//
+
+void
+MainWindow::radioClicked_r8(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r8 clicked");
+  papp->radioClick(8, ui->radio8->isChecked());
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// radioClicked_r9
+//
+
+void
+MainWindow::radioClicked_r9(bool checked)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+  spdlog::info("Checkbox r9 clicked");
+  papp->radioClick(9, ui->radio9->isChecked());
+}
+
+//=============================================================================
+//                                 SLIDER
+//=============================================================================
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s0
+//
+
+void
+MainWindow::sliderChanged_s0(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s0 changed {}", value);
+  papp->writeSliderValue(0, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s1
+//
+
+void
+MainWindow::sliderChanged_s1(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s1 changed {}", value);
+  papp->writeSliderValue(1, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s2
+//
+
+void
+MainWindow::sliderChanged_s2(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s2 changed {}", value);
+  papp->writeSliderValue(2, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s3
+//
+
+void
+MainWindow::sliderChanged_s3(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s3 changed {}", value);
+  papp->writeSliderValue(3, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s4
+//
+
+void
+MainWindow::sliderChanged_s4(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s4 changed {}", value);
+  papp->writeSliderValue(4, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s5
+//
+
+void
+MainWindow::sliderChanged_s5(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s5 changed {}", value);
+  papp->writeSliderValue(5, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s6
+//
+
+void
+MainWindow::sliderChanged_s6(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s6 changed {}", value);
+  papp->writeSliderValue(6, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s7
+//
+
+void
+MainWindow::sliderChanged_s7(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s7 changed {}", value);
+  papp->writeSliderValue(7, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s8
+//
+
+void
+MainWindow::sliderChanged_s8(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s8 changed {}", value);
+  papp->writeSliderValue(8, value);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// sliderChanged_s9
+//
+
+void
+MainWindow::sliderChanged_s9(int value)
+{
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  spdlog::info("Checkbox s9 changed {}", value);
+  papp->writeSliderValue(9, value);
 }

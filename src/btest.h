@@ -185,6 +185,69 @@ public:
   */
   int reportDM_sim1(void);
 
+  /*!
+    Slider has moved by user. 
+    This method distribute to a handler for the active simulation
+    @param idx Slider idex 0-9
+    @param value Current value of slider
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int writeSliderValue(uint8_t idx, int value);
+
+  /*!
+    Slider has moved by user and smulation handle it. 
+    @param idx Slider index 0-9
+    @param value Current value of slider
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int writeSliderValue_sim1(uint8_t idx, int value);
+
+  /*!
+    Button press has occured in sim interface
+    @param idx Slider index 0-9
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int buttonPress(int idx);
+
+  /*!
+    Button press handler for sim1
+    @param idx Slider index 0-9
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int buttonPress_sim1(int idx);
+
+  /*!
+    Checkbox clicked in sim interface
+    @param idx Checkbox index 0-9
+    @param checked True if checked, false if unchecked
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int checkboxClick(int idx, bool checked);
+
+  /*!
+    Simulation handler for checkbox clicked
+    @param idx Checkbox index 0-9
+    @param checked True if checked, false if unchecked
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int checkboxClick_sim1(int idx, bool checked);
+
+  /*!
+    Radio button clicked in sim interface
+    @param idx Radiobutton index 0-9
+    @param checked True if checked, false if unchecked
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int radioClick(int idx, bool checked);
+
+  /*!
+    Simulation handler for radiobutton clicked
+    @param idx Checkbox index 0-9
+    @param checked True if checked, false if unchecked
+    @return VSCP_ERROR_SUCCESS if all is OK
+  */
+  int radioClick_sim1(int idx, bool checked);
+
   // ========================================================================
   //                         Firmware callbacks
   // ========================================================================
