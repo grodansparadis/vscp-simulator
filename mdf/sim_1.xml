@@ -3,7 +3,7 @@
 <vscp>
 <module>
 <name>btest simulation</name>
-<copyright>Ake Hedman Grodans PAradis AB 2024</copyright>
+<copyright>(C) Ake Hedman, Grodans Paradis AB 2024</copyright>
 <level>0</level>
 <model>A</model>
 <version>1</version>
@@ -18,7 +18,7 @@
 <city>Los</city>
 <town></town>
 <region></region>
-<postcode>82050</postcode>
+<postcode>82770</postcode>
 <state></state>
 <country>Sweden</country>
 </address>
@@ -44,8 +44,8 @@
 </web>
 </manufacturer>
 <boot>
-<algorithm>1</algorithm>
-<blocksize>8</blocksize>
+<algorithm>0</algorithm>
+<blocksize>4096</blocksize>
 <blockcount>4096</blockcount>
 </boot>
 <files>
@@ -88,219 +88,27 @@
 <description lang="en">Sub zone for channel 3</description>
 </reg>
 <reg name="sub zone s5" page="0" offset="6" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0" >
-<bit name="direction" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Counting direction. 0=count upwards. 1=count down.</description>
-</bit>
-<bit name="enable counter alarm" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable alarm level for counter..</description>
-</bit>
-<bit name="enable zero reload value" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable reload value on zero</description>
-</bit>
-<bit name="reserved" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="enable counter" pos="7" width="1" default="1" min="0" max="0" access="rw" >
-<description lang="en">The counter will start to count.</description>
-</bit>
 <description lang="en">Control  register for counter 0\nFunctionality for counter 0.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter.</description>
 </reg>
 <reg name="sub zone s6" page="0" offset="7" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0" >
-<bit name="direction" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Counting direction. 0=count upwards. 1=count down.</description>
-</bit>
-<bit name="enable counter alarm" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable alarm level for counter..</description>
-</bit>
-<bit name="enable zero reload value" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable reload value on zero</description>
-</bit>
-<bit name="reserved" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="enable counter" pos="7" width="1" default="1" min="0" max="0" access="rw" >
-<description lang="en">The counter will start to count.</description>
-</bit>
 <description lang="en">Control  register for counter 1\nFunctionality for counter 1.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter.</description>
 </reg>
 <reg name="sub zone s7" page="0" offset="8" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0" >
-<bit name="direction" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Counting direction. 0=count upwards. 1=count down.</description>
-</bit>
-<bit name="enable counter alarm" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable alarm level for counter..</description>
-</bit>
-<bit name="enable zero reload value" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable reload value on zero</description>
-</bit>
-<bit name="reserved" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="enable counter" pos="7" width="1" default="1" min="0" max="0" access="rw" >
-<description lang="en">The counter will start to count.</description>
-</bit>
 <description lang="en">Control  register for counter 2\nFunctionality for counter 2.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter.</description>
 </reg>
 <reg name="sub zone s8" page="0" offset="9" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0" >
-<bit name="direction" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Counting direction. 0=count upwards. 1=count down.</description>
-</bit>
-<bit name="enable counter alarm" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable alarm level for counter..</description>
-</bit>
-<bit name="enable zero reload value" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable reload value on zero</description>
-</bit>
-<bit name="reserved" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="enable counter" pos="7" width="1" default="1" min="0" max="0" access="rw" >
-<description lang="en">The counter will start to count.</description>
-</bit>
 <description lang="en">Control  register for counter 3\nFunctionality for counter 3.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter.</description>
 </reg>
 <reg name="sub zone s9" page="0" offset="10" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<bit name="low alarm" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Enable frequency low alarm.</description>
-</bit>
-<bit name="high alarm" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable frequency high alarm.</description>
-</bit>
-<bit name="enable zero reload value" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable reload value on zero</description>
-</bit>
-<bit name="reserved" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="enable frequency measurements" pos="7" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable frequency measurements.</description>
-</bit>
 <description lang="en">Control register for frequency 0\nFunctionality for frequency 0.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements.</description>
 </reg>
 <reg name="sub zone c0" page="0" offset="11" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<bit name="low alarm" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Enable frequency low alarm.</description>
-</bit>
-<bit name="high alarm" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable frequency high alarm.</description>
-</bit>
-<bit name="enable zero reload value" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable reload value on zero</description>
-</bit>
-<bit name="reserved" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="enable frequency measurements" pos="7" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable frequency measurements.</description>
-</bit>
 <description lang="en">Control register for frequency 1\nFunctionality for frequency 1.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements.</description>
 </reg>
 <reg name="sub zone c1" page="0" offset="12" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<bit name="low alarm" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Enable frequency low alarm.</description>
-</bit>
-<bit name="high alarm" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable frequency high alarm.</description>
-</bit>
-<bit name="enable zero reload value" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable reload value on zero</description>
-</bit>
-<bit name="reserved" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="enable frequency measurements" pos="7" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable frequency measurements.</description>
-</bit>
 <description lang="en">Control register for frequency 2\nFunctionality for frequency 2.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements.</description>
 </reg>
 <reg name="sub zone c2" page="0" offset="13" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<bit name="low alarm" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Enable frequency low alarm.</description>
-</bit>
-<bit name="high alarm" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable frequency high alarm.</description>
-</bit>
-<bit name="enable zero reload value" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable reload value on zero</description>
-</bit>
-<bit name="enable stream events" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable stream events.</description>
-</bit>
-<bit name="reserved" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="reserved" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Reserved.</description>
-</bit>
-<bit name="enable frequency measurements" pos="7" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Enable frequency measurements.</description>
-</bit>
 <description lang="en">Control register for frequency 3\nFunctionality for frequency 3.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Enable stream events.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements.</description>
 </reg>
 <reg name="sub zone c3" page="0" offset="14" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0" >
@@ -504,7 +312,7 @@
 <reg name="current value for slider 9" page="0" offset="80" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
 <description lang="en">Report interval for frequency 2 in seconds. Set to zero to turn of reporting.</description>
 </reg>
-<reg name="report interval for frequency 3." page="0" offset="81" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="report interval for frequency" page="0" offset="81" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
 <description lang="en">Report interval for frequency 3 in seconds. Set to zero to turn of reporting.</description>
 </reg>
 
@@ -517,28 +325,28 @@
 </remotevars>
 <alarm>
 <bit name="alarm bit 7" pos="7" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Alarm has occured.</description>
+<description lang="en">Alarm has occured (pos 7).</description>
 </bit>
 <bit name="alarm bit 6" pos="6" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Alarm has occured.</description>
+<description lang="en">Alarm has occured (pos 6).</description>
 </bit>
 <bit name="alarm alarm bit 5" pos="5" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Alarm has occured.</description>
+<description lang="en">Alarm has occured (pos 5).</description>
 </bit>
 <bit name="alarm bit 4" pos="4" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Alarm has occured.</description>
+<description lang="en">Alarm has occured (pos 4).</description>
 </bit>
 <bit name="alarm bit 3" pos="3" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Alarm has occured.</description>
+<description lang="en">Alarm has occured (pos 3).</description>
 </bit>
 <bit name="alarm bit 2" pos="2" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Alarm has occured.</description>
+<description lang="en">Alarm has occured (pos 2).</description>
 </bit>
 <bit name="alarm bit 1" pos="1" width="1" default="0" min="0" max="0" access="rw" >
-<description lang="en">Alarm has occured.</description>
+<description lang="en">Alarm has occured (pos 1).</description>
 </bit>
 <bit name="alarm bit 0" pos="0" width="1" default="0" min="0" max="1" access="rw" >
-<description lang="en">Alarm has occured.</description>
+<description lang="en">Alarm has occured (pos 0).</description>
 </bit>
 </alarm>
 
