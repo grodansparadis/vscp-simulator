@@ -9,7 +9,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/build/btest",
-      "args": ["-f /usr/local/src/VSCP/vscp-test-bootloader/debug/firmware_example1.json"],
+      "args": ["-f /usr/local/src/VSCP/vscp-simulator/debug/firmware_example1.json"],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],

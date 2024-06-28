@@ -1,18 +1,46 @@
-# vscp-test-bootloader
+# vscp-simulator
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <img src="https://vscp.org/images/logo.png" width="100">
 
-This is a simple test software for testing of the [VSCP bootloader](https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_boot_loader_algorithm) just created for testing and validation and not intended for public use.
+This is a simple test software thats simulates all functionality of a VSCP level I or a Level I node. It can be used for testing of the [VSCP bootloader](https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_boot_loader_algorithm) or VSCP node functionality.
 
+This software is created for (cross)testing and validation of new functionality and not intended for public use.
 
-use 
+The following transport mechanisms are available
 
-  cmake -DCMAKE_PREFIX_PATH=~/Qt/6.7.0/gcc_64 ..
+| Transport | Availability | OS |
+| ----------| ------------ | -- |
+| socketcan | Currently available. | Linux |
+| canal | Soon... | Linux, Windows |
+| tcp/ip | Soon... | Linux, Windows |
+| MQTT | Soon... | Linux, Windows |
+| Websocket version 1 | Soon... | Linux, Windows |
+| Websocket version 2 | Soon... | Linux, Windows |
+| Ethernet | Planned | Linux, Windows |
+| UDP | Planned.| Linux, Windows |
+| Multicast | Planned. | Linux, Windows |
 
-to (or similar) build or set it in cmake: configure environment in the settings for vscode.
+## Get source code
+
+Check out the souce code from the repository with
+
+  git checkout --recursive https://github.com/grodansparadis/vscp-simulator.git
+
+Change folder to **vscp-simulator**
+
+```bash
+mkdir build
+cd build
+cmake -DCMAKE_PREFIX_PATH=~/Qt/6.7.0/gcc_64 ..
+make
+```
+
+*DCMAKE_PREFIX_PATH* is the path to QT you set it to the folder and the verison of QT you want to use with the vscp-simulator. All versions > 5.15 should work. If using vsicula studio code set this encitonment variabl in **cmake: configure environment** in the settings for vscode.
+
+The executable is named **btest** 
 
 ## Command line switches
 
@@ -21,10 +49,10 @@ to (or similar) build or set it in cmake: configure environment in the settings 
 | -b | --bootmode | Set bootmode flag 0=start firmware app. 0!= start bootloader. |
 | -B | --block | Block info on the form size:count where size is he size of a block in bytes and count are the number of blocks of that size. |
 | -c | --config | Semicolon seperated string for interface settings. |
-| -f | --cfgfile | Path to JSON configuration file |
+| -f | --cfgfile | Path to JSON configuration file. A sample configuration file named *firmware_example1.json* is available in the debug folder of the project  |
 | -g | --guid | GUID for simulated device. LSB byte is the only valid byte for Level I devices. |
 | -h | --host | Host to connect to (valid for tcpip, mqtt, etc). |
-| -i | --interface | INterface to use ("socketcan", "canal", "tcpip", "mqtt", etc). |
+| -i | --interface | Interface to use ("socketcan", "canal", "tcpip", "mqtt", etc). |
 | -l | --level | 0/1 VSCP level. (0=Level I / 1=Level II) |
 | -L | --loglevel | Debug level for console/file on the form level-console:level-file |
 | -p | --password | Password to use for connection. |
@@ -34,25 +62,28 @@ to (or similar) build or set it in cmake: configure environment in the settings 
 | -T | --pub | Topic to publish to (MQTT). Can be semicolon separated list. |
 | -u | --user | Username to use for connection. |
 
+### Firmware mode
+The code normally starts up in firmware mode and then simulates all functionality of a VSCP level I or level II node. Set the functionality you want with command line switches or in a configuration file (-f switch).
+
 ### Bootloader mode
 In bootloader mode the interface (-i) must be specified as any parameters for it (-c). bootmode must be set by setting -b0xff and -B must me used to specify block size and number of blocks. Some interfaces like MQTT , tcp/ip etc may need username/password and other settings.
 
-> btest -i socketcan -c vcan0 -b 0xff -B 256:1024
+```bash
+btest -i socketcan -c vcan0 -b 0xff -B 256:1024
+```
 
-is a typical startup line to tes the bootloader over a socketcan interface.
-
-### Firmware mode
+is a typical startup line to test the bootloader over a socketcan interface.
 
 ## Configuration file format
 
-The configuration file is in JSON format and defines the simulated firmware of the node. If this file
-is not available a default configuration will be used.
+The configuration file (set path with -f switch) is in JSON format and defines the simulated firmware of the node. If this file is not available a default configuration will be used.
 
 ```json
 {
   "interface": {
     "type": "socketcan",
     "config": "value1;value2;value3",
+    "flags": 12345,
     "connect-timeout": 5000
   },
   "bootloader": {
@@ -87,17 +118,18 @@ is not available a default configuration will be used.
   }
 }
 ```
-All numerical values can be set as a number or a string with hex (0x) / octal (0o) / binary (0b) / decimal,  prefix signaling how it should be converted to the numerical value. Called "numerical string" below.
+All numerical values can be set as a number or a string with hex (0x) / octal (0o) / binary (0b) / decimal,  prefix signaling how it should be converted to the numerical value. Called *"numerical string"* below.
 
 All arrays can be set using the meachism used for numerical values (value/string converted to value) 
 
 ### interface
-Client interface. Can currently be "socketcan", "canal", "mqtt", "tcpip", "udp", "multicast","ws1", "ws2"
+Client interface. Can currently be "socketcan", "canal", "mqtt", "tcpip", "udp", "multicast","ws1", "ws2" or "eth"
 
 ### config
-A semicolon separated string with configuration data for the client interface.
+A semicolon separated string with configuration data for the client interface. The format is specific for the interface use.
 
-
+### flags
+Bit flags for the interface. Form a 32-bit unsigned value. 
 
 ### name
 Name of the device. Can be a maximum of 64 bytes long.
@@ -189,3 +221,34 @@ This is a 16-bit code that the manufacturer set to identify the device type so t
 
 ### ip-addr
 Ip address is the ipv4 or ipv6 address for a device that has one. Set to all zero if other mechanism like DHCP set the ip address. It can be set as a 32-bit integer for ipv4, a string or as an array of 8-bit numbers for ipv4 and and array of 16-bit numbers for ipv6.
+
+## Simulation
+
+The software has the ability to provide many simulations. Currently only one called **sim1** is avilable.
+
+### sim1
+
+![](./images/btest1.png)
+
+The simulation has
+
+ * Nine buttons that send [TurnOn](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.control?id=type5) events when pressed.
+ * Nine checkboxes that send [Opened](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.information?id=type7) and [Closed](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.information?id=type8) events when selected/deselected.
+ * Nine sliders that sends [Relative Level](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.measurement?id=type50) events when they are move.
+ * Nine radio buttons that that send [On](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.measurement?id=type50)  and [Off](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.information?id=type4)events when they are selected/deselected.
+ * The background color as an RGN value for the simulation tab can be set with register writes.
+ * A timed event is available wich have a configurable frequency. The timed event send a simulated temperature value.
+
+The simulated node has a configurable zone and all controls has there own configueable subzone.
+
+There are registers which can be written to set the value for all controls.
+
+The MDF for this simulated node working as a level I  device is available in the MDF folder of the project as **sim1_l1.xml**. The "l1" in the name is the level and thus will the level II equivalent be *sim1_l2.xml*.
+
+The MDF files are available from a public server as well
+
+ * [sim1_l1.xml](http://eurosource.se/sim1_l1.xml)
+ * [sim1_l1.json](http://eurosource.se/sim1_l1.xml)
+
+
+

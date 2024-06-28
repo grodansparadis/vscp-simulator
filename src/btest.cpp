@@ -1047,8 +1047,12 @@ btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
           *pval = psim1->m_background_color[reg - 81];
           break;
 
-        case 85: // period for status event
-          *pval = psim1->m_period_status_event;
+        case 85: // period for periodic measurement event
+          *pval = psim1->m_period_measurement_event;
+          break;
+
+        case 86: // coding for periodic measurement event
+          *pval = psim1->m_coding_measurement_event;
           break;
 
         default:
@@ -1226,8 +1230,12 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
         } break;
 
         case 85: // period for status event
-          psim1->m_period_status_event = val;
+          psim1->m_period_measurement_event = val;
           break;
+
+        case 86: // coding for status event
+          psim1->m_coding_measurement_event = val;
+          break;  
 
         default:
           if ((reg >= 0x1000) && (reg < 0x1080)) {

@@ -55,7 +55,8 @@ typedef struct simulation1 {
 
   uint8_t m_background_color[3]; // RGB color for sim tab-sheet
 
-  uint8_t m_period_status_event; // Period in seconds for status event
+  uint8_t m_period_measurement_event; // Period in seconds for status event
+  uint8_t m_coding_measurement_event; // Coding for measuremet event
 
   uint8_t m_dm[10 * 9]; // Decision matrix 8-rows
 } simulation1;
