@@ -1038,13 +1038,16 @@ btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
           *pval = psim1->m_reg_value_slider[reg - 71];
           break;
 
-        case 81: // background color R
-        case 82: // background color G
-        case 83: // background color B
+        case 81: // Place holder for unsigned int forming RGB r-var
+          break;
+          
+        case 82: // background color R
+        case 83: // background color G
+        case 84: // background color B
           *pval = psim1->m_background_color[reg - 81];
           break;
 
-        case 84: // period for status event
+        case 85: // period for status event
           *pval = psim1->m_period_status_event;
           break;
 
@@ -1207,9 +1210,12 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
           sliderValueChanged(reg - 71, val);
           break;
 
-        case 81:   // background color R
-        case 82:   // background color G
-        case 83: { // background color B
+        case 81: // Placeholder for 32-bit int RGB r-var
+          break;
+
+        case 82:   // background color R
+        case 83:   // background color G
+        case 84: { // background color B
           psim1->m_background_color[reg - 81] = val;
           spdlog::info("Set background color {0:02X}{1:02X}{2:02X}",
                        psim1->m_background_color[0],
@@ -1219,7 +1225,7 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
           emit backgroundColorChanged(color);
         } break;
 
-        case 84: // period for status event
+        case 85: // period for status event
           psim1->m_period_status_event = val;
           break;
 

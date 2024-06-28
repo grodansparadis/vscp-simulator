@@ -1,0 +1,152 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<!-- MDF file created with VSCP Works + -->
+<vscp>
+<module>
+<name>btest simulation</name>
+<copyright>(C) Ake Hedman, Grodans Paradis AB 2024</copyright>
+<level>0</level>
+<model>A</model>
+<version>1</version>
+<changed>2024-06-26</changed>
+<buffersize>8</buffersize>
+<description lang="en">VSCP simulation program model 1</description>
+<infourl lang="en">https://github.com/grodansparadis/vscp-test-bootloader</infourl>
+<manufacturer>
+<name>Grodans Paradis AB</name>
+<address>
+<street>Brattbergavägen 17</street>
+<city>Los</city>
+<town></town>
+<region></region>
+<postcode>82770</postcode>
+<state></state>
+<country>Sweden</country>
+</address>
+<telephone>
+<number>+46 8 40011835</number>
+<description lang="en">Main Reception</description>
+</telephone>
+<email>
+<address>support@grodansparadis.com</address>
+<description lang="en">Support email</description>
+</email>
+<email>
+<address>sales@grodansparadis.com</address>
+<description lang="en">Sales inquires email</description>
+</email>
+<email>
+<address>info@grodansparadis.com</address>
+<description lang="en">General email</description>
+</email>
+<web>
+<address>http://www.grodansparadis.com</address>
+<description lang="en">Main web site</description>
+</web>
+</manufacturer>
+
+
+<registers>
+<reg name="sub zone s0" page="0" offset="1" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<description lang="en">Sub zone this module belongs to</description>
+</reg>
+</registers>
+
+<remotevars>
+<remotevar name="colour" type="0" default="0xffffff" page="0" offset="83" access="rw" bitpos="0" fgcolor="0" bgcolor="0" >
+<description lang="en">A 32-bit RGB Color value for simulation background.</description>
+</remotevar>
+</remotevars>
+<alarm>
+<bit name="alarm bit 7" pos="7" width="1" default="0" min="0" max="0" access="rw" >
+<description lang="en">Alarm has occured (pos 7).</description>
+</bit>
+<bit name="alarm bit 6" pos="6" width="1" default="0" min="0" max="0" access="rw" >
+<description lang="en">Alarm has occured (pos 6).</description>
+</bit>
+<bit name="alarm alarm bit 5" pos="5" width="1" default="0" min="0" max="0" access="rw" >
+<description lang="en">Alarm has occured (pos 5).</description>
+</bit>
+<bit name="alarm bit 4" pos="4" width="1" default="0" min="0" max="0" access="rw" >
+<description lang="en">Alarm has occured (pos 4).</description>
+</bit>
+<bit name="alarm bit 3" pos="3" width="1" default="0" min="0" max="0" access="rw" >
+<description lang="en">Alarm has occured (pos 3).</description>
+</bit>
+<bit name="alarm bit 2" pos="2" width="1" default="0" min="0" max="0" access="rw" >
+<description lang="en">Alarm has occured (pos 2).</description>
+</bit>
+<bit name="alarm bit 1" pos="1" width="1" default="0" min="0" max="0" access="rw" >
+<description lang="en">Alarm has occured (pos 1).</description>
+</bit>
+<bit name="alarm bit 0" pos="0" width="1" default="0" min="0" max="1" access="rw" >
+<description lang="en">Alarm has occured (pos 0).</description>
+</bit>
+</alarm>
+
+<dmatrix level="1" start-page="1" start-offset="0" rowcnt="10" rowsize="8" >
+
+<action name="noop" code="0" >
+<description lang="en">Do nothing.</description>
+</action>
+
+<action name="set color red" code="1" >
+<param name="red value" offset="0" min="0" max="255" >
+<description lang="en">Set red value for simulation background RGB.</description>
+</param>
+</action>
+
+<action name="set color green" code="2" >
+<param name="green value" offset="0" min="0" max="255" >
+<description lang="en">Set green value for simulation background RGB.</description>
+</param>
+</action>
+
+<action name="set color blue" code="3" >
+<param name="blue value" offset="0" min="0" max="255" >
+<description lang="en">Set blue value for simulation background RGB.</description>
+</param>
+</action>
+
+<action name="set checkbox" code="4" >
+<param name="index for checkbox" offset="0" min="0" max="9" >
+<description lang="en">Index for checkbox</description>
+</param>
+</action>
+
+<action name="clear checkbox" code="5" >
+<param name="index for checkbox" offset="0" min="0" max="9" >
+<description lang="en">Index for checkbox</description>
+</param>
+</action>
+
+<action name="set radio button" code="6" >
+<param name="index for radio button" offset="0" min="0" max="9" >
+<description lang="en">Index for checkbox</description>
+</param>
+</action>
+
+</dmatrix>
+
+<events>
+<event name="set color" class="102" type="49" dir="in" >
+<data name="index" offset="0" >
+<description lang="en">Index which address item that should have color change. NOT used can be set to any value.</description>
+</data>
+<data name="zone" offset="1" >
+<description lang="en">Zone which address item that should have color change. Must be same as device zone.</description>
+</data>
+<data name="subzone" offset="2" >
+<description lang="en">Subzone which address item that should have color change. NOT used can be set to any value.</description>
+</data>
+<data name="red (R) color of RGB" offset="3" >
+<description lang="en">Red color part of RGB color value (0-255).</description>
+</data>
+<data name="green (G) color of RGB" offset="4" >
+<description lang="en">Green color part of RGB color value (0-255).</description>
+</data>
+<data name="blue (B) color of RGB" offset="4" >
+<description lang="en">Blue color part of RGB color value (0-255).</description>
+</data>
+</event>
+</events></module>
+</vscp>
