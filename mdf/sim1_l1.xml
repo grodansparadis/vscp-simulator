@@ -213,106 +213,155 @@
 <reg name="current value for button 9" page="0" offset="50" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
 <description lang="en">32-bit counter 0 reload value MSB byte.</description>
 </reg>
-<reg name="current value for checkbox 0" page="0" offset="51" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 reload value.</description>
+<reg name="current value for checkbox 0" page="0" offset="51" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="Open" value="1" >
+</item> <item name="Closed" value="1" >
+</item> </valuelist> 
+<description lang="en">C0 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 1" page="0" offset="52" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 reload value.</description>
+<reg name="current value for checkbox 1" page="0" offset="52" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="Open" value="1" >
+</item> <item name="Close" value="0" >
+</item> </valuelist> 
+<description lang="en">C1 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 2" page="0" offset="53" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 reload value LSB byte.</description>
+<reg name="current value for checkbox 2" page="0" offset="53" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<description lang="en">C2 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 3" page="0" offset="54" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 reload value MSB byte.</description>
+<reg name="current value for checkbox 3" page="0" offset="54" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<description lang="en">C3 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 4" page="0" offset="55" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 reload value.</description>
+<reg name="current value for checkbox 4" page="0" offset="55" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<description lang="en">C4 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 5" page="0" offset="56" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 reload value.</description>
+<reg name="current value for checkbox 5" page="0" offset="56" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<description lang="en">C5 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 6" page="0" offset="57" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 reload value LSB byte.</description>
+<reg name="current value for checkbox 6" page="0" offset="57" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<description lang="en">C6 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 7" page="0" offset="58" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 reload value MSB byte.</description>
+<reg name="current value for checkbox 7" page="0" offset="58" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<description lang="en">C0 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 8" page="0" offset="59" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 reload value.</description>
+<reg name="current value for checkbox 8" page="0" offset="59" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<description lang="en">C8 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for checkbox 9" page="0" offset="60" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 reload value.</description>
+<reg name="current value for checkbox 9" page="0" offset="60" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<description lang="en">C9 value. 1 is opened. 0 is closed.</description>
 </reg>
-<reg name="current value for radio option button 0" page="0" offset="61" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 reload value LSB byte.</description>
+<reg name="current value for radio option button 0" page="0" offset="61" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="OFF" value="0" >
+</item> <item name="ON" value="1" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R0</description>
 </reg>
-<reg name="current value for radio option button 1" page="0" offset="62" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 reload value MSB byte.</description>
+<reg name="current value for radio option button 1" page="0" offset="62" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R1</description>
 </reg>
-<reg name="current value for radio option button 2" page="0" offset="63" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 reload value.</description>
+<reg name="current value for radio option button 2" page="0" offset="63" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R2</description>
 </reg>
-<reg name="current value for radio option button 3" page="0" offset="64" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 reload value.</description>
+<reg name="current value for radio option button 3" page="0" offset="64" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R3</description>
 </reg>
-<reg name="current value for radio option button 4" page="0" offset="65" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 reload value LSB byte.</description>
+<reg name="current value for radio option button 4" page="0" offset="65" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R4</description>
 </reg>
-<reg name="current value for radio option button 5" page="0" offset="66" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Counter high level for channel 0 LSB byte.</description>
+<reg name="current value for radio option button 5" page="0" offset="66" span="1" width="8" access="rw" type="0" default="0" min="0" max="0" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R5</description>
 </reg>
-<reg name="current value for radio option button 6" page="0" offset="67" span="1" width="8" access="rw" type="0" default="200" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Counter high level for channel 0 LSB byte.</description>
+<reg name="current value for radio option button 6" page="0" offset="67" span="1" width="8" access="rw" type="0" default="200" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R6</description>
 </reg>
-<reg name="current value for radio option button 7" page="0" offset="68" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Counter high level for channel 1 LSB byte.</description>
+<reg name="current value for radio option button 7" page="0" offset="68" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R7	
+	</description>
 </reg>
-<reg name="current value for radio option button 8" page="0" offset="69" span="1" width="8" access="rw" type="0" default="200" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Counter high level for channel 1 LSB byte.</description>
+<reg name="current value for radio option button 8" page="0" offset="69" span="1" width="8" access="rw" type="0" default="200" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R8
+</description>
 </reg>
-<reg name="current value for radio option button 9" page="0" offset="70" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Counter high level for channel 2 LSB byte.</description>
+<reg name="current value for radio option button 9" page="0" offset="70" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<valuelist> <item name="ON" value="1" >
+</item> <item name="OFF" value="0" >
+</item> </valuelist> 
+<description lang="en">Radio button value for R9</description>
 </reg>
 <reg name="current value for slider 0" page="0" offset="71" span="1" width="8" access="rw" type="0" default="200" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Counter high level for channel 2 LSB byte.</description>
+<description lang="en">Slider value 0</description>
 </reg>
 <reg name="current value for slider 1" page="0" offset="72" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Counter high level for channel 3 LSB byte.</description>
+<description lang="en">Slider value 1</description>
 </reg>
 <reg name="current value for slider 2" page="0" offset="73" span="1" width="8" access="rw" type="0" default="200" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Counter high level for channel 3 LSB byte.</description>
+<description lang="en">Slider value 2</description>
 </reg>
 <reg name="current value for slider 3" page="0" offset="74" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Report interval for counter 0 in seconds. Set to zero to turn of reporting.</description>
+<description lang="en">Slider value 3</description>
 </reg>
 <reg name="current value for slider 4" page="0" offset="75" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Report interval for counter 1 in seconds. Set to zero to turn of reporting.</description>
+<description lang="en">Slider value 4</description>
 </reg>
 <reg name="current value for slider 5" page="0" offset="76" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Report interval for counter 2 in seconds. Set to zero to turn of reporting.</description>
+<description lang="en">Slider value 5</description>
 </reg>
 <reg name="current value for slider 6" page="0" offset="77" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Report interval for counter 3 in seconds. Set to zero to turn of reporting.</description>
+<description lang="en">Slider value 6</description>
 </reg>
 <reg name="current value for slider 7" page="0" offset="78" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Report interval for frequency 0 in seconds. Set to zero to turn of reporting.</description>
+<description lang="en">Slider value 7</description>
 </reg>
 <reg name="current value for slider 8" page="0" offset="79" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Report interval for frequency 1 in seconds. Set to zero to turn of reporting.</description>
+<description lang="en">Slider value 8</description>
 </reg>
 <reg name="current value for slider 9" page="0" offset="80" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Report interval for frequency 2 in seconds. Set to zero to turn of reporting.</description>
+<description lang="en">Slider value 9</description>
 </reg>
-<reg name="Placeholder (Always read as zero)" page="0" offset="81" span="1" width="8" access="rw" type="0" default="UNDEF" min="0" max="0" fgcolor="0" bgcolor="ffffff" >
+<reg name="placeholder (always read as zero)" page="0" offset="81" span="1" width="8" access="rw" type="0" default="undef" min="0" max="0" fgcolor="0" bgcolor="0" >
 </reg>
-<reg name="Background color RGB (R)" page="0" offset="82" span="1" width="8" access="rw" type="0" default="UNDEF" min="0" max="255" fgcolor="0" bgcolor="ffffff" >
+<reg name="background color rgb (r)" page="0" offset="82" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
 </reg>
-<reg name="Background color RGB (G)" page="0" offset="83" span="1" width="8" access="rw" type="0" default="UNDEF" min="0" max="255" fgcolor="0" bgcolor="ffffff" >
+<reg name="background color rgb (g)" page="0" offset="83" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
 </reg>
-<reg name="Background color RGB (B)" page="0" offset="84" span="1" width="8" access="rw" type="0" default="UNDEF" min="0" max="255" fgcolor="0" bgcolor="ffffff" >
+<reg name="background color rgb (b)" page="0" offset="84" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
 </reg>
 <reg name="report interval for frequency" page="0" offset="85" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
 <description lang="en">Report interval for frequency 3 in seconds. Set to zero to turn of reporting.</description>
+</reg>
+<reg name="data coding for the periodic measurement event" page="0" offset="86" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
+<bit name="Sensor index" pos="0" width="3" default="0" min="0" max="7" access="rw" >
+<infourl lang="en">https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_measurements?id=datacoding</infourl>
+</bit>
+<bit name="Unit" pos="3" width="2" default="0" min="0" max="0" access="rw" >
+<infourl lang="en">https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_measurements?id=datacoding</infourl>
+</bit>
+<bit name="Coding" pos="5" width="3" default="0" min="0" max="0" access="rw" >
+<infourl lang="en">https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_measurements?id=datacoding</infourl>
+</bit>
 </reg>
 </registers>
 <remotevars>
@@ -346,7 +395,7 @@
 <description lang="en">Alarm has occured (pos 0).</description>
 </bit>
 </alarm>
-<dmatrix level="1" start-page="0" start-offset="0" rowcnt="0" rowsize="8" >
+<dmatrix level="1" start-page="0" start-offset="0" rowcnt="10" rowsize="8" >
 <action name="noop" code="0" >
 </action>
 <action name="set color red" code="1" >

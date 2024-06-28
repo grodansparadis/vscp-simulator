@@ -1,19 +1,19 @@
 {
 "module": {
-"name": "beijing io controller",
+"name": "btest simulation",
 "copyright": "(C) Ake Hedman, Grodans Paradis AB 2024",
 "level": 0,
-"model": "B",
-"version": "9",
-"changed": "2020-05-14",
+"model": "A",
+"version": "1",
+"changed": "2024-06-26",
 "buffersize": 8
 ,
 "description": [
-{"en": "With this VSCP module it is possible to control up to ten digital IOchannels where each can be configured as an input or an output."}
+{"en": "VSCP simulation program model 1"}
 
 ],
 "infourl": [
-{"en": "http://www.grodansparadis.com/beijing/beijing.html"}
+{"en": "https://github.com/grodansparadis/vscp-test-bootloader"}
 
 ],
 "manufacturer": {
@@ -29,14 +29,6 @@
 }
 ,
 "telephone": [
-{
-"number": "+46 8 40011835"
-,
-"description": [
-{"en": "Main Reception"}
-
-]}
-,
 {
 "number": "+46 8 40011835"
 ,
@@ -70,41 +62,9 @@
 {"en": "General email"}
 
 ]}
-,
-{
-"address": "support@grodansparadis.com"
-,
-"description": [
-{"en": "Support email"}
-
-]}
-,
-{
-"address": "sales@grodansparadis.com"
-,
-"description": [
-{"en": "Sales inquires email"}
-
-]}
-,
-{
-"address": "info@grodansparadis.com"
-,
-"description": [
-{"en": "General email"}
-
-]}
 
 ],
 "web": [
-{
-"address": "http://www.grodansparadis.com"
-,
-"description": [
-{"en": "Main web site"}
-
-]}
-,
 {
 "address": "http://www.grodansparadis.com"
 ,
@@ -116,8 +76,8 @@
 ]}
 ,
 "boot": {
-"algorithm": 1,
-"blocksize": 8,
+"algorithm": 0,
+"blocksize": 4096,
 "blockcount": 4096
 },
 "files": [
@@ -125,210 +85,12 @@
 "picture": [
 {
 "name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing1.png", 
+"url": "https://raw.githubusercontent.com/grodansparadis/vscp-test-bootloader/main/images/btest2.png", 
 "format": "png", 
-"date": ""
+"date": "2024-06-26"
 ,
 "description": [
-{"en": "Picture 1 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing2.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 2 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing3.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 3 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing4.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 4 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing5.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 5 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing6.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 6 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing7.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 7 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing8.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 8 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing9.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 9 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing10.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 10 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing11.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 11 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing11_connectors.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture of Beijing module connectors."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing12.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 12 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing13.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 13 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing14.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 14 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing15.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture 15 of Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing15_terminal_block.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Picture of Beijing module terminal block."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing_sch_rev_B.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Beijing schema for reversion B."}
-
-]}
-,
-{
-"name": "", 
-"url": "http://www.grodansparadis.com/beijing/images/beijing_brd_rev_B.png", 
-"format": "png", 
-"date": ""
-,
-"description": [
-{"en": "Beijing PCB board layout for reversion B."}
+{"en": "Picture of the btest program simulation panel."}
 
 ]}
 
@@ -342,13 +104,13 @@
 "manual": [
 {
 "name": "", 
-"path": "http://www.grodansparadis.com/beijing/manual/doku.php?id=start", 
+"path": "https://github.com/grodansparadis/vscp-test-bootloader", 
 "format": "html", 
 "language": "", 
 "date": ""
 ,
 "description": [
-{"en": "Full manual for the Beijing module."}
+{"en": "Manual for the btest program"}
 
 ]}
 
@@ -358,91 +120,19 @@
 "firmware": [
 {
 "name": "", 
-"path": "https://github.com/grodansparadis/can4vscp_beijing/releases/download/v1.1.6/Bejing_2580_1_1_6.hex", 
+"path": "https://github.com/grodansparadis/can4vscp_accra/releases/download/v1.0.4/Accra_2580_1_0_4.hex", 
 "format": "INTELHEX8", 
 "date": "2020-05-14", 
 "target": "pic18f2580", 
-"targetcode": 2, 
-"version_major": 1, 
-"version_minor": 1, 
-"version_subminor": 6, 
-"size": 0, 
-"md5": ""
-,
-"description": [
-{"en": "Firmware for the Beijing I/O module with for use with the VSCP Bootloader wizard."}
-
-]}
-,
-{
-"name": "", 
-"path": "https://github.com/grodansparadis/can4vscp_beijing/releases/download/v1.1.6/Bejing_26K80.1_1_6.hex", 
-"format": "INTELHEX8", 
-"date": "2020-05-14", 
-"target": "pic18f26K80", 
-"targetcode": 2, 
-"version_major": 1, 
-"version_minor": 1, 
-"version_subminor": 6, 
-"size": 0, 
-"md5": ""
-,
-"description": [
-{"en": "Firmware for the Beijing I/O module with for use with the VSCP Bootloader wizard."}
-
-]}
-,
-{
-"name": "", 
-"path": "https://github.com/grodansparadis/can4vscp_beijing/releases/download/v1.1.0/Bejing_1_1_0.hex", 
-"format": "INTELHEX8", 
-"date": "2015-11-15", 
-"target": "pic18f2580", 
-"targetcode": 1, 
-"version_major": 1, 
-"version_minor": 1, 
-"version_subminor": 0, 
-"size": 0, 
-"md5": ""
-,
-"description": [
-{"en": "Firmware version 1.1.0 for the Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"path": "https://github.com/grodansparadis/can4vscp_beijing/releases/download/v1.0.0/Bejing_1_0_0.hex", 
-"format": "INTELHEX8", 
-"date": "2015-07-07", 
-"target": "pic18f2580", 
-"targetcode": 1, 
+"targetcode": 0, 
 "version_major": 1, 
 "version_minor": 0, 
-"version_subminor": 0, 
+"version_subminor": 4, 
 "size": 0, 
 "md5": ""
 ,
 "description": [
-{"en": "Firmware version 1.0.0 for the Beijing module."}
-
-]}
-,
-{
-"name": "", 
-"path": "https://github.com/grodansparadis/can4vscp_beijing/releases/download/v1.1.0/Bejing_1_1_0.hex", 
-"format": "INTELHEX8", 
-"date": "2015-11-15", 
-"target": "pic18f2580", 
-"targetcode": 1, 
-"version_major": 1, 
-"version_minor": 1, 
-"version_subminor": 0, 
-"size": 0, 
-"md5": ""
-,
-"description": [
-{"en": "Firmware version 1.1.0 for the Beijing module."}
+{"en": "Firmware for the Accra counter module with PIC18F26K80 for test."}
 
 ]}
 
@@ -478,7 +168,7 @@
 
 ]},
 {
-"name": "sub zone",
+"name": "sub zone s0",
 "page": 0,
 "offset": 1,
 "span": 1,
@@ -496,7 +186,7 @@
 
 ]},
 {
-"name": "sub zone i/o 0",
+"name": "sub zone s1",
 "page": 0,
 "offset": 2,
 "span": 1,
@@ -510,11 +200,11 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 0"}
+{"en": "Sub zone for channel 0"}
 
 ]},
 {
-"name": "sub zone i/o 1",
+"name": "sub zone s2",
 "page": 0,
 "offset": 3,
 "span": 1,
@@ -528,11 +218,11 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 1"}
+{"en": "Sub zone for channel 1"}
 
 ]},
 {
-"name": "sub zone i/o 2",
+"name": "sub zone s3",
 "page": 0,
 "offset": 4,
 "span": 1,
@@ -546,11 +236,11 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 2"}
+{"en": "Sub zone for channel 2"}
 
 ]},
 {
-"name": "sub zone i/o 3",
+"name": "sub zone s4",
 "page": 0,
 "offset": 5,
 "span": 1,
@@ -564,119 +254,119 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 3"}
+{"en": "Sub zone for channel 3"}
 
 ]},
 {
-"name": "sub zone i/o 4",
+"name": "sub zone s5",
 "page": 0,
 "offset": 6,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "4",
+"default": "128",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 4"}
+{"en": "Control  register for counter 0\nFunctionality for counter 0.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter."}
 
 ]},
 {
-"name": "sub zone i/o 5",
+"name": "sub zone s6",
 "page": 0,
 "offset": 7,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "5",
+"default": "128",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 5"}
+{"en": "Control  register for counter 1\nFunctionality for counter 1.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter."}
 
 ]},
 {
-"name": "sub zone i/o 6",
+"name": "sub zone s7",
 "page": 0,
 "offset": 8,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "6",
+"default": "128",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 6"}
+{"en": "Control  register for counter 2\nFunctionality for counter 2.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter."}
 
 ]},
 {
-"name": "sub zone i/o 7",
+"name": "sub zone s8",
 "page": 0,
 "offset": 9,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "7",
+"default": "128",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 7"}
+{"en": "Control  register for counter 3\nFunctionality for counter 3.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter."}
 
 ]},
 {
-"name": "sub zone i/o 8",
+"name": "sub zone s9",
 "page": 0,
 "offset": 10,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "8",
+"default": "0",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 8"}
+{"en": "Control register for frequency 0\nFunctionality for frequency 0.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements."}
 
 ]},
 {
-"name": "sub zone i/o 9",
+"name": "sub zone c0",
 "page": 0,
 "offset": 11,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "9",
+"default": "0",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Sub zone for I/O channel 9"}
+{"en": "Control register for frequency 1\nFunctionality for frequency 1.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements."}
 
 ]},
 {
-"name": "i/o direction msb",
+"name": "sub zone c1",
 "page": 0,
 "offset": 12,
 "span": 1,
@@ -689,119 +379,12 @@
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
-"bit": [
-{
-"name": "direction 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
 "description": [
-{"en": "Direction for I/O channel 8 - (RA1). 0=output. 1=input."}
-
-]}
-,{
-"name": "direction 9",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Direction for I/O channel 9 - (RA0). 0=output. 1=input."}
-
-]}
-,{
-"name": "reserved",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-]
-,
-"description": [
-{"en": "Most significant part of I/O directions register.Set bit to zero for output and one for input.\n\nBit 7 - Reserved.\nBit 6 - Reserved.\nBit 5 - Reserved.\nBit 4 - Reserved.\nBit 3 - Reserved.\nBit 2 - Reserved.\nBit 1 - Direction for I/O channel 9 - (RA0). 0=output. 1=input.\nBit 0 - Direction for I/O channel 8 - (RA1). 0=output. 1=input.\n"}
+{"en": "Control register for frequency 2\nFunctionality for frequency 2.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements."}
 
 ]},
 {
-"name": "i/o direction lsb",
+"name": "sub zone c2",
 "page": 0,
 "offset": 13,
 "span": 1,
@@ -814,3154 +397,14 @@
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
-"bit": [
-{
-"name": "direction 0",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
 "description": [
-{"en": "Direction for I/O channel 0 - (RB0). 0=output. 1=input."}
-
-]}
-,{
-"name": "direction 1",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Direction for I/O channel 1 - (RB1). 0=output. 1=input."}
-
-]}
-,{
-"name": "direction 2",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Direction for I/O channel 2 - (RC3). 0=output. 1=input."}
-
-]}
-,{
-"name": "direction 3",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Direction for I/O channel 3 - (RC4). 0=output. 1=input."}
-
-]}
-,{
-"name": "direction 4",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Direction for I/O channel 4 - (RC5). 0=output. 1=input."}
-
-]}
-,{
-"name": "direction 5",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Direction for I/O channel 5 - ((RC6). 0=output. 1=input."}
-
-]}
-,{
-"name": "direction 6",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Direction for I/O channel 6 - ((RC7). 0=output. 1=input."}
-
-]}
-,{
-"name": "direction 7",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Direction for I/O channel 7 - (RA2). 0=output. 1=input."}
-
-]}
-]
-,
-"description": [
-{"en": "Least significant part of I/O directions register.Set bit to zero for output and one for input.\n\nBit 7 - Direction for I/O channel 7 - (RA2). 0=output. 1=input.\nBit 6 - Direction for I/O channel 6 - (RC7). 0=output. 1=input.\nBit 5 - Direction for I/O channel 5 - (RC6). 0=output. 1=input.\nBit 4 - Direction for I/O channel 4 - (RC5). 0=output. 1=input.\nBit 3 - Direction for I/O channel 3 - (RC4). 0=output. 1=input.\nBit 2 - Direction for I/O channel 2 - (RC3). 0=output. 1=input.\nBit 1 - Direction for I/O channel 1 - (RB1). 0=output. 1=input.\nBit 0 - Direction for I/O channel 0 - (RB0). 0=output. 1=input.\n"}
+{"en": "Control register for frequency 3\nFunctionality for frequency 3.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Enable stream events.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements."}
 
 ]},
 {
-"name": "i/o channel 0 status register",
+"name": "sub zone c3",
 "page": 0,
 "offset": 14,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 1 status register",
-"page": 0,
-"offset": 15,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 2 status register",
-"page": 0,
-"offset": 16,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 3 status register",
-"page": 0,
-"offset": 17,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 4 status register",
-"page": 0,
-"offset": 18,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 5 status register",
-"page": 0,
-"offset": 19,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 6 status register",
-"page": 0,
-"offset": 20,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 7 status register",
-"page": 0,
-"offset": 21,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 8 status register",
-"page": 0,
-"offset": 22,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "i/o channel 9 status register",
-"page": 0,
-"offset": 23,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "undef",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x63"
-,
-"valuelist": [
-{
-"name": "off",
-"value": "0x0"
-,
-"description": [
-{"en": "Read: channel is in low state. Write: set output channel to its low state."}
-
-]}
-,
-{
-"name": "on",
-"value": "0x1"
-,
-"description": [
-{"en": "Read: channel is in high state. Write: set output channel to its high state."}
-
-]}
-
-]
-,
-"description": [
-{"en": "Read or write the state of I/O channel 0 in this register.\n0 - is returned for an inactive input or a low output. A written zero will set an output channel low.\n1 - is returned for an active input or a high output. A written one will set an output channel high.\n"}
-
-]},
-{
-"name": "output 0 control register",
-"page": 0,
-"offset": 24,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 1 control register",
-"page": 0,
-"offset": 25,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 2 control register",
-"page": 0,
-"offset": 26,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 3 control register",
-"page": 0,
-"offset": 27,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 4 control register",
-"page": 0,
-"offset": 28,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 5 control register",
-"page": 0,
-"offset": 29,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 6 control register",
-"page": 0,
-"offset": 30,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 7 control register",
-"page": 0,
-"offset": 31,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 8 control register",
-"page": 0,
-"offset": 32,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "output 9 control register",
-"page": 0,
-"offset": 33,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x98",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "enable pulse",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Enable pulse on output"}
-
-]}
-,{
-"name": "protection alarm",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Alarm sent when protection timer triggers."}
-
-]}
-,{
-"name": "protection timer enable",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: Protection timer is enabled and will deactivate output channel when the timer times out."}
-
-]}
-,{
-"name": "on event on activate enable",
-"pos": 3,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An on event will be sent when the output is turned on."}
-
-]}
-,{
-"name": "off event on deactivate enable",
-"pos": 4,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set: An off event will be sent when the output is turned off."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved"}
-
-]}
-,{
-"name": "enable channel",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the output controllable."}
-
-]}
-]
-,
-"description": [
-{"en": "The output control bits enable/disable intelligent functionality for a channel set as output.\nBit 0 - Enable pulse.\nBit 1 - If set: Alarm sent when protection timer triggers.\nBit 2 - Protection timer enable.\nBit 3 - Send On event when output goes to active state.\nBit 4 - Send Off event when output goes to inactive state.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable output.\n"}
-
-]},
-{
-"name": "input 0 control register",
-"page": 0,
-"offset": 34,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 1 control register",
-"page": 0,
-"offset": 35,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 2 control register",
-"page": 0,
-"offset": 36,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 3 control register",
-"page": 0,
-"offset": 37,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 4 control register",
-"page": 0,
-"offset": 38,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode.",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 5 control register",
-"page": 0,
-"offset": 39,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 6 control register",
-"page": 0,
-"offset": 40,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 7 control register",
-"page": 0,
-"offset": 41,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 8 control register",
-"page": 0,
-"offset": 42,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "input 9 control register",
-"page": 0,
-"offset": 43,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0x83",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "activate on/turnon-event",
-"pos": 0,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Send On/TurnOn event when input goes to active state."}
-
-]}
-,{
-"name": "activate off/turnoff-event",
-"pos": 1,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Send Off/TurnOff event when input goes to inactive state."}
-
-]}
-,{
-"name": "state event select.",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set to one to send turnon/turnoff events (if activated)."}
-
-]}
-,{
-"name": "alarm on low",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes low."}
-
-]}
-,{
-"name": "alarm on high",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "An alarm event is sent if input goes high."}
-
-]}
-,{
-"name": "continuous alarm",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Alarm events are sent continuously while the state is active."}
-
-]}
-,{
-"name": "activate button input mode",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Activate Button input mode. Only TurnOff or TurnOn is sent when an input goes low and buttoninput mode is activated. Which of them is sent is specified by bit 3 in the Input Control register.If it is set to 0 TurnOn is sent and if it is set to 1 TurnOff is sent."}
-
-]}
-,{
-"name": "enable input",
-"pos": 7,
-"width": 1,
-"default": 1,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Set this bit to make the input active."}
-
-]}
-]
-,
-"description": [
-{"en": "The input control bits enable/disable intelligent functionality for a channel set as input.\nBit 0 - Send On/TurnOn event when input goes to active state.\nBit 1 - Send Off/TurnOff event when input goes to inactive state.\nBit 2 - 0 = Send On/off events. 1=Send turnon/turnoff events (if activated).\nDifferent meaning in button input mode where 0 = TurnOn and 1 = TurnOff.\nBit 3 - Alarm event sent if input goes low.\nBit 4 - Alarm event sent if input goes high.\nBit 5 - Continuous alarm.\nBit 6 - Activate Button imput mode. Only TurnOff or TurnOn is sent when an input goes low and button input mode is activated.\nBit 7 - Enable input.\n"}
-
-]},
-{
-"name": "module control register",
-"page": 0,
-"offset": 44,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "reserved",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "reserved",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Reserved."}
-
-]}
-,{
-"name": "enable pullups",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable weak pullups if set to 1."}
-
-]}
-]
-,
-"description": [
-{"en": "It is possible to control general module behaviour in this register.\nBit 0 - Turn of input event repeat.\nBit 1 - Reserved.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable weak pullups.\n"}
-
-]},
-{
-"name": "input stream sample time",
-"page": 0,
-"offset": 45,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x50"
-,
-"description": [
-{"en": "This is the time in seconds between input stream samples. Set to zero to disable.\nCLASS1.DATA is sent with data coding=0(bits), unit=0, sensor=0 for the inputs/outputsas set here. First byte is outputs, second byte is inputs."}
-
-]},
-{
-"name": "debounce count",
-"page": 0,
-"offset": 46,
 "span": 1,
 "width": 8,
 "access": "rw",
@@ -3973,642 +416,354 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the number of counts a button input signal should be low tobe regarded as actice. Each count represents 10 ms."}
+{"en": "Reset counter 0 by writing 0x55 to this register.Will read back as zero for all values except 0x55."}
 
 ]},
 {
-"name": "short pulse duration",
+"name": "sub zone c4",
 "page": 0,
-"offset": 47,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x50"
-,
-"description": [
-{"en": "This is the duration for the short pulse action. Each count represents 10 ms.A zero vaue gives a pulse that is the shortest possible."}
-
-]}
-,{
-"name": "output pulse time register for output 0 msb",
-"page": 1,
-"offset": 0,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 0 lsb",
-"page": 1,
-"offset": 1,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 1 msb",
-"page": 1,
-"offset": 2,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 1 lsb",
-"page": 1,
-"offset": 3,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 2 msb",
-"page": 1,
-"offset": 4,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 2 lsb",
-"page": 1,
-"offset": 5,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 3 msb",
-"page": 1,
-"offset": 6,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 3 lsb",
-"page": 1,
-"offset": 7,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 4 msb",
-"page": 1,
-"offset": 8,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 4 lsb",
-"page": 1,
-"offset": 9,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 5 msb",
-"page": 1,
-"offset": 10,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 5 lsb",
-"page": 1,
-"offset": 11,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 6 msb",
-"page": 1,
-"offset": 12,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 6 lsb",
-"page": 1,
-"offset": 13,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 7 msb",
-"page": 1,
-"offset": 14,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for output 7 lsb",
-"page": 1,
 "offset": 15,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "0",
+"default": "3",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
+{"en": "Reset counter 1 by writing 0x55 to this register.Will read back as zero for all values except 0x55."}
 
 ]},
 {
-"name": "output pulse time register for output 8 msb",
-"page": 1,
+"name": "sub zone c5",
+"page": 0,
 "offset": 16,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "0",
+"default": "3",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
+{"en": "Reset counter 2 by writing 0x55 to this register.Will read back as zero for all values except 0x55."}
 
 ]},
 {
-"name": "output pulse time register for output 8 lsb",
-"page": 1,
+"name": "sub zone c6",
+"page": 0,
 "offset": 17,
 "span": 1,
 "width": 8,
 "access": "rw",
 "type": "std",
-"default": "0",
+"default": "3",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
+{"en": "Reset counter 3 by writing 0x55 to this register.Will read back as zero for all values except 0x55."}
 
 ]},
 {
-"name": "output pulse time register for output 9 msb",
-"page": 1,
+"name": "sub zone c7",
+"page": 0,
 "offset": 18,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
+{"en": "32-bit counter 0 MSB byte."}
 
 ]},
 {
-"name": "output pulse time register for output 9 lsb",
-"page": 1,
+"name": "sub zone c8",
+"page": 0,
 "offset": 19,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the pulse time for the each output expressed in seconds. This can be used tomake an output turn on and off with a certain preset interval. The min pulse time is 1second and the max time is 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\nTo start a pulse sequence first write the pulse time to this register and then set thecorresponding bit in the output status register to start the output. The pulse train isterminated by writing on or off (1 or 0) to the output status register.\n"}
+{"en": "32-bit counter 0."}
 
 ]},
 {
-"name": "output protection time register for output 0 msb",
-"page": 1,
+"name": "sub zone c9",
+"page": 0,
 "offset": 20,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. An output will be inactivated if not written to beforethis time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an outputis deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 0."}
 
 ]},
 {
-"name": "output protection time register for output 0 lsb",
-"page": 1,
+"name": "sub zone r0",
+"page": 0,
 "offset": 21,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 0 LSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 1 msb",
-"page": 1,
+"name": "sub zone r1",
+"page": 0,
 "offset": 22,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 1 MSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 1 lsb",
-"page": 1,
+"name": "sub zone r2",
+"page": 0,
 "offset": 23,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 1."}
 
 ]},
 {
-"name": "output protection time register for output 2 msb",
-"page": 1,
+"name": "sub zone r3",
+"page": 0,
 "offset": 24,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 1."}
 
 ]},
 {
-"name": "output protection time register for output 2 lsb",
-"page": 1,
+"name": "sub zone r4",
+"page": 0,
 "offset": 25,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 1 LSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 3 msb",
-"page": 1,
+"name": "sub zone r5",
+"page": 0,
 "offset": 26,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 2 MSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 3 lsb",
-"page": 1,
+"name": "sub zone r6",
+"page": 0,
 "offset": 27,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 2."}
 
 ]},
 {
-"name": "output protection time register for output 4 msb",
-"page": 1,
+"name": "sub zone r7",
+"page": 0,
 "offset": 28,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 2."}
 
 ]},
 {
-"name": "output protection time register for output 4 lsb",
-"page": 1,
+"name": "sub zone r8",
+"page": 0,
 "offset": 29,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 2 LSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 5 msb",
-"page": 1,
+"name": "sub zone r9",
+"page": 0,
 "offset": 30,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 3 MSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 5 lsb",
-"page": 1,
+"name": "sub zone slider 0",
+"page": 0,
 "offset": 31,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 3."}
 
 ]},
 {
-"name": "output protection time register for output 6 msb",
-"page": 1,
+"name": "sub zone slider 1",
+"page": 0,
 "offset": 32,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 3."}
 
 ]},
 {
-"name": "output protection time register for output 6 lsb",
-"page": 1,
+"name": "sub zone slider 2",
+"page": 0,
 "offset": 33,
 "span": 1,
 "width": 8,
-"access": "rw",
+"access": "w",
 "type": "std",
-"default": "0",
+"default": "undef",
 "min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 3 LSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 7 msb",
-"page": 1,
+"name": "sub zone slider 3",
+"page": 0,
 "offset": 34,
 "span": 1,
 "width": 8,
@@ -4621,12 +776,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 0 alarm level MSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 7 lsb",
-"page": 1,
+"name": "sub zone slider 4",
+"page": 0,
 "offset": 35,
 "span": 1,
 "width": 8,
@@ -4639,12 +794,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 0 alarm level."}
 
 ]},
 {
-"name": "output protection time register for output 8 msb",
-"page": 1,
+"name": "sub zone slider 5",
+"page": 0,
 "offset": 36,
 "span": 1,
 "width": 8,
@@ -4657,12 +812,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 0 alarm level."}
 
 ]},
 {
-"name": "output protection time register for output 8 lsb",
-"page": 1,
+"name": "sub zone slider 6",
+"page": 0,
 "offset": 37,
 "span": 1,
 "width": 8,
@@ -4675,12 +830,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 0 alarm level LSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 9 msb",
-"page": 1,
+"name": "sub zone slider 7",
+"page": 0,
 "offset": 38,
 "span": 1,
 "width": 8,
@@ -4693,12 +848,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
+{"en": "32-bit counter 1 alarm level MSB byte."}
 
 ]},
 {
-"name": "output protection time register for output 9 lsb",
-"page": 1,
+"name": "sub zone slider 8",
+"page": 0,
 "offset": 39,
 "span": 1,
 "width": 8,
@@ -4711,1267 +866,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the output protection time. A output will be inactivated if not written to before this time has elapsed.\nSet to zero to disable (default). The max time is 65535 seconds which is about 18 hours.\nThe registers can be as an example be used as a security feature to ensure that an output is deactivated after a preset time even if the controlling device failed to deactivate the output."}
-
-]}
-,{
-"name": "decision matrix row 0: oaddr",
-"page": 2,
-"offset": 0,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Originating address. Set to nickname for node that should trigger action.Oaddr is the originating address. We are only interested in messages from the node given here. 0x00is segment controller and 0xff is a node without a nickname. If bit 6 of flags is set oaddr will notbe checked and events from all nodes will be accepted."}
+{"en": "32-bit counter 1 alarm level."}
 
 ]},
 {
-"name": "decision matrix row 0: flags",
-"page": 2,
-"offset": 1,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "class filter bit 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class filter."}
-
-]}
-,{
-"name": "class mask bit 8",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class mask."}
-
-]}
-,{
-"name": "reserved bit",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "This bit is not used."}
-
-]}
-,{
-"name": "sub zone match",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one sub zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "zone match",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "hard coded",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be hard coded to trigger DM entry		   action."}
-
-]}
-,{
-"name": "check originating address",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be checked and match to trigger DM entry action."}
-
-]}
-,{
-"name": "enable",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable (1) or disable (0)the decision matrix row."}
-
-]}
-]
-,
-"description": [
-{"en": "Flags. Set selection behaviour.\nThe enable bit can be used to disable a decision matrix row while it is edited.\nThe zone and use sub zone bits can be activated to have a check on the zone/sub zone information ofan event. That is the zone/sub zone of the machine must match the one of the event to trigger the DMrow."}
-
-]},
-{
-"name": "decision matrix row 0: class mask (low eight bits)",
-"page": 2,
-"offset": 2,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class mask that defines the events that should trigger the action ofthis decision matrix row.\nBit 8 of the class mask is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 0: class filter (low eight bits)",
-"page": 2,
-"offset": 3,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class filter that defines the events that should trigger the action of thsi decision matrix row.\nBit 8 of the class filter is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 0: type mask",
-"page": 2,
-"offset": 4,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type mask that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 0: type filter",
-"page": 2,
-"offset": 5,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type filter that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 0: action",
-"page": 2,
-"offset": 6,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the action or operation that should be performed if the filtering is satisfied. Only action code 0x00 is predefined and means No-Operation. All other codes are application specific and typical application defined codes could do measurement, send predefined event etc."}
-
-]},
-{
-"name": "decision matrix row 0: action parameter",
-"page": 2,
-"offset": 7,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "A numeric action parameter can be set and its meaning is application specific."}
-
-]},
-{
-"name": "decision matrix row 1: oaddr",
-"page": 2,
-"offset": 8,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Originating address. Set to nickname for node that should trigger action.Oaddr is the originating address. We are only interested in messages from the node given here. 0x00is segment controller and 0xff is a node without a nickname. If bit 6 of flags is set oaddr willnot be checked and events from all nodes will be accepted."}
-
-]},
-{
-"name": "decision matrix row 1: flags",
-"page": 2,
-"offset": 9,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "class filter bit 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class filter."}
-
-]}
-,{
-"name": "class mask bit 8",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class mask."}
-
-]}
-,{
-"name": "reserved bit",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "This bit is not used."}
-
-]}
-,{
-"name": "sub zone match",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one sub zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "zone match",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "hard coded",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be hard coded to trigger DM entry action."}
-
-]}
-,{
-"name": "check originating address",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be checked and match to trigger DM entry action."}
-
-]}
-,{
-"name": "enable",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable (1) or disable (0)the decision matrix row."}
-
-]}
-]
-,
-"description": [
-{"en": "Flags. Set selection behaviour.\nThe enable bit can be used to disable a decision matrix row while it is edited.\nThe zone and use sub zone bits can be activated to have a check on the zone/subzone information ofan event. That is the zone/sub zone of the machine must match the one of the event to trigger theDM row."}
-
-]},
-{
-"name": "decision matrix row 1: class mask (low eight bits)",
-"page": 2,
-"offset": 10,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class mask that defines the events that should trigger the action ofthis decision matrix row.\nBit 8 of the class mask is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 1: class filter (low eight bits)",
-"page": 2,
-"offset": 11,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class filter that defines the events that should trigger the action ofthis decision matrix row.\nBit 8 of the class filter is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 1: type mask",
-"page": 2,
-"offset": 12,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type mask that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 1: type filter",
-"page": 2,
-"offset": 13,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type filter that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 1: action",
-"page": 2,
-"offset": 14,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the action or operation that should be performed if the filtering is satisfied. Only actioncode 0x00 is predefined and means No-Operation. All other codes are application specific and typicalapplication defined codes could do measurement, send predefined event etc."}
-
-]},
-{
-"name": "decision matrix row 1: action parameter",
-"page": 2,
-"offset": 15,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "A numeric action parameter can be set and its meaning is application specific."}
-
-]},
-{
-"name": "decision matrix row 2: oaddr",
-"page": 2,
-"offset": 16,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Originating address. Set to nickname for node that should trigger action.Oaddr is the originating address. We are only interested in messages from the node given here. 0x00is segment controller and 0xff is a node without a nickname. If bit 6 of flags is set oaddr will notbe checked and events from all nodes will be accepted."}
-
-]},
-{
-"name": "decision matrix row 2: flags",
-"page": 2,
-"offset": 17,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "class filter bit 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class filter."}
-
-]}
-,{
-"name": "class mask bit 8",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class mask."}
-
-]}
-,{
-"name": "reserved bit",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "This bit is not used."}
-
-]}
-,{
-"name": "sub zone match",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one sub zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "zone match",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "hard coded",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be hard coded to trigger DM entry action."}
-
-]}
-,{
-"name": "check originating address",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be checked and match to trigger DM entry action."}
-
-]}
-,{
-"name": "enable",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable (1) or disable (0)the decision matrix row."}
-
-]}
-]
-,
-"description": [
-{"en": "Flags. Set selection behaviour.\nThe enable bit can be used to disable a decision matrix row while it is edited.\nThe zone and use sub zone bits can be activated to have a check on the zone/sub zone information ofan event. That is the zone/sub zone of the machine must match the one of the event to trigger the DMrow."}
-
-]},
-{
-"name": "decision matrix row 2: class mask (low eight bits)",
-"page": 2,
-"offset": 18,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class mask that defines the events that should trigger the action ofthis decision matrix row.\nBit 8 of the class mask is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 2: class filter (low eight bits)",
-"page": 2,
-"offset": 19,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class filter that defines the events that should trigger the action ofthis decision matrix row.\nBit 8 of the class filter is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 2: type mask",
-"page": 2,
-"offset": 20,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type mask that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 2: type filter",
-"page": 2,
-"offset": 21,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type filter that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 2: action",
-"page": 2,
-"offset": 22,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the action or operation that should be performed if the filtering is satisfied. Only actioncode 0x00 is predefined and means No-Operation. All other codes are application specific and typicalapplication defined codes could do measurement, send predefined event etc."}
-
-]},
-{
-"name": "decision matrix row 2: action parameter",
-"page": 2,
-"offset": 23,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "A numeric action parameter can be set and its meaning is application specific."}
-
-]},
-{
-"name": "decision matrix row 3: oaddr",
-"page": 2,
-"offset": 24,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Originating address. Set to nickname for node that should trigger action.Oaddr is the originating address. We are only interested in messages from the node given here. 0x00is segment controller and 0xff is a node without a nickname. If bit 6 of flags is set oaddr willnot be checked and events from all nodes will be accepted."}
-
-]},
-{
-"name": "decision matrix row 3: flags",
-"page": 2,
-"offset": 25,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "class filter bit 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class filter."}
-
-]}
-,{
-"name": "class mask bit 8",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class mask."}
-
-]}
-,{
-"name": "reserved bit",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "This bit is not used."}
-
-]}
-,{
-"name": "subzone match",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one sub zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "zone match",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "hard coded",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be hard coded to trigger DM entry action."}
-
-]}
-,{
-"name": "check originating address",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be checked and match to trigger DM entry action."}
-
-]}
-,{
-"name": "enable",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable (1) or disable (0)the decision matrix row."}
-
-]}
-]
-,
-"description": [
-{"en": "Flags. Set selection behaviour.\nThe enable bit can be used to disable a decision matrix row while it is edited.\nThe zone and use sub zone bits can be activated to have a check on the zone/sub zone informationof an event. That is the zone/sub zone of the machine must match the one of the event to triggerthe DM row."}
-
-]},
-{
-"name": "decision matrix row 3: class mask (low eight bits)",
-"page": 2,
-"offset": 26,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class mask that defines the events that should trigger the action ofthis decision matrix row.\nBit 8 of the class mask is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 3: class filter (low eight bits)",
-"page": 2,
-"offset": 27,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class filter that defines the events that should trigger the actionof this decision matrix row.\nBit 8 of the class filter is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 3: type mask",
-"page": 2,
-"offset": 28,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type mask that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 3: type filter",
-"page": 2,
-"offset": 29,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type filter that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 3: action",
-"page": 2,
-"offset": 30,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the action or operation that should be performed if the filtering is satisfied. Only actioncode 0x00 is predefined and means No-Operation. All other codes are application specific and typicalapplication defined codes could do measurement, send predefined event etc."}
-
-]},
-{
-"name": "decision matrix row 3: action parameter",
-"page": 2,
-"offset": 31,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "A numeric action parameter can be set and its meaning is application specific."}
-
-]},
-{
-"name": "decision matrix row 4: oaddr",
-"page": 2,
-"offset": 32,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Originating address. Set to nickname for node that should trigger action.Oaddr is the originating address. We are only interested in messages from the node given here. 0x00is segment controller and 0xff is a node without a nickname. If bit 6 of flags is set oaddr will notbe checked and events from all nodes will be accepted."}
-
-]},
-{
-"name": "decision matrix row 4: flags",
-"page": 2,
-"offset": 33,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"bit": [
-{
-"name": "class filter bit 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class filter."}
-
-]}
-,{
-"name": "class mask bit 8",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class mask."}
-
-]}
-,{
-"name": "reserved bit",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "This bit is not used."}
-
-]}
-,{
-"name": "sub zone match",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one sub zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "zone match",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "hard coded",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be hard coded to trigger DM entry action."}
-
-]}
-,{
-"name": "check originating address",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be checked and match to trigger DM entry action."}
-
-]}
-,{
-"name": "enable",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable (1) or disable (0)the decision matrix row."}
-
-]}
-]
-,
-"description": [
-{"en": "Flags. Set selection behaviour.\nThe enable bit can be used to disable a decision matrix row while it is edited.\nThe zone and use sub zone bits can be activated to have a check on the zone/sub zoneinformation of an event. That is the zone/sub zone of the machine must match the one ofthe event to trigger the DM row."}
-
-]},
-{
-"name": "decision matrix row 4: class mask (low eight bits)",
-"page": 2,
-"offset": 34,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class mask that defines the events that should trigger theaction of this decision matrix row.\nBit 8 of the class mask is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 4: class filter (low eight bits)",
-"page": 2,
-"offset": 35,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "The lowest eight bits of the class filter that defines the events that should trigger theaction of this decision matrix row.\nBit 8 of the class filter is stored in bit 1 of the flag byte."}
-
-]},
-{
-"name": "decision matrix row 4: type mask",
-"page": 2,
-"offset": 36,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type mask that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 4: type filter",
-"page": 2,
-"offset": 37,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "Type filter that defines the events that should trigger the action of this decision matrix row."}
-
-]},
-{
-"name": "decision matrix row 4: action",
-"page": 2,
-"offset": 38,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the action or operation that should be performed if the filtering is satisfied. Onlyaction code 0x00 is predefined and means No-Operation. All other codes are application specificand typical application defined codes could do measurement, send predefined event etc."}
-
-]},
-{
-"name": "decision matrix row 4: action parameter",
-"page": 2,
-"offset": 39,
-"span": 1,
-"width": 8,
-"access": "rw",
-"type": "std",
-"default": "0",
-"min": 0,
-"max": 255,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "A numeric action parameter can be set and its meaning is application specific."}
-
-]},
-{
-"name": "decision matrix row 5: oaddr",
-"page": 2,
+"name": "sub zone slider 9",
+"page": 0,
 "offset": 40,
 "span": 1,
 "width": 8,
@@ -5984,12 +884,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Originating address. Set to nickname for node that should triggeraction.Oaddr is the originating address. We are only interested in messages from the node givenhere. 0x00 is segment controller and 0xff is a node without a nickname. If bit 6 of flagsis set oaddr will not be checked and events from all nodes will be accepted."}
+{"en": "32-bit counter 1 alarm level."}
 
 ]},
 {
-"name": "decision matrix row 5: flags",
-"page": 2,
+"name": "current value for button 0",
+"page": 0,
 "offset": 41,
 "span": 1,
 "width": 8,
@@ -6001,120 +901,13 @@
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
-"bit": [
-{
-"name": "class filter bit 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
 "description": [
-{"en": "Defines the ninth bit of the class filter."}
-
-]}
-,{
-"name": "class mask bit 8",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class mask."}
-
-]}
-,{
-"name": "reserved bit",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "This bit is not used."}
-
-]}
-,{
-"name": "subzone match",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one subzone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "zone match",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "hard coded",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be hard coded to trigger DM entry action."}
-
-]}
-,{
-"name": "check originating address",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be checked and match to trigger DM entry action."}
-
-]}
-,{
-"name": "enable",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable (1) or disable (0)the decision matrix row."}
-
-]}
-]
-,
-"description": [
-{"en": "Flags. Set selection behaviour.\nThe enable bit can be used to disable a decision matrix row while it is edited.\nThe zone and use sub zone bits can be activated to have a check on the zone/sub zoneinformation of an event. That is the zone/sub zone of the machine must match the one of theevent to trigger the DM row."}
+{"en": "32-bit counter 1 alarm level LSB byte."}
 
 ]},
 {
-"name": "decision matrix row 5: class mask (low eight bits)",
-"page": 2,
+"name": "current value for button 1",
+"page": 0,
 "offset": 42,
 "span": 1,
 "width": 8,
@@ -6127,12 +920,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "The lowest eight bits of the class mask that defines the events that should trigger theaction of this decision matrix row.\nBit 8 of the class mask is stored in bit 1 of the flag byte."}
+{"en": "32-bit counter 2 alarm level MSB byte."}
 
 ]},
 {
-"name": "decision matrix row 5: class filter (low eight bits)",
-"page": 2,
+"name": "current value for button 2",
+"page": 0,
 "offset": 43,
 "span": 1,
 "width": 8,
@@ -6145,12 +938,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "The lowest eight bits of the class filter that defines the events that should trigger theaction of this decision matrix row.\nBit 8 of the class filter is stored in bit 1 of the flag byte."}
+{"en": "32-bit counter 2 alarm level."}
 
 ]},
 {
-"name": "decision matrix row 5: type mask",
-"page": 2,
+"name": "current value for button 3",
+"page": 0,
 "offset": 44,
 "span": 1,
 "width": 8,
@@ -6163,12 +956,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Type mask that defines the events that should trigger the action of this decision matrixrow."}
+{"en": "32-bit counter 2 alarm level."}
 
 ]},
 {
-"name": "decision matrix row 5: type filter",
-"page": 2,
+"name": "current value for button 4",
+"page": 0,
 "offset": 45,
 "span": 1,
 "width": 8,
@@ -6181,12 +974,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Type filter that defines the events that should trigger the action of this decision matrixrow."}
+{"en": "32-bit counter 2 alarm level LSB byte."}
 
 ]},
 {
-"name": "decision matrix row 5: action",
-"page": 2,
+"name": "current value for button 5",
+"page": 0,
 "offset": 46,
 "span": 1,
 "width": 8,
@@ -6199,12 +992,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the action or operation that should be performed if the filtering is satisfied.Only action code 0x00 is predefined and means No-Operation. All other codes are applicationspecific and typical application defined codes could do measurement, send predefined event etc."}
+{"en": "32-bit counter 3 alarm level MSB byte."}
 
 ]},
 {
-"name": "decision matrix row 5: action parameter",
-"page": 2,
+"name": "current value for button 6",
+"page": 0,
 "offset": 47,
 "span": 1,
 "width": 8,
@@ -6217,12 +1010,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "A numeric action parameter can be set and its meaning is application specific."}
+{"en": "32-bit counter 3 alarm level."}
 
 ]},
 {
-"name": "decision matrix row 6: oaddr",
-"page": 2,
+"name": "current value for button 7",
+"page": 0,
 "offset": 48,
 "span": 1,
 "width": 8,
@@ -6235,12 +1028,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Originating address. Set to nickname for node that should triggeraction.Oaddr is the originating address. We are only interested in messages from the node given here.0x00 is segment controller and 0xff is a node without a nickname. If bit 6 of flags is set oaddrwill not be checked and events from all nodes will be accepted."}
+{"en": "32-bit counter 3 alarm level."}
 
 ]},
 {
-"name": "decision matrix row 6: flags",
-"page": 2,
+"name": "current value for button 8",
+"page": 0,
 "offset": 49,
 "span": 1,
 "width": 8,
@@ -6252,120 +1045,13 @@
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
-"bit": [
-{
-"name": "class filter bit 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
 "description": [
-{"en": "Defines the ninth bit of the class filter."}
-
-]}
-,{
-"name": "class mask bit 8",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class mask."}
-
-]}
-,{
-"name": "reserved bit",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "This bit is not used."}
-
-]}
-,{
-"name": "subzone match",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one sub zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "zone match",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "hard coded",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be hard coded to trigger DM entry action."}
-
-]}
-,{
-"name": "check originating address",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be checked and match to trigger DM entry action."}
-
-]}
-,{
-"name": "enable",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable (1) or disable (0)the decison matrix row."}
-
-]}
-]
-,
-"description": [
-{"en": "Flags. Set selection behaviour.\nThe enable bit can be used to disable a decision matrix row while it is edited.\nThe zone and use sub zone bits can be activated to have a check on the zone/sub zone informationof an event. That is the zone/subzone one of the machine must match the one of the event to triggerthe DM row."}
+{"en": "32-bit counter 3 alarm level LSB byte."}
 
 ]},
 {
-"name": "decision matrix row 6: class mask (low eight bits)",
-"page": 2,
+"name": "current value for button 9",
+"page": 0,
 "offset": 50,
 "span": 1,
 "width": 8,
@@ -6378,12 +1064,12 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "The lowest eight bits of the class mask that defines the events that should trigger the actionof this decision matrix row.\nBit 8 of the class mask is stored in bit 1 of the flag byte."}
+{"en": "32-bit counter 0 reload value MSB byte."}
 
 ]},
 {
-"name": "decision matrix row 6: class filter (low eight bits)",
-"page": 2,
+"name": "current value for checkbox 0",
+"page": 0,
 "offset": 51,
 "span": 1,
 "width": 8,
@@ -6391,17 +1077,30 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
+"valuelist": [
+{
+"name": "Open",
+"value": "1"
+}
+,
+{
+"name": "Closed",
+"value": "1"
+}
+
+]
+,
 "description": [
-{"en": "The lowest eight bits of the class filter that defines the events that should trigger the actionof this decision matrix row.\nBit 8 of the class filter is stored in bit 1 of the flag byte."}
+{"en": "C0 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 6: type mask",
-"page": 2,
+"name": "current value for checkbox 1",
+"page": 0,
 "offset": 52,
 "span": 1,
 "width": 8,
@@ -6409,17 +1108,30 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
+"valuelist": [
+{
+"name": "Open",
+"value": "1"
+}
+,
+{
+"name": "Close",
+"value": "0"
+}
+
+]
+,
 "description": [
-{"en": "Type mask that defines the events that should trigger the action of this decision matrix row."}
+{"en": "C1 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 6: type filter",
-"page": 2,
+"name": "current value for checkbox 2",
+"page": 0,
 "offset": 53,
 "span": 1,
 "width": 8,
@@ -6427,17 +1139,17 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Type filter that defines the events that should trigger the action of this decision matrix row."}
+{"en": "C2 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 6: action",
-"page": 2,
+"name": "current value for checkbox 3",
+"page": 0,
 "offset": 54,
 "span": 1,
 "width": 8,
@@ -6445,17 +1157,17 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the action or operation that should be performed if the filtering is satisfied. Onlyaction code 0x00 is predefined and means No-Operation. All other codes are application specificand typical application defined codes could do measurement, send predefined event etc."}
+{"en": "C3 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 6: action parameter",
-"page": 2,
+"name": "current value for checkbox 4",
+"page": 0,
 "offset": 55,
 "span": 1,
 "width": 8,
@@ -6463,17 +1175,17 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "A numeric action parameter can be set and its meaning is application specific."}
+{"en": "C4 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 7: oaddr",
-"page": 2,
+"name": "current value for checkbox 5",
+"page": 0,
 "offset": 56,
 "span": 1,
 "width": 8,
@@ -6481,17 +1193,17 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Originating address. Set to nickname for node that should triggeraction.Oaddr is the originating address. We are only interested in messages from the node given here.0x00 is segment controller and 0xff is a node without a nickname. If bit 6 of flags is set oaddrwill not be checked and events from all nodes will be accepted."}
+{"en": "C5 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 7: flags",
-"page": 2,
+"name": "current value for checkbox 6",
+"page": 0,
 "offset": 57,
 "span": 1,
 "width": 8,
@@ -6499,124 +1211,17 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
-"bit": [
-{
-"name": "class filter bit 8",
-"pos": 0,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :1,
-"access": "rw"
-,
 "description": [
-{"en": "Defines the ninth bit of the class filter."}
-
-]}
-,{
-"name": "class mask bit 8",
-"pos": 1,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Defines the ninth bit of the class mask."}
-
-]}
-,{
-"name": "reserved bit",
-"pos": 2,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "This bit is not used."}
-
-]}
-,{
-"name": "sub zone match",
-"pos": 3,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one sub zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "zone match",
-"pos": 4,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one zone should be matched to trigger DM entry action."}
-
-]}
-,{
-"name": "hard coded",
-"pos": 5,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be hard coded to trigger DM entry action."}
-
-]}
-,{
-"name": "check originating address",
-"pos": 6,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "If set to one the originating address should be checked and match to trigger DM entry action."}
-
-]}
-,{
-"name": "enable",
-"pos": 7,
-"width": 1,
-"default": 0,
-"min" :0,
-"max" :0,
-"access": "rw"
-,
-"description": [
-{"en": "Enable (1) or disable (0)the decision matrix row."}
-
-]}
-]
-,
-"description": [
-{"en": "Flags. Set selection behaviour.\nThe enable bit can be used to disable a decision matrix row while it is edited.\nThe zone and use sub zone bits can be activated to have a check on the zone/sub zone informationof an event. That is the zone/subzone one of the machine must match the one of the event to triggerthe DM row."}
+{"en": "C6 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 7: class mask (low eight bits)",
-"page": 2,
+"name": "current value for checkbox 7",
+"page": 0,
 "offset": 58,
 "span": 1,
 "width": 8,
@@ -6624,17 +1229,17 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "The lowest eight bits of the class mask that defines the events that should trigger the actionof this decision matrix row.\nBit 8 of the class mask is stored in bit 1 of the flag byte."}
+{"en": "C0 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 7: class filter (low eight bits)",
-"page": 2,
+"name": "current value for checkbox 8",
+"page": 0,
 "offset": 59,
 "span": 1,
 "width": 8,
@@ -6642,17 +1247,17 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "The lowest eight bits of the class filter that defines the events that should trigger the actionof this decision matrix row.\nBit 8 of the class filter is stored in bit 1 of the flag byte."}
+{"en": "C8 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 7: type mask",
-"page": 2,
+"name": "current value for checkbox 9",
+"page": 0,
 "offset": 60,
 "span": 1,
 "width": 8,
@@ -6660,17 +1265,17 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "Type mask that defines the events that should trigger the action of this decision matrix row."}
+{"en": "C9 value. 1 is opened. 0 is closed."}
 
 ]},
 {
-"name": "decision matrix row 7: type filter",
-"page": 2,
+"name": "current value for radio option button 0",
+"page": 0,
 "offset": 61,
 "span": 1,
 "width": 8,
@@ -6678,17 +1283,30 @@
 "type": "std",
 "default": "0",
 "min": 0,
-"max": 255,
+"max": 1,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
+"valuelist": [
+{
+"name": "OFF",
+"value": "0"
+}
+,
+{
+"name": "ON",
+"value": "1"
+}
+
+]
+,
 "description": [
-{"en": "Type filter that defines the events that should trigger the action of this decision matrix row."}
+{"en": "Radio button value for R0"}
 
 ]},
 {
-"name": "decision matrix row 7: action",
-"page": 2,
+"name": "current value for radio option button 1",
+"page": 0,
 "offset": 62,
 "span": 1,
 "width": 8,
@@ -6696,18 +1314,299 @@
 "type": "std",
 "default": "0",
 "min": 0,
+"max": 1,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R1"}
+
+]},
+{
+"name": "current value for radio option button 2",
+"page": 0,
+"offset": 63,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 1,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R2"}
+
+]},
+{
+"name": "current value for radio option button 3",
+"page": 0,
+"offset": 64,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 1,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R3"}
+
+]},
+{
+"name": "current value for radio option button 4",
+"page": 0,
+"offset": 65,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 1,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R4"}
+
+]},
+{
+"name": "current value for radio option button 5",
+"page": 0,
+"offset": 66,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 0,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R5"}
+
+]},
+{
+"name": "current value for radio option button 6",
+"page": 0,
+"offset": 67,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "200",
+"min": 0,
+"max": 1,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R6"}
+
+]},
+{
+"name": "current value for radio option button 7",
+"page": 0,
+"offset": 68,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 1,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R7	
+	"}
+
+]},
+{
+"name": "current value for radio option button 8",
+"page": 0,
+"offset": 69,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "200",
+"min": 0,
+"max": 1,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R8
+"}
+
+]},
+{
+"name": "current value for radio option button 9",
+"page": 0,
+"offset": 70,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 1,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"valuelist": [
+{
+"name": "ON",
+"value": "1"
+}
+,
+{
+"name": "OFF",
+"value": "0"
+}
+
+]
+,
+"description": [
+{"en": "Radio button value for R9"}
+
+]},
+{
+"name": "current value for slider 0",
+"page": 0,
+"offset": 71,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "200",
+"min": 0,
 "max": 255,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the action or operation that should be performed if the filtering is satisfied. Onlyaction code 0x00 is predefined and means No-Operation. All other codes are application specificand typical application defined codes could do measurement, send predefined event etc."}
+{"en": "Slider value 0"}
 
 ]},
 {
-"name": "decision matrix row 7: action parameter",
-"page": 2,
-"offset": 63,
+"name": "current value for slider 1",
+"page": 0,
+"offset": 72,
 "span": 1,
 "width": 8,
 "access": "rw",
@@ -6719,317 +1618,306 @@
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "A numeric action parameter can be set and its meaning is application specific."}
+{"en": "Slider value 1"}
+
+]},
+{
+"name": "current value for slider 2",
+"page": 0,
+"offset": 73,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "200",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Slider value 2"}
+
+]},
+{
+"name": "current value for slider 3",
+"page": 0,
+"offset": 74,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Slider value 3"}
+
+]},
+{
+"name": "current value for slider 4",
+"page": 0,
+"offset": 75,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Slider value 4"}
+
+]},
+{
+"name": "current value for slider 5",
+"page": 0,
+"offset": 76,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Slider value 5"}
+
+]},
+{
+"name": "current value for slider 6",
+"page": 0,
+"offset": 77,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Slider value 6"}
+
+]},
+{
+"name": "current value for slider 7",
+"page": 0,
+"offset": 78,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Slider value 7"}
+
+]},
+{
+"name": "current value for slider 8",
+"page": 0,
+"offset": 79,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Slider value 8"}
+
+]},
+{
+"name": "current value for slider 9",
+"page": 0,
+"offset": 80,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Slider value 9"}
+
+]},
+{
+"name": "placeholder (always read as zero)",
+"page": 0,
+"offset": 81,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "undef",
+"min": 0,
+"max": 0,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+},
+{
+"name": "background color rgb (r)",
+"page": 0,
+"offset": 82,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "undef",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+},
+{
+"name": "background color rgb (g)",
+"page": 0,
+"offset": 83,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "undef",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+},
+{
+"name": "background color rgb (b)",
+"page": 0,
+"offset": 84,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "undef",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+},
+{
+"name": "report interval for frequency",
+"page": 0,
+"offset": 85,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "0",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"description": [
+{"en": "Report interval for frequency 3 in seconds. Set to zero to turn of reporting."}
+
+]},
+{
+"name": "data coding for the periodic measurement event",
+"page": 0,
+"offset": 86,
+"span": 1,
+"width": 8,
+"access": "rw",
+"type": "std",
+"default": "undef",
+"min": 0,
+"max": 255,
+"fgcolor": "0x0",
+"bgcolor": "0x0"
+,
+"bit": [
+{
+"name": "Sensor index",
+"pos": 0,
+"width": 3,
+"default": 0,
+"min" :0,
+"max" :7,
+"access": "rw"
+,
+"infourl": [
+{"en": "https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_measurements?id=datacoding"}
 
 ]}
+,{
+"name": "Unit",
+"pos": 3,
+"width": 2,
+"default": 0,
+"min" :0,
+"max" :0,
+"access": "rw"
+,
+"infourl": [
+{"en": "https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_measurements?id=datacoding"}
+
+]}
+,{
+"name": "Coding",
+"pos": 5,
+"width": 3,
+"default": 0,
+"min" :0,
+"max" :0,
+"access": "rw"
+,
+"infourl": [
+{"en": "https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_measurements?id=datacoding"}
+
+]}
+]
+}
 ]
 ,
 "remotevars": [
 {
-"name": "output pulse time register for channel 0",
+"name": "colour",
 "type": 0,
-"default": "0",
-"page": 1,
-"offset": 0,
+"default": "0xffffff",
+"page": 0,
+"offset": 83,
 "access": "rw",
 "bitpos": 0,
 "fgcolor": "0x0",
 "bgcolor": "0x0"
 ,
 "description": [
-{"en": "This is the pulse time for output 0 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 1",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 2,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for output 1 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 2",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 4,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for output 2 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 3",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 6,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for channel 3 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 4",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 8,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for channel 4 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 5",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 10,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for channel 5 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 6",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 12,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for channel 6 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 7",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 14,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for channel 7 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 8",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 16,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for channel 8 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output pulse time register for channel 9",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 18,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the pulse time for channel 9 expressed in seconds.It can be used to have an output turn on and off with a certainpreset interval. The min. pulse time is 1 second and the max timeis 65535 seconds which is about 18 hours. Set to zero (default)for no pulse time i.e. the output will be steady on/off.\n\nTo start a pulse sequence first write the pulse time to thisregister and then write to output status register to startthe output sequence. The pulse train is terminated by writing on or off(1 or 0) to the output status register.\n"}
-
-]},
-{
-"name": "output protection time register channel 0",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 20,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 1",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 22,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 2",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 24,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 3",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 26,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 4",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 28,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 5",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 30,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 6",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 32,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 7",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 34,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 8",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 36,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "This is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
-
-]},
-{
-"name": "output protection time register channel 9",
-"type": 0,
-"default": "0",
-"page": 1,
-"offset": 38,
-"access": "rw",
-"bitpos": 0,
-"fgcolor": "0x0",
-"bgcolor": "0x0"
-,
-"description": [
-{"en": "TThis is the output protection time. A output will be inactivated ifnot written to before this time has elapsed.\n\nSet to zero to disable (default). The max time is 65535 secondswhich is about 18 hours.\n\nThe registers can be as an example be used as a security featureto ensure that an output is deactivated after a preset time evenif the controlling device failed to deactivate the output.\n"}
+{"en": "A 32-bit RGB Color value for simulation background."}
 
 ]}
 ]
 ,
 "alarm": [
 {
-"name": "reserved",
+"name": "alarm bit 7",
 "pos": 7,
 "width": 1,
 "default": 0,
@@ -7038,11 +1926,11 @@
 "access": "rw"
 ,
 "description": [
-{"en": "Reserved."}
+{"en": "Alarm has occured (pos 7)."}
 
 ]}
 ,{
-"name": "reserved",
+"name": "alarm bit 6",
 "pos": 6,
 "width": 1,
 "default": 0,
@@ -7051,11 +1939,11 @@
 "access": "rw"
 ,
 "description": [
-{"en": "Reserved."}
+{"en": "Alarm has occured (pos 6)."}
 
 ]}
 ,{
-"name": "reserved",
+"name": "alarm alarm bit 5",
 "pos": 5,
 "width": 1,
 "default": 0,
@@ -7064,11 +1952,11 @@
 "access": "rw"
 ,
 "description": [
-{"en": "Reserved."}
+{"en": "Alarm has occured (pos 5)."}
 
 ]}
 ,{
-"name": "reserved",
+"name": "alarm bit 4",
 "pos": 4,
 "width": 1,
 "default": 0,
@@ -7077,11 +1965,11 @@
 "access": "rw"
 ,
 "description": [
-{"en": "Reserved."}
+{"en": "Alarm has occured (pos 4)."}
 
 ]}
 ,{
-"name": "reserved",
+"name": "alarm bit 3",
 "pos": 3,
 "width": 1,
 "default": 0,
@@ -7090,11 +1978,11 @@
 "access": "rw"
 ,
 "description": [
-{"en": "Reserved."}
+{"en": "Alarm has occured (pos 3)."}
 
 ]}
 ,{
-"name": "low alarm",
+"name": "alarm bit 2",
 "pos": 2,
 "width": 1,
 "default": 0,
@@ -7103,11 +1991,11 @@
 "access": "rw"
 ,
 "description": [
-{"en": "An input bit has gone low and the alarm condition for it is enabled."}
+{"en": "Alarm has occured (pos 2)."}
 
 ]}
 ,{
-"name": "high alarms",
+"name": "alarm bit 1",
 "pos": 1,
 "width": 1,
 "default": 0,
@@ -7116,11 +2004,11 @@
 "access": "rw"
 ,
 "description": [
-{"en": "An input bit has gone high and the alarm condition for it is enabled."}
+{"en": "Alarm has occured (pos 1)."}
 
 ]}
 ,{
-"name": "protection timer elapsed",
+"name": "alarm bit 0",
 "pos": 0,
 "width": 1,
 "default": 0,
@@ -7129,17 +2017,17 @@
 "access": "rw"
 ,
 "description": [
-{"en": "A protection timer has elapsed."}
+{"en": "Alarm has occured (pos 0)."}
 
 ]}
 ]
 ,
 "events": [
 {
-"name": "on event",
-"class": 20,
-"type": 3,
-"priority": 4,
+"name": "set color",
+"class": 102,
+"type": 49,
+"priority": 7,
 "dir": "out",
 "data": [
 {
@@ -7147,7 +2035,7 @@
 "offset": 0 
 ,
 "description": [
-{"en": "Contains the channel(0-9)."}
+{"en": "Index which address item that should have color change. NOT used can be set to any value."}
 
 ]},
 {
@@ -7155,180 +2043,39 @@
 "offset": 1 
 ,
 "description": [
-{"en": "Is set to the zone for the module."}
+{"en": "Zone which address item that should have color change. Must be same as device zone."}
 
 ]},
 {
-"name": "sub zone",
+"name": "subzone",
 "offset": 2 
 ,
 "description": [
-{"en": "Is set to the sub zone for the channel."}
-
-]}
-]
-},
-{
-"name": "off event",
-"class": 20,
-"type": 4,
-"priority": 4,
-"dir": "out",
-"data": [
-{
-"name": "index",
-"offset": 0 
-,
-"description": [
-{"en": "Contains the channel(0-9)."}
+{"en": "Subzone which address item that should have color change. NOT used can be set to any value."}
 
 ]},
 {
-"name": "zone",
-"offset": 1 
+"name": "red (r) color of rgb",
+"offset": 3 
 ,
 "description": [
-{"en": "Is set to the zone for the module."}
+{"en": "Red color part of RGB color value (0-255)."}
 
 ]},
 {
-"name": "sub zone",
-"offset": 2 
+"name": "green (g) color of rgb",
+"offset": 4 
 ,
 "description": [
-{"en": "Is set to the sub zone for the channel."}
-
-]}
-]
-},
-{
-"name": "turnon event",
-"class": 30,
-"type": 5,
-"priority": 4,
-"dir": "out",
-"data": [
-{
-"name": "index",
-"offset": 0 
-,
-"description": [
-{"en": "Contains the channel(0-9)."}
+{"en": "Green color part of RGB color value (0-255)."}
 
 ]},
 {
-"name": "zone",
-"offset": 1 
+"name": "blue (b) color of rgb",
+"offset": 4 
 ,
 "description": [
-{"en": "Is set to the zone for the module."}
-
-]},
-{
-"name": "sub zone",
-"offset": 2 
-,
-"description": [
-{"en": "Is set to the sub zone for the channel."}
-
-]}
-]
-},
-{
-"name": "turnoff event",
-"class": 30,
-"type": 6,
-"priority": 4,
-"dir": "out",
-"data": [
-{
-"name": "index",
-"offset": 0 
-,
-"description": [
-{"en": "Contains the channel(0-9)."}
-
-]},
-{
-"name": "zone",
-"offset": 1 
-,
-"description": [
-{"en": "Is set to the zone for the module."}
-
-]},
-{
-"name": "sub zone",
-"offset": 2 
-,
-"description": [
-{"en": "Is set to the sub zone for the channel."}
-
-]}
-]
-},
-{
-"name": "i/o data event",
-"class": 15,
-"type": 1,
-"priority": 4,
-"dir": "out",
-"data": [
-{
-"name": "data coding",
-"offset": 0 
-,
-"description": [
-{"en": "Set to zero for bit coding, unit=0, sensor=0."}
-
-]},
-{
-"name": "outputs states",
-"offset": 1 
-,
-"description": [
-{"en": "State for outputs. Bit 0 is output 0 and so on."}
-
-]},
-{
-"name": "input states",
-"offset": 2 
-,
-"description": [
-{"en": "State for inputs. Bit 0 is input 0 and so on."}
-
-]}
-]
-},
-{
-"name": "i/o alarm event",
-"class": 1,
-"type": 2,
-"priority": 4,
-"dir": "out",
-"data": [
-{
-"name": "index",
-"offset": 0 
-,
-"description": [
-{"en": "Channel where the alarm ocured."}
-
-]},
-{
-"name": "zone",
-"offset": 1 
-,
-"description": [
-{"en": "Zone for module."}
-
-]},
-{
-"name": "sub zone",
-"offset": 2 
-,
-"description": [
-{"en": "Sub zone for channel or sub zone for module if channel sub zone is zero."}
+{"en": "Blue color part of RGB color value (0-255)."}
 
 ]}
 ]
