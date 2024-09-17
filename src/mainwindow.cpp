@@ -42,6 +42,9 @@ MainWindow::MainWindow(QWidget* parent)
   connect(papp, &btest::radioValueChanged, this, &MainWindow::setRadioButtonValue);
   connect(papp, &btest::backgroundColorChanged, this, &MainWindow::setBackgroundColor);
 
+  connect(papp, &btest::initRegisters, this, &MainWindow::initRegisters);
+  connect(papp, &btest::updateRegister, this, &MainWindow::updateRegister);
+
   connect(ui->btn0, SIGNAL(pressed()), this, SLOT(btnPressed_s0()));
   connect(ui->btn1, SIGNAL(pressed()), this, SLOT(btnPressed_s1()));
   connect(ui->btn2, SIGNAL(pressed()), this, SLOT(btnPressed_s2()));
@@ -151,6 +154,9 @@ MainWindow::init(void)
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
 
+  // Initilize simulation data storage
+  papp->initSimulationData();
+
   ui->lblQtVersion->setText(qVersion());
   ui->lblLevel->setText((VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) ? "Level I" : "Level II");
   ui->lblInterface->setText(papp->m_interface);
@@ -168,6 +174,56 @@ MainWindow::init(void)
   else {
     setFirmwareModeUi();
     ui->lblMode->setText("Simulated firmware");
+  }
+
+  // Registers
+  initRegisters();
+
+  // RGB Colors
+  updateRegister(82, 0, 0xff);
+  updateRegister(83, 0, 0xff);
+  updateRegister(84, 0, 0xff);
+
+  // Standard registers
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_ALARM_STATUS);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_MAJOR_VERSION);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_MINOR_VERSION);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_ERROR_COUNTER);
+  for (int i = 0; i <= 4; i++) {
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_USER_ID + i);
+  }
+  for (int i = 0; i <= 4; i++) {
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_USER_MANDEV_ID + i);
+  }
+  for (int i = 0; i <= 4; i++) {
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_USER_MANSUBDEV_ID + i);
+  }
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_PAGE_SELECT_MSB);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_PAGE_SELECT_LSB);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_FIRMWARE_MAJOR);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_FIRMWARE_MINOR);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_FIRMWARE_SUBMINOR);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_BOOT_LOADER);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_BUFFER_SIZE);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_PAGES_COUNT);
+  for (int i = 0; i <= 4; i++) {
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_FAMILY_CODE+i);
+  }
+  for (int i = 0; i <= 4; i++) {
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_DEVICE_TYPE+i);
+  }
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_NODE_RESET);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_FIRMWARE_CODE_MSB);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_FIRMWARE_CODE_LSB);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_NICKNAME_ID_LSB);
+  papp->standardRegHasChanged(VSCP_STD_REGISTER_NICKNAME_ID_MSB);
+
+  for (int i = 0; i < 16; i++) {
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_GUID + i);
+  }
+
+  for (int i = 0; i < 32; i++) {
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_DEVICE_URL + i);
   }
 }
 
@@ -211,7 +267,7 @@ MainWindow::setFirmwareModeUi(void)
 {
   // Set background color for firmware mode
   // this->setStyleSheet("background-color: rgb(255, 255, 255);");
-  this->setStyleSheet("selection-background-color: rgb(0, 0, 0);");
+  this->setStyleSheet("background-color: rgb(255, 255, 255);selection-background-color: rgb(0, 0, 0);");
   ui->tabWidget->setTabVisible(tab_index_register, true);
   ui->tabWidget->setTabVisible(tab_index_simulation, true);
 }
@@ -227,6 +283,31 @@ MainWindow::setBootLoaderModeUi(void)
   this->setStyleSheet("background-color: rgb(222, 255, 255);selection-background-color: rgb(0, 0, 0);");
   ui->tabWidget->setTabVisible(tab_index_register, false);
   ui->tabWidget->setTabVisible(tab_index_simulation, false);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// addRegRow
+//
+void
+MainWindow::addRegRow(uint32_t row, uint16_t page, uint8_t value)
+{
+  QString str("register %1:\t %2\t%3\t%4");
+  uint32_t combined = (uint32_t)page << 16 + row; // If page > 0 row is < 128
+
+  // QListWidgetItem *pitem = new QListWidgetItem(str.arg(row).arg(value, 4, 10, QChar(' ')).arg(value, 4, 16, QChar('0')).arg(value, 8, 2, QChar('0')));
+  //  QListWidgetItem *pitem = new QListWidgetItem("test");
+  //  ui->registerList->addItem(pitem);
+  spdlog::error("Register {0}:{2}", page, row);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// updateRegRow
+//
+
+void
+MainWindow::updateRegRow(uint32_t row, uint16_t page, uint8_t value)
+{
+  uint32_t combined = (uint32_t)page << 16 + row; // If page > 0 row is < 128
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -415,6 +496,129 @@ MainWindow::setRadioButtonValue(int idx, bool value)
       ui->radio9->setChecked(value);
       break;
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// initRegisters
+//
+//
+
+void
+MainWindow::initRegisters(void)
+{
+  uint32_t page = 0;
+  uint16_t offset;
+  QString str;
+
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  std::map<uint32_t, QListWidgetItem*>::iterator it;
+  for (it = papp->m_regmap.begin(); it != papp->m_regmap.end(); ++it) {
+
+    if (VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) {
+      // Level I
+      page   = it->first >> 16;
+      offset = it->first & 0xffff;
+    }
+    else {
+      // Level II
+      offset = it->first;
+    }
+
+    QListWidgetItem* pitem = new QListWidgetItem();
+    if (nullptr == pitem) {
+      spdlog::error("initRegisters: Memory error");
+      return;
+    }
+
+    if (VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) {
+      if ((0 == page) && (offset >= 128)) {
+        str = "Standard reg %1:%2:\t %3\t0x%4\t0b%5";
+        QBrush brush(QColor(0, 255, 0, 12));
+        pitem->setBackground(brush);
+      }
+      else {
+        str = "User reg %1:%2:\t %3\t0x%4\t0b%5";
+        QBrush brush(QColor(0, 0, 255, 12));
+        pitem->setBackground(brush);
+      }
+    }
+    else {
+      if (offset < 0xffff0000) {
+        str = "User reg %1:%2:\t %3\t0x%4\t0b%5";
+        QBrush brush(QColor(0, 0, 255, 12));
+        pitem->setBackground(brush);
+      }
+      else {
+        str = "Standard reg %1:%2:\t %3\t0x%4\t0b%5";
+        QBrush brush(QColor(0, 255, 0, 12));
+        pitem->setBackground(brush);
+      }
+    }
+
+    pitem->setText(str.arg(page)
+                     .arg(offset)
+                     .arg(0, 4, 10, QChar(' '))
+                     .arg(0, 2, 16, QChar('0'))
+                     .arg(0, 8, 2, QChar('0')));
+
+    ui->registerList->addItem(pitem);
+
+    // Map list item
+    papp->m_regmap[offset] = pitem;
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// updateRegister
+//
+
+void
+MainWindow::updateRegister(uint32_t offset, uint16_t page, uint8_t value)
+{
+  QString str;
+
+  // Get pointer to app
+  btest* papp = (btest*)QCoreApplication::instance();
+
+  QListWidgetItem* pitem = papp->m_regmap[((uint32_t)page << 16) + offset];
+  if (nullptr == pitem) {
+    spdlog::error("Register item is invalid (NULL) offset={1} page){2}", offset, page);
+    return;
+  }
+
+  if (VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) {
+    if ((0 == page) && (offset >= 128)) {
+      str = "Standard reg %1:%2:\t %3\t0x%4\t0b%5";
+      QBrush brush(QColor(0, 255, 0, 48));
+      pitem->setBackground(brush);
+    }
+    else {
+      str = "User reg %1:%2:\t %3\t0x%4\t0b%5";
+      QBrush brush(QColor(0, 0, 255, 48));
+      pitem->setBackground(brush);
+    }
+  }
+  else {
+    if (offset < 0xffff0000) {
+      str = "User reg %1:%2:\t %3\t0x%4\t0b%5";
+      QBrush brush(QColor(0, 0, 255, 48));
+      pitem->setBackground(brush);
+    }
+    else {
+      str = "Standard reg %1:%2:\t %3\t0x%4\t0b%5";
+      QBrush brush(QColor(0, 255, 0, 48));
+      pitem->setBackground(brush);
+    }
+  }
+
+  str = str.arg(page)
+          .arg(offset)
+          .arg(value, 4, 10, QChar(' '))
+          .arg(value, 2, 16, QChar('0'))
+          .arg(value, 8, 2, QChar('0'));
+  pitem->setText(str);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

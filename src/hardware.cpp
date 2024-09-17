@@ -296,7 +296,8 @@ vscp_frmw2_callback_get_device_name(void* const puserdata, const char* pname)
  * @param reg Register to read.
  * @param pval Pointer to variable that will get read value.
  * @return VSCP_ERROR_SUCCESS on success, else error code. VSCP_ERROR_PARAMETER is
- * returned if the register is invalid.
+ * returned if the register is invalid. VSCP_ERROR_INDEX_OOB is returned when trying
+    to read a register that does not exist. This error is actually a warning.
  *
  */
 int
@@ -322,7 +323,8 @@ vscp_frmw2_callback_read_reg(void* const puserdata, uint16_t page, uint32_t reg,
  * @param reg Register to write
  * @param val Value to write
  * @return VSCP_ERROR_SUCCESS on success, else error code. VSCP_ERROR_PARAMETER is
- * returned if the register is invalid.
+ * returned if the register is invalid. VSCP_ERROR_INDEX_OOB is returned when trying
+    to read a register that does not exist. This error is actually a warning.
  */
 
 int

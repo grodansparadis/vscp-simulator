@@ -71,9 +71,14 @@
     "cstdarg": "cpp",
     "numbers": "cpp",
     "semaphore": "cpp",
-    "stop_token": "cpp"
+    "stop_token": "cpp",
+    "fstream": "cpp",
+    "bitset": "cpp",
+    "hash_map": "cpp",
+    "unordered_set": "cpp"
   },
   "cmake.configureEnvironment": {
-    "CMAKE_PREFIX_PATH": "~/Qt/6.7.0/gcc_64"
-  }
+    "CMAKE_PREFIX_PATH": "~/Qt/6.7.2/gcc_64"
+  },
+  "cmake.clearOutputBeforeBuild": false
 }

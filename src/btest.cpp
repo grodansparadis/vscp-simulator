@@ -97,6 +97,9 @@ btest::btest(int& argc, char** argv)
 {
   m_threadWork = 0;
 
+  // Set to known state
+  memset(&m_firmware_cfg, 0, sizeof(vscp_frmw2_firmware_config_t));
+
   m_bootflag = BOOTLOADER; // Start the bootloader
 
   // Set default connect timout
@@ -112,6 +115,7 @@ btest::btest(int& argc, char** argv)
   m_configFolder += "/VSCP/";
   m_configFolder += QCoreApplication::applicationName();
   m_configFolder += ".conf";
+  std::cout << "Reading configuration file from " << m_configFolder.toStdString() << std::endl;
 
   // Logging defaults
   m_fileLogLevel   = spdlog::level::info;
@@ -138,7 +142,7 @@ btest::btest(int& argc, char** argv)
     spdlog::error("\n mutex init of input mutex has failed\n");
   }
 
-  m_nSimulation = 0;
+  m_nSimulation = 0; // Code for simulation (zero is unknow/uninitialized)
   m_pSim        = nullptr;
 }
 
@@ -176,7 +180,7 @@ btest::~btest()
     switch (m_nSimulation) {
       case 1:
       default: {
-        delete (simulation1*)m_pSim;
+        delete (simulation1_t*)m_pSim;
       } break;
     }
   }
@@ -392,6 +396,7 @@ btest::loadFirmwareConfig(QString& path)
   json j;
 
   spdlog::debug("Reading json firmware configuration {0}", path.toStdString());
+  std::cout << "Reading json firmware configuration " << path.toStdString() << std::endl;
 
   try {
     std::ifstream ifs(path.toStdString(), std::ifstream::in);
@@ -822,12 +827,12 @@ btest::loadFirmwareConfig(QString& path)
 // getMainWindow
 //
 
-QMainWindow*
+MainWindow*
 btest::getMainWindow()
 {
   foreach (QWidget* w, qApp->topLevelWidgets()) {
     if (QMainWindow* mainWin = qobject_cast<QMainWindow*>(w)) {
-      return mainWin;
+      return (MainWindow*)mainWin;
     }
   }
   return nullptr;
@@ -907,6 +912,58 @@ btest::getEventEx(vscpEventEx** pex)
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+// initSimulationData
+//
+
+bool
+btest::initSimulationData(void)
+{
+  switch (m_nSimulation) {
+
+    default:
+      // Simulation is not defined we use sim1
+      spdlog::error("Invalid simulation set. Will use sumulation 1");
+
+    case 1: {
+
+      m_pSim = new simulation1_t;
+      memset(m_pSim, 0, sizeof(simulation1_t));
+      m_firmware_cfg.m_pEventsOfInterest              = nullptr;
+      ((simulation1_t*)m_pSim)->m_background_color[0] = 0xff;
+      ((simulation1_t*)m_pSim)->m_background_color[1] = 0xff;
+      ((simulation1_t*)m_pSim)->m_background_color[2] = 0xff;
+
+      // Page 0
+      for (int i = 0; i <= 86; i++) {
+        m_regmap[i] = nullptr; // No table item yet (inserted by mainwindow)
+      }
+
+      // Standard registers
+      for (int i = 128; i <= 255; i++) {
+        m_regmap[i] = nullptr; // No table item yet (inserted by mainwindow)
+      }
+
+      // page 1
+      for (int i = 0; i <= 3; i++) {
+        m_regmap[(1 << 16) + i] = nullptr; // No table item yet (inserted by mainwindow)
+      }
+
+      // page 2
+      for (int i = 0; i <= 3; i++) {
+        m_regmap[(2 << 16) + i] = nullptr; // No table item yet (inserted by mainwindow)
+      }
+
+      // emit updateRegister(82, 0, 0xff);
+      // emit updateRegister(83, 0, 0xff);
+      // emit updateRegister(84, 0, 0xff);
+
+    } break;
+  }
+
+  return true;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // readRegister_sim1
 //
 
@@ -925,7 +982,7 @@ btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
     return VSCP_ERROR_INVALID_POINTER;
   }
 
-  simulation1* psim1 = (simulation1*)m_pSim;
+  simulation1_t* psim1 = (simulation1_t*)m_pSim;
 
   switch (page) {
 
@@ -1018,7 +1075,8 @@ btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
         case 62: // R1 value
         case 63: // R2 value
         case 64: // R3 value
-        case 65: // R5 value
+        case 65: // R4 value
+        case 66: // R5 value
         case 67: // R6 value
         case 68: // R7 value
         case 69: // R8 value
@@ -1030,7 +1088,8 @@ btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
         case 72: // Slider 1 value
         case 73: // Slider 2 value
         case 74: // Slider 3 value
-        case 75: // Slider 5 value
+        case 75: // Slider 4 value
+        case 76: // Slider 5 value
         case 77: // Slider 6 value
         case 78: // Slider 7 value
         case 79: // Slider 8 value
@@ -1039,12 +1098,14 @@ btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
           break;
 
         case 81: // Place holder for unsigned int forming RGB r-var
+          // Allways read as zero
+          *pval = 0;
           break;
-          
+
         case 82: // background color R
         case 83: // background color G
         case 84: // background color B
-          *pval = psim1->m_background_color[reg - 81];
+          *pval = psim1->m_background_color[reg - 82];
           break;
 
         case 85: // period for periodic measurement event
@@ -1060,6 +1121,7 @@ btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
             *pval = psim1->m_dm[reg - 0x1000];
           }
           else {
+            spdlog::warn("Register index out of bounds reg={}", reg);
             rv = VSCP_ERROR_INDEX_OOB;
           }
           break;
@@ -1074,6 +1136,7 @@ btest::readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval)
     } break;
 
     default:
+      spdlog::warn("Register index out of bounds reg={}", reg);
       rv = VSCP_ERROR_INDEX_OOB;
       break;
   }
@@ -1095,7 +1158,7 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
     return VSCP_ERROR_INVALID_POINTER;
   }
 
-  simulation1* psim1 = (simulation1*)m_pSim;
+  simulation1_t* psim1 = (simulation1_t*)m_pSim;
 
   switch (page) {
 
@@ -1192,7 +1255,8 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
         case 62: // R1 value
         case 63: // R2 value
         case 64: // R3 value
-        case 65: // R5 value
+        case 65: // R4 value
+        case 66: // R5 value
         case 67: // R6 value
         case 68: // R7 value
         case 69: // R8 value
@@ -1205,7 +1269,8 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
         case 72: // Slider 1 value
         case 73: // Slider 2 value
         case 74: // Slider 3 value
-        case 75: // Slider 5 value
+        case 75: // Slider 4 value
+        case 76: // Slider 5 value
         case 77: // Slider 6 value
         case 78: // Slider 7 value
         case 79: // Slider 8 value
@@ -1220,7 +1285,7 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
         case 82:   // background color R
         case 83:   // background color G
         case 84: { // background color B
-          psim1->m_background_color[reg - 81] = val;
+          psim1->m_background_color[reg - 82] = val;
           spdlog::info("Set background color {0:02X}{1:02X}{2:02X}",
                        psim1->m_background_color[0],
                        psim1->m_background_color[1],
@@ -1235,13 +1300,14 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
 
         case 86: // coding for status event
           psim1->m_coding_measurement_event = val;
-          break;  
+          break;
 
         default:
           if ((reg >= 0x1000) && (reg < 0x1080)) {
             psim1->m_dm[reg - 0x1000] = val;
           }
           else {
+            spdlog::warn("Register index out of bounds reg={}", reg);
             rv = VSCP_ERROR_INDEX_OOB;
           }
           break;
@@ -1256,9 +1322,12 @@ btest::writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val)
     } break;
 
     default:
+      spdlog::warn("Register index out of bounds reg={}", reg);
       rv = VSCP_ERROR_INDEX_OOB;
       break;
   }
+
+  emit updateRegister(reg, page, val);
 
   return rv;
 }
@@ -1341,10 +1410,18 @@ btest::writeSliderValue_sim1(uint8_t idx, int value)
     return VSCP_ERROR_PARAMETER;
   }
 
-  simulation1* psim1 = (simulation1*)m_pSim;
+  simulation1_t* psim1 = (simulation1_t*)m_pSim;
 
   // Save value
   psim1->m_reg_value_slider[idx] = value;
+
+  /*
+    If nickname is not set we don't allow any active
+    functionality until it is
+  */
+  if (VSCP_ADDRESS_NEW_NODE == m_firmware_cfg.m_nickname) {
+    return VSCP_ERROR_INIT_MISSING;
+  }
 
   // Send event
   vscpEventEx ex;
@@ -1437,6 +1514,145 @@ btest::receivedSegCtrlHeartBeat(uint16_t segcrc, uint32_t tm)
 int
 btest::standardRegHasChanged(uint32_t stdreg)
 {
+  uint8_t value = 0;
+  uint8_t reg   = stdreg & 0xff;
+
+  // Fet standard register value
+  switch (reg) {
+
+    case VSCP_STD_REGISTER_ALARM_STATUS:
+      value = m_firmware_cfg.m_alarm_status;
+      break;
+
+    case VSCP_STD_REGISTER_MAJOR_VERSION:
+      value = m_firmware_cfg.m_vscp_major_version;
+      break;
+
+    case VSCP_STD_REGISTER_MINOR_VERSION:
+      value = m_firmware_cfg.m_vscp_minor_version;
+      break;
+
+    case VSCP_STD_REGISTER_ERROR_COUNTER:
+      value = m_firmware_cfg.m_errorCounter;
+      break;
+
+    case VSCP_STD_REGISTER_USER_ID:
+      value = (m_firmware_cfg.m_userId >> 24) & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_USER_ID + 1:
+      value = (m_firmware_cfg.m_userId >> 16) & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_USER_ID + 2:
+      value = (m_firmware_cfg.m_userId >> 8) & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_USER_ID + 3:
+      value = m_firmware_cfg.m_userId & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_USER_MANDEV_ID:
+      value = (m_firmware_cfg.m_manufacturerId >> 24) & 0xff;
+      break;
+    case VSCP_STD_REGISTER_USER_MANDEV_ID + 1:
+      value = (m_firmware_cfg.m_manufacturerId >> 16) & 0xff;
+      break;
+    case VSCP_STD_REGISTER_USER_MANDEV_ID + 2:
+      value = (m_firmware_cfg.m_manufacturerId >> 8) & 0xff;
+      break;
+    case VSCP_STD_REGISTER_USER_MANDEV_ID + 3:
+      value = m_firmware_cfg.m_manufacturerId & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_USER_MANSUBDEV_ID:
+      value = (m_firmware_cfg.m_manufacturerSubId >> 24) & 0xff;
+      break;
+    case VSCP_STD_REGISTER_USER_MANSUBDEV_ID + 1:
+      value = (m_firmware_cfg.m_manufacturerSubId >> 16) & 0xff;
+      break;
+    case VSCP_STD_REGISTER_USER_MANSUBDEV_ID + 2:
+      value = (m_firmware_cfg.m_manufacturerSubId >> 8) & 0xff;
+      break;
+    case VSCP_STD_REGISTER_USER_MANSUBDEV_ID + 3:
+      value = m_firmware_cfg.m_manufacturerSubId & 0xff;
+      break;
+
+      // See below
+      // case VSCP_STD_REGISTER_NICKNAME_ID_LSB:
+      //  break;
+
+    case VSCP_STD_REGISTER_PAGE_SELECT_MSB:
+      value = (m_firmware_cfg.m_page_select >> 16) & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_PAGE_SELECT_LSB:
+      value = m_firmware_cfg.m_page_select & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_FIRMWARE_MAJOR:
+      value = m_firmware_cfg.m_firmware_major_version;
+      break;
+
+    case VSCP_STD_REGISTER_FIRMWARE_MINOR:
+      value = m_firmware_cfg.m_firmware_minor_version;
+      break;
+
+    case VSCP_STD_REGISTER_FIRMWARE_SUBMINOR:
+      value = m_firmware_cfg.m_firmware_sub_minor_version;
+      break;
+
+    case VSCP_STD_REGISTER_BOOT_LOADER:
+      value = m_firmware_cfg.m_bootloader_algorithm;
+      break;
+
+    case VSCP_STD_REGISTER_BUFFER_SIZE:
+      value = 0;
+      break;
+
+    case VSCP_STD_REGISTER_PAGES_COUNT:
+      value = 0;
+      break;
+
+    case VSCP_STD_REGISTER_FAMILY_CODE:
+      value = m_firmware_cfg.m_standard_device_family_code;
+      break;
+
+    case VSCP_STD_REGISTER_DEVICE_TYPE:
+      value = m_firmware_cfg.m_standard_device_type_code;
+      break;
+
+    case VSCP_STD_REGISTER_NODE_RESET:
+      value = 0;
+      break;
+
+    case VSCP_STD_REGISTER_FIRMWARE_CODE_MSB:
+      value = (m_firmware_cfg.m_firmware_device_code >> 16) & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_FIRMWARE_CODE_LSB:
+      value = m_firmware_cfg.m_firmware_device_code & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_NICKNAME_ID_LSB:
+      value = (m_firmware_cfg.m_nickname >> 16) & 0xff;
+      break;
+
+    case VSCP_STD_REGISTER_NICKNAME_ID_MSB:
+      value = (m_firmware_cfg.m_nickname >> 16) & 0xff;
+      break;
+
+    default:
+      if ((reg >= VSCP_STD_REGISTER_GUID) && (reg < VSCP_STD_REGISTER_GUID+16)) {
+        value = m_firmware_cfg.m_guid[reg - VSCP_STD_REGISTER_GUID];
+      }
+      else if ((reg >= VSCP_STD_REGISTER_DEVICE_URL) && (reg < VSCP_STD_REGISTER_DEVICE_URL+32)) {
+        value = m_firmware_cfg.m_mdfurl[reg - VSCP_STD_REGISTER_DEVICE_URL];
+      }
+      break;
+  }
+
+  emit updateRegister(reg, 0, value);
   return VSCP_ERROR_SUCCESS;
 }
 
@@ -1473,7 +1689,7 @@ btest::buttonPress_sim1(int idx)
     return VSCP_ERROR_PARAMETER;
   }
 
-  simulation1* psim1 = (simulation1*)m_pSim;
+  simulation1_t* psim1 = (simulation1_t*)m_pSim;
 
   // Send event
   vscpEventEx ex;
@@ -1539,7 +1755,7 @@ btest::checkboxClick_sim1(int idx, bool checked)
     return VSCP_ERROR_PARAMETER;
   }
 
-  simulation1* psim1 = (simulation1*)m_pSim;
+  simulation1_t* psim1 = (simulation1_t*)m_pSim;
 
   // Set value
   psim1->m_reg_value_C[idx] = (int)checked;
@@ -1613,7 +1829,7 @@ btest::radioClick_sim1(int idx, bool checked)
     return VSCP_ERROR_PARAMETER;
   }
 
-  simulation1* psim1 = (simulation1*)m_pSim;
+  simulation1_t* psim1 = (simulation1_t*)m_pSim;
 
   // Set value
   psim1->m_reg_value_R[idx] = (int)checked;

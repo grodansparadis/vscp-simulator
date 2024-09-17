@@ -220,16 +220,8 @@ main(int argc, char* argv[])
     rv = app.loadFirmwareConfig(app.m_configpath);
   }
 
-  // Create simulation data
-  if (1 == app.m_nSimulation) {
-    app.m_pSim = new simulation1;
-    app.m_firmware_cfg.m_pEventsOfInterest = nullptr;
-  }
-  else {
-    // Simulation is not defined
-    spdlog::error("Invalid simulation set. Will use sumulation 1");
-    app.m_pSim = new simulation1;
-  }
+  // Initialize simulation memory
+  //app.initSimulationData();
 
   // Init the interface/hardware
   // if (VSCP_ERROR_SUCCESS != (rv = app.vscpboot_init_hardware())) {

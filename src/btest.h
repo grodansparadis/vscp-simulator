@@ -41,6 +41,8 @@
 #include <vscp-bootloader.h>
 #include <vscp-firmware-level2.h>
 
+#include "mainwindow.h"
+
 #include <QApplication>
 #include <QByteArray>
 #include <QDateTime>
@@ -145,7 +147,7 @@ public:
     Get min window
     @return Pointer to main window
   */
-  QMainWindow* getMainWindow(void);
+  MainWindow* getMainWindow(void);
 
   void receiveCallback(vscpEventEx& ex, void* pobj);
 
@@ -162,11 +164,18 @@ public:
   // ========================================================================
 
   /*!
+    Initialize simulation data
+    @return True on success, false on failure
+  */
+  bool initSimulationData(void);
+
+  /*!
     Read register for simulation 1
     @param page Page to read from
     @param reg Register to read from
     @param pval Pointer to value that will get result
-    @return @return VSCP_ERROR_SUCCESS if all is OK
+    @return VSCP_ERROR_SUCCESS if all is OK. VSCP_ERROR_INDEX_OOB is returned when trying
+    to read a register that does not exist. This error is actually a warning.
   */
   int readRegister_sim1(uint16_t page, uint32_t reg, uint8_t* pval);
 
@@ -175,7 +184,8 @@ public:
     @param page Page to write to
     @param reg Register to write to
     @param val value that should be written
-    @return VSCP_ERROR_SUCCESS if all is OK
+    @return VSCP_ERROR_SUCCESS if all is OK. VSCP_ERROR_INDEX_OOB is returned when trying
+    to read a register that does not exist. This error is actually a warning.
   */
   int writeRegister_sim1(uint16_t page, uint32_t reg, uint8_t val);
 
@@ -252,8 +262,24 @@ public:
   //                         Firmware callbacks
   // ========================================================================
 
+  /*!
+    Read register content
+    @param page Page to read content from.
+    @param reg Register to read.
+    @param pval Pointer to variable that will get register content on success.
+    @return VSCP_ERROR_SUCCESS on OK. VSCP_ERROR_INDEX_OOB is returned when trying
+    to read a register that does not exist. This error is actually a warning.
+  */
   int readRegister(uint16_t page, uint32_t reg, uint8_t* pval);
 
+  /*!
+    Write register content
+    @param page Page to read content from.
+    @param reg Regsiter to read.
+    @param val Value to write to register.
+    @return VSCP_ERROR_SUCCESS on OK. VSCP_ERROR_INDEX_OOB is returned when trying
+    to read a register that does not exist. This error is actually a warning.
+  */
   int writeRegister(uint16_t page, uint32_t reg, uint8_t val);
 
   int receivedSegCtrlHeartBeat(uint16_t segcrc, uint32_t tm);
@@ -348,7 +374,7 @@ public:
   /*!
     Firmware configuration
   */
-  vscp_frmw2_firmware_configt_t m_firmware_cfg;
+  vscp_frmw2_firmware_config_t m_firmware_cfg;
 
   /*!
     Worker thread
@@ -440,6 +466,12 @@ public:
   spdlog::level::level_enum m_consoleLogLevel;
   std::string m_consoleLogPattern;
 
+  // Maps (page + register) to pointer to widgetitem
+  std::map<uint32_t, QListWidgetItem *> m_regmap;
+
+  // Initial register values, but only ones != 0
+  std::set<uint8_t> m_initial_value;
+
 signals:
 
   /// Data received from callback
@@ -456,6 +488,12 @@ signals:
 
   /// Background color changed
   void backgroundColorChanged(uint32_t color);
+
+  /// Init registers  (VSCP_LEVEL1)
+  void initRegisters(std::set<uint32_t> &regset, uint8_t level );
+
+  /// Update register list
+  void updateRegister(uint32_t offset, uint16_t page, uint8_t value);
 };
 
 #endif // ___VSCP_BTEST_H

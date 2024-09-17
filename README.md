@@ -34,7 +34,7 @@ Change folder to **vscp-simulator**
 ```bash
 mkdir build
 cd build
-cmake -DCMAKE_PREFIX_PATH=~/Qt/6.7.0/gcc_64 ..
+cmake -DCMAKE_PREFIX_PATH=~/Qt/6.7.2/gcc_64 ..
 make
 ```
 

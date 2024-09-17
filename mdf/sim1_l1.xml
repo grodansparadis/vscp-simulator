@@ -3,14 +3,14 @@
 <vscp>
 <module>
 <name>btest simulation</name>
-<copyright>(C) Ake Hedman, Grodans Paradis AB 2024</copyright>
+<copyright>(C) Ake Hedman, Grodans Paradis, AB 2024</copyright>
 <level>0</level>
 <model>A</model>
 <version>1</version>
 <changed>2024-06-26</changed>
 <buffersize>8</buffersize>
 <description lang="en">VSCP simulation program model 1</description>
-<infourl lang="en">https://github.com/grodansparadis/vscp-test-bootloader</infourl>
+<infourl lang="en">https://github.com/grodansparadis/vscp-simulator</infourl>
 <manufacturer>
 <name>Grodans Paradis AB</name>
 <address>
@@ -60,299 +60,342 @@
 </firmware>
 </files>
 <registers>
-<reg name="zone" page="0" offset="0" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="zone" page="0" offset="0" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
 <description lang="en">Zone this module belongs to</description>
 </reg>
-<reg name="sub zone s0" page="0" offset="1" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Sub zone this module belongs to</description>
-</reg>
-<reg name="sub zone s1" page="0" offset="2" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="sub zone s0" page="0" offset="1" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
 <description lang="en">Sub zone for channel 0</description>
 </reg>
-<reg name="sub zone s2" page="0" offset="3" span="1" width="8" access="rw" type="0" default="1" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="sub zone s1" page="0" offset="2" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
 <description lang="en">Sub zone for channel 1</description>
 </reg>
-<reg name="sub zone s3" page="0" offset="4" span="1" width="8" access="rw" type="0" default="2" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="sub zone s2" page="0" offset="3" span="1" width="8" access="rw" type="0" default="1" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
 <description lang="en">Sub zone for channel 2</description>
 </reg>
-<reg name="sub zone s4" page="0" offset="5" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="sub zone s3" page="0" offset="4" span="1" width="8" access="rw" type="0" default="2" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
 <description lang="en">Sub zone for channel 3</description>
 </reg>
-<reg name="sub zone s5" page="0" offset="6" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Control  register for counter 0\nFunctionality for counter 0.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter.</description>
+<reg name="sub zone s4" page="0" offset="5" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for channel 4</description>
 </reg>
-<reg name="sub zone s6" page="0" offset="7" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Control  register for counter 1\nFunctionality for counter 1.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter.</description>
+<reg name="sub zone s5" page="0" offset="6" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for channel 5</description>
 </reg>
-<reg name="sub zone s7" page="0" offset="8" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Control  register for counter 2\nFunctionality for counter 2.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter.</description>
+<reg name="sub zone s6" page="0" offset="7" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for channel 6</description>
 </reg>
-<reg name="sub zone s8" page="0" offset="9" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Control  register for counter 3\nFunctionality for counter 3.\n\nBit 0 - Counting direction (0=up/1=down).\nBit 1 - Enable alarm level.\nBit 2 - Reload value on zero.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable counter.</description>
+<reg name="sub zone s7" page="0" offset="8" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for channel 7</description>
 </reg>
-<reg name="sub zone s9" page="0" offset="10" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Control register for frequency 0\nFunctionality for frequency 0.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements.</description>
+<reg name="sub zone s8" page="0" offset="9" span="1" width="8" access="rw" type="0" default="128" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for channel 8</description>
 </reg>
-<reg name="sub zone c0" page="0" offset="11" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Control register for frequency 1\nFunctionality for frequency 1.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements.</description>
+<reg name="sub zone s9" page="0" offset="10" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for channel 9</description>
 </reg>
-<reg name="sub zone c1" page="0" offset="12" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Control register for frequency 2\nFunctionality for frequency 2.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Reserved.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements.</description>
+<reg name="sub zone c0" page="0" offset="11" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 0</description>
 </reg>
-<reg name="sub zone c2" page="0" offset="13" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Control register for frequency 3\nFunctionality for frequency 3.\n\nBit 0 - Enable frequency low alarm.\nBit 1 - Enable frequency high alarm.\nBit 2 - Reserved.\nBit 3 - Reserved.\nBit 4 - Enable stream events.\nBit 5 - Reserved.\nBit 6 - Reserved.\nBit 7 - Enable frequency measurements.</description>
+<reg name="sub zone c1" page="0" offset="12" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 1</description>
 </reg>
-<reg name="sub zone c3" page="0" offset="14" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Reset counter 0 by writing 0x55 to this register.Will read back as zero for all values except 0x55.</description>
+<reg name="sub zone c2" page="0" offset="13" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 2</description>
 </reg>
-<reg name="sub zone c4" page="0" offset="15" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Reset counter 1 by writing 0x55 to this register.Will read back as zero for all values except 0x55.</description>
+<reg name="sub zone c3" page="0" offset="14" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 3</description>
 </reg>
-<reg name="sub zone c5" page="0" offset="16" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Reset counter 2 by writing 0x55 to this register.Will read back as zero for all values except 0x55.</description>
+<reg name="sub zone c4" page="0" offset="15" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 4 </description>
 </reg>
-<reg name="sub zone c6" page="0" offset="17" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Reset counter 3 by writing 0x55 to this register.Will read back as zero for all values except 0x55.</description>
+<reg name="sub zone c5" page="0" offset="16" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 5</description>
 </reg>
-<reg name="sub zone c7" page="0" offset="18" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 MSB byte.</description>
+<reg name="sub zone c6" page="0" offset="17" span="1" width="8" access="rw" type="0" default="3" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 6</description>
 </reg>
-<reg name="sub zone c8" page="0" offset="19" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0.</description>
+<reg name="sub zone c7" page="0" offset="18" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 7</description>
 </reg>
-<reg name="sub zone c9" page="0" offset="20" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0.</description>
+<reg name="sub zone c8" page="0" offset="19" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 8</description>
 </reg>
-<reg name="sub zone r0" page="0" offset="21" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 LSB byte.</description>
+<reg name="sub zone c9" page="0" offset="20" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for checkbox 9</description>
 </reg>
-<reg name="sub zone r1" page="0" offset="22" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 MSB byte.</description>
+<reg name="sub zone r0" page="0" offset="21" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 0</description>
 </reg>
-<reg name="sub zone r2" page="0" offset="23" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1.</description>
+<reg name="sub zone r1" page="0" offset="22" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 1</description>
 </reg>
-<reg name="sub zone r3" page="0" offset="24" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1.</description>
+<reg name="sub zone r2" page="0" offset="23" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 2</description>
 </reg>
-<reg name="sub zone r4" page="0" offset="25" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 LSB byte.</description>
+<reg name="sub zone r3" page="0" offset="24" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 3</description>
 </reg>
-<reg name="sub zone r5" page="0" offset="26" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 MSB byte.</description>
+<reg name="sub zone r4" page="0" offset="25" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 4</description>
 </reg>
-<reg name="sub zone r6" page="0" offset="27" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2.</description>
+<reg name="sub zone r5" page="0" offset="26" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 5</description>
 </reg>
-<reg name="sub zone r7" page="0" offset="28" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2.</description>
+<reg name="sub zone r6" page="0" offset="27" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 6</description>
 </reg>
-<reg name="sub zone r8" page="0" offset="29" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 LSB byte.</description>
+<reg name="sub zone r7" page="0" offset="28" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 7</description>
 </reg>
-<reg name="sub zone r9" page="0" offset="30" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 MSB byte.</description>
+<reg name="sub zone r8" page="0" offset="29" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 8</description>
 </reg>
-<reg name="sub zone slider 0" page="0" offset="31" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3.</description>
+<reg name="sub zone r9" page="0" offset="30" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xc6c4c4" >
+<description lang="en">Sub zone for radio button 9</description>
 </reg>
-<reg name="sub zone slider 1" page="0" offset="32" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3.</description>
+<reg name="sub zone slider 0" page="0" offset="31" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 0</description>
 </reg>
-<reg name="sub zone slider 2" page="0" offset="33" span="1" width="8" access="w" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 LSB byte.</description>
+<reg name="sub zone slider 1" page="0" offset="32" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 1</description>
 </reg>
-<reg name="sub zone slider 3" page="0" offset="34" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 alarm level MSB byte.</description>
+<reg name="sub zone slider 2" page="0" offset="33" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 2</description>
 </reg>
-<reg name="sub zone slider 4" page="0" offset="35" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 alarm level.</description>
+<reg name="sub zone slider 3" page="0" offset="34" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 3</description>
 </reg>
-<reg name="sub zone slider 5" page="0" offset="36" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 alarm level.</description>
+<reg name="sub zone slider 4" page="0" offset="35" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 4</description>
 </reg>
-<reg name="sub zone slider 6" page="0" offset="37" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 alarm level LSB byte.</description>
+<reg name="sub zone slider 5" page="0" offset="36" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 5</description>
 </reg>
-<reg name="sub zone slider 7" page="0" offset="38" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 alarm level MSB byte.</description>
+<reg name="sub zone slider 6" page="0" offset="37" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 6</description>
 </reg>
-<reg name="sub zone slider 8" page="0" offset="39" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 alarm level.</description>
+<reg name="sub zone slider 7" page="0" offset="38" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 7</description>
 </reg>
-<reg name="sub zone slider 9" page="0" offset="40" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 alarm level.</description>
+<reg name="sub zone slider 8" page="0" offset="39" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 8</description>
 </reg>
-<reg name="current value for button 0" page="0" offset="41" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 1 alarm level LSB byte.</description>
+<reg name="sub zone slider 9" page="0" offset="40" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xb8b7b7" >
+<description lang="en">Sub zone for slider 9</description>
 </reg>
-<reg name="current value for button 1" page="0" offset="42" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 alarm level MSB byte.</description>
+<reg name="current value for button 0" page="0" offset="41" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 0.</description>
 </reg>
-<reg name="current value for button 2" page="0" offset="43" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 alarm level.</description>
+<reg name="current value for button 1" page="0" offset="42" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 1.</description>
 </reg>
-<reg name="current value for button 3" page="0" offset="44" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 alarm level.</description>
+<reg name="current value for button 2" page="0" offset="43" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 2.</description>
 </reg>
-<reg name="current value for button 4" page="0" offset="45" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 2 alarm level LSB byte.</description>
+<reg name="current value for button 3" page="0" offset="44" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 3.</description>
 </reg>
-<reg name="current value for button 5" page="0" offset="46" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 alarm level MSB byte.</description>
+<reg name="current value for button 4" page="0" offset="45" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 4.</description>
 </reg>
-<reg name="current value for button 6" page="0" offset="47" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 alarm level.</description>
+<reg name="current value for button 5" page="0" offset="46" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 5.</description>
 </reg>
-<reg name="current value for button 7" page="0" offset="48" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 alarm level.</description>
+<reg name="current value for button 6" page="0" offset="47" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 6.</description>
 </reg>
-<reg name="current value for button 8" page="0" offset="49" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 3 alarm level LSB byte.</description>
+<reg name="current value for button 7" page="0" offset="48" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 7.</description>
 </reg>
-<reg name="current value for button 9" page="0" offset="50" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">32-bit counter 0 reload value MSB byte.</description>
+<reg name="current value for button 8" page="0" offset="49" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 8.</description>
 </reg>
-<reg name="current value for checkbox 0" page="0" offset="51" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
+<reg name="current value for button 9" page="0" offset="50" span="1" width="8" access="r" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa" >
+<description lang="en">Momentan value for button 9.</description>
+</reg>
+<reg name="current value for checkbox 0" page="0" offset="51" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
 <valuelist> <item name="Open" value="1" >
 </item> <item name="Closed" value="1" >
 </item> </valuelist> 
-<description lang="en">C0 value. 1 is opened. 0 is closed.</description>
+<description lang="en">Current value for checkbox 0.</description>
 </reg>
-<reg name="current value for checkbox 1" page="0" offset="52" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="Open" value="1" >
-</item> <item name="Close" value="0" >
-</item> </valuelist> 
-<description lang="en">C1 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 1" page="0" offset="52" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 1.</description>
 </reg>
-<reg name="current value for checkbox 2" page="0" offset="53" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<description lang="en">C2 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 2" page="0" offset="53" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 2.</description>
 </reg>
-<reg name="current value for checkbox 3" page="0" offset="54" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<description lang="en">C3 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 3" page="0" offset="54" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 3.</description>
 </reg>
-<reg name="current value for checkbox 4" page="0" offset="55" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<description lang="en">C4 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 4" page="0" offset="55" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 4.</description>
 </reg>
-<reg name="current value for checkbox 5" page="0" offset="56" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<description lang="en">C5 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 5" page="0" offset="56" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 5.</description>
 </reg>
-<reg name="current value for checkbox 6" page="0" offset="57" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<description lang="en">C6 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 6" page="0" offset="57" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 6.</description>
 </reg>
-<reg name="current value for checkbox 7" page="0" offset="58" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<description lang="en">C0 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 7" page="0" offset="58" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 7.</description>
 </reg>
-<reg name="current value for checkbox 8" page="0" offset="59" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<description lang="en">C8 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 8" page="0" offset="59" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 8.</description>
 </reg>
-<reg name="current value for checkbox 9" page="0" offset="60" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<description lang="en">C9 value. 1 is opened. 0 is closed.</description>
+<reg name="current value for checkbox 9" page="0" offset="60" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xbb8fce" >
+<valuelist> 
+<item name="Open" value="1" ></item> 
+<item name="Close" value="0" ></item> 
+</valuelist> 
+<description lang="en">Current value for checkbox 9.</description>
 </reg>
-<reg name="current value for radio option button 0" page="0" offset="61" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="OFF" value="0" >
-</item> <item name="ON" value="1" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R0</description>
+<reg name="current value for radio option button 0" page="0" offset="61" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist> 
+<description lang="en">Radio button option value for R0</description>
 </reg>
-<reg name="current value for radio option button 1" page="0" offset="62" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R1</description>
+<reg name="current value for radio option button 1" page="0" offset="62" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R1</description>
 </reg>
-<reg name="current value for radio option button 2" page="0" offset="63" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R2</description>
+<reg name="current value for radio option button 2" page="0" offset="63" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R2</description>
 </reg>
-<reg name="current value for radio option button 3" page="0" offset="64" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R3</description>
+<reg name="current value for radio option button 3" page="0" offset="64" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R3</description>
 </reg>
-<reg name="current value for radio option button 4" page="0" offset="65" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R4</description>
+<reg name="current value for radio option button 4" page="0" offset="65" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R4</description>
 </reg>
-<reg name="current value for radio option button 5" page="0" offset="66" span="1" width="8" access="rw" type="0" default="0" min="0" max="0" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R5</description>
+<reg name="current value for radio option button 5" page="0" offset="66" span="1" width="8" access="rw" type="0" default="0" min="0" max="0" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R5</description>
 </reg>
-<reg name="current value for radio option button 6" page="0" offset="67" span="1" width="8" access="rw" type="0" default="200" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R6</description>
+<reg name="current value for radio option button 6" page="0" offset="67" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R6</description>
 </reg>
-<reg name="current value for radio option button 7" page="0" offset="68" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R7	
+<reg name="current value for radio option button 7" page="0" offset="68" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R7	
 	</description>
 </reg>
-<reg name="current value for radio option button 8" page="0" offset="69" span="1" width="8" access="rw" type="0" default="200" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R8
+<reg name="current value for radio option button 8" page="0" offset="69" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R8
 </description>
 </reg>
-<reg name="current value for radio option button 9" page="0" offset="70" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0" >
-<valuelist> <item name="ON" value="1" >
-</item> <item name="OFF" value="0" >
-</item> </valuelist> 
-<description lang="en">Radio button value for R9</description>
+<reg name="current value for radio option button 9" page="0" offset="70" span="1" width="8" access="rw" type="0" default="0" min="0" max="1" fgcolor="0" bgcolor="0xf7dc6f" >
+<valuelist> 
+<item name="OFF" value="0" ></item> 
+<item name="ON" value="1" ></item> 
+</valuelist>
+<description lang="en">Radio button option value for R9</description>
 </reg>
-<reg name="current value for slider 0" page="0" offset="71" span="1" width="8" access="rw" type="0" default="200" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 0" page="0" offset="71" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 0</description>
 </reg>
-<reg name="current value for slider 1" page="0" offset="72" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 1" page="0" offset="72" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 1</description>
 </reg>
-<reg name="current value for slider 2" page="0" offset="73" span="1" width="8" access="rw" type="0" default="200" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 2" page="0" offset="73" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 2</description>
 </reg>
-<reg name="current value for slider 3" page="0" offset="74" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 3" page="0" offset="74" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 3</description>
 </reg>
-<reg name="current value for slider 4" page="0" offset="75" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 4" page="0" offset="75" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 4</description>
 </reg>
-<reg name="current value for slider 5" page="0" offset="76" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 5" page="0" offset="76" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 5</description>
 </reg>
-<reg name="current value for slider 6" page="0" offset="77" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 6" page="0" offset="77" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 6</description>
 </reg>
-<reg name="current value for slider 7" page="0" offset="78" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 7" page="0" offset="78" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 7</description>
 </reg>
-<reg name="current value for slider 8" page="0" offset="79" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 8" page="0" offset="79" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 8</description>
 </reg>
-<reg name="current value for slider 9" page="0" offset="80" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="current value for slider 9" page="0" offset="80" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf5b7b1" >
 <description lang="en">Slider value 9</description>
 </reg>
-<reg name="placeholder (always read as zero)" page="0" offset="81" span="1" width="8" access="rw" type="0" default="undef" min="0" max="0" fgcolor="0" bgcolor="0" >
+<reg name="placeholder (always read as zero)" page="0" offset="81" span="1" width="8" access="r" type="0" default="undef" min="0" max="0" fgcolor="0" bgcolor="0xf5b041" >
 </reg>
-<reg name="background color rgb (r)" page="0" offset="82" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="background color rgb (r)" page="0" offset="82" span="1" width="8" access="rw" type="0" default="0xc0" min="0" max="255" fgcolor="0" bgcolor="0xe74c3c" >
 </reg>
-<reg name="background color rgb (g)" page="0" offset="83" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="background color rgb (g)" page="0" offset="83" span="1" width="8" access="rw" type="0" default="0xc0" min="0" max="255" fgcolor="0" bgcolor="0x82e0aa " >
 </reg>
-<reg name="background color rgb (b)" page="0" offset="84" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="background color rgb (b)" page="0" offset="84" span="1" width="8" access="rw" type="0" default="0xc0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
 </reg>
-<reg name="report interval for frequency" page="0" offset="85" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0" >
-<description lang="en">Report interval for frequency 3 in seconds. Set to zero to turn of reporting.</description>
+<reg name="report interval for frequency" page="0" offset="85" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0xf7dc6f" >
+<description lang="en">Report interval for frequency in seconds. Set to zero to turn of reporting.</description>
 </reg>
-<reg name="data coding for the periodic measurement event" page="0" offset="86" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0" >
+<reg name="data coding for the periodic measurement event" page="0" offset="86" span="1" width="8" access="rw" type="0" default="undef" min="0" max="255" fgcolor="0" bgcolor="0xf7dc6f" >
 <bit name="Sensor index" pos="0" width="3" default="0" min="0" max="7" access="rw" >
 <infourl lang="en">https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_measurements?id=datacoding</infourl>
 </bit>
@@ -363,9 +406,25 @@
 <infourl lang="en">https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_measurements?id=datacoding</infourl>
 </bit>
 </reg>
+<reg name="Page 1 test 0" page="1" offset="0" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
+</reg>
+<reg name="Page 1 test 1" page="1" offset="1" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
+</reg>
+<reg name="Page 1 test 2" page="1" offset="2" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
+</reg>
+<reg name="Page 1 test 3" page="1" offset="3" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
+</reg>
+<reg name="Page 2 test 0" page="2" offset="0" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
+</reg>
+<reg name="Page 2 test 1" page="2" offset="1" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
+</reg>
+<reg name="Page 2 test 2" page="2" offset="2" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
+</reg>
+<reg name="Page 2 test 3" page="2" offset="3" span="1" width="8" access="rw" type="0" default="0" min="0" max="255" fgcolor="0" bgcolor="0x5dade2" >
+</reg>
 </registers>
 <remotevars>
-<remotevar name="colour" type="0" default="0xffffff" page="0" offset="83" access="rw" bitpos="0" fgcolor="0" bgcolor="0" >
+<remotevar name="colour" type="0" default="0xffffff" page="0" offset="83" access="rw" bitpos="0" fgcolor="0" bgcolor="0xffffff" >
 <description lang="en">A 32-bit RGB Color value for simulation background.</description>
 </remotevar>
 </remotevars>

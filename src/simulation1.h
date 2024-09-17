@@ -59,7 +59,7 @@ typedef struct simulation1 {
   uint8_t m_coding_measurement_event; // Coding for measuremet event
 
   uint8_t m_dm[10 * 9]; // Decision matrix 8-rows
-} simulation1;
+} simulation1_t;
 
 #ifdef __cplusplus
 extern "C" {

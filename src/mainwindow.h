@@ -1,14 +1,20 @@
 #ifndef mainwindow_h
 #define mainwindow_h
 
+#include <QListWidgetItem>
 #include <QMainWindow>
 #include <QScopedPointer>
+
+#include <map>
+#include <set>
 
 #include <spdlog/async.h>
 #include <spdlog/sinks/qt_sinks.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
+
+#include <vscp.h>
 
 namespace Ui {
 class MainWindow;
@@ -43,6 +49,23 @@ public:
   */
   void setBootLoaderModeUi(void);
 
+  /*!
+    Add register row
+    Must be added in numerical order for both offset and page
+    @param row Row number for register to update
+    @param page Page for register to update
+    @param value Value to write
+  */
+  void addRegRow(uint32_t row, uint16_t page, uint8_t value);
+
+  /*!
+    Update register row
+    @param row Row number for register to update
+    @param page Page for register to update
+    @param value Value to write
+  */
+  void updateRegRow(uint32_t row, uint16_t page, uint8_t value);
+
 public slots:
   // Set checkbox value
   void setCheckboxValue(int idx, bool value);
@@ -55,6 +78,19 @@ public slots:
 
   // Set radio button value
   void setBackgroundColor(uint32_t color);
+
+  /*!
+    Initialize register
+  */
+  void initRegisters(void);
+
+  /*!
+    Update register
+    @param offset for register (0-127 for level I)
+    @param page for register (always zero for Level II)
+    @param value Current value for register
+  */
+  void updateRegister(uint32_t offset, uint16_t page, uint8_t value);
 
 private slots:
   void clearLog(void);
