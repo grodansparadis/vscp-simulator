@@ -157,6 +157,10 @@ MainWindow::init(void)
   // Initilize simulation data storage
   papp->initSimulationData();
 
+  ui->lblPrgVersion->setText(QString("%1.%2.%3")
+                               .arg(APP_VERSION_MAJOR)
+                               .arg(APP_VERSION_MINOR)
+                               .arg(APP_VERSION_RELEASE));
   ui->lblQtVersion->setText(qVersion());
   ui->lblLevel->setText((VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) ? "Level I" : "Level II");
   ui->lblInterface->setText(papp->m_interface);
@@ -165,7 +169,8 @@ MainWindow::init(void)
   ui->lblPort->setText(QString("%1").arg(papp->m_port));
   ui->lblUser->setText(papp->m_user);
   ui->lblPassword->setText(papp->m_password);
-  ui->lblGuid->setText(papp->m_guid.toString().c_str());
+  cguid guid(papp->m_firmware_cfg.m_guid);
+  ui->lblGuid->setText(/*papp->m_guid*/ guid.toString().c_str());
 
   if (0xff == papp->m_bootflag) {
     setBootLoaderModeUi();
@@ -207,10 +212,10 @@ MainWindow::init(void)
   papp->standardRegHasChanged(VSCP_STD_REGISTER_BUFFER_SIZE);
   papp->standardRegHasChanged(VSCP_STD_REGISTER_PAGES_COUNT);
   for (int i = 0; i <= 4; i++) {
-    papp->standardRegHasChanged(VSCP_STD_REGISTER_FAMILY_CODE+i);
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_FAMILY_CODE + i);
   }
   for (int i = 0; i <= 4; i++) {
-    papp->standardRegHasChanged(VSCP_STD_REGISTER_DEVICE_TYPE+i);
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_DEVICE_TYPE + i);
   }
   papp->standardRegHasChanged(VSCP_STD_REGISTER_NODE_RESET);
   papp->standardRegHasChanged(VSCP_STD_REGISTER_FIRMWARE_CODE_MSB);

@@ -1643,10 +1643,10 @@ btest::standardRegHasChanged(uint32_t stdreg)
       break;
 
     default:
-      if ((reg >= VSCP_STD_REGISTER_GUID) && (reg < VSCP_STD_REGISTER_GUID+16)) {
+      if ((reg >= VSCP_STD_REGISTER_GUID) && (reg < VSCP_STD_REGISTER_GUID + 16)) {
         value = m_firmware_cfg.m_guid[reg - VSCP_STD_REGISTER_GUID];
       }
-      else if ((reg >= VSCP_STD_REGISTER_DEVICE_URL) && (reg < VSCP_STD_REGISTER_DEVICE_URL+32)) {
+      else if ((reg >= VSCP_STD_REGISTER_DEVICE_URL) && (reg < VSCP_STD_REGISTER_DEVICE_URL + 32)) {
         value = m_firmware_cfg.m_mdfurl[reg - VSCP_STD_REGISTER_DEVICE_URL];
       }
       break;
@@ -1919,6 +1919,7 @@ btest::vscpboot_init_hardware(void)
       return VSCP_ERROR_PARAMETER;
     }
 
+    cguid guid(m_firmware_cfg.m_guid);
     m_pClient = new vscpClientSocketCan();
     if (nullptr == m_pClient) {
       spdlog::error("Unable to create client object {0}", m_interface.toStdString());
@@ -1926,7 +1927,7 @@ btest::vscpboot_init_hardware(void)
     }
 
     if (VSCP_ERROR_SUCCESS !=
-        (rv = ((vscpClientSocketCan*)m_pClient)->init(m_configVector[0], m_guid.toString(), 0))) {
+        (rv = ((vscpClientSocketCan*)m_pClient)->init(m_configVector[0], guid.toString(), 0))) {
       delete (vscpClientSocketCan*)m_pClient;
       m_pClient = nullptr;
       spdlog::error("Unable to initialize socketcan client {0} rv={1}", m_interface.toStdString(), rv);

@@ -74,7 +74,11 @@ Q_DECLARE_METATYPE(vscpEvent)
 Q_DECLARE_METATYPE(vscpEventEx)
 
 /// Application name used in titles and headers
-#define APPNAME "Boot test"
+#define APPNAME             "Boot test"
+
+#define APP_VERSION_MAJOR   0
+#define APP_VERSION_MINOR   0
+#define APP_VERSION_RELEASE 1
 
 // home folder is used for storage of program configuration
 // system folder holds databases etc
@@ -196,7 +200,7 @@ public:
   int reportDM_sim1(void);
 
   /*!
-    Slider has moved by user. 
+    Slider has moved by user.
     This method distribute to a handler for the active simulation
     @param idx Slider idex 0-9
     @param value Current value of slider
@@ -205,7 +209,7 @@ public:
   int writeSliderValue(uint8_t idx, int value);
 
   /*!
-    Slider has moved by user and smulation handle it. 
+    Slider has moved by user and smulation handle it.
     @param idx Slider index 0-9
     @param value Current value of slider
     @return VSCP_ERROR_SUCCESS if all is OK
@@ -336,8 +340,6 @@ public:
 
   int vscpboot_getEventEx(vscpEventEx* pex);
 
-
-
   // ========================================================================
   // ========================================================================
 
@@ -437,7 +439,7 @@ public:
   std::deque<std::string> m_configVector;
 
   /// GUID
-  cguid m_guid;
+  // cguid m_guid;
 
   /// Host
   QString m_host;
@@ -467,7 +469,7 @@ public:
   std::string m_consoleLogPattern;
 
   // Maps (page + register) to pointer to widgetitem
-  std::map<uint32_t, QListWidgetItem *> m_regmap;
+  std::map<uint32_t, QListWidgetItem*> m_regmap;
 
   // Initial register values, but only ones != 0
   std::set<uint8_t> m_initial_value;
@@ -490,7 +492,7 @@ signals:
   void backgroundColorChanged(uint32_t color);
 
   /// Init registers  (VSCP_LEVEL1)
-  void initRegisters(std::set<uint32_t> &regset, uint8_t level );
+  void initRegisters(std::set<uint32_t>& regset, uint8_t level);
 
   /// Update register list
   void updateRegister(uint32_t offset, uint16_t page, uint8_t value);

@@ -34,7 +34,7 @@ selection-background-color: rgb(0, 0, 0);</string>
      <item row="0" column="0" colspan="2">
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab_configuration">
         <attribute name="title">
@@ -51,6 +51,29 @@ selection-background-color: rgb(0, 0, 0);</string>
          </property>
          <layout class="QFormLayout" name="formLayout_2">
           <item row="0" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Program version: </string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="lblPrgVersion">
+            <property name="text">
+             <string>----------------------------</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
            <widget class="QLabel" name="label">
             <property name="font">
              <font>
@@ -59,21 +82,21 @@ selection-background-color: rgb(0, 0, 0);</string>
              </font>
             </property>
             <property name="text">
-             <string>Qt Version: </string>
+             <string>Qt version: </string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
+          <item row="1" column="1">
            <widget class="QLabel" name="lblQtVersion">
             <property name="text">
              <string>----------------------------</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QLabel" name="label_10">
             <property name="font">
              <font>
@@ -89,7 +112,34 @@ selection-background-color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="lblMode">
+            <property name="text">
+             <string>----------------------------</string>
+            </property>
+           </widget>
+          </item>
           <item row="3" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Level</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="lblLevel">
+            <property name="text">
+             <string>----------------------------</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
            <widget class="QLabel" name="label_2">
             <property name="font">
              <font>
@@ -105,14 +155,14 @@ selection-background-color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
+          <item row="4" column="1">
            <widget class="QLabel" name="lblInterface">
             <property name="text">
              <string>----------------------------</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
+          <item row="5" column="0">
            <widget class="QLabel" name="label_3">
             <property name="font">
              <font>
@@ -128,14 +178,14 @@ selection-background-color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
+          <item row="5" column="1">
            <widget class="QLabel" name="lblConfiguration">
             <property name="text">
              <string>----------------------------</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
+          <item row="6" column="0">
            <widget class="QLabel" name="label_4">
             <property name="font">
              <font>
@@ -151,14 +201,14 @@ selection-background-color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
+          <item row="6" column="1">
            <widget class="QLabel" name="lblHost">
             <property name="text">
              <string>----------------------------</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
+          <item row="7" column="0">
            <widget class="QLabel" name="label_5">
             <property name="font">
              <font>
@@ -174,14 +224,14 @@ selection-background-color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="1">
+          <item row="7" column="1">
            <widget class="QLabel" name="lblPort">
             <property name="text">
              <string>----------------------------</string>
             </property>
            </widget>
           </item>
-          <item row="7" column="0">
+          <item row="8" column="0">
            <widget class="QLabel" name="label_6">
             <property name="font">
              <font>
@@ -197,14 +247,14 @@ selection-background-color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>
-          <item row="7" column="1">
+          <item row="8" column="1">
            <widget class="QLabel" name="lblUser">
             <property name="text">
              <string>----------------------------</string>
             </property>
            </widget>
           </item>
-          <item row="8" column="0">
+          <item row="9" column="0">
            <widget class="QLabel" name="label_7">
             <property name="font">
              <font>
@@ -220,14 +270,14 @@ selection-background-color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>
-          <item row="8" column="1">
+          <item row="9" column="1">
            <widget class="QLabel" name="lblPassword">
             <property name="text">
              <string>----------------------------</string>
             </property>
            </widget>
           </item>
-          <item row="9" column="0">
+          <item row="10" column="0">
            <widget class="QLabel" name="label_8">
             <property name="font">
              <font>
@@ -243,35 +293,8 @@ selection-background-color: rgb(0, 0, 0);</string>
             </property>
            </widget>
           </item>
-          <item row="9" column="1">
+          <item row="10" column="1">
            <widget class="QLabel" name="lblGuid">
-            <property name="text">
-             <string>----------------------------</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="lblMode">
-            <property name="text">
-             <string>----------------------------</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_11">
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Level</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="lblLevel">
             <property name="text">
              <string>----------------------------</string>
             </property>

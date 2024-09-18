@@ -14,8 +14,9 @@ The following transport mechanisms are available
 | Transport | Availability | OS |
 | ----------| ------------ | -- |
 | socketcan | Currently available. | Linux |
-| canal | Soon... | Linux, Windows |
-| tcp/ip | Soon... | Linux, Windows |
+| CANAL | Soon... | Linux, Windows |
+| tcp/ip server | Soon... | Linux, Windows |
+| tcp/ip client | Soon... | Linux, Windows |
 | MQTT | Soon... | Linux, Windows |
 | Websocket version 1 | Soon... | Linux, Windows |
 | Websocket version 2 | Soon... | Linux, Windows |
@@ -27,7 +28,7 @@ The following transport mechanisms are available
 
 Check out the souce code from the repository with
 
-  git checkout --recursive https://github.com/grodansparadis/vscp-simulator.git
+  git checkout --recursive-submodules https://github.com/grodansparadis/vscp-simulator.git
 
 Change folder to **vscp-simulator**
 
@@ -46,8 +47,8 @@ The executable is named **btest**
 
 | Short | Long  | Desription |
 | ----- | ----- | ---------- |
-| -b | --bootmode | Set bootmode flag 0=start firmware app. 0!= start bootloader. |
-| -B | --block | Block info on the form size:count where size is he size of a block in bytes and count are the number of blocks of that size. |
+| -b | --bootmode | Set bootmode flag "-b 0"=start firmware app. "-b 0xff" != start bootloader. |
+| -B | --block | Block info on the form "size:count" where size is he size of a block in bytes and count are the number of blocks of that size. |
 | -c | --config | Semicolon seperated string for interface settings. |
 | -f | --cfgfile | Path to JSON configuration file. A sample configuration file named *firmware_example1.json* is available in the debug folder of the project  |
 | -g | --guid | GUID for simulated device. LSB byte is the only valid byte for Level I devices. |
@@ -94,7 +95,7 @@ The configuration file (set path with -f switch) is in JSON format and defines t
     "name": "VSCP simulated node",
     "level": 2,
     "guid": "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00",
-    "mdfurl": "eurosource.se/simulated01.mdf",
+    "mdfurl": "eurosource.se/sim1_l1.mdf",
     "bUse16BitNickname": true,
     "nickname":"0x1234",
     "bootflag": 0,
@@ -138,7 +139,7 @@ Name of the device. Can be a maximum of 64 bytes long.
 VSCP level to use for device. Can be 1 or 2.
 
 ### guid
-GUID for device. Can be set as string, or array
+GUID for device. Can be set as string, or array. LSB byte is the only valid byte for Level I devices.
 
 ### mdfurl
 URL poiting to external MDF file. If set to empty string ("") the MDF is internal. If the mdf is preceedid with "local://" a local file will be used to load the mdf. Max 32 bytyes can be used for none local file url's
@@ -232,14 +233,14 @@ The software has the ability to provide many simulations. Currently only one cal
 
 The simulation has
 
- * Nine buttons that send [TurnOn](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.control?id=type5) events when pressed.
- * Nine checkboxes that send [Opened](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.information?id=type7) and [Closed](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.information?id=type8) events when selected/deselected.
- * Nine sliders that sends [Relative Level](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.measurement?id=type50) events when they are move.
+ * Ten buttons that send [TurnOn](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.control?id=type5) events when pressed.
+ * Ten checkboxes that send [Opened](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.information?id=type7) and [Closed](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.information?id=type8) events when selected/deselected.
+ * Ten sliders that sends [Relative Level](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.measurement?id=type50) events when they are move.
  * Nine radio buttons that that send [On](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.measurement?id=type50)  and [Off](https://grodansparadis.github.io/vscp-doc-spec/#/./class1.information?id=type4)events when they are selected/deselected.
  * The background color as an RGN value for the simulation tab can be set with register writes.
  * A timed event is available wich have a configurable frequency. The timed event send a simulated temperature value.
 
-The simulated node has a configurable zone and all controls has there own configueable subzone.
+The simulated node has a configurable zone and all controls has there own configurable subzone.
 
 There are registers which can be written to set the value for all controls.
 
