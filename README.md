@@ -28,7 +28,7 @@ The following transport mechanisms are available
 
 Check out the souce code from the repository with
 
-  git checkout --recursive-submodules https://github.com/grodansparadis/vscp-simulator.git
+  git checkout --recurse-submodules -j8 https://github.com/grodansparadis/vscp-simulator.git
 
 Change folder to **vscp-simulator**
 
@@ -39,7 +39,7 @@ cmake -DCMAKE_PREFIX_PATH=~/Qt/6.7.2/gcc_64 ..
 make
 ```
 
-*DCMAKE_PREFIX_PATH* is the path to QT you set it to the folder and the verison of QT you want to use with the vscp-simulator. All versions > 5.15 should work. If using vsicula studio code set this encitonment variabl in **cmake: configure environment** in the settings for vscode.
+*DCMAKE_PREFIX_PATH* is the path to QT you set it to the folder and the verison of QT you want to use with the vscp-simulator. All versions > 5.15 should work. If using visual studio code set this environment variable in **cmake: configure environment** in the settings for vscode.
 
 The executable is named **btest** 
 

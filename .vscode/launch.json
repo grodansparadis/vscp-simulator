@@ -9,7 +9,9 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/build/btest",
-      "args": ["-f /usr/local/src/VSCP/vscp-simulator/debug/firmware_example1.json"],
+      "args": [
+        "-f /usr/local/src/VSCP/vscp-simulator/debug/firmware_example1.json"
+      ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
@@ -46,6 +48,14 @@
       "preLaunchTask": "g++ build active file",
       "miDebuggerPath": "/usr/bin/gdb",
       "visualizerFile": "/home/akhe/.config/Code/User/workspaceStorage/b3a88788bb1e8a32eb6392485a993de5/tonka3000.qtvsctools/qt.natvis.xml"
+    },
+    {
+      "type": "cmake",
+      "request": "launch",
+      "name": "Debug portfile(s)",
+      "cmakeDebugType": "external",
+      "pipeName": "/tmp/vcpkg_ext_portfile_dbg",
+      "preLaunchTask": "Debug vcpkg commands"
     }
   ]
 }
