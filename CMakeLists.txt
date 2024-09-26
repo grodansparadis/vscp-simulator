@@ -235,7 +235,7 @@ include_directories( PUBLIC ./src
   $ENV{VSCP_ROOT}/src/common
   $ENV{VSCP_FIRMWARE}/common
   ./third_party
-  ./third_party/nlohmann/include/
+  ./third_party/json/include/
   ./third_party/spdlog/include/
   ./third_party/Mustache/
   ./third_party/maddy/include/
