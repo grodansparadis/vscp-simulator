@@ -1,19 +1,52 @@
-cmake_minimum_required(VERSION 3.16)
+# CMakeLists.txt
+#
+# Build instructions for VSCP Simulator
+#
+# Copyright (c) 2000-2024 Åke Hedman, Grodans Paradis AB
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+# VSCP_PATH - set to path to local vscp repository. Default is "../vscp". Set with
+# -DVSCP_PATH="path"
+#
+# windows
+# -------
+# cmake .. -G "Visual Studio 17 2022" -DVCPKG_TARGET_TRIPLET=x64-windows  -DCMAKE_TOOLCHAIN_FILE=G:\vcpkg\scripts\buildsystems\vcpkg.cmake -DCMAKE_PREFIX_PATH=G:\Qt\6.7.2\msvc2019_64\
+# cmake --build . --config Debug
+# set PATH=G:\Qt\Qt-6.7.2\msvc2019_64\bin;%PATH%
+#
 
-project(btest VERSION 1.0.0 LANGUAGES CXX C)
+cmake_minimum_required(VERSION 3.16)
+project(vscpsim VERSION 1.0.0 LANGUAGES CXX C)
 
 ## --- C++14 build flags ---
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
-if (MSVC)
-    # warning level 4
-    add_compile_options(/W4)
-else()
-    # additional warnings
-    #add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
+set_target_properties(${PROJECT_NAM} PROPERTIES
+  WIN32_EXECUTABLE ON
+  MACOSX_BUNDLE ON
+)
+
+# --- System Libraries ---
+include(GNUInstallDirs) 
 
 # --- Path to vscp --- 
 if (NOT DEFINED VSCP_PATH)
@@ -23,7 +56,37 @@ endif()
 file(TO_CMAKE_PATH "$ENV{VSCP_ROOT}" VSCP_PATH)
 message(STATUS "VSCP path = $ENV{VSCP_ROOT}")
 
+file(TO_CMAKE_PATH "$ENV{VSCP_FIRMWARE}" VSCP_FIRMWARE)
+message(STATUS "VSCP firmware path = $ENV{VSCP_FIRMWARE}")
+message(STATUS "VSCP firmware path = ${VSCP_FIRMWARE}")
+
+file(TO_CMAKE_PATH "$ENV{QT_ROOT_DIR}" QT_PATH)
+message(STATUS "QT_ROOT_DIR = $ENV{QT_ROOT_DIR}")
+
+if (MSVC)
+  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+  add_definitions(-DWIN32_LEAN_AND_MEANS)
+  add_definitions(-D_POSIX_C_SOURCE)    
+  add_definitions(-DVCPKG_TARGET_TRIPLET=x64-windows)
+  add_definitions(-D_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING)
+  add_definitions(-D_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS)
+  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+  set(LIBS_SYSTEM ws2_32)
+  # use precompiled headers
+  set (CMAKE_AUTOMOC_MOC_OPTIONS "-bpch.h ")
+  # warning level 4
+  add_compile_options(/W4)
+else()
+  set(LIBS_SYSTEM c stdc++)
+  # additional warnings
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
 # set the module path
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
@@ -94,26 +157,9 @@ if(NOT SSL_VER_POS EQUAL -1)
   message(STATUS "Open ssl version is 3.2")
 endif()
 
-include_directories( PUBLIC ./src 
-  ./build
-  ./ui
-  $ENV{VSCP_ROOT}/src/vscp/common/  
-  $ENV{VSCP_ROOT}/src/common
-  $ENV{VSCP_FIRMWARE}/common
-  ./third_party
-  ./third_party/nlohmann/include/
-  ./third_party/spdlog/include/
-  ./third_party/Mustache/
-  ./third_party/maddy/include/
-  ./third_party/fastpbkdf2/
-  ${CMAKE_BINARY_DIR}
-  ${OPENSSL_INCLUDE_DIR}
-  ${MOSQUITTO_INCLUDE_DIRS}
-  ${LIBWEBSOCKETS_INCLUDE_DIR}
-  ${CURL_INCLUDE_DIR}
-)
 
-qt_add_executable(btest
+
+qt_add_executable(vscpsim
     src/mainwindow.ui
     src/mainwindow.cpp
     src/main.cpp
@@ -182,8 +228,27 @@ qt_add_executable(btest
     $ENV{VSCP_FIRMWARE}/common/vscp-firmware-level2.c
 )
 
+include_directories( PUBLIC ./src 
+  ./build
+  ./ui
+  $ENV{VSCP_ROOT}/src/vscp/common/  
+  $ENV{VSCP_ROOT}/src/common
+  $ENV{VSCP_FIRMWARE}/common
+  ./third_party
+  ./third_party/nlohmann/include/
+  ./third_party/spdlog/include/
+  ./third_party/Mustache/
+  ./third_party/maddy/include/
+  ./third_party/fastpbkdf2/
+  ${CMAKE_BINARY_DIR}
+  ${OPENSSL_INCLUDE_DIR}
+  ${MOSQUITTO_INCLUDE_DIRS}
+  ${LIBWEBSOCKETS_INCLUDE_DIR}
+  ${CURL_INCLUDE_DIR}
+)
 
-target_link_libraries(btest PRIVATE Qt6::Widgets
+target_link_libraries(vscpsim PRIVATE 
+  Qt6::Widgets
   Qt6::Qml
   Threads::Threads
   OpenSSL::SSL 
@@ -195,7 +260,15 @@ target_link_libraries(btest PRIVATE Qt6::Widgets
   ${CURL_LIBRARIES}
 )
 
-set_target_properties(btest PROPERTIES
-    WIN32_EXECUTABLE ON
-    MACOSX_BUNDLE ON
-)
+install(TARGETS ${PROJECT_NAME}
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+install(FILES ${CMAKE_SOURCE_DIR}/install/${PROJECT_NAME}.desktop
+  DESTINATION ${INSTALL_PATH}/share/applications/) 
+
+# icons
+install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/icons/ DESTINATION ${INSTALL_PATH}/share/icons/) 
+
+# Event database etc
+install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/install/share/ DESTINATION ${INSTALL_PATH}/share/${PROJECT_NAME}/)
+
