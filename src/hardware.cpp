@@ -265,24 +265,33 @@ vscp_frmw2_callback_dm_action(void* const puserdata,
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+
+
+
 /*!
  * @brief Get the time in milliseconds.
  *
  * @param pdata Pointer to user data (typical points to context)
- * @param ptime Pointer to unsigned integer that will get the time in milliseconds.
- * @return VSCP_ERROR_SUCCESS on success, else error code.
+ * @return unsigned integer that will get the time in milliseconds.
  */
 
-int
-vscp_frmw2_callback_get_ms(void* const puserdata, uint32_t* ptime)
+uint32_t
+vscp_frmw2_callback_get_milliseconds(void* const puserdata)
 {
-  // Check pointers
-  if (nullptr == ptime) {
-    return VSCP_ERROR_INVALID_POINTER;
-  }
+  return vscp_getMsTimeStamp();
+}
 
-  *ptime = vscp_getMsTimeStamp();
-  return VSCP_ERROR_SUCCESS;
+/*!
+ * @brief Get timestamp
+ *
+ * @param pdata Pointer to context.
+ * @return Timestamp in microseconds.
+ */
+
+uint64_t
+vscp_frmw2_callback_get_timestamp(void* const puserdata)
+{
+  return vscp_getMsTimeStamp()*1000;
 }
 
 /*!
@@ -407,18 +416,7 @@ vscp_frmw2_callback_enter_bootloader(void* const puserdata)
   vscpboot_reboot();
 }
 
-/*!
- * @brief Get timestamp
- *
- * @param pdata Pointer to context.
- * @return Timestamp in microseconds.
- */
 
-uint32_t
-vscp_frmw2_callback_get_timestamp(void* const puserdata)
-{
-  return vscp_getMsTimeStamp();
-}
 
 /*!
  * @brief  Fill in event date/time information

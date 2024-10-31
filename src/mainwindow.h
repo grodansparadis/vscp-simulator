@@ -56,7 +56,7 @@ public:
     @param page Page for register to update
     @param value Value to write
   */
-  void addRegRow(uint32_t row, uint16_t page, uint8_t value);
+  //void addRegRow(uint32_t row, uint16_t page, uint8_t value);
 
   /*!
     Update register row
@@ -134,16 +134,16 @@ private slots:
   void chkClicked_c8(void);
   void chkClicked_c9(void);
 
-  void radioClicked_r0(bool checked);
-  void radioClicked_r1(bool checked);
-  void radioClicked_r2(bool checked);
-  void radioClicked_r3(bool checked);
-  void radioClicked_r4(bool checked);
-  void radioClicked_r5(bool checked);
-  void radioClicked_r6(bool checked);
-  void radioClicked_r7(bool checked);
-  void radioClicked_r8(bool checked);
-  void radioClicked_r9(bool checked);
+  void radioClicked_r0(void);
+  void radioClicked_r1(void);
+  void radioClicked_r2(void);
+  void radioClicked_r3(void);
+  void radioClicked_r4(void);
+  void radioClicked_r5(void);
+  void radioClicked_r6(void);
+  void radioClicked_r7(void);
+  void radioClicked_r8(void);
+  void radioClicked_r9(void);
 
   void sliderChanged_s0(int value);
   void sliderChanged_s1(int value);

@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget* parent)
   : QMainWindow(parent)
   , ui(new Ui::MainWindow)
 {
-  int rv;
+  //int rv;
 
   ui->setupUi(this);
 
@@ -293,17 +293,17 @@ MainWindow::setBootLoaderModeUi(void)
 ///////////////////////////////////////////////////////////////////////////////
 // addRegRow
 //
-void
-MainWindow::addRegRow(uint32_t row, uint16_t page, uint8_t value)
-{
-  QString str("register %1:\t %2\t%3\t%4");
-  uint32_t combined = (uint32_t)page << 16 + row; // If page > 0 row is < 128
+// void
+// MainWindow::addRegRow(uint32_t row, uint16_t page, uint8_t value)
+// {
+//   QString str("register %1:\t %2\t%3\t%4");
+//   uint32_t combined = ((uint32_t)page << 16) + row; // If page > 0 row is < 128
 
-  // QListWidgetItem *pitem = new QListWidgetItem(str.arg(row).arg(value, 4, 10, QChar(' ')).arg(value, 4, 16, QChar('0')).arg(value, 8, 2, QChar('0')));
-  //  QListWidgetItem *pitem = new QListWidgetItem("test");
-  //  ui->registerList->addItem(pitem);
-  spdlog::error("Register {0}:{2}", page, row);
-}
+//   // QListWidgetItem *pitem = new QListWidgetItem(str.arg(row).arg(value, 4, 10, QChar(' ')).arg(value, 4, 16, QChar('0')).arg(value, 8, 2, QChar('0')));
+//   //  QListWidgetItem *pitem = new QListWidgetItem("test");
+//   //  ui->registerList->addItem(pitem);
+//   spdlog::error("Register {0}:{2}", page, row);
+// }
 
 ///////////////////////////////////////////////////////////////////////////////
 // updateRegRow
@@ -312,7 +312,7 @@ MainWindow::addRegRow(uint32_t row, uint16_t page, uint8_t value)
 void
 MainWindow::updateRegRow(uint32_t row, uint16_t page, uint8_t value)
 {
-  uint32_t combined = (uint32_t)page << 16 + row; // If page > 0 row is < 128
+  uint32_t combined = ((uint32_t)page << 16) + row; // If page > 0 row is < 128
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -511,8 +511,8 @@ MainWindow::setRadioButtonValue(int idx, bool value)
 void
 MainWindow::initRegisters(void)
 {
-  uint32_t page = 0;
-  uint16_t offset;
+  uint16_t page = 0;
+  uint32_t offset;
   QString str;
 
   // Get pointer to app
@@ -916,7 +916,7 @@ MainWindow::chkClicked_c9(void)
 //
 
 void
-MainWindow::radioClicked_r0(bool checked)
+MainWindow::radioClicked_r0(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -929,7 +929,7 @@ MainWindow::radioClicked_r0(bool checked)
 //
 
 void
-MainWindow::radioClicked_r1(bool checked)
+MainWindow::radioClicked_r1(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -942,7 +942,7 @@ MainWindow::radioClicked_r1(bool checked)
 //
 
 void
-MainWindow::radioClicked_r2(bool checked)
+MainWindow::radioClicked_r2(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -955,7 +955,7 @@ MainWindow::radioClicked_r2(bool checked)
 //
 
 void
-MainWindow::radioClicked_r3(bool checked)
+MainWindow::radioClicked_r3(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -968,7 +968,7 @@ MainWindow::radioClicked_r3(bool checked)
 //
 
 void
-MainWindow::radioClicked_r4(bool checked)
+MainWindow::radioClicked_r4(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -981,7 +981,7 @@ MainWindow::radioClicked_r4(bool checked)
 //
 
 void
-MainWindow::radioClicked_r5(bool checked)
+MainWindow::radioClicked_r5(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -994,7 +994,7 @@ MainWindow::radioClicked_r5(bool checked)
 //
 
 void
-MainWindow::radioClicked_r6(bool checked)
+MainWindow::radioClicked_r6(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -1007,7 +1007,7 @@ MainWindow::radioClicked_r6(bool checked)
 //
 
 void
-MainWindow::radioClicked_r7(bool checked)
+MainWindow::radioClicked_r7(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -1020,7 +1020,7 @@ MainWindow::radioClicked_r7(bool checked)
 //
 
 void
-MainWindow::radioClicked_r8(bool checked)
+MainWindow::radioClicked_r8(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
@@ -1033,7 +1033,7 @@ MainWindow::radioClicked_r8(bool checked)
 //
 
 void
-MainWindow::radioClicked_r9(bool checked)
+MainWindow::radioClicked_r9(void)
 {
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();

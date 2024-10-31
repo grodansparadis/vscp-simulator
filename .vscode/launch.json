@@ -8,9 +8,9 @@
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/btest",
-      "args": [
-        "-f /usr/local/src/VSCP/vscp-simulator/debug/firmware_example1.json"
+      "program": "${workspaceFolder}/build/vscpsim",
+      "args": [ 
+        "-f /home/akhe/development/VSCP/vscp-simulator/debug/firmware_example1.json"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

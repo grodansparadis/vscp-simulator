@@ -846,7 +846,7 @@ btest::getMainWindow()
 //
 
 void
-btest::receiveCallback(vscpEventEx& ex, void* pobj)
+btest::receiveCallback(vscpEventEx& ex, void* /*pobj*/)
 {
   vscpEventEx* pexnew = new vscpEventEx;
   if (nullptr != pexnew) {
@@ -926,6 +926,7 @@ btest::initSimulationData(void)
     default:
       // Simulation is not defined we use sim1
       spdlog::error("Invalid simulation set. Will use sumulation 1");
+      break;
 
     case 1: {
 
@@ -1409,7 +1410,7 @@ btest::writeSliderValue_sim1(uint8_t idx, int value)
     return VSCP_ERROR_INVALID_POINTER;
   }
 
-  if ((idx > 9) || (idx < 0)) {
+  if (idx > 9) {
     return VSCP_ERROR_PARAMETER;
   }
 
@@ -1493,10 +1494,10 @@ btest::sendEmbeddedMDF(void)
 //
 
 int
-btest::getMdfUrl(uint8_t* const purl)
+btest::getMdfUrl(uint8_t* const /*purl*/)
 {
-  uint8_t buf[10];
-  memcpy(purl, buf, 10);
+  // uint8_t buf[10];
+  // memcpy(purl, buf, 10);
   return VSCP_ERROR_SUCCESS;
 }
 
@@ -1505,7 +1506,7 @@ btest::getMdfUrl(uint8_t* const purl)
 //
 
 int
-btest::receivedSegCtrlHeartBeat(uint16_t segcrc, uint32_t tm)
+btest::receivedSegCtrlHeartBeat(uint16_t /*segcrc*/, uint32_t /*tm*/)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -1897,7 +1898,7 @@ btest::radioClick_sim1(int idx, bool checked)
 void
 btest::vscpboot_goApplication(void)
 {
-  btest* pbtest = (btest*)QApplication::instance();
+  // btest* pbtest = (btest*)QApplication::instance();
 }
 
 /*!
@@ -2053,7 +2054,7 @@ btest::vscpboot_getGUID(void)
   @return non zero if valid
 */
 int
-btest::vscpboot_isMemTypeValid(uint8_t type)
+btest::vscpboot_isMemTypeValid(uint8_t /*type*/)
 {
   return FALSE;
 }
@@ -2063,7 +2064,7 @@ btest::vscpboot_isMemTypeValid(uint8_t type)
   @return non zero if valid
 */
 int
-btest::vscpboot_isMemBankValid(uint8_t bank)
+btest::vscpboot_isMemBankValid(uint8_t /*bank*/)
 {
   return FALSE;
 }
@@ -2076,7 +2077,7 @@ btest::vscpboot_isMemBankValid(uint8_t bank)
   @return VSCP_ERROR_SUCCESS on success and else errocode
 */
 int
-btest::vscpboot_programBlock(const uint8_t* pblock, uint8_t type, uint8_t bank)
+btest::vscpboot_programBlock(const uint8_t* /*pblock*/, uint8_t /*type*/, uint8_t /*bank*/)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -2167,8 +2168,8 @@ void*
 workerThread(void* pData)
 {
   int rv;
-  fd_set rdfs;
-  struct timeval tv;
+  // fd_set rdfs;
+  // struct timeval tv;
 
   btest* pbtest = (btest*)pData;
   if (NULL == pbtest) {
@@ -2205,7 +2206,7 @@ workerThread(void* pData)
 
     // Go to work
 
-    vscpEventEx* pex;
+    vscpEventEx* pex = nullptr;
 
     while (pbtest->m_bRun) {
 
@@ -2230,8 +2231,10 @@ workerThread(void* pData)
       }
 
       // Cleanup event
-      delete pex;
-      pex = NULL;
+      if (nullptr != pex) {
+        delete pex;
+        pex = nullptr;
+      }
     }
   }
 
