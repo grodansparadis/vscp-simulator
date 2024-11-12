@@ -56,7 +56,7 @@ jobs:
     - name: Install expat
       run: brew install expat
 
-      - name: Install sqlite3
+    - name: Install sqlite3
       run: brew install libsqlite3-dev  
 
     # - name: Install paho manually
