@@ -50,8 +50,8 @@ jobs:
     - name: Install libexpat
       run: brew install expat
 
-    - name: Install FUSE manually
-      run: brew install libfuse@2
+    # - name: Install FUSE manually
+    #   run: brew install libfuse@2
 
     - name: Install expat
       run: brew install expat
