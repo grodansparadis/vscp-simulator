@@ -39,17 +39,32 @@ jobs:
     #     cp /usr/local/opt/openssl@1.1/lib/pkgconfig/*.pc /usr/local/lib/pkgconfig/
 
     - name: Install libcurl4-openssl-dev manually 
-      run: sudo brew install libcurl4-openssl-dev   
+      run: brew install libcurl4-openssl-dev   
+
+    - name: Install libmosquitto-dev manually
+      run: brew install libmosquitto-dev
+    
+    - name: Install libexpat-dev manually
+      run: brew install libexpat-dev  
+
+    - name: Install libwebsockets-dev 
+      run: brew install libwebsockets-dev   
+
+    - name: Install FUSE manually
+      run: brew install libfuse2
 
     - name: Install expat
       run: brew install expat
 
-    - name: Install paho manually
-      run: |
-        cd paho 
-        mkdir build 
-        cd build 
-        sudo cmake -DPAHO_WITH_SSL=true .. && sudo make install
+      - name: Install sqlite3
+      run: brew install libsqlite3-dev  
+
+    # - name: Install paho manually
+    #   run: |
+    #     cd paho 
+    #     mkdir build 
+    #     cd build 
+    #     sudo cmake -DPAHO_WITH_SSL=true .. && sudo make install
 
     - name: Create Build Environment (cmake)
       # Some projects don't allow in-source building, so create a separate build directory
