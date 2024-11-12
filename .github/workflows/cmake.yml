@@ -6,6 +6,7 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
   VSCP_ROOT: ${{github.workspace}}/third_party/vscp
+  VSCP_FIRMWARE: ${{github.workspace}}/third_party/vscp-firmware
 
 jobs:
   build:
@@ -26,7 +27,7 @@ jobs:
         arch: 'linux_gcc_64'
         modules: 'qtcharts qtconnectivity qtserialbus qtserialport qtwebsockets'
 
-      # https://github.com/actions/checkout  
+      # https://github.com/actions/checkout
     - name: Fetch repository
       uses: actions/checkout@v4
       with:
