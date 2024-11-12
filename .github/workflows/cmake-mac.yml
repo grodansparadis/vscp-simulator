@@ -41,14 +41,14 @@ jobs:
     # - name: Install libcurl4-openssl-dev manually 
     #   run: brew install libcurl4-openssl-dev    
 
-    - name: Install libmosquitto-dev manually
-      run: brew install libmosquitto1
-    
-    - name: Install libexpat-dev manually
-      run: brew install expat
-
-    - name: Install libwebsockets-dev 
+    - name: Install libwebsockets 
       run: brew install libwebsockets
+
+    - name: Install libmosquitto
+      run: brew install mosquitto
+    
+    - name: Install libexpat
+      run: brew install expat
 
     - name: Install FUSE manually
       run: brew install libfuse2
