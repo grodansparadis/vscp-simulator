@@ -5,7 +5,7 @@ on: [push]
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
-  VSCP_ROOT: ${{github.workspace}}/vscp
+  #VSCP_ROOT: ${{github.workspace}}/vscp
 
 jobs:
   build:
@@ -18,24 +18,10 @@ jobs:
 
     steps:
     # https://github.com/actions/checkout  
-      name: Fetch repository
-    - uses: actions/checkout@v4
+    - name: Fetch repository
+      uses: actions/checkout@v4
       with:
         submodules: recursive
-
-    # - name: Checkout vscp repo
-    #   uses: actions/checkout@v4
-    #   with:
-    #     repository: grodansparadis/vscp
-    #     path: vscp
-    #     ref: development
-    #     submodules: recursive
-
-    # - name: Checkout eclipse paho repo
-    #   uses: actions/checkout@v4
-    #   with:
-    #     repository: eclipse/paho.mqtt.c
-    #     path: paho
 
     - name: Update before installing packages
       run: sudo apt-get update
@@ -49,9 +35,6 @@ jobs:
     - name: Install libssl-dev manually
       run: sudo apt-get install libssl-dev
 
-    # - name: Install paho manually
-    #   run: cd paho && mkdir build && cd build && sudo cmake -DPAHO_WITH_SSL=true .. && sudo make install
-    
     - name: Install curl manually
       run: sudo apt-get install libcurl4-openssl-dev
 
