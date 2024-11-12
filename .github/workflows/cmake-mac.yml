@@ -39,7 +39,7 @@ jobs:
     #     cp /usr/local/opt/openssl@1.1/lib/pkgconfig/*.pc /usr/local/lib/pkgconfig/
 
     - name: Install libcurl4-openssl-dev manually 
-      run: sudo apt install libcurl4-openssl-dev   
+      run: sudo brew install libcurl4-openssl-dev   
 
     - name: Install expat
       run: brew install expat
