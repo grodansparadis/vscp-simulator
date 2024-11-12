@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=vscp-simulator
+GenericName=VSCP simulation software
+Comment=A tools for VSCP (the Very Simple Control Protocol)
+Exec=vscp-simulator
+Icon=vscpsimulator
+Terminal=false
+StartupNotify=true
+NoDisplay=false
+Categories=Development;Electronics;IDE;
+MimeType=text/x-application;
+Keywords=embedded mqtt iot m2m vscp socketcan electronics;electronics;canbus;reverse engineering;
