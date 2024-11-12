@@ -231,7 +231,7 @@ qt_add_executable(vscpsim
 include_directories( PUBLIC ./src 
   ./build
   ./ui
-  $ENV{VSCP_ROOT}/src/vscp/common/  
+  $ENV{VSCP_ROOT}/src/vscp/common/
   $ENV{VSCP_ROOT}/src/common
   $ENV{VSCP_FIRMWARE}/common
   ./third_party
