@@ -30,12 +30,14 @@ jobs:
     - name: Fetch repository
       uses: actions/checkout@v4
       with:
-        submodules: recursivee
+        submodules: recursive
 
     - name: Create environment variable for VSCP_ROOT and Qt6_DIR
       run: |
-        export VSCP_ROOT=${{github.workspace}}/third_party/vscp
-        echo echo ${{env.VSCP_ROOT}}
+        echo ${{env.VSCP_ROOT}}
+        export VSCP_ROOT=${{github.workspace}}/third_party/vscp/
+        echo ${{env.VSCP_ROOT}}
+        ls
 
     - name: Update before installing packages
       run: sudo apt-get update
