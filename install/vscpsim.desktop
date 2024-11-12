@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-Name=vscp-simulator
+Name=vscpsim
 GenericName=VSCP simulation software
 Comment=A tools for VSCP (the Very Simple Control Protocol)
-Exec=vscp-simulator
-Icon=vscpsimulator
+Exec=vscpsim
+Icon=vscpsim
 Terminal=false
 StartupNotify=true
 NoDisplay=false
