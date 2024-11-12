@@ -38,8 +38,8 @@ jobs:
     #     brew reinstall openssl@1.1 
     #     cp /usr/local/opt/openssl@1.1/lib/pkgconfig/*.pc /usr/local/lib/pkgconfig/
 
-    - name: Install libcurl4-openssl-dev manually 
-      run: brew install libcurl4-openssl-dev   
+    # - name: Install libcurl4-openssl-dev manually 
+    #   run: brew install libcurl4-openssl-dev    
 
     - name: Install libmosquitto-dev manually
       run: brew install libmosquitto-dev
