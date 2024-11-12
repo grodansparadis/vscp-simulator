@@ -6,6 +6,7 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
   VSCP_ROOT: ${{github.workspace}}/third_party/vscp
+  VSCP_FIRMWARE: ${{github.workspace}}/third_party/vscp-firmware/
 
 jobs:
   build:
@@ -16,31 +17,26 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4
+    
 
-    - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
-      with:
-        vs-version: '[16.4,16.5)'
-
-    - name: Checkout vscp repo
-      uses: actions/checkout@v4
-      with:
-        repository: grodansparadis/vscp
-        path: vscp
-        ref: development
-
-    - name: Checkout eclipse paho repo
-      uses: actions/checkout@v4
-      with:
-        repository: eclipse/paho.mqtt.c
-        path: paho
+    # - name: Add msbuild to PATH
+    #   uses: microsoft/setup-msbuild@v1.0.2
+    #   with:
+    #     vs-version: '[16.4,16.5)'
 
     - name: Install qt5
-      run: brew update && brew install qt5 && brew link qt5 --force
+      run: |
+        brew update 
+        brew install qt5 
+        brew link qt5 --force
+
+    - name: Get repository 
+      uses: actions/checkout@v4    
 
     - name: Install openssl
-      run: brew install openssl@1.1 && cp /usr/local/opt/openssl@1.1/lib/pkgconfig/*.pc /usr/local/lib/pkgconfig/
+      run: |
+        brew install openssl@1.1 
+        cp /usr/local/opt/openssl@1.1/lib/pkgconfig/*.pc /usr/local/lib/pkgconfig/
 
     - name: Install libcurl4-openssl-dev manually 
       run: sudo apt install libcurl4-openssl-dev   
@@ -49,9 +45,13 @@ jobs:
       run: brew install expat
 
     - name: Install paho manually
-      run: cd paho && mkdir build && cd build && sudo cmake -DPAHO_WITH_SSL=true .. && sudo make install        
+      run: |
+        cd paho 
+        mkdir build 
+        cd build 
+        sudo cmake -DPAHO_WITH_SSL=true .. && sudo make install
 
-    - name: Create Build Environment
+    - name: Create Build Environment (cmake)
       # Some projects don't allow in-source building, so create a separate build directory
       # We'll use this as our working directory for all subsequent commands
       run: cmake -E make_directory ${{github.workspace}}/build
