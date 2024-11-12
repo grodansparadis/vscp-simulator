@@ -13,13 +13,13 @@ The following transport mechanisms are available
 
 | Transport | Availability | OS |
 | ----------| ------------ | -- |
-| socketcan | Currently available. | Linux |
-| CANAL | Soon... | Linux, Windows |
-| tcp/ip server | Soon... | Linux, Windows |
-| tcp/ip client | Soon... | Linux, Windows |
-| MQTT | Soon... | Linux, Windows |
-| Websocket version 1 | Soon... | Linux, Windows |
-| Websocket version 2 | Soon... | Linux, Windows |
+| socketcan | available. | Linux |
+| CANAL | available | Linux, Windows |
+| tcp/ip server | planned | Linux, Windows |
+| tcp/ip client | available | Linux, Windows |
+| MQTT | available | Linux, Windows |
+| Websocket version 1 | planned | Linux, Windows |
+| Websocket version 2 | planned | Linux, Windows |
 | Ethernet | Planned | Linux, Windows |
 | UDP | Planned.| Linux, Windows |
 | Multicast | Planned. | Linux, Windows |
@@ -28,14 +28,14 @@ The following transport mechanisms are available
 
 Check out the souce code from the repository with
 
-  git checkout --recurse-submodules -j8 https://github.com/grodansparadis/vscp-simulator.git
+  git checkout --recurse-submodules -j4 https://github.com/grodansparadis/vscp-simulator.git
 
 Change folder to **vscp-simulator**
 
 ```bash
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=~/Qt/6.7.3/gcc_64 ..
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=~/Qt/6.8.0/gcc_64 ..
 make
 ```
 
