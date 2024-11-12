@@ -6,7 +6,7 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
   VSCP_ROOT: ${{github.workspace}}/third_party/vscp/
-  VSCP_FIRMWARE: ${{github.workspace}}/third_party/vscp-firmware
+  VSCP_FIRMWARE: ${{github.workspace}}/third_party/vscp-firmware/
 
 jobs:
   build:
@@ -105,14 +105,14 @@ jobs:
       run: |
         cp ../install/AppRun AppDir
         chmod a+x AppDir/AppRun
-        cp ../install/vscp-simulator.desktop AppDir
-        cp ../icons/vscp-simulator.png AppDir
+        cp ../install/vscpsim.desktop AppDir
+        cp ../icons/vscpsim.png AppDir
     
     - name: prepare desktop/icon
       working-directory: ${{github.workspace}}/build
       shell: bash
       # Prepare content not installed by cmake (desktop/icon)
-      run: cp ../install/vscp-simulator.desktop ./AppDir/  && cp ../icons/vscp-simulator.png ./AppDir/ 
+      run: cp ../install/vscpsim.desktop ./AppDir/  && cp ../icons/vscpsim.png ./AppDir/ 
   
     - name: build appimage
       working-directory: ${{github.workspace}}/build
@@ -123,5 +123,5 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: vscp-works-qt
-        path: ${{github.workspace}}/build/vscpworks*.AppImage
+        name: vscp-simulator
+        path: ${{github.workspace}}/build/vscpsim*.AppImage

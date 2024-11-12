@@ -75,7 +75,7 @@ jobs:
         mkdir build && cd build
         cmake  -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr -DVSCP_ROOT=${{github.workspace}}/third_party/vscp/ -DVSCP_PATH=${{github.workspace}}/third_party/vscp/ ..
 
-    - name: Build vscp-works-qt
+    - name: Build vscp-simulator
       working-directory: ${{github.workspace}}/build
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
