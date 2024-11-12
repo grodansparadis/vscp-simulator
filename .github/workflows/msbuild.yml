@@ -33,7 +33,7 @@ jobs:
   
     # https://ddalcino.github.io/aqt-list-server/      
     - name: Prepare Qt Libraries
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         version: '5.15.2'
         host: 'windows'
@@ -51,18 +51,18 @@ jobs:
         py7zrversion: '==0.20.*'
         extra: '--external 7z'
          
-    - name: Clone
+    - name: Fetch repository
       uses: actions/checkout@v4
       with:
         submodules: 'recursive'
 
-    - name: Checkout vscp repo
-      uses: actions/checkout@v4
-      with:
-        repository: grodansparadis/vscp
-        path: ${{ github.workspace }}
-        ref: development  
-        submodules: recursive   
+    # - name: Checkout vscp repo
+    #   uses: actions/checkout@v4
+    #   with:
+    #     repository: grodansparadis/vscp
+    #     path: ${{ github.workspace }}
+    #     ref: development  
+    #     submodules: recursive   
 
     # - name: Install vcpkg
     #   uses: lukka/run-vcpkg@v2
@@ -87,7 +87,7 @@ jobs:
         additionalCachedPaths: '${{ env.buildDir }}/vcpkg_installed'
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.1
+      uses: microsoft/setup-msbuild@v2
       with:
         msbuild-architecture: x64
 
