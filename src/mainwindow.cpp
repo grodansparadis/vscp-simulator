@@ -313,6 +313,7 @@ void
 MainWindow::updateRegRow(uint32_t row, uint16_t page, uint8_t value)
 {
   uint32_t combined = ((uint32_t)page << 16) + row; // If page > 0 row is < 128
+  spdlog::debug("updateRegRow: {0}", combined);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

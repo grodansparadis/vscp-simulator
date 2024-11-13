@@ -1,4 +1,4 @@
-name: Windows Build
+name: MS Build
 
 on: [push]
 
@@ -56,15 +56,15 @@ jobs:
       with:
         submodules: 'recursive'
 
-    # Install latest CMake and Ninja.
-    - uses: lukka/get-cmake@latest
+    - name:  Install latest CMake and Ninja.
+      uses: lukka/get-cmake@latest
     # Or pin to a specific CMake version:
     # lukka/get-cmake@v3.27
 
     - name: Install vcpkg
       uses: lukka/run-vcpkg@v11
-      with:
-         vcpkgDirectory: '${{ github.workspace }}/vcpkg'
+      # with:
+      #    vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       #   vcpkgArguments: '@C:/vcpkg/.txt'
       #   appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
 
