@@ -1647,10 +1647,10 @@ btest::standardRegHasChanged(uint32_t stdreg)
       break;
 
     default:
-      if ((reg >= VSCP_STD_REGISTER_GUID) && (reg < VSCP_STD_REGISTER_GUID + 16)) {
+      if ((reg >= VSCP_STD_REGISTER_GUID) && (reg < (VSCP_STD_REGISTER_GUID + 16))) {
         value = m_firmware_cfg.m_guid[reg - VSCP_STD_REGISTER_GUID];
       }
-      else if ((reg >= VSCP_STD_REGISTER_DEVICE_URL) && (reg < VSCP_STD_REGISTER_DEVICE_URL + 32)) {
+      else if ((reg >= VSCP_STD_REGISTER_DEVICE_URL) && (reg <= 0xff)) {
         value = m_firmware_cfg.m_mdfurl[reg - VSCP_STD_REGISTER_DEVICE_URL];
       }
       break;
