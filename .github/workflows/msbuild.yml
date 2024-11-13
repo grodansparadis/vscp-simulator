@@ -64,28 +64,28 @@ jobs:
     - name: Install vcpkg
       uses: lukka/run-vcpkg@v11
       with:
-        vcpkgDirectory: 'C:/vcpkg/'
-        vcpkgArguments: '@C:/vcpkg/.txt'
-        appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
+         vcpkgDirectory: '${{ github.workspace }}/vcpkg'
+      #   vcpkgArguments: '@C:/vcpkg/.txt'
+      #   appendedCacheKey: ${{ hashFiles(env.vcpkgResponseFile) }}
 
     # Install latest CMake.
-    - name: Get latest CMake and ninja
-      uses: lukka/get-cmake@latest
-      with:
-        # Just install vcpkg for now, do not install any ports in this step yet.
-        setupOnly: true
-        # Location of the vcpkg as submodule of the repository.
-        vcpkgDirectory: 'C:/vcpkg/'
-        # Since the cache must be invalidated when content of the vcpkg.json file changes, let's
-        # compute its hash and append this to the computed cache's key.
-        appendedCacheKey: ${{ hashFiles( '**/vcpkg.json' ) }}
-        vcpkgTriplet: '${{ env.TRIPLET }}'
-        # Ensure the vcpkg artifacts are cached, they are generated in the 'CMAKE_BINARY_DIR/vcpkg_installed'.
-        additionalCachedPaths: '${{ env.buildDir }}/vcpkg_installed'
-        # <--= optional, use the latest release candidate (notice the 'rc' suffix).
-        cmakeVersion: latestrc      
-        # <--= optional, use the latest release (non candidate).
-        ninjaVersion: latest        
+    # - name: Get latest CMake and ninja
+    #   uses: lukka/get-cmake@latest
+    #   with:
+    #     # Just install vcpkg for now, do not install any ports in this step yet.
+    #     setupOnly: true
+    #     # Location of the vcpkg as submodule of the repository.
+    #     vcpkgDirectory: 'C:/vcpkg/'
+    #     # Since the cache must be invalidated when content of the vcpkg.json file changes, let's
+    #     # compute its hash and append this to the computed cache's key.
+    #     appendedCacheKey: ${{ hashFiles( '**/vcpkg.json' ) }}
+    #     vcpkgTriplet: '${{ env.TRIPLET }}'
+    #     # Ensure the vcpkg artifacts are cached, they are generated in the 'CMAKE_BINARY_DIR/vcpkg_installed'.
+    #     additionalCachedPaths: '${{ env.buildDir }}/vcpkg_installed'
+    #     # <--= optional, use the latest release candidate (notice the 'rc' suffix).
+    #     cmakeVersion: latestrc      
+    #     # <--= optional, use the latest release (non candidate).
+    #     ninjaVersion: latest        
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
@@ -114,20 +114,20 @@ jobs:
 
     - name: Integrate with development environment and install
       shell: cmd
-      working-directory: C:/vcpkg/
+      working-directory: ${{ github.workspace }}/vcpkg/
       run: |
-        call C:/vcpkg/vcpkg.exe/bootstrap-vcpkg.bat
-        C:/vcpkg/vcpkg.exe integrate install
-        C:/vcpkg/vcpkg.exe install curl:x64-windows
-        C:/vcpkg/vcpkg.exe install expat:x64-windows
-        C:/vcpkg/vcpkg.exe install spdlog:x64-windows
-        C:/vcpkg/vcpkg.exe install libmosquitto:x64-windows
-        C:/vcpkg/vcpkg.exe install mosquitto:x64-windows
-        C:/vcpkg/vcpkg.exe install pthread:x64-windows
-        C:/vcpkg/vcpkg.exe install dlfcn-win32:x64-windows
-        C:/vcpkg/vcpkg.exe install openssl:x64-windows
-        C:/vcpkg/vcpkg.exe install paho-mqtt:x64-windows
-        C:/vcpkg/vcpkg.exe install libwebsockets:x64-windows
+        call ${{ github.workspace }}/vcpkg/vcpkg.exe/bootstrap-vcpkg.bat
+        ${{ github.workspace }}/vcpkg/vcpkg.exe integrate install
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install curl:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install expat:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install spdlog:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install libmosquitto:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install mosquitto:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install pthread:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install dlfcn-win32:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install openssl:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install paho-mqtt:x64-windows
+        ${{ github.workspace }}/vcpkg/vcpkg.exe install libwebsockets:x64-windows
 
     - name: Run CMake consuming CMakePreset.json and run vcpkg to build packages
         uses: lukka/run-cmake@v10
