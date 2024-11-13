@@ -925,7 +925,7 @@ btest::initSimulationData(void)
 
     default:
       // Simulation is not defined we use sim1
-      spdlog::error("Invalid simulation set. Will use sumulation 1");
+      spdlog::error("Invalid simulation set. Will use simulation 1");
       break;
 
     case 1: {
@@ -933,33 +933,33 @@ btest::initSimulationData(void)
       m_pSim = new simulation1_t;
       memset(m_pSim, 0, sizeof(simulation1_t));
       m_firmware_cfg.m_pEventsOfInterest              = nullptr;
-      ((simulation1_t*)m_pSim)->m_background_color[0] = 0xff;
-      ((simulation1_t*)m_pSim)->m_background_color[1] = 0xff;
-      ((simulation1_t*)m_pSim)->m_background_color[2] = 0xff;
+      ((simulation1_t*)m_pSim)->m_background_color[0] = 0xc0;
+      ((simulation1_t*)m_pSim)->m_background_color[1] = 0xc0;
+      ((simulation1_t*)m_pSim)->m_background_color[2] = 0xc0;
 
       // Page 0
       for (int i = 0; i <= 86; i++) {
-        m_regmap[i] = nullptr; // No table item yet (inserted by mainwindow)
+        m_regmap[i] = nullptr; // No table item yet (inserted by main window)
       }
 
       // Standard registers
       for (int i = 128; i <= 255; i++) {
-        m_regmap[i] = nullptr; // No table item yet (inserted by mainwindow)
+        m_regmap[i] = nullptr; // No table item yet (inserted by main window)
       }
 
       // page 1
       for (int i = 0; i <= 3; i++) {
-        m_regmap[(1 << 16) + i] = nullptr; // No table item yet (inserted by mainwindow)
+        m_regmap[(1 << 16) + i] = nullptr; // No table item yet (inserted by main window)
       }
 
       // page 2
       for (int i = 0; i <= 3; i++) {
-        m_regmap[(2 << 16) + i] = nullptr; // No table item yet (inserted by mainwindow)
+        m_regmap[(2 << 16) + i] = nullptr; // No table item yet (inserted by main window)
       }
 
-      // emit updateRegister(82, 0, 0xff);
-      // emit updateRegister(83, 0, 0xff);
-      // emit updateRegister(84, 0, 0xff);
+      emit updateRegister(82, 0, 0xff);
+      emit updateRegister(83, 0, 0xff);
+      emit updateRegister(84, 0, 0xff);
 
     } break;
   }
@@ -1650,7 +1650,8 @@ btest::standardRegHasChanged(uint32_t stdreg)
       if ((reg >= VSCP_STD_REGISTER_GUID) && (reg < (VSCP_STD_REGISTER_GUID + 16))) {
         value = m_firmware_cfg.m_guid[reg - VSCP_STD_REGISTER_GUID];
       }
-      else if ((reg >= VSCP_STD_REGISTER_DEVICE_URL) && (reg <= 0xff)) {
+      // Is always <= 0xff so no need to test on that
+      else if ((reg >= VSCP_STD_REGISTER_DEVICE_URL)) {
         value = m_firmware_cfg.m_mdfurl[reg - VSCP_STD_REGISTER_DEVICE_URL];
       }
       break;

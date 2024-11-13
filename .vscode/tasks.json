@@ -58,7 +58,7 @@
     {
       "taskName": "Clean & build all 6.8.0",
       "type": "shell",
-      "command": "cd build; make clean; export CMAKE_PREFIX_PATH=~/Qt/6.8.0/gcc_64:$CMAKE_PREFIX_PATH; cmake -DCMAKE_BUILD_TYPE=Debug -DQt6_DIR=~/Qt/6.8.0/gcc_64 .. ;  make -j4",
+      "command": "mkdir build; cd build; make clean; export CMAKE_PREFIX_PATH=~/Qt/6.8.0/gcc_64:$CMAKE_PREFIX_PATH; cmake -DCMAKE_BUILD_TYPE=Debug -DQt6_DIR=~/Qt/6.8.0/gcc_64 .. ;  make -j4",
       "args": [],
       "group": "build",
       "problemMatcher": {
@@ -81,7 +81,7 @@
     {
       "taskName": "Clean & build all 6.7.3",
       "type": "shell",
-      "command": "cd build; make clean; export CMAKE_PREFIX_PATH=~/Qt/6.7.3/gcc_64:$CMAKE_PREFIX_PATH; cmake -DCMAKE_BUILD_TYPE=Debug -DQt6_DIR=~/Qt/7.3.0/gcc_64 .. ;  make -j4",
+      "command": "mkdir build; cd build; make clean; export CMAKE_PREFIX_PATH=~/Qt/6.7.3/gcc_64:$CMAKE_PREFIX_PATH; cmake -DCMAKE_BUILD_TYPE=Debug -DQt6_DIR=~/Qt/7.3.0/gcc_64 .. ;  make -j4",
       "args": [],
       "group": "build",
       "problemMatcher": {
@@ -104,7 +104,7 @@
     {
       "taskName": "Clean & build all 6.5.3",
       "type": "shell",
-      "command": "cd build; make clean; export CMAKE_PREFIX_PATH=~/Qt/6.5.3/gcc_64:$CMAKE_PREFIX_PATH; cmake -DCMAKE_BUILD_TYPE=Debug -DQt6_DIR=~/Qt/6.5.3/gcc_64 .. ;  make -j4",
+      "command": "mkdir build; cd build; make clean; export CMAKE_PREFIX_PATH=~/Qt/6.5.3/gcc_64:$CMAKE_PREFIX_PATH; cmake -DCMAKE_BUILD_TYPE=Debug -DQt6_DIR=~/Qt/6.5.3/gcc_64 .. ;  make -j4",
       "args": [],
       "group": "build",
       "problemMatcher": {
@@ -127,7 +127,7 @@
     {
       "taskName": "Clean & build all 5.15.2",
       "type": "shell",
-      "command": "cd build; make clean; export CMAKE_PREFIX_PATH=~/Qt/5.15.2/gcc_64:$CMAKE_PREFIX_PATH; cmake -DCMAKE_BUILD_TYPE=Debug -DQt6_DIR=~/Qt/5.15.2/gcc_64 .. ;  make -j4 -Wall",
+      "command": "mkdir build; cd build; make clean; export CMAKE_PREFIX_PATH=~/Qt/5.15.2/gcc_64:$CMAKE_PREFIX_PATH; cmake -DCMAKE_BUILD_TYPE=Debug -DQt6_DIR=~/Qt/5.15.2/gcc_64 .. ;  make -j4 -Wall",
       "args": [],
       "group": {
         "kind": "build"
