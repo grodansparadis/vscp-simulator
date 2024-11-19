@@ -1322,6 +1322,7 @@ selection-background-color: rgb(0, 0, 0);</string>
      <string>Help</string>
     </property>
     <addaction name="actionAbout"/>
+    <addaction name="actionAboutQt"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -1370,6 +1371,11 @@ selection-background-color: rgb(0, 0, 0);</string>
    </property>
    <property name="toolTip">
     <string>Restore device into virgin mode. nodeid=0xff </string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="text">
+    <string>About Qt</string>
    </property>
   </action>
  </widget>

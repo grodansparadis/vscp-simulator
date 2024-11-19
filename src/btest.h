@@ -74,11 +74,24 @@ Q_DECLARE_METATYPE(vscpEvent)
 Q_DECLARE_METATYPE(vscpEventEx)
 
 /// Application name used in titles and headers
-#define APPNAME             "Boot test"
+#define APPNAME "VSCP Simulator"
 
-#define APP_VERSION_MAJOR   0
-#define APP_VERSION_MINOR   0
-#define APP_VERSION_RELEASE 1
+#define VSCPSIM_VERSION_MAJOR   0
+#define VSCPSIM_VERSION_MINOR   0
+#define VSCPSIM_VERSION_RELEASE 1
+
+#define VSCPSIM_DISPLAY_VERSION "0.0.1 alpha"
+#define VSCPSIM_COPYRIGHT                                   \
+  "Copyright © 2000-2024 Ake Hedman, Grodans Paradis AB, " \
+  "https://www.grodansparadis.com"
+#define VSCPSIM_COPYRIGHT_HTML                                            \
+  "Copyright © 2000-2024 Åke Hedman, <a "                               \
+  "href=\"mailto:info@grodansparadis.com\">Grodans Paradis AB</a><br><a " \
+  "href=\"https://www.grodansparadis.com\">https://"                      \
+  "www.grodansparadis.com</a>"
+
+#define VSCPSIM_VERSION(major, minor, release) \
+  (((major) << 16) | ((minor) << 8) | (release))
 
 // home folder is used for storage of program configuration
 // system folder holds databases etc

@@ -4,6 +4,7 @@
 #include <QListWidgetItem>
 #include <QMainWindow>
 #include <QScopedPointer>
+#include <QMessageBox>
 
 #include <map>
 #include <set>
@@ -38,6 +39,8 @@ public:
     Init application
   */
   void init(void);
+
+  
 
   /*!
     Set user interface in firmware mode
@@ -93,6 +96,12 @@ public slots:
   void updateRegister(uint32_t offset, uint16_t page, uint8_t value);
 
 private slots:
+
+  /*!
+    Show about dialog
+  */
+  void about(void);
+
   void clearLog(void);
   void saveLog(void);
   void setLogLevel(int level);

@@ -36,6 +36,10 @@ MainWindow::MainWindow(QWidget* parent)
   connect(ui->actionSetBootMode, SIGNAL(triggered()), this, SLOT(setBootMode()));
   connect(ui->actionSetFirmwareMode, SIGNAL(triggered()), this, SLOT(setFirmwareMode()));
 
+  // Help
+  connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(about()));
+  connect(ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
+
   // Simulation controls
   connect(papp, &btest::checkValueChanged, this, &MainWindow::setCheckboxValue);
   connect(papp, &btest::sliderValueChanged, this, &MainWindow::setSliderValue);
@@ -158,9 +162,9 @@ MainWindow::init(void)
   papp->initSimulationData();
 
   ui->lblPrgVersion->setText(QString("%1.%2.%3")
-                               .arg(APP_VERSION_MAJOR)
-                               .arg(APP_VERSION_MINOR)
-                               .arg(APP_VERSION_RELEASE));
+                               .arg(VSCPSIM_VERSION_MAJOR)
+                               .arg(VSCPSIM_VERSION_MINOR)
+                               .arg(VSCPSIM_VERSION_RELEASE));
   ui->lblQtVersion->setText(qVersion());
   ui->lblLevel->setText((VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) ? "Level I" : "Level II");
   ui->lblInterface->setText(papp->m_interface);
@@ -230,6 +234,23 @@ MainWindow::init(void)
   for (int i = 0; i < 32; i++) {
     papp->standardRegHasChanged(VSCP_STD_REGISTER_DEVICE_URL + i);
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// about
+//
+
+void
+MainWindow::about(void)
+{
+  QString str;
+  QTextStream(&str) << tr("<b>VSCP Simulator</b> a simple to use tool "
+                          "for general VSCP simulation, "
+                          "diagnostics, experiments and other VSCP related test tasks.<br/>"
+                          "<p><b>Version</b>: ")
+                    << tr(VSCPSIM_DISPLAY_VERSION) << "</p><p>"
+                    << tr(VSCPSIM_COPYRIGHT_HTML) << "</p>";
+  QMessageBox::about(this, tr("About VSCP Simulator"), str);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
