@@ -2195,7 +2195,7 @@ btest::vscpboot_sendEventEx(vscpEventEx* pex)
    @return VSCP_ERROR_SUCCESS on success
 */
 int
-btest::vscpboot_getEventEx(vscpEventEx* pex)
+btest::vscpboot_getEventEx(vscpEventEx* /*pex*/)
 {
   //   int rv;
 

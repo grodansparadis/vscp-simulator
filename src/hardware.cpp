@@ -291,7 +291,7 @@ vscpboot_getEventEx(vscpEventEx* pex)
  */
 
 uint32_t
-vscp_frmw2_callback_get_milliseconds(void* const puserdata)
+vscp_frmw2_callback_get_milliseconds(void* const /*puserdata*/)
 {
   return vscp_getMsTimeStamp();
 }
@@ -304,7 +304,7 @@ vscp_frmw2_callback_get_milliseconds(void* const puserdata)
  */
 
 uint64_t
-vscp_frmw2_callback_get_timestamp(void* const puserdata)
+vscp_frmw2_callback_get_timestamp(void* const /*puserdata*/)
 {
   return vscp_getMsTimeStamp()*1000;
 }
@@ -318,7 +318,7 @@ vscp_frmw2_callback_get_timestamp(void* const puserdata)
   @return VSCP_ERROR_SUCCESS on success, or error code.
 */
 int
-vscp_frmw2_callback_get_device_name(void* const puserdata, const char* pname)
+vscp_frmw2_callback_get_device_name(void* const /*puserdata*/, const char* /*pname*/)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -338,7 +338,7 @@ vscp_frmw2_callback_get_device_name(void* const puserdata, const char* pname)
  *
  */
 int
-vscp_frmw2_callback_read_reg(void* const puserdata, uint16_t page, uint32_t reg, uint8_t* pval)
+vscp_frmw2_callback_read_reg(void* const /*puserdata*/, uint16_t /*page*/, uint32_t reg, uint8_t* pval)
 {
   btest* pbtest = (btest*)QApplication::instance();
 
@@ -365,7 +365,7 @@ vscp_frmw2_callback_read_reg(void* const puserdata, uint16_t page, uint32_t reg,
  */
 
 int
-vscp_frmw2_callback_write_reg(void* const puserdata, uint16_t page, uint32_t reg, uint8_t val)
+vscp_frmw2_callback_write_reg(void* const /*puserdata*/, uint16_t page, uint32_t reg, uint8_t val)
 {
   btest* pbtest = (btest*)QApplication::instance();
   return pbtest->writeRegister(page, reg, val);
@@ -383,7 +383,7 @@ vscp_frmw2_callback_write_reg(void* const puserdata, uint16_t page, uint32_t reg
 */
 
 int
-vscp_frmw2_callback_send_event(void* const puserdata, vscpEvent* pev)
+vscp_frmw2_callback_send_event(void* const /*puserdata*/, vscpEvent* pev)
 {
   // Check pointers
   if (nullptr == pev) {
@@ -407,7 +407,7 @@ vscp_frmw2_callback_send_event(void* const puserdata, vscpEvent* pev)
 */
 
 int
-vscp_frmw2_callback_send_event_ex(void* const puserdata, vscpEventEx* pex)
+vscp_frmw2_callback_send_event_ex(void* const /*puserdata*/, vscpEventEx* pex)
 {
   // Check pointers
   if (nullptr == pex) {
@@ -425,12 +425,12 @@ vscp_frmw2_callback_send_event_ex(void* const puserdata, vscpEventEx* pex)
  */
 
 void
-vscp_frmw2_callback_enter_bootloader(void* const puserdata)
+vscp_frmw2_callback_enter_bootloader(void* const /*puserdata*/)
 {
   /*
     We just set the bootloader flag here and return. 
   */
-  btest* pbtest = (btest*)QApplication::instance();
+  //btest* pbtest = (btest*)QApplication::instance();
   vscpboot_setBootFlag(btest::mode::BOOTLOADER);
   vscpboot_reboot();
 }
@@ -449,7 +449,7 @@ vscp_frmw2_callback_enter_bootloader(void* const puserdata)
  */
 
 int
-vscp_frmw2_callback_set_event_time(void* const puserdata, vscpEventEx* pex)
+vscp_frmw2_callback_set_event_time(void* const /*puserdata*/, vscpEventEx* pex)
 {
   // Check pointers
   if (nullptr == pex) {
@@ -470,7 +470,7 @@ vscp_frmw2_callback_set_event_time(void* const puserdata, vscpEventEx* pex)
   @param pdata Pointer to user data (typical points to context)
  */
 int
-vscp_frmw2_callback_init_persistent_storage(void* const puserdata)
+vscp_frmw2_callback_init_persistent_storage(void* const /*puserdata*/)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -487,7 +487,7 @@ vscp_frmw2_callback_init_persistent_storage(void* const puserdata)
  */
 
 int
-vscp_frmw2_callback_enter_bootloader(void* const puserdata, uint8_t* palgorithm)
+vscp_frmw2_callback_enter_bootloader(void* const /*puserdata*/, uint8_t* /*palgorithm*/)
 {
   // TODO
   return VSCP_ERROR_SUCCESS;
@@ -505,7 +505,7 @@ vscp_frmw2_callback_enter_bootloader(void* const puserdata, uint8_t* palgorithm)
  */
 
 int
-vscp_frmw2_callback_restore_defaults(void* const puserdata)
+vscp_frmw2_callback_restore_defaults(void* const /*puserdata*/)
 {
   return VSCP_ERROR_SUCCESS;
 }
@@ -514,7 +514,7 @@ vscp_frmw2_callback_restore_defaults(void* const puserdata)
   Notification receivced that standard register has been changed.
 */
 int
-vscp_frmw2_callback_stdreg_change(void* const puserdata, uint32_t stdreg)
+vscp_frmw2_callback_stdreg_change(void* const /*puserdata*/, uint32_t stdreg)
 {
   btest* pbtest = (btest*)QApplication::instance();
   return pbtest->standardRegHasChanged(stdreg);
@@ -534,16 +534,16 @@ vscp_frmw2_callback_feed_watchdog(void* const /*puserdata*/)
   Do cold reset
 */
 void
-vscp_frmw2_callback_reset(void* const puserdata)
+vscp_frmw2_callback_reset(void* const /*puserdata*/)
 {
   // TODO
 }
 
 int
-vscp_frmw2_callback_dm_action(void* const puserdata,
-                              const vscpEventEx* const pex,
-                              uint8_t action,
-                              const uint8_t* const pparam)
+vscp_frmw2_callback_dm_action(void* const /*puserdata*/,
+                              const vscpEventEx* const /*pex*/,
+                              uint8_t /*action*/,
+                              const uint8_t* const /*pparam*/)
 {
   return VSCP_ERROR_SUCCESS;
 }
