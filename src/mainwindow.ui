@@ -11,14 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>VSCP Bootloader test app.</string>
+   <string>VSCP Smimulator [FIRMWARE MODE]</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(192, 192, 192);
-selection-background-color: rgb(0, 0, 0);</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="formLayoutWidget">

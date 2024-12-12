@@ -95,6 +95,12 @@ public slots:
   */
   void updateRegister(uint32_t offset, uint16_t page, uint8_t value);
 
+  /*!
+    Update window title (SIMULATION / BOOTLOADER)
+    @param mode 0 = firmware, 0xff = bootloader
+  */
+  void updateWindowsTitle(int mode);
+
 private slots:
 
   /*!

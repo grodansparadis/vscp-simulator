@@ -105,12 +105,15 @@ btest::btest(int& argc, char** argv)
 
   m_bootflag = BOOTLOADER; // Start the bootloader
 
-  // Set default connect timout
-  m_timeoutConnect = DEFAULT_CONNECT_TIMOUT;
+  // Set default connect timeout
+  m_timeoutConnect = DEFAULT_CONNECT_TIMEOUT;
 
+  // Bootloader defaults
   m_bootloader_cfg.vscpLevel  = VSCP_LEVEL2;
-  m_bootloader_cfg.blockSize  = 0x100;
-  m_bootloader_cfg.blockCount = 0xffff;
+  m_bootloader_cfg.blockSize  = 0x800; // 2048
+  m_bootloader_cfg.blockCount = 1000;
+
+  m_bEndNormal = true; // App should end normally
 
   // Config file
   m_configFolder =
@@ -160,13 +163,8 @@ btest::~btest()
   writeProgramSettings();
 
   if (VSCP_ERROR_SUCCESS != (rv = stopWorkerThread())) {
-    spdlog::error("Failed to stop workerthread rv=%d", rv);
+    spdlog::error("Failed to stop worker thread rv=%d", rv);
   }
-
-  // if (VSCP_ERROR_SUCCESS != (rv = vscpboot_release_hardware())) {
-  //   spdlog::error("Failed to release hardware rv={}", rv);
-  //   return;
-  // }
 
   while (!m_inqueue.isEmpty()) {
     vscpEventEx* pex = m_inqueue.dequeue();
@@ -202,7 +200,7 @@ btest::~btest()
 int
 btest::startWorkerThread(void)
 {
-  // Start the bootloader workerthread
+  // Start the workerthread
   m_bRun = true; // Workerthread should run, run, run...
   if (pthread_create(&m_threadWork, NULL, workerThread, this)) {
     spdlog::critical("BTEST: Failed to start workerthread");
@@ -218,8 +216,8 @@ btest::startWorkerThread(void)
 int
 btest::stopWorkerThread(void)
 {
-  // Start the bootloader workerthread
-  m_bRun = false; // Workerthread should end it's life
+  // Start the bootloader worker thread
+  m_bRun = false; // Worker thread should end it's life
   if (m_threadWork) {
     pthread_join(m_threadWork, NULL);
   }
@@ -848,6 +846,8 @@ btest::getMainWindow()
 void
 btest::receiveCallback(vscpEventEx& ex, void* /*pobj*/)
 {
+  return;
+
   vscpEventEx* pexnew = new vscpEventEx;
   if (nullptr != pexnew) {
     pexnew->sizeData = 0;
@@ -858,6 +858,7 @@ btest::receiveCallback(vscpEventEx& ex, void* /*pobj*/)
     pthread_mutex_unlock(&m_mutexReceiveQueue);
   }
 
+  printf("btest receiveCallback: Data received: %02X:%02X size=%d\n", ex.vscp_class, ex.vscp_type, ex.sizeData);
   spdlog::trace("[receiveCallback] Data received: {0:X}:{1:X} size={2}\n", ex.vscp_class, ex.vscp_type, ex.sizeData);
   // emit dataReceived(&ex);
 
@@ -877,37 +878,81 @@ btest::receiveCallback(vscpEventEx& ex, void* /*pobj*/)
    @return VSCP_ERROR_SUCCESS on success
 */
 int
-btest::getEventEx(vscpEventEx** pex)
+btest::getEventEx(vscpEventEx& ex)
 {
   int rv;
 
-  if (-1 == (rv = vscp_sem_wait(&m_semReceiveQueue, 100))) {
-    if (errno == ETIMEDOUT) {
-      return VSCP_ERROR_TIMEOUT;
-    }
-    else {
-      return VSCP_ERROR_ERROR;
-    }
+  rv = m_pClient->receiveBlocking(ex, 100);
+  if (VSCP_ERROR_SUCCESS != rv) {
+    return rv;
   }
 
-  pthread_mutex_lock(&m_mutexReceiveQueue);
-  if (m_inqueue.size()) {
-    *pex = m_inqueue.dequeue();
-    pthread_mutex_unlock(&m_mutexReceiveQueue);
-    spdlog::trace("[btest::getEventEx] {0:X}:{1:X}", (*pex)->vscp_class, (*pex)->vscp_type);
+  // If this is a proxy event then translate to standard event
+  if ((ex.vscp_class >= 512) && ((ex.vscp_class < 1024))) {
+    ex.vscp_class -= 512;                            // Standard level I class
+    memcpy(ex.data, ex.data + 16, ex.sizeData - 16); // Remove proxy interface
+    ex.sizeData -= 16;
+  }
 
-    // If this is a proxy event then translate to standard event
-    if (((*pex)->vscp_class >= 512) && (((*pex)->vscp_class < 1024))) {
-      (*pex)->vscp_class -= 512;                                      // Standard level I class
-      memcpy((*pex)->data, (*pex)->data + 16, (*pex)->sizeData - 16); // Remove proxy interface
-    }
-  }
-  else {
-    pthread_mutex_unlock(&m_mutexReceiveQueue);
-    // spdlog::trace("[btest::getEventEx] No events to fetch");
-    return VSCP_ERROR_FIFO_EMPTY;
-  }
-  return VSCP_ERROR_SUCCESS;
+  return rv;
+
+  // -----------------------------------------------------------------------
+
+  // if (-1 == (rv = vscp_sem_wait(&m_semReceiveQueue, 100))) {
+  //   if (errno == ETIMEDOUT) {
+  //     return VSCP_ERROR_TIMEOUT;
+  //   }
+  //   else {
+  //     return VSCP_ERROR_ERROR;
+  //   }
+  // }
+
+  // pthread_mutex_lock(&m_mutexReceiveQueue);
+  // if (m_inqueue.size()) {
+  //   *pex = m_inqueue.dequeue();
+  //   pthread_mutex_unlock(&m_mutexReceiveQueue);
+  //   spdlog::trace("[btest::getEventEx] {0:X}:{1:X}", (*pex)->vscp_class, (*pex)->vscp_type);
+
+  //   // If this is a proxy event then translate to standard event
+  //   if (((*pex)->vscp_class >= 512) && (((*pex)->vscp_class < 1024))) {
+  //     (*pex)->vscp_class -= 512;                                      // Standard level I class
+  //     memcpy((*pex)->data, (*pex)->data + 16, (*pex)->sizeData - 16); // Remove proxy interface
+  //   }
+  // }
+  // else {
+  //   pthread_mutex_unlock(&m_mutexReceiveQueue);
+  //   // spdlog::trace("[btest::getEventEx] No events to fetch");
+  //   return VSCP_ERROR_FIFO_EMPTY;
+  // }
+  // return VSCP_ERROR_SUCCESS;
+
+  // if (-1 == (rv = vscp_sem_wait(&m_semReceiveQueue, 100))) {
+  //   if (errno == ETIMEDOUT) {
+  //     return VSCP_ERROR_TIMEOUT;
+  //   }
+  //   else {
+  //     return VSCP_ERROR_ERROR;
+  //   }
+
+  //   pthread_mutex_lock(&m_mutexReceiveQueue);
+  //   if (m_inqueue.size()) {
+  //     *pex = m_inqueue.dequeue();
+  //     pthread_mutex_unlock(&m_mutexReceiveQueue);
+  //     spdlog::trace("[btest::getEventEx] {0:X}:{1:X}", (*pex)->vscp_class, (*pex)->vscp_type);
+
+  //     // If this is a proxy event then translate to standard event
+  //     if (((*pex)->vscp_class >= 512) && (((*pex)->vscp_class < 1024))) {
+  //       (*pex)->vscp_class -= 512;                                      // Standard level I class
+  //       memcpy((*pex)->data, (*pex)->data + 16, (*pex)->sizeData - 16); // Remove proxy interface
+  //     }
+  //   }
+  //   else {
+  //     pthread_mutex_unlock(&m_mutexReceiveQueue);
+  //     // spdlog::trace("[btest::getEventEx] No events to fetch");
+  //     return VSCP_ERROR_FIFO_EMPTY;
+  //   }
+  // }
+  // return VSCP_ERROR_SUCCESS;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1904,7 +1949,7 @@ btest::vscpboot_goApplication(void)
 
 /*!
   Initialize hardware. This should be the first method called.
-  The communication interface should be opended here and the system
+  The communication interface should be opened here and the system
   should be ready to receive firmware code events when done.
 */
 int
@@ -1939,6 +1984,7 @@ btest::vscpboot_init_hardware(void)
       return VSCP_ERROR_HARDWARE;
     }
 
+    // Set callback
     using namespace std::placeholders;
     auto cb = std::bind(&btest::receiveCallback, this, _1, _2);
     // lambda version for reference
@@ -1972,13 +2018,22 @@ btest::vscpboot_init_hardware(void)
 }
 
 /*!
-  Free any hardware resources that neds to be free'd
+  Free any hardware resources that needs to be free'd
 */
 int
 btest::vscpboot_release_hardware()
 {
   int rv;
+
+  // If already released there is nothing to do
+  if (nullptr == m_pClient) {
+    return VSCP_ERROR_SUCCESS;
+  }
+
   if (m_interface == "socketcan") {
+
+    // Remove the callback
+    m_pClient->setCallbackEx(NULL, this);
 
     if (VSCP_ERROR_SUCCESS != (rv = m_pClient->disconnect())) {
       delete (vscpClientSocketCan*)m_pClient;
@@ -2019,12 +2074,34 @@ btest::vscpboot_setBootFlag(uint8_t bootflag)
 }
 
 /*!
-  Reboot the board. This method should never return.
+  Reboot the board. This method should never return
+  on real hardware.
 */
 void
 btest::vscpboot_reboot(void)
 {
-  // We restart the workerthread
+  // // We restart the worker thread
+  // if (VSCP_ERROR_SUCCESS != (rv = stopWorkerThread())) {
+  //   spdlog::error("Failed to stop worker thread rv=%d", rv);
+  // }
+
+  // // Go into bootloader mode
+  // vscpboot_setBootFlag(BOOTLOADER);
+
+  // m_bRun = true;
+  // if (VSCP_ERROR_SUCCESS != (rv = startWorkerThread())) {
+  //   spdlog::error("Failed to start worker thread rv=%d", rv);
+  // }
+
+  // We should restart the main window after termination
+  m_bEndNormal = false;
+
+  // Close all top level windows
+  foreach (QWidget* w, qApp->topLevelWidgets()) {
+    if (QMainWindow* mainWin = qobject_cast<QMainWindow*>(w)) {
+      mainWin->close();
+    }
+  }
 }
 
 /*!
@@ -2047,7 +2124,7 @@ btest::vscpboot_getConfig(void)
 uint8_t*
 btest::vscpboot_getGUID(void)
 {
-  return nullptr;
+  return m_firmware_cfg.m_guid;
 }
 
 /*!
@@ -2057,7 +2134,7 @@ btest::vscpboot_getGUID(void)
 int
 btest::vscpboot_isMemTypeValid(uint8_t /*type*/)
 {
-  return FALSE;
+  return TRUE;
 }
 
 /*!
@@ -2067,7 +2144,7 @@ btest::vscpboot_isMemTypeValid(uint8_t /*type*/)
 int
 btest::vscpboot_isMemBankValid(uint8_t /*bank*/)
 {
-  return FALSE;
+  return TRUE;
 }
 
 /*!
@@ -2085,7 +2162,7 @@ btest::vscpboot_programBlock(const uint8_t* /*pblock*/, uint8_t /*type*/, uint8_
 
 /*!
   The CRC for the loaded data is calculated here. This is the CRC
-  over all blocks programmed calulated with CRC-CCITT. For a successful
+  over all blocks programmed calculated with CRC-CCITT. For a successful
   programming this value should be the same as the one provided in the
   activate new image event.
   @return crc CRC-CCITT for programmed area.
@@ -2120,46 +2197,63 @@ btest::vscpboot_sendEventEx(vscpEventEx* pex)
 int
 btest::vscpboot_getEventEx(vscpEventEx* pex)
 {
-  int rv;
+  //   int rv;
 
-RCVLOOP:
-  if ((-1 == (rv = vscp_sem_wait(&m_semReceiveQueue, 10))) &&
-      errno == ETIMEDOUT) {
-    // If app. should run continue blocking operation
-    if (m_bRun) {
-      goto RCVLOOP;
-    }
-  }
+  //   printf("vscpboot_getEventEx: Size %lu\n", (unsigned long)m_inqueue.size());
 
-  // Return if we are supposed to end work
-  if (!m_bRun) {
-    return VSCP_ERROR_TIMEOUT;
-  }
+  // RCVLOOP:
+  //   if ((-1 == (rv = vscp_sem_wait(&m_semReceiveQueue, 10))) &&
+  //       errno == ETIMEDOUT) {
+  //     // If app. should run continue blocking operation
+  //     if (m_bRun) {
+  //       goto RCVLOOP;
+  //     }
+  //   }
 
-  // Return if error
-  if (rv) {
-    return rv;
-  }
+  //   // Return if we are supposed to end work
+  //   if (!m_bRun) {
+  //     return VSCP_ERROR_TIMEOUT;
+  //   }
 
-  pthread_mutex_lock(&m_mutexReceiveQueue);
-  if (m_inqueue.size()) {
-    pex = m_inqueue.dequeue();
-    pthread_mutex_unlock(&m_mutexReceiveQueue);
-    spdlog::trace("vscp_boot: getEventEx {0:X}:{1:X}", pex->vscp_class, pex->vscp_type);
+  //   // Return if error
+  //   if (rv) {
+  //     return rv;
+  //   }
 
-    // If this is a proxy event then translate to standard event
-    if ((pex->vscp_class >= 512) && ((pex->vscp_class < 1024))) {
-      pex->vscp_class -= 512;                                // Standard level I class
-      memcpy(pex->data, pex->data + 16, pex->sizeData - 16); // Remove proxy interface
-    }
-  }
-  else {
-    pthread_mutex_unlock(&m_mutexReceiveQueue);
-    spdlog::trace("[vscpboot_getEventEx] No events to fetch");
-    return VSCP_ERROR_FIFO_EMPTY;
-  }
+  //   pthread_mutex_lock(&m_mutexReceiveQueue);
+  //   if (m_inqueue.size()) {
+
+  //     pex = m_inqueue.dequeue();
+  //     pthread_mutex_unlock(&m_mutexReceiveQueue);
+  //     spdlog::trace("vscpboot_getEventEx: {0:X}:{1:X}", pex->vscp_class, pex->vscp_type);
+
+  //     // If this is a proxy event then translate to standard event
+  //     if ((pex->vscp_class >= 512) && (pex->vscp_class < 1024)) {
+  //       pex->vscp_class -= 512;                                // Standard level I class
+  //       memcpy(pex->data, pex->data + 16, pex->sizeData - 16); // Remove proxy interface
+  //     }
+  //   }
+  //   else {
+  //     pthread_mutex_unlock(&m_mutexReceiveQueue);
+  //     spdlog::trace("[vscpboot_getEventEx] No events to fetch");
+  //     return VSCP_ERROR_FIFO_EMPTY;
+  //   }
+
   return VSCP_ERROR_SUCCESS;
 }
+
+/*
+  Delete VSCP event
+  @param pex Pointer to VSCP event ex.
+*/
+// void
+// btest::vscpboot_deleteEventEx(vscpEventEx** pex)
+// {
+//   // if (nullptr != pex) {
+//   //   delete *pex;
+//   //   pex = nullptr;
+//   // }
+// }
 
 //////////////////////////////////////////////////////////////////////
 //                     Workerthread -
@@ -2178,12 +2272,20 @@ workerThread(void* pData)
     return NULL;
   }
 
+THREAD_START:
+
   /*!
-    Run bootloader if bootflag is non-zero
+    Run in bootloader mode if bootflag is non-zero
     otherwise run the simulated firmware
   */
   if (pbtest->vscpboot_getBootFlag()) {
+
+    emit pbtest->updateWindowsTitle(0xff);
     spdlog::info("Starting simulation software in bootloader mode");
+
+    /* Start the bootloader
+      !!! Initialization of hardware is done in the loader!!!
+    */
     vscpboot_loader();
   }
   else {
@@ -2202,41 +2304,58 @@ workerThread(void* pData)
     if (VSCP_ERROR_SUCCESS != (rv = vscp_frmw2_init(&pbtest->m_firmware_cfg))) {
       spdlog::error("workerthread: Failed to initialize firmware. rv={}", rv);
       pbtest->m_bRun = false;
-      return NULL;
+      goto THREAD_END;
     }
 
     // Go to work
 
-    vscpEventEx* pex = nullptr;
-
-    while (pbtest->m_bRun) {
+    vscpEventEx ex;
+    while (pbtest->m_bRun)
+    {
 
       // get event from the input queue if there is one
-      if (VSCP_ERROR_SUCCESS != (rv = pbtest->getEventEx(&pex))) {
+      vscpEventEx* pex = &ex;
+      if (VSCP_ERROR_SUCCESS != (rv = pbtest->getEventEx(ex))) {
         if ((VSCP_ERROR_TIMEOUT != rv) && (VSCP_ERROR_FIFO_EMPTY != rv)) {
-          spdlog::error("workerthread: [getEventEx] failed in worktread. rv={0} {1}", rv, strerror(rv));
+          spdlog::error("workerthread: [getEventEx] failed in workerthread. rv={0} {1}", rv, strerror(rv));
         }
+        pex = nullptr;
       }
 
-      // pex is NULL here if no event received
-      if (NULL != pex) {
+      if (nullptr == pex) {
+
         spdlog::trace("workerthread: Read event ex: {0:X}:{1:X} size={2} Data: {3:X}",
-                      pex->vscp_class,
-                      pex->vscp_type,
-                      pex->sizeData,
-                      spdlog::to_hex(std::begin(pex->data), std::begin(pex->data) + pex->sizeData));
+                      ex.vscp_class,
+                      ex.vscp_type,
+                      ex.sizeData,
+                      spdlog::to_hex(std::begin(ex.data), std::begin(ex.data) + ex.sizeData));
       }
 
       if (VSCP_ERROR_SUCCESS != (rv = vscp_frmw2_work(pex))) {
-        spdlog::error("workerthread: [vscp_frmw2_work] Failed in worktread. rv={}", rv);
+        /*
+          If we get VSCP_ERROR_STOPPED we should stop the worker thread
+          and release hardware resources. This is used only by the
+          simulator. On real hardware the bootloader will be jumped to
+          when asked to go in that direction.
+        */
+        if (VSCP_ERROR_STOPPED == rv) {
+          goto THREAD_START;
+        }
+        else {
+          spdlog::error("workerthread: [vscp_frmw2_work] Failed in workthread. rv={}", rv);
+        }
       }
 
-      // Cleanup event
-      if (nullptr != pex) {
-        delete pex;
-        pex = nullptr;
-      }
-    }
+    } // while
+  } // Firmware mode
+
+THREAD_END:
+
+  // Release hardware
+  if (VSCP_ERROR_SUCCESS != (rv = vscpboot_release_hardware())) {
+    spdlog::error("workerthread: Failed to release hardware. rv={}", rv);
+    pbtest->m_bRun = false;
+    return NULL;
   }
 
   return NULL;

@@ -47,29 +47,25 @@
 
 #include <iostream>
 
-
-
 #include <nlohmann/json.hpp>
 
 // for convenience
 using json = nlohmann::json;
 using namespace kainjow::mustache;
 
-
-
 int
 main(int argc, char* argv[])
 {
   int rv;
   btest app(argc, argv);
-  QApplication::setApplicationName("btest");
+  QApplication::setApplicationName("vscpsim");
   QApplication::setApplicationVersion("0.1");
 
   // Load configuration file
   app.loadProgramSettings();
 
   QCommandLineParser parser;
-  parser.setApplicationDescription("VSCP Boot Test helper");
+  parser.setApplicationDescription("VSCP Simulator");
   parser.addHelpOption();
   parser.addVersionOption();
 
@@ -208,7 +204,7 @@ main(int argc, char* argv[])
   vscp_split(app.m_configVector, cfg.toStdString(), ";");
   int idx = 0;
   for (const auto& cfgopt : app.m_configVector) {
-    spdlog::debug("Config: config string item {0}: {1}", idx, app.m_config.toStdString());
+    spdlog::debug("Config: config string item {0}: {1} [2]", idx, cfgopt, app.m_config.toStdString());
     idx++;
   }
 
@@ -266,7 +262,7 @@ main(int argc, char* argv[])
   }
 
   // Initialize simulation memory
-  //app.initSimulationData();
+  // app.initSimulationData();
 
   // Init the interface/hardware
   // if (VSCP_ERROR_SUCCESS != (rv = app.vscpboot_init_hardware())) {
@@ -278,13 +274,24 @@ main(int argc, char* argv[])
 
   // --------------------------------------------------------------------------
 
-  // Start bootloader (will in turn start app if boot flag is zero)
-  if (VSCP_ERROR_SUCCESS != (rv = app.startWorkerThread())) {
-    spdlog::error("Main: startWorkerThread {}", rv);
-    return 0;
-  }
+  do {
 
-  MainWindow mainWindow;
-  mainWindow.show();
-  return app.exec();
+    // Start bootloader (will in turn start app if boot flag is zero)
+    if (VSCP_ERROR_SUCCESS != (rv = app.startWorkerThread())) {
+      spdlog::error("Main: startWorkerThread {}", rv);
+      return 0;
+    }
+
+    MainWindow mainWindow;
+    mainWindow.show();
+    rv = app.exec();
+
+    // Start bootloader (will in turn start app if boot flag is zero)
+    if (VSCP_ERROR_SUCCESS != (rv = app.stopWorkerThread())) {
+      spdlog::error("Main: stopWorkerThread {}", rv);
+      return rv;
+    }
+  } while (!app.m_bEndNormal); 
+
+  return rv;
 }

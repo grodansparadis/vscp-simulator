@@ -91,7 +91,7 @@ vscpboot_run(void)
 
 /*!
   Initialize hardware. This should be the first method called.
-  The communication interface should be opended here and the system
+  The communication interface should be opened here and the system
   should be ready to receive firmware code events when done.
 */
 int
@@ -147,6 +147,9 @@ vscpboot_reboot(void)
   pbtest->vscpboot_reboot();
 }
 
+/*!
+  Get pointer to configuration
+*/
 vscpboot_config_t*
 vscpboot_getConfig(void)
 {
@@ -207,7 +210,7 @@ vscpboot_programBlock(const uint8_t* pblock, uint8_t type, uint8_t bank)
 
 /*!
   The CRC for the loaded data is calculated here. This is the CRC
-  over all blocks programmed calulated with CRC-CCITT. For a successful
+  over all blocks programmed calculated with CRC-CCITT. For a successful
   programming this value should be the same as the one provided in the
   activate new image event.
   @return crc CRC-CCITT for programmed area.
@@ -244,18 +247,30 @@ vscpboot_sendEventEx(vscpEventEx* pex)
 int
 vscpboot_getEventEx(vscpEventEx* pex)
 {
+  int rv;
+  vscpEventEx ex;
   btest* pbtest = (btest*)QApplication::instance();
-  return pbtest->vscpboot_getEventEx(pex);
+  rv = pbtest->getEventEx(ex);
+  if (VSCP_ERROR_SUCCESS != rv) {
+    return rv;
+  }
+
+  vscp_copyEventEx(pex, &ex);
+  return rv;
 }
 
-int
-vscp_frmw2_callback_dm_action(void* const puserdata,
-                              const vscpEventEx* const pex,
-                              uint8_t action,
-                              const uint8_t* const pparam)
-{
-  return VSCP_ERROR_SUCCESS;
-}
+/*!
+  Unallocate storage for VSCP event ex
+  @param pex Pointer to event ex to delete
+*/
+// void
+// vscpboot_deleteEventEx(vscpEventEx** pex)
+// {
+//   btest* pbtest = (btest*)QApplication::instance();
+//   pbtest->vscpboot_deleteEventEx(pex);
+// }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -403,7 +418,8 @@ vscp_frmw2_callback_send_event_ex(void* const puserdata, vscpEventEx* pex)
 }
 
 /*!
- * @brief Enter bootloader. SHOULD NEVER RETURN!!!
+ * @brief Enter bootloader. 
+    !!!SHOULD (normally) NEVER RETURN!!! on real hardware
  *
  * @param pdata Pointer to user data (typical points to context).
  */
@@ -411,8 +427,11 @@ vscp_frmw2_callback_send_event_ex(void* const puserdata, vscpEventEx* pex)
 void
 vscp_frmw2_callback_enter_bootloader(void* const puserdata)
 {
+  /*
+    We just set the bootloader flag here and return. 
+  */
   btest* pbtest = (btest*)QApplication::instance();
-  vscpboot_setBootFlag(0);
+  vscpboot_setBootFlag(btest::mode::BOOTLOADER);
   vscpboot_reboot();
 }
 
@@ -506,7 +525,7 @@ vscp_frmw2_callback_stdreg_change(void* const puserdata, uint32_t stdreg)
   that during lengthy operations.
 */
 void
-vscp_frmw2_callback_feed_watchdog(void* const puserdata)
+vscp_frmw2_callback_feed_watchdog(void* const /*puserdata*/)
 {
   // We do nothing
 }
@@ -518,4 +537,13 @@ void
 vscp_frmw2_callback_reset(void* const puserdata)
 {
   // TODO
+}
+
+int
+vscp_frmw2_callback_dm_action(void* const puserdata,
+                              const vscpEventEx* const pex,
+                              uint8_t action,
+                              const uint8_t* const pparam)
+{
+  return VSCP_ERROR_SUCCESS;
 }

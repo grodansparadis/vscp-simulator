@@ -5,8 +5,8 @@
     "connect-timout": 5000
   },
   "bootloader": {
-    "blocks": 1000,
-    "blocksize": "0x100"
+    "blocks": 4000,
+    "blocksize": "2048"
   },
   "device": {
     "name": "VSCP simulated node",

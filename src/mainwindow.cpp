@@ -26,6 +26,9 @@ MainWindow::MainWindow(QWidget* parent)
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
 
+  // Normal termination
+  papp->m_bEndNormal = true;
+
   // Log
   connect(ui->btnClearLog, SIGNAL(clicked()), this, SLOT(clearLog()));
   connect(ui->btnSave, SIGNAL(clicked()), this, SLOT(saveLog()));
@@ -48,6 +51,7 @@ MainWindow::MainWindow(QWidget* parent)
 
   connect(papp, &btest::initRegisters, this, &MainWindow::initRegisters);
   connect(papp, &btest::updateRegister, this, &MainWindow::updateRegister);
+  connect(papp, &btest::updateWindowsTitle, this, &MainWindow::updateWindowsTitle);
 
   connect(ui->btn0, SIGNAL(pressed()), this, SLOT(btnPressed_s0()));
   connect(ui->btn1, SIGNAL(pressed()), this, SLOT(btnPressed_s1()));
@@ -292,8 +296,9 @@ void
 MainWindow::setFirmwareModeUi(void)
 {
   // Set background color for firmware mode
-  // this->setStyleSheet("background-color: rgb(255, 255, 255);");
-  this->setStyleSheet("background-color: rgb(192, 192, 192);selection-background-color: rgb(0, 0, 0);color: rgb(0, 0, 0);");
+  setStyleSheet("background-color: rgb(246, 245, 244);");
+
+  setWindowTitle("VSCP Simulator [FIRMWARE MODE]");
   ui->tabWidget->setTabVisible(tab_index_register, true);
   ui->tabWidget->setTabVisible(tab_index_simulation, true);
 }
@@ -306,7 +311,9 @@ void
 MainWindow::setBootLoaderModeUi(void)
 {
   // Set background color for firmware mode
-  this->setStyleSheet("background-color: rgb(222, 255, 255);selection-background-color: rgb(0, 0, 0);");
+  setStyleSheet("background-color: rgb(250, 169, 169);");
+
+  setWindowTitle("VSCP Simulator [BOOTLOADER MODE]");
   ui->tabWidget->setTabVisible(tab_index_register, false);
   ui->tabWidget->setTabVisible(tab_index_simulation, false);
 }
@@ -344,20 +351,25 @@ MainWindow::updateRegRow(uint32_t row, uint16_t page, uint8_t value)
 void
 MainWindow::resetDevice(void)
 {
-  int rv;
   btest* papp = (btest*)QCoreApplication::instance();
   spdlog::trace("resetDevice");
 
-  // Init simulation window
-  init();
+  // We should restart the window after termination
+  papp->m_bEndNormal = false;
 
-  if (VSCP_ERROR_SUCCESS != (rv = papp->stopWorkerThread())) {
-    spdlog::error("Stopping simulation failed. rv=%s", rv);
-  }
+  // Terminate
+  this->close();
 
-  if (VSCP_ERROR_SUCCESS != (rv = papp->startWorkerThread())) {
-    spdlog::error("Starting simulation failed. rv=%s", rv);
-  }
+  // // Init simulation window
+  // init();
+
+  // if (VSCP_ERROR_SUCCESS != (rv = papp->stopWorkerThread())) {
+  //   spdlog::error("Stopping simulation failed. rv=%s", rv);
+  // }
+
+  // if (VSCP_ERROR_SUCCESS != (rv = papp->startWorkerThread())) {
+  //   spdlog::error("Starting simulation failed. rv=%s", rv);
+  // }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -370,12 +382,20 @@ MainWindow::setBootMode(void)
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
 
-  papp->m_bootflag = 0xff; // Set bootmode
-  resetDevice();           // Reset the device
+  papp->m_bRun = false;
+
+  // Go into bootloader mode
+  papp->vscpboot_setBootFlag(btest::BOOTLOADER);
+
+  // We should restart the window after termination
+  papp->m_bEndNormal = false;
+
+  // Terminate
+  this->close();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// setBootMode
+// setFirmwareMode
 //
 
 void
@@ -384,8 +404,15 @@ MainWindow::setFirmwareMode(void)
   // Get pointer to app
   btest* papp = (btest*)QCoreApplication::instance();
 
-  papp->m_bootflag = 0x00; // Set firmware mode
-  resetDevice();           // Reset the device
+  papp->m_bRun = false;
+
+  papp->vscpboot_setBootFlag(btest::FIRMWARE);
+
+  // We should restart the window after termination
+  papp->m_bEndNormal = false;
+
+  // Terminate
+  this->close();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -659,6 +686,25 @@ MainWindow::setBackgroundColor(uint32_t color)
     QString("background-color: rgb(%0,%1,%2);").arg((color >> 16) & 0xff).arg((color >> 8) & 0xff).arg(color & 0xff);
   ui->tab_sim->setStyleSheet(strcolor);
   spdlog::info("Set color {0} {1:08X}", strcolor.toStdString(), (int)color);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// updateWindowsTitle
+//
+
+void
+MainWindow::updateWindowsTitle(int mode)
+{
+  switch (mode) {
+    case btest::mode::FIRMWARE:
+      setFirmwareModeUi();
+      break;
+
+    case btest::mode::BOOTLOADER:
+      setBootLoaderModeUi();
+      break;  
+  }
 }
 
 //=============================================================================

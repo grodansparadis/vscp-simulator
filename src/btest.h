@@ -103,7 +103,7 @@ Q_DECLARE_METATYPE(vscpEventEx)
 #define DEFAULT_VSCP_SYSTEM_FOLDER "/var/lib/vscp/"
 #endif
 
-#define DEFAULT_CONNECT_TIMOUT 5000
+#define DEFAULT_CONNECT_TIMEOUT 5000
 
 /*!
     Encapsulates VSCP works main settings
@@ -174,7 +174,7 @@ public:
     @param pex Pointer to received event or NULL if no event
     @return VSCP_ERROR_SUCCESS if all is OK
   */
-  int getEventEx(vscpEventEx** pex);
+  int getEventEx(vscpEventEx& ex);
 
   // ========================================================================
   //                        Simulation handlers
@@ -353,6 +353,8 @@ public:
 
   int vscpboot_getEventEx(vscpEventEx* pex);
 
+  //void vscpboot_deleteEventEx(vscpEventEx** pex);
+
   // ========================================================================
   // ========================================================================
 
@@ -372,8 +374,16 @@ public:
   bool m_bRun;
 
   /*!
+    If end normal is true the application will end,
+    if not the workerthread will be restarted and
+    also the application will start again. This is
+    used for RESET and REBOOT commands.
+  */
+  bool m_bEndNormal;
+
+  /*!
     The bootflag controls what code that is executed
-    it is zero if the appcication code should be executed
+    it is zero if the application code should be executed
     and non-zero if the bootloader should be started.
   */
   uint8_t m_bootflag;
@@ -509,6 +519,9 @@ signals:
 
   /// Update register list
   void updateRegister(uint32_t offset, uint16_t page, uint8_t value);
+
+  /// Update title on main window
+  void updateWindowsTitle(int mode);
 };
 
 #endif // ___VSCP_BTEST_H
