@@ -882,7 +882,8 @@ btest::getEventEx(vscpEventEx& ex)
 {
   int rv;
 
-  rv = m_pClient->receiveBlocking(ex, 100);
+  //rv = m_pClient->receive(ex, 100);
+  rv = m_pClient->receive(ex);
   if (VSCP_ERROR_SUCCESS != rv) {
     return rv;
   }
