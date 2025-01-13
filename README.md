@@ -9,15 +9,15 @@ This is a simple test software thats simulates all functionality of a VSCP level
 
 This software is created for (cross)testing and validation of new functionality and not intended for public use.
 
-The following transport mechanisms are available
+The following transport mechanisms are currently available
 
 | Transport | Availability | OS |
 | ----------| ------------ | -- |
 | socketcan | available. | Linux |
-| CANAL | planned | Linux, Windows |
+| CANAL | available | Linux, Windows |
 | tcp/ip server | planned | Linux, Windows |
-| tcp/ip client | planned | Linux, Windows |
-| MQTT | planned | Linux, Windows |
+| tcp/ip client | available | Linux, Windows |
+| MQTT | available | Linux, Windows |
 | Websocket version 1 | planned | Linux, Windows |
 | Websocket version 2 | planned | Linux, Windows |
 | Ethernet | Planned | Linux, Windows |
