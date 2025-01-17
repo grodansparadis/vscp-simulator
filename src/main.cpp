@@ -61,6 +61,9 @@ main(int argc, char* argv[])
   QApplication::setApplicationName("vscpsim");
   QApplication::setApplicationVersion("0.1");
 
+  // Go to users home directory
+  QDir::setCurrent(QDir::homePath());
+
   // Load configuration file
   app.loadProgramSettings();
 
