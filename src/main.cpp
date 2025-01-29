@@ -57,12 +57,13 @@ int
 main(int argc, char* argv[])
 {
   int rv;
-  btest app(argc, argv);
-  QApplication::setApplicationName("vscpsim");
-  QApplication::setApplicationVersion("0.1");
 
   // Go to users home directory
   QDir::setCurrent(QDir::homePath());
+
+  btest app(argc, argv);
+  QApplication::setApplicationName("vscpsim");
+  QApplication::setApplicationVersion("0.1");
 
   // Load configuration file
   app.loadProgramSettings();
