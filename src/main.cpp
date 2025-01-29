@@ -46,6 +46,7 @@
 #include <QStandardPaths>
 
 #include <iostream>
+#include <QDir>
 
 #include <nlohmann/json.hpp>
 
