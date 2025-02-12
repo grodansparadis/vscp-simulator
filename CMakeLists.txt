@@ -79,7 +79,7 @@ if (MSVC)
 else()
   set(LIBS_SYSTEM c stdc++)
   # additional warnings
-  add_compile_options(-Wall -Wextra -Wpedantic)
+  #add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

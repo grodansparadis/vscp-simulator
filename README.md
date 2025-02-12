@@ -14,10 +14,10 @@ The following transport mechanisms are currently available
 | Transport | Availability | OS |
 | ----------| ------------ | -- |
 | socketcan | available. | Linux |
-| CANAL | available | Linux, Windows |
+| CANAL | in-progress | Linux, Windows |
 | tcp/ip server | planned | Linux, Windows |
-| tcp/ip client | available | Linux, Windows |
-| MQTT | available | Linux, Windows |
+| tcp/ip client | in-progress | Linux, Windows |
+| MQTT | in-progress | Linux, Windows |
 | Websocket version 1 | planned | Linux, Windows |
 | Websocket version 2 | planned | Linux, Windows |
 | Ethernet | Planned | Linux, Windows |
