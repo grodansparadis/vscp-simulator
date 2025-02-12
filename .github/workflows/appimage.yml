@@ -14,7 +14,7 @@ jobs:
     # well on Windows or Mac.  You can convert this to a matrix build if you need
     # cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     #continue-on-error: true
 
     steps:
@@ -45,18 +45,11 @@ jobs:
     - name: Install FUSE manually
       run: sudo apt install libfuse2  
 
-    - name: Install sqlite3
-      run: sudo apt install libsqlite3-dev  
-
-    # # https://forum.qt.io/topic/151452/what-qt-specific-files-exactly-do-i-need-to-add-when-deploying/34
-    # - name: Install mysql client
-    #   run: sudo apt install libmysqlclient-dev  
-
     # https://github.com/marketplace/actions/install-qt
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
-        version: 6.8.*
+        version: 6.8.2
         host: 'linux'
         target: 'desktop'
         arch: 'linux_gcc_64'

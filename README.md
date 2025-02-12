@@ -35,7 +35,7 @@ Change folder to **vscp-simulator**
 ```bash
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=~/Qt/6.8.0/gcc_64 ..
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=~/Qt/6.8.2/gcc_64 ..
 make
 ```
 
@@ -218,7 +218,7 @@ This four byte value specifies the VSCP standard family code for the device. The
 This four byte value specifies the VSCP standard type code for the device. The value is set here. It can be set as an array, a decimal value or as a "numerical string".
 
 ### firmware-device-code
-This is a 16-bit code that the manufacturer set to identify the device type so that application that want to load firmware know which firmware to select. Typically the value identify the hardware reversion after which differenet firmwae is required. Also the running firmare itself can use this value to adopt itself to the hardware.
+This is a 16-bit code that the manufacturer set to identify the device type so that application that want to load firmware know which firmware to select. Typically the value identify the hardware reversion after which different firmware is required. Also the running firmware itself can use this value to adopt itself to the hardware.
 
 ### ip-addr
 Ip address is the ipv4 or ipv6 address for a device that has one. Set to all zero if other mechanism like DHCP set the ip address. It can be set as a 32-bit integer for ipv4, a string or as an array of 8-bit numbers for ipv4 and and array of 16-bit numbers for ipv6.

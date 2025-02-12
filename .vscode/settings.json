@@ -79,8 +79,8 @@
     "hash_set": "cpp"
   },
   "cmake.configureEnvironment": {
-    "CMAKE_PREFIX_PATH": "~/Qt/6.8.0/gcc_64",
-    "QT6_DIR": "~/Qt/6.8.0/gcc_64"
+    "CMAKE_PREFIX_PATH": "~/Qt/6.8.2/gcc_64",
+    "QT6_DIR": "~/Qt/6.8.2/gcc_64"
   },
   "cmake.clearOutputBeforeBuild": false,
   "cSpell.words": [
