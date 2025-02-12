@@ -250,6 +250,7 @@ include_directories( PUBLIC ./src
 target_link_libraries(vscpsim PRIVATE 
   Qt6::Widgets
   Qt6::Qml
+  ${CMAKE_DL_LIBS}
   Threads::Threads
   OpenSSL::SSL 
   OpenSSL::Crypto
