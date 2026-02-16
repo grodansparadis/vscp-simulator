@@ -8,7 +8,7 @@
 //
 // This file is part of the VSCP (https://www.vscp.org)
 //
-// Copyright:  (C) 2000-2024
+// Copyright:  (C) 2000-2025
 // Ake Hedman, the VSCP project, <info@vscp.org>
 //
 // This file is distributed in the hope that it will be useful,
@@ -286,7 +286,7 @@ vscpboot_getEventEx(vscpEventEx* pex)
 /*!
  * @brief Get the time in milliseconds.
  *
- * @param pdata Pointer to user data (typical points to context)
+ * @param puserdata Pointer to user data (typical points to context)
  * @return unsigned integer that will get the time in milliseconds.
  */
 
@@ -299,7 +299,7 @@ vscp_frmw2_callback_get_milliseconds(void* const /*puserdata*/)
 /*!
  * @brief Get timestamp
  *
- * @param pdata Pointer to context.
+ * @param puserdata Pointer to context.
  * @return Timestamp in microseconds.
  */
 
@@ -312,7 +312,7 @@ vscp_frmw2_callback_get_timestamp(void* const /*puserdata*/)
 /*!
   @brief Get name of the device.  Used by the device capabilities report.
 
-  @param pdata Pointer to user data (typical points to context)
+  @param puserdata Pointer to user data (typical points to context)
   @param pname Pointer to device name. The name should be no more than 64
   characters including terminating zero.
   @return VSCP_ERROR_SUCCESS on success, or error code.
@@ -329,7 +329,7 @@ vscp_frmw2_callback_get_device_name(void* const /*puserdata*/, const char* /*pna
  * Read value of one of the user registers. Valid register range
  * is 0x00000000 - 0xffff0000
  *
- * @param pdata Pointer to user data (typical points to context).
+ * @param puserdata Pointer to user data (typical points to context).
  * @param reg Register to read.
  * @param pval Pointer to variable that will get read value.
  * @return VSCP_ERROR_SUCCESS on success, else error code. VSCP_ERROR_PARAMETER is
@@ -356,7 +356,7 @@ vscp_frmw2_callback_read_reg(void* const /*puserdata*/, uint16_t /*page*/, uint3
  * Write value of one of the user registers. Valid register range
  * is 0x00000000 - 0xffff0000
  *
- * @param pdata Pointer to user data (typical points to context)
+ * @param puserdata Pointer to user data (typical points to context)
  * @param reg Register to write
  * @param val Value to write
  * @return VSCP_ERROR_SUCCESS on success, else error code. VSCP_ERROR_PARAMETER is
@@ -374,7 +374,7 @@ vscp_frmw2_callback_write_reg(void* const /*puserdata*/, uint16_t page, uint32_t
 /*!
   @brief Send event to transport sublayer.
 
-  @param pdata Pointer to user data (typical points to context)
+  @param puserdata Pointer to user data (typical points to context)
   @param pex Pointer to Event to send.
   @return VSCP_ERROR_SUCCESS on success, or error code.
 
@@ -398,7 +398,7 @@ vscp_frmw2_callback_send_event(void* const /*puserdata*/, vscpEvent* pev)
 /*!
   @brief Send eventex to transport sublayer.
 
-  @param pdata Pointer to user data (typical points to context)
+  @param puserdata Pointer to user data (typical points to context)
   @param ex Pointer to EventEx to send.
   @return VSCP_ERROR_SUCCESS on success, or error code.
 
@@ -421,7 +421,7 @@ vscp_frmw2_callback_send_event_ex(void* const /*puserdata*/, vscpEventEx* pex)
  * @brief Enter bootloader. 
     !!!SHOULD (normally) NEVER RETURN!!! on real hardware
  *
- * @param pdata Pointer to user data (typical points to context).
+ * @param puserdata Pointer to user data (typical points to context).
  */
 
 void
@@ -440,7 +440,7 @@ vscp_frmw2_callback_enter_bootloader(void* const /*puserdata*/)
 /*!
  * @brief  Fill in event date/time information
  *
- * @param pdata
+ * @param puserdata
  * @param pex Event to get info
  * @return VSCP_ERROR_SUCCESS on success, else error code.
  *
@@ -467,7 +467,7 @@ vscp_frmw2_callback_set_event_time(void* const /*puserdata*/, vscpEventEx* pex)
 /*!
   @brief Initialize persistent storage
 
-  @param pdata Pointer to user data (typical points to context)
+  @param puserdata Pointer to user data (typical points to context)
  */
 int
 vscp_frmw2_callback_init_persistent_storage(void* const /*puserdata*/)
@@ -481,7 +481,7 @@ vscp_frmw2_callback_init_persistent_storage(void* const /*puserdata*/)
   This routine force the system into boot loader mode according
   to the selected protocol.
 
-  @param pdata Pointer to user data (typical points to context)
+  @param puserdata Pointer to user data (typical points to context)
   @param[out] palgorithm Pointer to bootloader algorithm to use.
   @return VSCP_ERROR_SUCCESS on success, or error code.
  */
@@ -500,7 +500,7 @@ vscp_frmw2_callback_enter_bootloader(void* const /*puserdata*/, uint8_t* /*palgo
   162 within one second defaults should be loaded
   by the device.
 
-  @param pdata Pointer to user data (typical points to context)
+  @param puserdata Pointer to user data (typical points to context)
   @return VSCP_ERROR_SUCCESS on success, or error code.
  */
 
