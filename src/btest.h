@@ -52,7 +52,11 @@
 #include <QQueue>
 
 #include <QSemaphore>
+#include <atomic>
+#include <condition_variable>
+#include <deque>
 #include <list>
+#include <mutex>
 
 #include <pthread.h>
 
@@ -76,22 +80,18 @@ Q_DECLARE_METATYPE(vscpEventEx)
 /// Application name used in titles and headers
 #define APPNAME "VSCP Simulator"
 
-#define VSCPSIM_VERSION_MAJOR   0
-#define VSCPSIM_VERSION_MINOR   0
-#define VSCPSIM_VERSION_RELEASE 1
+// Version year.month.patch (VSCPSIM_VERSION_STR etc.), updated automatically
+#include "vscpsim-version.h"
 
-#define VSCPSIM_DISPLAY_VERSION "0.0.1 alpha"
 #define VSCPSIM_COPYRIGHT                                   \
-  "Copyright © 2000-2025 Ake Hedman, Grodans Paradis AB, " \
+  "Copyright © 2000-2026 Ake Hedman, Grodans Paradis AB, " \
   "https://www.grodansparadis.com"
 #define VSCPSIM_COPYRIGHT_HTML                                            \
-  "Copyright © 2000-2024 Åke Hedman, <a "                               \
+  "Copyright © 2000-2026 Åke Hedman, <a "                               \
   "href=\"mailto:info@grodansparadis.com\">Grodans Paradis AB</a><br><a " \
   "href=\"https://www.grodansparadis.com\">https://"                      \
   "www.grodansparadis.com</a>"
 
-#define VSCPSIM_VERSION(major, minor, release) \
-  (((major) << 16) | ((minor) << 8) | (release))
 
 // home folder is used for storage of program configuration
 // system folder holds databases etc
@@ -171,10 +171,36 @@ public:
   /*!
     Get event ex from input queue
 
-    @param pex Pointer to received event or NULL if no event
+    @param ex Event that gets the received event
+    @param timeout Time in milliseconds to wait for an event.
+    @return VSCP_ERROR_SUCCESS if an event was received,
+            VSCP_ERROR_FIFO_EMPTY if none arrived in time.
+  */
+  int getEventEx(vscpEventEx& ex, uint32_t timeout = 10);
+
+  /*!
+    Send an event on the active interface
+    @param ex Event to send
     @return VSCP_ERROR_SUCCESS if all is OK
   */
-  int getEventEx(vscpEventEx& ex);
+  int sendEvent(vscpEventEx& ex);
+
+  /*!
+    Build the JSON configuration for the client from the interface
+    settings (config file "interface" object or command line options).
+    @return JSON configuration given to CVscpClient::initFromJson()
+  */
+  json getClientConfig(void);
+
+  /*!
+    Check that the interface type is one the simulator supports
+    @param type Interface type (socketcan, tcpip, udp, multicast, ws1, ws2, mqtt)
+    @return true if supported on this platform
+  */
+  static bool isSupportedInterface(const QString& type);
+
+  /// Operations table handed to the VSCP level II firmware
+  static const vscp_frmw2_ops_t s_firmwareOps;
 
   // ========================================================================
   //                        Simulation handlers
@@ -371,7 +397,7 @@ public:
     Flag for workerthread execution
     Set to false to end execution of thread
   */
-  bool m_bRun;
+  std::atomic<bool> m_bRun;
 
   /*!
     If end normal is true the application will end,
@@ -443,13 +469,16 @@ public:
   uint32_t m_timeoutConnect;
 
   /// protects receive queue
-  sem_t m_semReceiveQueue;
-  pthread_mutex_t m_mutexReceiveQueue;
+  std::mutex m_mutexReceiveQueue;
+  std::condition_variable m_cvReceiveQueue;
 
   /*!
     Queue holding received events
   */
-  QQueue<vscpEventEx*> m_inqueue;
+  std::deque<vscpEventEx> m_inqueue;
+
+  /// Max number of events waiting in the receive queue
+  static const size_t MAX_INQUEUE = 2000;
 
   // ---------------------------------------------------
 
@@ -475,6 +504,13 @@ public:
 
   /// Password
   QString m_password;
+
+  /*!
+    Interface settings from the configuration file ("interface" object).
+    Everything except "type" is handed to the client's initFromJson(),
+    so any setting the client supports can be used.
+  */
+  json m_interfaceConfig;
 
   //**************************************************************************
   //                            LOGGER (SPDLOG)

@@ -64,7 +64,7 @@ main(int argc, char* argv[])
 
   btest app(argc, argv);
   QApplication::setApplicationName("vscpsim");
-  QApplication::setApplicationVersion("0.1");
+  QApplication::setApplicationVersion(VSCPSIM_VERSION_STR);
 
   // Load configuration file
   app.loadProgramSettings();
@@ -80,9 +80,13 @@ main(int argc, char* argv[])
   QCommandLineOption interfaceOption(
     QStringList() << "i"
                   << "interface",
-    QApplication::translate("main", "Client interface to use"),
-    "interface (socketcan, canal, tcpip, udp, multicast, mqtt, ws1, ws2)",
+    QApplication::translate("main", "Interface to use: canal, level2, socketcan (Linux), tcpip, udp, multicast, ws1, ws2 or mqtt"),
+    "interface",
+#ifdef VSCPSIM_HAVE_SOCKETCAN
     "socketcan");
+#else
+    "udp");
+#endif
   parser.addOption(interfaceOption);
 
   // config (-b, --bootmode)
@@ -109,9 +113,10 @@ main(int argc, char* argv[])
   QCommandLineOption configOption(
     QStringList() << "c"
                   << "config",
-    QApplication::translate("main", "Configuration string for interface (see docs for interface)"),
+    QApplication::translate("main", "Configuration string for interface. socketcan: the CAN device (default vcan0). "
+                                    "canal: driver path;CANAL configuration. level2: driver path;driver configuration file"),
     "cfg1;cfg2;cfg2;...",
-    "vcan0");
+    "");
   parser.addOption(configOption);
 
   // GUID (-g, --guid)
@@ -129,9 +134,11 @@ main(int argc, char* argv[])
                   << "srv"
                   << "host"
                   << "server",
-    QApplication::translate("main", "Server/Host to connect to"),
+    QApplication::translate("main",
+                            "Host to connect to (tcpip, ws1, ws2, mqtt), destination address (udp) or "
+                            "multicast group (multicast)"),
     "host",
-    "localhost");
+    "");
   parser.addOption(hostOption);
 
   // port (-p, --port)
@@ -139,9 +146,10 @@ main(int argc, char* argv[])
     QStringList() << "p"
                   << "port"
                   << "remote-port",
-    QApplication::translate("main", "Port to connect to"),
+    QApplication::translate("main",
+                            "Port (default 9598 tcpip, 33333 udp, 9598 multicast, 8884 ws1/ws2, 1883 mqtt)"),
     "port",
-    "9598");
+    "");
   parser.addOption(portOption);
 
   // timeout (-t, --timeout)
@@ -155,23 +163,23 @@ main(int argc, char* argv[])
   // user (-u, --user)
   QCommandLineOption userOption(QStringList() << "u"
                                               << "user",
-                                QApplication::translate("main", "Username"),
+                                QApplication::translate("main", "Username (default admin)"),
                                 "user",
-                                "vscp");
+                                "");
   parser.addOption(userOption);
 
   // password (-p, --password)
   QCommandLineOption passwordOption(QStringList() << "P"
                                                   << "password",
-                                    QApplication::translate("main", "Password"),
+                                    QApplication::translate("main", "Password (default secret)"),
                                     "password",
-                                    "secret");
+                                    "");
   parser.addOption(passwordOption);
 
   // VSCP level (-l, --level)
   QCommandLineOption levelOption(QStringList() << "l"
                                                << "vscplevel",
-                                 QApplication::translate("main", "VSCP protocol level"),
+                                 QApplication::translate("main", "VSCP protocol level, 0 = Level I, 1 = Level II"),
                                  "(0|1)",
                                  "0");
   parser.addOption(levelOption);
@@ -206,7 +214,10 @@ main(int argc, char* argv[])
 
   QString cfg  = parser.value(configOption);
   app.m_config = cfg;
-  vscp_split(app.m_configVector, cfg.toStdString(), ";");
+  app.m_configVector.clear();
+  if (!cfg.isEmpty()) {
+    vscp_split(app.m_configVector, cfg.toStdString(), ";");
+  }
   int idx = 0;
   for (const auto& cfgopt : app.m_configVector) {
     spdlog::debug("Config: config string item {0}: {1} [2]", idx, cfgopt, app.m_config.toStdString());
@@ -222,7 +233,7 @@ main(int argc, char* argv[])
   spdlog::debug("Config: Host set to: {}", app.m_host.toStdString());
 
   QString portstr = parser.value(portOption);
-  app.m_port      = vscp_readStringValue(portstr.toStdString());
+  app.m_port      = portstr.isEmpty() ? 0 : (uint16_t)vscp_readStringValue(portstr.toStdString());
   spdlog::debug("Config: port: {}", app.m_port);
 
   QString userstr = parser.value(userOption);
@@ -231,7 +242,7 @@ main(int argc, char* argv[])
 
   QString passwordstr = parser.value(passwordOption);
   app.m_password      = passwordstr;
-  spdlog::debug("Config: password: {}", app.m_password.toStdString());
+  spdlog::debug("Config: password set: {}", !app.m_password.isEmpty());
 
   std::string blockstr = parser.value(blockOption).toStdString();
   blockstr             = vscp_trim_copy(blockstr);
@@ -251,6 +262,10 @@ main(int argc, char* argv[])
   if (vscp_readStringValue(levelstr.toStdString()) <= 2) {
     app.m_bootloader_cfg.vscpLevel = vscp_readStringValue(levelstr.toStdString());
     spdlog::debug("Config: level: {}", app.m_bootloader_cfg.vscpLevel);
+    // The configuration file can also set the level of the firmware
+    if (parser.isSet(levelOption)) {
+      app.m_firmware_cfg.level = (VSCP_LEVEL2 == app.m_bootloader_cfg.vscpLevel) ? VSCP_LEVEL2 : VSCP_LEVEL1;
+    }
   }
 
   app.m_configpath = parser.value(fileOption).trimmed();
@@ -279,7 +294,16 @@ main(int argc, char* argv[])
 
   // --------------------------------------------------------------------------
 
+  if (!btest::isSupportedInterface(app.m_interface)) {
+    spdlog::error("Interface '{}' is not supported. Use canal, level2, socketcan (Linux), tcpip, udp, multicast, ws1, ws2 or mqtt.",
+                  app.m_interface.toStdString());
+    return 1;
+  }
+
   do {
+
+    // A reset/reboot sets this to false to restart
+    app.m_bEndNormal = true;
 
     // Start bootloader (will in turn start app if boot flag is zero)
     if (VSCP_ERROR_SUCCESS != (rv = app.startWorkerThread())) {

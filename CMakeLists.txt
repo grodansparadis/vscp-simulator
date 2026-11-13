@@ -33,7 +33,64 @@
 #
 
 cmake_minimum_required(VERSION 3.16)
-project(vscpsim VERSION 1.0.0 LANGUAGES CXX C)
+# Version year.month.patch from src/vscpsim-version.h (updated on every push
+# to master by the "Update version" workflow)
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/src/vscpsim-version.h" _vscpsim_version_lines
+     REGEX "^#define[ \t]+VSCPSIM_VERSION_(YEAR|MONTH|PATCH)[ \t]+[0-9]+")
+foreach(_part YEAR MONTH PATCH)
+  string(REGEX MATCH "VSCPSIM_VERSION_${_part}[ \t]+([0-9]+)" _match "${_vscpsim_version_lines}")
+  set(VSCPSIM_VERSION_${_part} "${CMAKE_MATCH_1}")
+endforeach()
+project(vscpsim
+  VERSION ${VSCPSIM_VERSION_YEAR}.${VSCPSIM_VERSION_MONTH}.${VSCPSIM_VERSION_PATCH}
+  LANGUAGES CXX C)
+message(STATUS "VSCP simulator version ${PROJECT_VERSION}")
+
+include(FetchContent)
+
+cmake_policy(PUSH)
+if(POLICY CMP0169)
+  cmake_policy(SET CMP0169 OLD)
+endif()
+
+FetchContent_Declare(
+  vscp
+  GIT_REPOSITORY https://github.com/grodansparadis/vscp.git
+  GIT_TAG e050031d01ffdf59a8fbeb12a27950a8003bee21
+)
+FetchContent_Declare(
+  vscp_firmware
+  GIT_REPOSITORY https://github.com/grodansparadis/vscp-firmware.git
+  GIT_TAG 62ea7649f7710b0a679aa45da7bedcf89fa0453f
+)
+FetchContent_Declare(
+  json
+  GIT_REPOSITORY https://github.com/nlohmann/json.git
+  GIT_TAG 904592d2a86bae5d9c191cdcb8f8fd9b136f71fa
+)
+FetchContent_Declare(
+  spdlog
+  GIT_REPOSITORY https://github.com/gabime/spdlog.git
+  GIT_TAG fc7e9c8721b95661cc40e2d1d2329677d2a21387
+)
+FetchContent_Declare(
+  mustache
+  GIT_REPOSITORY https://github.com/kainjow/Mustache.git
+  GIT_TAG 3f654942a70c46a775070d7a09ca7acfa3e205b7
+)
+FetchContent_Declare(
+  maddy
+  GIT_REPOSITORY https://github.com/progsource/maddy.git
+  GIT_TAG 4dcdbb50be10a6262072340abcfa97ee3b4edcfa
+)
+
+foreach(dependency IN ITEMS vscp vscp_firmware json spdlog mustache maddy)
+  FetchContent_GetProperties(${dependency})
+  if(NOT ${dependency}_POPULATED)
+    FetchContent_Populate(${dependency})
+  endif()
+endforeach()
+cmake_policy(POP)
 
 ## --- C++14 build flags ---
 set(CMAKE_CXX_STANDARD 17)
@@ -47,18 +104,6 @@ set_target_properties(${PROJECT_NAM} PROPERTIES
 
 # --- System Libraries ---
 include(GNUInstallDirs) 
-
-# --- Path to vscp --- 
-if (NOT DEFINED VSCP_PATH)
-  set (VSCP_PATH "${PROJECT_SOURCE_DIR}/../vscp")
-endif()
-
-file(TO_CMAKE_PATH "$ENV{VSCP_ROOT}" VSCP_PATH)
-message(STATUS "VSCP path = $ENV{VSCP_ROOT}")
-
-file(TO_CMAKE_PATH "$ENV{VSCP_FIRMWARE}" VSCP_FIRMWARE)
-message(STATUS "VSCP firmware path = $ENV{VSCP_FIRMWARE}")
-message(STATUS "VSCP firmware path = ${VSCP_FIRMWARE}")
 
 file(TO_CMAKE_PATH "$ENV{QT_ROOT_DIR}" QT_PATH)
 message(STATUS "QT_ROOT_DIR = $ENV{QT_ROOT_DIR}")
@@ -165,81 +210,100 @@ qt_add_executable(vscpsim
     src/main.cpp
     src/btest.cpp
     src/hardware.cpp
-    third_party/vscp/src/vscp/common/version.h
-    third_party/vscp/src/vscp/common/vscp.h
-    third_party/vscp/src/vscp/common/vscpremotetcpif.h
-    third_party/vscp/src/vscp/common/vscpremotetcpif.cpp
-    third_party/vscp/src/vscp/common/vscpdatetime.h
-    third_party/vscp/src/vscp/common/vscpdatetime.cpp
-    third_party/vscp/src/vscp/common/guid.h
-    third_party/vscp/src/vscp/common/guid.cpp
-    third_party/vscp/src/vscp/common/register.h
-    third_party/vscp/src/vscp/common/register.cpp
-    third_party/vscp/src/vscp/common/mdf.h
-    third_party/vscp/src/vscp/common/mdf.cpp
-    third_party/vscp/src/vscp/common/vscphelper.h
-    third_party/vscp/src/vscp/common/vscphelper.cpp
-    third_party/vscp/src/vscp/common/vscpunit.h
-    third_party/vscp/src/vscp/common/vscpunit.cpp
-    third_party/vscp/src/vscp/common/canaldlldef.h
-    third_party/vscp/src/vscp/common/vscpcanaldeviceif.h
-    third_party/vscp/src/vscp/common/vscpcanaldeviceif.cpp
-    third_party/vscp/src/common/sockettcp.h
-    third_party/vscp/src/common/sockettcp.c
-    third_party/vscp/src/common/vscpbase64.h
-    third_party/vscp/src/common/vscpbase64.c
-    third_party/vscp/src/common/vscp-aes.h
-    third_party/vscp/src/common/vscp-aes.c
-    third_party/vscp/src/common/crc.h
-    third_party/vscp/src/common/crc.c
-    third_party/vscp/src/common/crc8.h
-    third_party/vscp/src/common/crc8.c
-    third_party/vscp/src/common/vscpmd5.h
-    third_party/vscp/src/common/vscpmd5.c
-    third_party/vscp/src/vscp/common/vscp-client-base.h
-    third_party/vscp/src/vscp/common/vscp-client-base.cpp
-    third_party/vscp/src/vscp/common/vscp-client-canal.h
-    third_party/vscp/src/vscp/common/vscp-client-canal.cpp
-    third_party/vscp/src/vscp/common/vscp-client-mqtt.h
-    third_party/vscp/src/vscp/common/vscp-client-mqtt.cpp
-    third_party/vscp/src/vscp/common/vscp-client-tcp.h
-    third_party/vscp/src/vscp/common/vscp-client-tcp.cpp
-    third_party/vscp/src/vscp/common/vscp-client-socketcan.h
-    third_party/vscp/src/vscp/common/vscp-client-socketcan.cpp
-    third_party/vscp/src/vscp/common/vscp-client-ws1.h
-    third_party/vscp/src/vscp/common/vscp-client-ws1.cpp 
-    third_party/vscp/src/vscp/common/vscp-client-ws2.h
-    third_party/vscp/src/vscp/common/vscp-client-ws2.cpp 
-    third_party/vscp/src/vscp/common/vscp-client-udp.h
-    third_party/vscp/src/vscp/common/vscp-client-udp.cpp 
-    third_party/vscp/src/vscp/common/vscp-client-multicast.h
-    third_party/vscp/src/vscp/common/vscp-client-multicast.cpp 
-    third_party/vscp/src/vscp/common/vscp-bootdevice.h
-    third_party/vscp/src/vscp/common/vscp-bootdevice.cpp
-    third_party/vscp/src/vscp/common/vscp-bootdevice-pic1.h
-    third_party/vscp/src/vscp/common/vscp-bootdevice-pic1.cpp
-    third_party/vscp/src/vscp/common/vscp-bootdevice-vscp.h
-    third_party/vscp/src/vscp/common/vscp-bootdevice-vscp.cpp
-    third_party/vscp-firmware/common/vscp-bootloader.h
-    third_party/vscp-firmware/common/vscp-bootloader.c
-    third_party/vscp-firmware/common/vscp-firmware-helper.h
-    third_party/vscp-firmware/common/vscp-firmware-helper.c
-    third_party/vscp-firmware/common/vscp-firmware-level2.h
-    third_party/vscp-firmware/common/vscp-firmware-level2.c
+    ${vscp_SOURCE_DIR}/src/vscp/common/version.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscpremotetcpif.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscpremotetcpif.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscpdatetime.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscpdatetime.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/guid.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/guid.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/register.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/register.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/mdf.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/mdf.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscphelper.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscphelper.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscpunit.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscpunit.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/canaldlldef.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscpcanaldeviceif.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscpcanaldeviceif.cpp
+    ${vscp_SOURCE_DIR}/src/common/vscphelper-common.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscphelperlogging.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscphelperlogging.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscphelperlogging-forward.cpp
+    ${vscp_SOURCE_DIR}/src/common/vscpbase64.h
+    ${vscp_SOURCE_DIR}/src/common/vscpbase64.c
+    ${vscp_SOURCE_DIR}/src/common/vscp-aes.h
+    ${vscp_SOURCE_DIR}/src/common/vscp-aes.c
+    ${vscp_SOURCE_DIR}/src/common/crc.h
+    ${vscp_SOURCE_DIR}/src/common/crc.c
+    ${vscp_SOURCE_DIR}/src/common/crc8.h
+    ${vscp_SOURCE_DIR}/src/common/crc8.c
+    ${vscp_SOURCE_DIR}/src/common/vscpmd5.h
+    ${vscp_SOURCE_DIR}/src/common/vscpmd5.c
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-base.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-base.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-canal.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-canal.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-level2.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-level2.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-mqtt.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-mqtt.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-tcp.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-tcp.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-ws1.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-ws1.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-ws2.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-ws2.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-websocket.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-websocket.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-udp.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-udp.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-multicast.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-multicast.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-bootdevice.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-bootdevice.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-bootdevice-pic1.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-bootdevice-pic1.cpp
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-bootdevice-vscp.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-bootdevice-vscp.cpp
+    ${vscp_firmware_SOURCE_DIR}/src/vscp-bootloader.h
+    ${vscp_firmware_SOURCE_DIR}/src/vscp-bootloader.c
+    ${vscp_firmware_SOURCE_DIR}/src/vscp-firmware-helper.h
+    ${vscp_firmware_SOURCE_DIR}/src/vscp-firmware-helper.c
+    ${vscp_firmware_SOURCE_DIR}/src/vscp-firmware-level2.h
+    ${vscp_firmware_SOURCE_DIR}/src/vscp-firmware-level2.c
+    src/vscpsim-version.h
+)
+
+# SocketCAN only exists on Linux
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  target_sources(vscpsim PRIVATE
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-socketcan.h
+    ${vscp_SOURCE_DIR}/src/vscp/common/vscp-client-socketcan.cpp
+  )
+  target_compile_definitions(vscpsim PRIVATE VSCPSIM_HAVE_SOCKETCAN)
+endif()
+
+# Logging in the VSCP helper library goes through spdlog
+target_compile_definitions(vscpsim PRIVATE
+  VSCP_ENABLE_HELPER_LOGGING
+  VSCP_HELPER_LOGGING_EXPORTS
+  VSCP_HELPER_LOGGING_BACKEND_EXPORTS
 )
 
 include_directories( PUBLIC ./src 
   ./build
   ./ui
-  third_party/vscp/src/vscp/common/
-  third_party/vscp/src/common
-  third_party/vscp-firmware/common
-  ./third_party
-  ./third_party/json/include/
-  ./third_party/spdlog/include/
-  ./third_party/Mustache/
-  ./third_party/maddy/include/
-  ./third_party/fastpbkdf2/
+  ${vscp_SOURCE_DIR}/src/vscp/common/
+  ${vscp_SOURCE_DIR}/src/common
+  ${vscp_firmware_SOURCE_DIR}/src
+  ${json_SOURCE_DIR}/include/
+  ${spdlog_SOURCE_DIR}/include/
+  ${mustache_SOURCE_DIR}/
+  ${maddy_SOURCE_DIR}/include/
   ${CMAKE_BINARY_DIR}
   ${OPENSSL_INCLUDE_DIR}
   ${MOSQUITTO_INCLUDE_DIRS}

@@ -11,24 +11,29 @@ This software is created for (cross)testing and validation of new functionality 
 
 The following transport mechanisms are currently available
 
-| Transport | Availability | OS |
-| ----------| ------------ | -- |
-| socketcan | available. | Linux |
-| CANAL | in-progress | Linux, Windows |
-| tcp/ip server | planned | Linux, Windows |
-| tcp/ip client | in-progress | Linux, Windows |
-| MQTT | in-progress | Linux, Windows |
-| Websocket version 1 | planned | Linux, Windows |
-| Websocket version 2 | planned | Linux, Windows |
-| Ethernet | Planned | Linux, Windows |
-| UDP | Planned.| Linux, Windows |
-| Multicast | Planned. | Linux, Windows |
+| Transport | Interface | Availability | OS |
+| --------- | --------- | ------------ | -- |
+| socketcan | `socketcan` | available | Linux |
+| tcp/ip client | `tcpip` | available | Linux, Windows, macOS |
+| UDP | `udp` | available | Linux, Windows, macOS |
+| Multicast | `multicast` | available | Linux, Windows, macOS |
+| Websocket version 1 | `ws1` | available | Linux, Windows, macOS |
+| Websocket version 2 | `ws2` | available | Linux, Windows, macOS |
+| MQTT | `mqtt` | available (configure topics in the configuration file) | Linux, Windows, macOS |
+| CANAL (Level I driver) | `canal` | available | Linux, Windows, macOS |
+| VSCP Level II driver | `level2` | available | Linux, Windows, macOS |
+| tcp/ip server | | planned | Linux, Windows |
+| Ethernet | | planned | Linux, Windows |
+
+## Version
+
+The version has the form *year.month.patch*, for example `26.11.3`. The patch number counts the pushes to the repository during the month and starts at 0 in a new month. It is updated automatically by the *Update version* GitHub workflow on every push to `main` and lives in [src/vscpsim-version.h](src/vscpsim-version.h), which CMake also uses for the project version. Show it with `vscpsim --version`.
 
 ## Get source code
 
-Check out the souce code from the repository with
+Check out the source code from the repository with
 
-  git checkout --recurse-submodules -j4 https://github.com/grodansparadis/vscp-simulator.git
+  git clone https://github.com/grodansparadis/vscp-simulator.git
 
 Change folder to **vscp-simulator**
 
@@ -39,29 +44,64 @@ cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=~/Qt/6.8.2/gcc_64 ..
 make
 ```
 
+Dependencies are fetched at their pinned revisions by CMake during configuration.
+
 *DCMAKE_PREFIX_PATH* is the path to QT you set it to the folder and the verison of QT you want to use with the vscp-simulator. All versions > 5.15 should work. If using visual studio code set this environment variable in **cmake: configure environment** in the settings for vscode.
 
-The executable is named **btest** 
+The executable is named **vscpsim**.
 
 ## Command line switches
 
-| Short | Long  | Desription |
-| ----- | ----- | ---------- |
-| -b | --bootmode | Set bootmode flag "-b 0"=start firmware app. "-b 0xff" != start bootloader. |
-| -B | --block | Block info on the form "size:count" where size is he size of a block in bytes and count are the number of blocks of that size. |
-| -c | --config | Semicolon seperated string for interface settings. |
-| -f | --cfgfile | Path to JSON configuration file. A sample configuration file named *firmware_example1.json* is available in the debug folder of the project  |
-| -g | --guid | GUID for simulated device. LSB byte is the only valid byte for Level I devices. |
-| -h | --host | Host to connect to (valid for tcpip, mqtt, etc). |
-| -i | --interface | Interface to use ("socketcan", "canal", "tcpip", "mqtt", etc). |
-| -l | --level | 0/1 VSCP level. (0=Level I / 1=Level II) |
-| -L | --loglevel | Debug level for console/file on the form level-console:level-file |
-| -p | --password | Password to use for connection. |
-| -P | --port | Port to uise for connection. |
-| -S | --sub | Topic to subscribe to (MQTT). Can be semicolon separated list. |
-| -t | --timeout | Timeout in milliseconds |
-| -T | --pub | Topic to publish to (MQTT). Can be semicolon separated list. |
-| -u | --user | Username to use for connection. |
+| Short | Long  | Description |
+| ----- | ----- | ----------- |
+| -b | --bootmode | Set bootmode flag "-b 0"=start firmware app. "-b 0xff" = start bootloader. |
+| -B | --block | Block info on the form "size:count" where size is the size of a block in bytes and count is the number of blocks of that size. |
+| -c | --config | Semicolon separated string for interface settings. For socketcan the CAN device (default vcan0). For canal the driver path followed by the CANAL configuration string. For level2 the driver path and the path to the driver configuration file. |
+| -f | --cfgfile | Path to JSON configuration file. A sample configuration file named *firmware_example1.json* is available in the debug folder of the project. |
+| -g | --guid | GUID for simulated device. |
+| -i | --interface | Interface to use: `canal`, `level2`, `socketcan` (Linux), `tcpip`, `udp`, `multicast`, `ws1`, `ws2` or `mqtt`. |
+| -l | --vscplevel | 0/1 VSCP level. (0=Level I / 1=Level II) |
+| -s | --host | Host to connect to (tcpip, ws1, ws2, mqtt), destination address (udp) or multicast group (multicast). |
+| -p | --port | Port to use for the connection. |
+| -P | --password | Password to use for the connection. |
+| -t | --timeout | Timeout in milliseconds. |
+| -u | --user | Username to use for the connection. |
+| | --version | Show the version. |
+
+Settings in the configuration file take precedence over the command line.
+
+## Interfaces
+
+The simulated node is connected with one of the VSCP client interfaces. Either give the interface on the command line, or set it in the `interface` object of the configuration file. All keys in the `interface` object except `type` and `connect-timeout` are handed to the client, so every setting the VSCP client supports (filters, TLS, encryption keys...) can be used. Command line values are only used for settings that are not in the configuration file.
+
+| Interface | Defaults | Typical command line |
+| --------- | -------- | -------------------- |
+| `socketcan` | device vcan0 | `vscpsim -i socketcan -c vcan0` |
+| `tcpip` | tcp://localhost:9598, admin/secret | `vscpsim -i tcpip -s 192.168.1.7 -p 9598 -u admin -P secret` |
+| `udp` | broadcast to 255.255.255.255:33333 | `vscpsim -i udp -s 192.168.1.255 -p 33333` |
+| `multicast` | group 224.0.23.158, port 9598 | `vscpsim -i multicast -s 224.0.23.158 -p 9598` |
+| `ws1` / `ws2` | ws://localhost:8884/ws1 (ws2), admin/secret | `vscpsim -i ws2 -s localhost -p 8884 -u admin -P secret` |
+| `mqtt` | localhost:1883 | `vscpsim -i mqtt -f node.json` |
+| `canal` | flags 0, no configuration | `vscpsim -i canal -c "/var/lib/vscp/drivers/level1/vscpl1drv-can4vscp.so;/dev/ttyUSB0"` |
+| `level2` | | `vscpsim -i level2 -c "/var/lib/vscp/drivers/level2/vscpl2drv-tcpiplink.so;/etc/vscp/tcpiplink.json"` |
+
+With `canal` and `level2` the simulator loads a driver (a shared library) and talks to the other nodes through it, the same way the VSCP daemon uses drivers. A CANAL driver connects to a Level I bus, for example through a CAN4VSCP adapter, and a Level II driver connects to whatever the driver supports.
+
+A node connected over tcp/ip, websockets or MQTT talks to the other nodes through the server or broker. Over UDP and multicast it talks directly with the other nodes on the network. Events the node sent itself and that come back (UDP broadcasts, servers that echo sent events) are ignored by the node.
+
+Examples of `interface` objects in the configuration file:
+
+```json
+"interface": { "type": "tcpip", "host": "tcp://192.168.1.7:9598", "user": "admin", "password": "secret" }
+"interface": { "type": "udp", "ip": "udp://192.168.1.255:33333" }
+"interface": { "type": "multicast", "ip": "udp://224.0.23.158:9598" }
+"interface": { "type": "ws2", "url": "wss://server.example.com:8884/ws2", "user": "admin", "password": "secret", "key": "2DBB079A38985AF00EBEEFE22F9FFA0E", "cafile": "/etc/vscp/ca.pem" }
+"interface": { "type": "socketcan", "device": "vcan0" }
+"interface": { "type": "canal", "path": "/var/lib/vscp/drivers/level1/vscpl1drv-can4vscp.so", "config": "/dev/ttyUSB0", "flags": 0 }
+"interface": { "type": "level2", "path-driver": "/var/lib/vscp/drivers/level2/vscpl2drv-tcpiplink.so", "path-config": "/etc/vscp/tcpiplink.json" }
+```
+
+For `canal` the keys are `path` (driver), `config` (the CANAL configuration string of the driver), `flags` and `datarate`. For `level2` they are `path-driver`, `path-config` (driver configuration file) or `config` (the driver configuration embedded as JSON or a string), `config-suffix` and `guid`.
 
 ### Firmware mode
 The code normally starts up in firmware mode and then simulates all functionality of a VSCP level I or level II node. Set the functionality you want with command line switches or in a configuration file (-f switch).
@@ -70,7 +110,7 @@ The code normally starts up in firmware mode and then simulates all functionalit
 In bootloader mode the interface (-i) must be specified as any parameters for it (-c). bootmode must be set by setting -b0xff and -B must me used to specify block size and number of blocks. Some interfaces like MQTT , tcp/ip etc may need username/password and other settings.
 
 ```bash
-btest -i socketcan -c vcan0 -b 0xff -B 256:1024
+vscpsim -i socketcan -c vcan0 -b 0xff -B 256:1024
 ```
 
 is a typical startup line to test the bootloader over a socketcan interface.
@@ -83,8 +123,7 @@ The configuration file (set path with -f switch) is in JSON format and defines t
 {
   "interface": {
     "type": "socketcan",
-    "config": "value1;value2;value3",
-    "flags": 12345,
+    "device": "vcan0",
     "connect-timeout": 5000
   },
   "bootloader": {
@@ -99,15 +138,14 @@ The configuration file (set path with -f switch) is in JSON format and defines t
     "bUse16BitNickname": true,
     "nickname":"0x1234",
     "bootflag": 0,
-    "hertbeat-interval": 60,
-    "caps-interval": 300,
+    "hertbeat-interval": 60000,
+    "caps-interval": 300000,
     "bEnableLogging": true,
     "log-id": 123,
     "bEnableErrorReporting": true,
-    "m_bSendHighEndServerProbe": true,
-    "m_bHighEndServerResponse": true,
-    "m_bEnableWriteProtectedLocations": true,
-    "user-id": [0,1,2,3],
+    "bHighEndServerResponse": true,
+    "bEnableWriteProtectedLocations": true,
+    "user-id": [0,1,2,3,4],
     "manufactured-id": [0,1,2,3],
     "manufacturer-sub-id": [0,1,2,3],
     "firmware-version": [0,0,1],
@@ -124,13 +162,13 @@ All numerical values can be set as a number or a string with hex (0x) / octal (0
 All arrays can be set using the meachism used for numerical values (value/string converted to value) 
 
 ### interface
-Client interface. Can currently be "socketcan", "canal", "mqtt", "tcpip", "udp", "multicast","ws1", "ws2" or "eth"
+Client interface. `type` is "canal", "level2", "socketcan", "tcpip", "udp", "multicast", "ws1", "ws2" or "mqtt". The other keys are the settings of that VSCP client (see [Interfaces](#interfaces)).
 
 ### config
-A semicolon separated string with configuration data for the client interface. The format is specific for the interface use.
+A semicolon separated string with configuration data for the client interface. For socketcan the first item is the CAN device (the same as `"device"`). For canal it is "driver path;CANAL configuration" and for level2 "driver path;driver configuration file"; these are used when `path` (canal) or `path-driver` (level2) is not set.
 
-### flags
-Bit flags for the interface. Form a 32-bit unsigned value. 
+### connect-timeout
+Milliseconds to wait for the interface to connect.
 
 ### name
 Name of the device. Can be a maximum of 64 bytes long.
@@ -155,10 +193,10 @@ set to 255 (0xff) will do a nickname discovery to find a free nickname. The valu
 The boot flag is used by the device to know which code to run. If it is zero the application will run. If it is nonzero (normally 0xff) the bootloader will run.
 
 ### hertbeat-interval
-Heartbeat event interval in seconds. If set to zero no heartbeat events will be sent.
+Heartbeat event interval in milliseconds. If set to zero no heartbeat events will be sent.
 
 ### caps-interval
-Capabilities event interval in seconds. If set to zero no capability events will be sent.
+Capabilities event interval in milliseconds (Level II). If set to zero no capability events will be sent.
 
 ### bEnableLogging
 If set to true logging events will be sent by the device
@@ -186,9 +224,6 @@ Set the log level. A sample is
 ### bEnableErrorReporting
 Enable error reporting by the device. Error events will be sent.
 
-### bSendHighEndServerProbe
-Enable sending of high end server probe. (Only for Level II devices).
-
 ### bHighEndServerResponse
 Enable responseevent on high end sever probe. (Only for Level II devices).
 
@@ -197,7 +232,7 @@ If set to true manufacturer id, manufacturer sub id and guid can be written. On 
 to be accepted.
 
 ### user-id
-The user id is four bytes that are client writable on a device. TGhe written data is persistent. The initial value is set here. It can be set as an array, a decimal value or as a "numerical string".
+The user id is five bytes (registers 0x84-0x88) that are client writable on a device. The written data is persistent. A number sets the first four bytes. The initial value is set here. It can be set as an array, a decimal value or as a "numerical string".
 
 ### manufactured-id
 The manufacturer id is a four byte id that is set during manufacturing of a device. The value is set here. It can be set as an array, a decimal value or as a "numerical string".

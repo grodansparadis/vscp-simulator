@@ -5,8 +5,6 @@ on: [push]
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
-  VSCP_ROOT: ${{github.workspace}}/third_party/vscp
-  VSCP_FIRMWARE: ${{github.workspace}}/third_party/vscp-firmware
 
 jobs:
   build:
@@ -30,15 +28,6 @@ jobs:
       # https://github.com/actions/checkout
     - name: Fetch repository
       uses: actions/checkout@v4
-      with:
-        submodules: recursive
-
-    - name: Create environment variable for VSCP_ROOT and Qt6_DIR
-      run: |
-        echo ${{env.VSCP_ROOT}}
-        export VSCP_ROOT=${{github.workspace}}/third_party/vscp/
-        echo ${{env.VSCP_ROOT}}
-        ls
 
     - name: Update before installing packages
       run: sudo apt-get update
@@ -73,7 +62,7 @@ jobs:
     - name: Create Build Environment
       run: |
         mkdir build && cd build
-        cmake  -DCMAKE_BUILD_TYPE=Release  -DCMAKE_INSTALL_PREFIX=/usr -DVSCP_ROOT=${{github.workspace}}/third_party/vscp/ -DVSCP_PATH=${{github.workspace}}/third_party/vscp/ ..
+        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
 
     - name: Build vscp-simulator
       working-directory: ${{github.workspace}}/build

@@ -165,19 +165,16 @@ MainWindow::init(void)
   // Initilize simulation data storage
   papp->initSimulationData();
 
-  ui->lblPrgVersion->setText(QString("%1.%2.%3")
-                               .arg(VSCPSIM_VERSION_MAJOR)
-                               .arg(VSCPSIM_VERSION_MINOR)
-                               .arg(VSCPSIM_VERSION_RELEASE));
+  ui->lblPrgVersion->setText(VSCPSIM_VERSION_STR);
   ui->lblQtVersion->setText(qVersion());
-  ui->lblLevel->setText((VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) ? "Level I" : "Level II");
+  ui->lblLevel->setText((VSCP_LEVEL1 == papp->m_firmware_cfg.level) ? "Level I" : "Level II");
   ui->lblInterface->setText(papp->m_interface);
   ui->lblConfiguration->setText(papp->m_config);
   ui->lblHost->setText(papp->m_host);
-  ui->lblPort->setText(QString("%1").arg(papp->m_port));
+  ui->lblPort->setText(papp->m_port ? QString::number(papp->m_port) : QString());
   ui->lblUser->setText(papp->m_user);
-  ui->lblPassword->setText(papp->m_password);
-  cguid guid(papp->m_firmware_cfg.m_guid);
+  ui->lblPassword->setText(papp->m_password.isEmpty() ? "" : "********");
+  cguid guid(papp->m_firmware_cfg.guid);
   ui->lblGuid->setText(/*papp->m_guid*/ guid.toString().c_str());
 
   if (0xff == papp->m_bootflag) {
@@ -205,10 +202,10 @@ MainWindow::init(void)
   for (int i = 0; i <= 4; i++) {
     papp->standardRegHasChanged(VSCP_STD_REGISTER_USER_ID + i);
   }
-  for (int i = 0; i <= 4; i++) {
+  for (int i = 0; i < 4; i++) {
     papp->standardRegHasChanged(VSCP_STD_REGISTER_USER_MANDEV_ID + i);
   }
-  for (int i = 0; i <= 4; i++) {
+  for (int i = 0; i < 4; i++) {
     papp->standardRegHasChanged(VSCP_STD_REGISTER_USER_MANSUBDEV_ID + i);
   }
   papp->standardRegHasChanged(VSCP_STD_REGISTER_PAGE_SELECT_MSB);
@@ -219,10 +216,10 @@ MainWindow::init(void)
   papp->standardRegHasChanged(VSCP_STD_REGISTER_BOOT_LOADER);
   papp->standardRegHasChanged(VSCP_STD_REGISTER_BUFFER_SIZE);
   papp->standardRegHasChanged(VSCP_STD_REGISTER_PAGES_COUNT);
-  for (int i = 0; i <= 4; i++) {
-    papp->standardRegHasChanged(VSCP_STD_REGISTER_FAMILY_CODE + i);
+  for (int i = 0; i < 4; i++) {
+    papp->standardRegHasChanged(VSCP_STD_REGISTER_DEVICE_FAMILY + i);
   }
-  for (int i = 0; i <= 4; i++) {
+  for (int i = 0; i < 4; i++) {
     papp->standardRegHasChanged(VSCP_STD_REGISTER_DEVICE_TYPE + i);
   }
   papp->standardRegHasChanged(VSCP_STD_REGISTER_NODE_RESET);
@@ -252,7 +249,7 @@ MainWindow::about(void)
                           "for general VSCP simulation, "
                           "diagnostics, experiments and other VSCP related test tasks.<br/>"
                           "<p><b>Version</b>: ")
-                    << tr(VSCPSIM_DISPLAY_VERSION) << "</p><p>"
+                    << VSCPSIM_VERSION_STR << "</p><p>"
                     << tr(VSCPSIM_COPYRIGHT_HTML) << "</p>";
   QMessageBox::about(this, tr("About VSCP Simulator"), str);
 }
@@ -570,7 +567,7 @@ MainWindow::initRegisters(void)
   std::map<uint32_t, QListWidgetItem*>::iterator it;
   for (it = papp->m_regmap.begin(); it != papp->m_regmap.end(); ++it) {
 
-    if (VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) {
+    if (VSCP_LEVEL1 == papp->m_firmware_cfg.level) {
       // Level I
       page   = it->first >> 16;
       offset = it->first & 0xffff;
@@ -586,7 +583,7 @@ MainWindow::initRegisters(void)
       return;
     }
 
-    if (VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) {
+    if (VSCP_LEVEL1 == papp->m_firmware_cfg.level) {
       if ((0 == page) && (offset >= 128)) {
         str = "Standard reg %1:%2:\t %3\t0x%4\t0b%5";
         QBrush brush(QColor(0, 255, 0, 12));
@@ -638,11 +635,11 @@ MainWindow::updateRegister(uint32_t offset, uint16_t page, uint8_t value)
 
   QListWidgetItem* pitem = papp->m_regmap[((uint32_t)page << 16) + offset];
   if (nullptr == pitem) {
-    spdlog::error("Register item is invalid (NULL) offset={1} page){2}", offset, page);
+    spdlog::error("Register item is invalid (NULL) offset={0} page={1}", offset, page);
     return;
   }
 
-  if (VSCP_LEVEL1 == papp->m_firmware_cfg.m_level) {
+  if (VSCP_LEVEL1 == papp->m_firmware_cfg.level) {
     if ((0 == page) && (offset >= 128)) {
       str = "Standard reg %1:%2:\t %3\t0x%4\t0b%5";
       QBrush brush(QColor(0, 255, 0, 48));
