@@ -7,6 +7,7 @@ tagged, rename **Unreleased** to the version and date, and start a new
 
 ## Unreleased
 
+- Add scripts/download-artifacts.sh to download and verify the newest CI build artifacts
 - Changed min Linux Ubuntu to 22.04 (d4e7653)
 - Updated submodules (5cfc1b6)
 - Added comment about Work In Progress (ab2ea70)
