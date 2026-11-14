@@ -1,8 +1,12 @@
 # vscp-simulator
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-[![Linux Build](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml/badge.svg)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml)
-[![AppImage](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml/badge.svg)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml)
+[![Linux](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml?query=branch%3Amain+is%3Asuccess)
+[![AppImage](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml?query=branch%3Amain+is%3Asuccess)
+[![macOS](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-macos.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-macos.yml?query=branch%3Amain+is%3Asuccess)
+[![Windows](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-windows.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-windows.yml?query=branch%3Amain+is%3Asuccess)
+[![Raspberry Pi arm64](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-arm64.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-arm64.yml?query=branch%3Amain+is%3Asuccess)
+[![Raspberry Pi armhf](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-armhf.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-armhf.yml?query=branch%3Amain+is%3Asuccess)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <img src="https://vscp.org/images/logo.png" width="100">
@@ -31,26 +35,42 @@ The following transport mechanisms are currently available
 
 The version has the form *year.month.patch*, for example `26.11.3`. The patch number counts the pushes to the repository during the month and starts at 0 in a new month. It is updated automatically by the *Update version* GitHub workflow on every push to `main` and lives in [src/vscpsim-version.h](src/vscpsim-version.h), which CMake also uses for the project version. Show it with `vscpsim --version`.
 
-## Get source code
+## Download
 
-Check out the source code from the repository with
-
-  git clone https://github.com/grodansparadis/vscp-simulator.git
-
-Change folder to **vscp-simulator**
+vscpsim is built for Linux (x86_64 AppImage), Raspberry Pi OS 64-bit (arm64) and 32-bit (armhf), macOS (Apple silicon) and Windows (x64) on every push. Click a build badge above to see the successful runs and download the artifact from a run page (GitHub only serves artifacts to signed-in users), or download the newest builds of all platforms with
 
 ```bash
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=~/Qt/6.8.2/gcc_64 ..
-make
+scripts/download-artifacts.sh            # needs the GitHub CLI: gh auth login
 ```
 
-Dependencies are fetched at their pinned revisions by CMake during configuration.
+| Platform | Artifact | Run it |
+| -------- | -------- | ------ |
+| Linux x86_64 | `vscp-simulator` | `chmod +x vscpsim-*.AppImage && ./vscpsim-*.AppImage` |
+| Raspberry Pi 64-bit | `vscpsim-linux-arm64` | `sudo tar -C / -xzf vscpsim-linux-arm64.tar.gz`, then `vscpsim` |
+| Raspberry Pi 32-bit | `vscpsim-linux-armhf` | `sudo tar -C / -xzf vscpsim-linux-armhf.tar.gz`, then `vscpsim` |
+| macOS | `vscpsim-macos-arm64` | unpack, then `vscpsim.app/Contents/MacOS/vscpsim` |
+| Windows x64 | `vscpsim-windows-x64` | unpack, then `bin\vscpsim.exe` |
 
-*DCMAKE_PREFIX_PATH* is the path to QT you set it to the folder and the verison of QT you want to use with the vscp-simulator. All versions > 5.15 should work. If using visual studio code set this environment variable in **cmake: configure environment** in the settings for vscode.
+Every artifact has a `SHA256SUMS-<artifact>` file (`sha256sum -c SHA256SUMS-<artifact>`). The Raspberry Pi builds use the Qt 6 of the system: `sudo apt install libqt6widgets6 libqt6qml6 libmosquitto1 libexpat1 libcurl4 libssl3`. See the [setup documentation](docs/setting_up_the_system.md) for each platform.
 
-The executable is named **vscpsim**.
+## Build from source
+
+You need CMake 3.16 or later, a C++17 compiler, Qt 6 (Widgets and Qml), OpenSSL, libmosquitto, expat and libcurl. The other dependencies are downloaded by CMake at pinned revisions when the build is configured.
+
+```bash
+git clone https://github.com/grodansparadis/vscp-simulator.git
+cd vscp-simulator
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel
+```
+
+* **Linux and Raspberry Pi (Debian, Ubuntu, Raspberry Pi OS):** `sudo apt install build-essential cmake git qt6-base-dev qt6-declarative-dev libmosquitto-dev libexpat1-dev libssl-dev libcurl4-openssl-dev`
+* **macOS:** Qt 6.11 or later (Qt 6.8 does not link with the newest Xcode) and `brew install expat mosquitto openssl@3`. Configure with `-DCMAKE_PREFIX_PATH=~/Qt/6.11.1/macos -DOPENSSL_ROOT_DIR=$(brew --prefix openssl@3)`.
+* **Windows:** Visual Studio 2022, Qt 6 for MSVC 2022 64-bit and [vcpkg](https://vcpkg.io) with `vcpkg install curl dlfcn-win32 expat mosquitto openssl pthreads --triplet x64-windows`. Configure from a *x64 Native Tools* prompt with `-DCMAKE_TOOLCHAIN_FILE=<vcpkg>/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=<Qt>/6.8.1/msvc2022_64`.
+
+If Qt is not the system Qt, set `-DCMAKE_PREFIX_PATH` to the Qt folder, for example `~/Qt/6.8.2/gcc_64` (in Visual Studio Code: **cmake: configure environment**). `cmake --install build --prefix <folder>` installs the program; on Windows and macOS the Qt runtime is installed with it.
+
+The executable is named **vscpsim** (`vscpsim.app` on macOS). The `socketcan` interface only exists on Linux; all other interfaces work on every platform.
 
 ## Command line switches
 

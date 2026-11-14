@@ -110,7 +110,7 @@ workerThread(void* pData);
 btest::btest(int& argc, char** argv)
   : QApplication(argc, argv)
 {
-  m_threadWork = 0;
+  m_bThreadStarted = false;
 
   m_bRun = false;
 
@@ -215,6 +215,7 @@ btest::startWorkerThread(void)
     spdlog::critical("BTEST: Failed to start workerthread");
     return VSCP_ERROR_ERROR;
   }
+  m_bThreadStarted = true;
   return VSCP_ERROR_SUCCESS;
 }
 
@@ -228,9 +229,9 @@ btest::stopWorkerThread(void)
   // Start the bootloader worker thread
   m_bRun = false; // Worker thread should end it's life
   m_cvReceiveQueue.notify_all();
-  if (m_threadWork) {
+  if (m_bThreadStarted) {
     pthread_join(m_threadWork, NULL);
-    m_threadWork = 0;
+    m_bThreadStarted = false;
   }
   return VSCP_ERROR_SUCCESS;
 }
