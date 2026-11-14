@@ -387,3 +387,7 @@ endif()
 # Event database etc
 install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/install/share/ DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/)
 
+
+# Man page (man/vscpsim.1.md, converted with pandoc)
+include(ManPages)
+vscp_add_man_pages(${PROJECT_SOURCE_DIR}/man)

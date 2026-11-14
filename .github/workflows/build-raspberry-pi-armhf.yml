@@ -60,6 +60,7 @@ jobs:
                 qt6-base-dev \
                 qt6-declarative-dev \
                 libmosquitto-dev \
+                pandoc \
                 libexpat1-dev \
                 libssl-dev \
                 libcurl4-openssl-dev
