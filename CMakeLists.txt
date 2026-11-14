@@ -56,7 +56,7 @@ endif()
 FetchContent_Declare(
   vscp
   GIT_REPOSITORY https://github.com/grodansparadis/vscp.git
-  GIT_TAG e050031d01ffdf59a8fbeb12a27950a8003bee21
+  GIT_TAG b6d8ff57ad58d9677f927b370118fa101141e9f1
 )
 FetchContent_Declare(
   vscp_firmware

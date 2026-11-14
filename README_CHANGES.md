@@ -7,6 +7,7 @@ tagged, rename **Unreleased** to the version and date, and start a new
 
 ## Unreleased
 
+- Pin vscp to b6d8ff5: binary tcp/ip mode uses the spec stream prefix and works with the VSCP tcp/ip daemon and the updated vscpl2drv-tcpipsrv
 - Document binary mode, encryption and HMAC authentication for the tcpip, udp and multicast interfaces
 - Add CI build badges to the README
 - Add the `canal` (CANAL Level I driver) and `level2` (VSCP Level II driver) interfaces
