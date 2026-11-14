@@ -434,6 +434,7 @@ public:
     depending on the value of the bootflag.
   */
   pthread_t m_threadWork;
+  bool m_bThreadStarted; // pthread_t is not a number on every platform
 
   /// Folder used for configuration
   /// Linux: ~/.configure/VSCP/(btest.conf)
