@@ -7,6 +7,8 @@ tagged, rename **Unreleased** to the version and date, and start a new
 
 ## Unreleased
 
+- Document binary mode, encryption and HMAC authentication for the tcpip, udp and multicast interfaces
+- Add CI build badges to the README
 - Add the `canal` (CANAL Level I driver) and `level2` (VSCP Level II driver) interfaces
 - Use CMake FetchContent instead of git submodules
 - Add scripts/download-artifacts.sh to download and verify the newest CI build artifacts

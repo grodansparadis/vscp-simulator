@@ -1,6 +1,8 @@
 # vscp-simulator
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Linux Build](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml/badge.svg)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml)
+[![AppImage](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml/badge.svg)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <img src="https://vscp.org/images/logo.png" width="100">
@@ -102,6 +104,37 @@ Examples of `interface` objects in the configuration file:
 ```
 
 For `canal` the keys are `path` (driver), `config` (the CANAL configuration string of the driver), `flags` and `datarate`. For `level2` they are `path-driver`, `path-config` (driver configuration file) or `config` (the driver configuration embedded as JSON or a string), `config-suffix` and `guid`.
+
+### Binary mode, encryption and authentication
+
+The `tcpip`, `udp` and `multicast` interfaces can use the [VSCP binary protocol](https://grodansparadis.github.io/vscp-doc-spec/#/./vscp_over_binary) with AES encryption and HMAC-SHA-256 authentication. Keys can only be set in the configuration file. Keys are hex strings: the AES key is 32, 48 or 64 hex characters for AES-128, AES-192 or AES-256 (`openssl rand -hex 16`, `24` or `32`) and the HMAC key is always 64 hex characters (`openssl rand -hex 32`). The HMAC key must differ from the AES key, and HMAC needs an AES key. All nodes and servers must use the same algorithm and keys. Keep the configuration file private, as it holds the keys.
+
+**tcp/ip.** After logging in with the text protocol the connection switches to binary mode with `binary-mode`. Add `binary-encryption` (1 = AES-128, 2 = AES-192, 3 = AES-256), `binary-key` and `binary-hmac-key` to encrypt and authenticate every binary frame. The text login before binary mode is not encrypted, so use TLS (`btls`, `cafile`, ...) if the network can not be trusted.
+
+```json
+"interface": {
+  "type": "tcpip", "host": "tcp://192.168.1.7:9598", "user": "admin", "password": "secret",
+  "binary-mode": true,
+  "binary-encryption": 3,
+  "binary-key": "<64 hex characters>",
+  "binary-hmac-key": "<64 hex characters>"
+}
+```
+
+The server must support binary mode with the same keys, for example the VSCP tcp/ip daemon or the [vscpl2drv-tcpipsrv](https://github.com/grodansparadis/vscpl2drv-tcpipsrv) driver. A frame that fails authentication closes the connection.
+
+**UDP and multicast.** Use `encryption` (1, 2 or 3), `key` and `hmac-key`. Without `hmac-key` frames are only encrypted; then set `require-encryption` to `true` to drop frames that are not encrypted.
+
+```json
+"interface": {
+  "type": "udp", "ip": "udp://255.255.255.255:33333",
+  "encryption": 1,
+  "key": "<32 hex characters>",
+  "hmac-key": "<64 hex characters>"
+}
+```
+
+Frames with a wrong or missing HMAC are dropped. The [vscpl2drv-udp](https://github.com/grodansparadis/vscpl2drv-udp) driver uses the same format; set its `security.encryption`, `security.key` and `security.hmac` to the same values.
 
 ### Firmware mode
 The code normally starts up in firmware mode and then simulates all functionality of a VSCP level I or level II node. Set the functionality you want with command line switches or in a configuration file (-f switch).
