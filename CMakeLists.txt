@@ -61,7 +61,7 @@ FetchContent_Declare(
 FetchContent_Declare(
   vscp_firmware
   GIT_REPOSITORY https://github.com/grodansparadis/vscp-firmware.git
-  GIT_TAG 62ea7649f7710b0a679aa45da7bedcf89fa0453f
+  GIT_TAG 15e2c04d192ea144590d7c97dcdc23649d7ee3a6
 )
 FetchContent_Declare(
   json
