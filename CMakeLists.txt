@@ -378,8 +378,10 @@ if(UNIX AND NOT APPLE)
   install(FILES ${CMAKE_SOURCE_DIR}/install/${PROJECT_NAME}.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications/)
 
-  # icons
-  install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/icons/ DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/)
+  # Application icon (128x128) in the hicolor theme, where desktops and
+  # linuxdeploy look up "Icon=vscpsim" from the .desktop file
+  install(FILES ${CMAKE_CURRENT_LIST_DIR}/icons/vscpsim.png
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/128x128/apps/)
 endif()
 
 # Event database etc
