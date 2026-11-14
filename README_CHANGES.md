@@ -7,6 +7,9 @@ tagged, rename **Unreleased** to the version and date, and start a new
 
 ## Unreleased
 
+- Build for Windows x64, macOS (Apple silicon) and Raspberry Pi 32-bit (armhf) and 64-bit (arm64), one CI workflow per platform with a packaged artifact and SHA256SUMS
+- README: per-platform build badges, download and build instructions; setup documentation for Linux, Windows, macOS and Raspberry Pi
+- CMake: Windows dependencies from vcpkg, macOS app bundle, Qt runtime deployed with the program on Windows and macOS, install paths below the install prefix; drop the unused libwebsockets
 - Pin vscp to b6d8ff5: binary tcp/ip mode uses the spec stream prefix and works with the VSCP tcp/ip daemon and the updated vscpl2drv-tcpipsrv
 - Document binary mode, encryption and HMAC authentication for the tcpip, udp and multicast interfaces
 - Add CI build badges to the README
