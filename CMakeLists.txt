@@ -97,10 +97,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
-set_target_properties(${PROJECT_NAM} PROPERTIES
-  WIN32_EXECUTABLE ON
-  MACOSX_BUNDLE ON
-)
 
 # --- System Libraries ---
 include(GNUInstallDirs) 
@@ -111,7 +107,6 @@ message(STATUS "QT_ROOT_DIR = $ENV{QT_ROOT_DIR}")
 if (MSVC)
   add_definitions(-D_CRT_SECURE_NO_WARNINGS)
   add_definitions(-DWIN32_LEAN_AND_MEANS)
-  add_definitions(-D_POSIX_C_SOURCE)    
   add_definitions(-DVCPKG_TARGET_TRIPLET=x64-windows)
   add_definitions(-D_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING)
   add_definitions(-D_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS)
@@ -119,8 +114,7 @@ if (MSVC)
   set(LIBS_SYSTEM ws2_32)
   # use precompiled headers
   set (CMAKE_AUTOMOC_MOC_OPTIONS "-bpch.h ")
-  # warning level 4
-  add_compile_options(/W4)
+  add_compile_options(/W3 /Zc:__cplusplus)
 else()
   set(LIBS_SYSTEM c stdc++)
   # additional warnings
@@ -146,17 +140,23 @@ find_package(Threads REQUIRED)
 # openssl
 find_package(OpenSSL REQUIRED)
 
-# libwebsockets
-#find_package(libwebsockets CONFIG REQUIRED)
-include(FindLibWebSockets)
-
-# expat
-include(FindEXPAT)
-find_package(EXPAT REQUIRED)
-include_directories(${EXPAT_INCLUDE_DIRS})
+if (MSVC)
+  # Windows dependencies come from vcpkg (see .github/workflows/msbuild.yml)
+  find_package(PThreads4W REQUIRED)
+  find_package(expat CONFIG REQUIRED)
+  find_package(dlfcn-win32 CONFIG REQUIRED)
+else()
+  # expat
+  include(FindEXPAT)
+  find_package(EXPAT REQUIRED)
+  include_directories(${EXPAT_INCLUDE_DIRS})
+endif()
 
 # Mosquitto lib
 include(FindMosquitto)
+if(NOT MOSQUITTO_FOUND)
+  message(FATAL_ERROR "libmosquitto was not found")
+endif()
 
 find_package(CURL REQUIRED) 
 IF(CURL_FOUND)
@@ -299,6 +299,8 @@ include_directories( PUBLIC ./src
   ./ui
   ${vscp_SOURCE_DIR}/src/vscp/common/
   ${vscp_SOURCE_DIR}/src/common
+  $<$<BOOL:${WIN32}>:${vscp_SOURCE_DIR}/src/vscp/common/win32helpers>
+  $<$<BOOL:${WIN32}>:${vscp_SOURCE_DIR}/src/common/windows>
   ${vscp_firmware_SOURCE_DIR}/src
   ${json_SOURCE_DIR}/include/
   ${spdlog_SOURCE_DIR}/include/
@@ -307,33 +309,79 @@ include_directories( PUBLIC ./src
   ${CMAKE_BINARY_DIR}
   ${OPENSSL_INCLUDE_DIR}
   ${MOSQUITTO_INCLUDE_DIRS}
-  ${LIBWEBSOCKETS_INCLUDE_DIR}
   ${CURL_INCLUDE_DIR}
 )
 
-target_link_libraries(vscpsim PRIVATE 
-  Qt6::Widgets
-  Qt6::Qml
-  ${CMAKE_DL_LIBS}
-  Threads::Threads
-  OpenSSL::SSL 
-  OpenSSL::Crypto
-  ${OPENSSL_LIBRARIES}
-  ${MOSQUITTO_LIBRARIES}
-  ${LIBWEBSOCKETS_LIBRARIES}
-  ${EXPAT_LIBRARIES}
-  ${CURL_LIBRARIES}
+if (MSVC)
+  target_link_libraries(vscpsim PRIVATE
+    ws2_32
+    iphlpapi
+    Qt6::Widgets
+    Qt6::Qml
+    PThreads4W::PThreads4W
+    OpenSSL::SSL
+    OpenSSL::Crypto
+    ${MOSQUITTO_LIBRARIES}
+    expat::expat
+    CURL::libcurl
+    dlfcn-win32::dl
+  )
+  # Load PThreads4W before VSCP's Windows semaphore header defines fallback macros
+  target_compile_options(vscpsim PRIVATE
+    "$<$<COMPILE_LANGUAGE:CXX>:/FI${PThreads4W_INCLUDE_DIR}/pthread.h>"
+  )
+else()
+  target_link_libraries(vscpsim PRIVATE
+    Qt6::Widgets
+    Qt6::Qml
+    ${CMAKE_DL_LIBS}
+    Threads::Threads
+    OpenSSL::SSL
+    OpenSSL::Crypto
+    ${MOSQUITTO_LIBRARIES}
+    ${EXPAT_LIBRARIES}
+    ${CURL_LIBRARIES}
+  )
+endif()
+
+# A macOS app bundle; on Windows a console program so command line
+# output and logging stay visible
+set_target_properties(vscpsim PROPERTIES
+  MACOSX_BUNDLE ON
+  MACOSX_BUNDLE_GUI_IDENTIFIER com.grodansparadis.vscpsim
+  MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+  MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION}
 )
 
 install(TARGETS ${PROJECT_NAME}
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  BUNDLE DESTINATION .)
 
-install(FILES ${CMAKE_SOURCE_DIR}/install/${PROJECT_NAME}.desktop
-  DESTINATION ${INSTALL_PATH}/share/applications/) 
+# Windows and macOS get the Qt runtime (DLLs/frameworks and plugins) with the program
+if(WIN32 OR APPLE)
+  set(_vscpsim_deploy_runtime_default ON)
+else()
+  set(_vscpsim_deploy_runtime_default OFF)
+endif()
+option(VSCPSIM_DEPLOY_RUNTIME "Install the Qt runtime libraries and plugins with the program"
+       ${_vscpsim_deploy_runtime_default})
+if(VSCPSIM_DEPLOY_RUNTIME)
+  qt_generate_deploy_app_script(
+    TARGET ${PROJECT_NAME}
+    OUTPUT_SCRIPT _vscpsim_deploy_script
+    NO_UNSUPPORTED_PLATFORM_ERROR
+  )
+  install(SCRIPT ${_vscpsim_deploy_script})
+endif()
 
-# icons
-install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/icons/ DESTINATION ${INSTALL_PATH}/share/icons/) 
+if(UNIX AND NOT APPLE)
+  install(FILES ${CMAKE_SOURCE_DIR}/install/${PROJECT_NAME}.desktop
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/applications/)
+
+  # icons
+  install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/icons/ DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/)
+endif()
 
 # Event database etc
-install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/install/share/ DESTINATION ${INSTALL_PATH}/share/${PROJECT_NAME}/)
+install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/install/share/ DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/)
 
