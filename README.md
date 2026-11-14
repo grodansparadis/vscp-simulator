@@ -1,8 +1,12 @@
 # vscp-simulator
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-[![Linux Build](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml/badge.svg)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml)
-[![AppImage](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml/badge.svg)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml)
+[![Linux](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/cmake.yml?query=branch%3Amain+is%3Asuccess)
+[![AppImage](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/appimage.yml?query=branch%3Amain+is%3Asuccess)
+[![macOS](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-macos.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-macos.yml?query=branch%3Amain+is%3Asuccess)
+[![Windows](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-windows.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-windows.yml?query=branch%3Amain+is%3Asuccess)
+[![Raspberry Pi arm64](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-arm64.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-arm64.yml?query=branch%3Amain+is%3Asuccess)
+[![Raspberry Pi armhf](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-armhf.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-armhf.yml?query=branch%3Amain+is%3Asuccess)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <img src="https://vscp.org/images/logo.png" width="100">

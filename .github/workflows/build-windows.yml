@@ -1,0 +1,83 @@
+name: Windows
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: build-windows-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  windows:
+    name: Windows x64
+    runs-on: windows-2022
+    env:
+      TRIPLET: x64-windows
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: 6.8.*
+          host: windows
+          target: desktop
+          arch: win64_msvc2022_64
+          cache: true
+
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: amd64
+
+      - name: Setup CMake and Ninja
+        uses: lukka/get-cmake@latest
+
+      - name: Setup vcpkg
+        shell: pwsh
+        run: |
+          git clone --depth=1 --branch 2026.06.01 https://github.com/microsoft/vcpkg.git "${{ github.workspace }}/.vcpkg"
+          & "${{ github.workspace }}/.vcpkg/bootstrap-vcpkg.bat"
+
+      - name: Install dependencies
+        shell: pwsh
+        run: |
+          $vcpkg = "${{ github.workspace }}/.vcpkg/vcpkg.exe"
+          & $vcpkg install curl:${env:TRIPLET} dlfcn-win32:${env:TRIPLET} expat:${env:TRIPLET} mosquitto:${env:TRIPLET} openssl:${env:TRIPLET} pthreads:${env:TRIPLET}
+
+      - name: Configure
+        shell: cmd
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -DVCPKG_TARGET_TRIPLET=%TRIPLET% -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}\.vcpkg\scripts\buildsystems\vcpkg.cmake -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
+
+      - name: Build
+        run: cmake --build build --config ${{ env.BUILD_TYPE }} --parallel
+
+      - name: Install
+        shell: pwsh
+        run: |
+          cmake --install build --config ${{ env.BUILD_TYPE }} --prefix "${{ github.workspace }}/staging"
+          Copy-Item "${{ github.workspace }}/.vcpkg/installed/${{ env.TRIPLET }}/bin/*.dll" "${{ github.workspace }}/staging/bin/"
+          Get-ChildItem "${{ github.workspace }}/staging/bin" | Select-Object -ExpandProperty Name
+          Compress-Archive -Path "${{ github.workspace }}/staging/*" -DestinationPath "${{ github.workspace }}/vscpsim-windows-x64.zip"
+
+      - name: Write SHA256SUMS
+        id: sha256sums
+        continue-on-error: true
+        shell: bash
+        run: |
+          bash "${GITHUB_WORKSPACE//\\//}/.github/scripts/write-sha256sums.sh" "SHA256SUMS-vscpsim-windows-x64" <<'SHA256SUMS_PATTERNS'
+          vscpsim-windows-x64.zip
+          SHA256SUMS_PATTERNS
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vscpsim-windows-x64
+          path: |
+            vscpsim-windows-x64.zip
+            ${{ steps.sha256sums.outputs.file }}
+          if-no-files-found: error

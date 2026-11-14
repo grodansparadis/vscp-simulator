@@ -1,0 +1,65 @@
+name: macOS
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: build-macos-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  macos:
+    name: macOS arm64
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Qt 6.8 links the AGL framework, which newer Xcode SDKs no longer have
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: 6.11.1
+          host: mac
+          target: desktop
+          arch: clang_64
+          cache: true
+
+      - name: Install dependencies
+        run: brew install expat mosquitto openssl@3 ninja
+
+      - name: Configure
+        run: |
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+            -DOPENSSL_ROOT_DIR=$(brew --prefix openssl@3)
+
+      - name: Build
+        run: cmake --build build --config ${BUILD_TYPE} --parallel
+
+      - name: Install
+        run: |
+          cmake --install build --config ${BUILD_TYPE} --prefix "${{ github.workspace }}/staging"
+          ls "${{ github.workspace }}/staging"
+          tar -C "${{ github.workspace }}/staging" -czf "${{ github.workspace }}/vscpsim-macos-arm64.tar.gz" .
+
+      - name: Write SHA256SUMS
+        id: sha256sums
+        continue-on-error: true
+        shell: bash
+        run: |
+          bash "${GITHUB_WORKSPACE//\\//}/.github/scripts/write-sha256sums.sh" "SHA256SUMS-vscpsim-macos-arm64" <<'SHA256SUMS_PATTERNS'
+          vscpsim-macos-arm64.tar.gz
+          SHA256SUMS_PATTERNS
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vscpsim-macos-arm64
+          path: |
+            vscpsim-macos-arm64.tar.gz
+            ${{ steps.sha256sums.outputs.file }}
+          if-no-files-found: error

@@ -1,0 +1,85 @@
+name: Raspberry Pi arm64
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: build-raspberry-pi-arm64-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  raspberry-pi-arm64:
+    name: Linux ${{ matrix.name }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Raspberry Pi 64-bit (arm64)
+            runner: ubuntu-24.04-arm
+            platform: linux/arm64
+            deb_arch: arm64
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable cross-architecture emulation
+        if: matrix.qemu
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130
+        with:
+          platforms: arm
+
+      # Debian bookworm is the base of Raspberry Pi OS bookworm; the binary
+      # uses the distribution's Qt 6 so it runs with the Pi's own packages.
+      - name: Build and install
+        env:
+          TARGET_PLATFORM: ${{ matrix.platform }}
+          DEB_ARCH: ${{ matrix.deb_arch }}
+        run: |
+          docker run --rm \
+            --platform "$TARGET_PLATFORM" \
+            --network host \
+            --env DEB_ARCH \
+            --volume "$GITHUB_WORKSPACE:/src" \
+            --workdir /src \
+            debian:bookworm \
+            bash -euc '
+              apt-get update
+              DEBIAN_FRONTEND=noninteractive apt-get install -y \
+                build-essential \
+                cmake \
+                git \
+                qt6-base-dev \
+                qt6-declarative-dev \
+                libmosquitto-dev \
+                libexpat1-dev \
+                libssl-dev \
+                libcurl4-openssl-dev
+              cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+              cmake --build build --parallel "$(nproc)"
+              DESTDIR=/src/staging cmake --install build
+              tar -C /src/staging -czf "/src/vscpsim-linux-$DEB_ARCH.tar.gz" .
+            '
+
+      - name: Write SHA256SUMS
+        id: sha256sums
+        continue-on-error: true
+        shell: bash
+        run: |
+          bash "${GITHUB_WORKSPACE//\\//}/.github/scripts/write-sha256sums.sh" "SHA256SUMS-vscpsim-linux-${{ matrix.deb_arch }}" <<'SHA256SUMS_PATTERNS'
+          vscpsim-linux-${{ matrix.deb_arch }}.tar.gz
+          SHA256SUMS_PATTERNS
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vscpsim-linux-${{ matrix.deb_arch }}
+          path: |
+            vscpsim-linux-${{ matrix.deb_arch }}.tar.gz
+            ${{ steps.sha256sums.outputs.file }}
+          if-no-files-found: error
