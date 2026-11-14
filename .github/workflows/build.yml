@@ -99,10 +99,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Qt 6.8 links the AGL framework, which newer Xcode SDKs no longer have
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: 6.8.*
+          version: 6.11.1
           host: mac
           target: desktop
           arch: clang_64
