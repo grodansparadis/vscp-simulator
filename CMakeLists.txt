@@ -141,7 +141,7 @@ find_package(Threads REQUIRED)
 find_package(OpenSSL REQUIRED)
 
 if (MSVC)
-  # Windows dependencies come from vcpkg (see .github/workflows/msbuild.yml)
+  # Windows dependencies come from vcpkg (see .github/workflows/build-windows.yml)
   find_package(PThreads4W REQUIRED)
   find_package(expat CONFIG REQUIRED)
   find_package(dlfcn-win32 CONFIG REQUIRED)
