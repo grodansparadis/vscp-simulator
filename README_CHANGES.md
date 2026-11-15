@@ -7,6 +7,7 @@ tagged, rename **Unreleased** to the version and date, and start a new
 
 ## Unreleased
 
+- Build against the latest vscp master (d75d4f5c6)
 - Man page vscpsim(1), converted from man/vscpsim.1.md with pandoc and installed in share/man/man1
 - Build for Windows x64, macOS (Apple silicon) and Raspberry Pi 32-bit (armhf) and 64-bit (arm64), one CI workflow per platform with a packaged artifact and SHA256SUMS
 - README: per-platform build badges, download and build instructions; setup documentation for Linux, Windows, macOS and Raspberry Pi
