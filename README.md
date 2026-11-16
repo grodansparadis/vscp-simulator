@@ -60,7 +60,7 @@ You need CMake 3.16 or later, a C++17 compiler, Qt 6 (Widgets and Qml), OpenSSL,
 ```bash
 git clone https://github.com/grodansparadis/vscp-simulator.git
 cd vscp-simulator
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="$HOME/Qt/6.12.0/gcc_64"
 cmake --build build --parallel
 ```
 
@@ -68,7 +68,7 @@ cmake --build build --parallel
 * **macOS:** Qt 6.11 or later (Qt 6.8 does not link with the newest Xcode) and `brew install expat mosquitto openssl@3`. Configure with `-DCMAKE_PREFIX_PATH=~/Qt/6.11.1/macos -DOPENSSL_ROOT_DIR=$(brew --prefix openssl@3)`.
 * **Windows:** Visual Studio 2022, Qt 6 for MSVC 2022 64-bit and [vcpkg](https://vcpkg.io) with `vcpkg install curl dlfcn-win32 expat mosquitto openssl pthreads --triplet x64-windows`. Configure from a *x64 Native Tools* prompt with `-DCMAKE_TOOLCHAIN_FILE=<vcpkg>/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=<Qt>/6.8.1/msvc2022_64`.
 
-If Qt is not the system Qt, set `-DCMAKE_PREFIX_PATH` to the Qt folder, for example `~/Qt/6.8.2/gcc_64` (in Visual Studio Code: **cmake: configure environment**). `cmake --install build --prefix <folder>` installs the program; on Windows and macOS the Qt runtime is installed with it.
+The `CMAKE_PREFIX_PATH` example uses a Linux Qt kit under `~/Qt`; change the version and kit directory to match your installation. Use the kit prefix (the directory containing `lib/cmake/Qt6/Qt6Config.cmake`), not the `~/Qt` parent directory. If using system Qt, install the Qt 6 development packages listed above and omit `CMAKE_PREFIX_PATH`. In Visual Studio Code, set this as **cmake: configure environment**. `cmake --install build --prefix <folder>` installs the program; on Windows and macOS the Qt runtime is installed with it.
 
 The executable is named **vscpsim** (`vscpsim.app` on macOS). The `socketcan` interface only exists on Linux; all other interfaces work on every platform.
 

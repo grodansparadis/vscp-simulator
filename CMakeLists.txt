@@ -57,6 +57,8 @@ FetchContent_Declare(
   vscp
   GIT_REPOSITORY https://github.com/grodansparadis/vscp.git
   GIT_TAG d75d4f5c6c097a1dca841b63727c79c522b701ce
+  # The simulator builds VSCP sources directly, not the daemon project.
+  SOURCE_SUBDIR src/vscp
 )
 FetchContent_Declare(
   vscp_firmware
@@ -84,7 +86,9 @@ FetchContent_Declare(
   GIT_TAG 4dcdbb50be10a6262072340abcfa97ee3b4edcfa
 )
 
-foreach(dependency IN ITEMS vscp vscp_firmware json spdlog mustache maddy)
+FetchContent_MakeAvailable(vscp)
+
+foreach(dependency IN ITEMS vscp_firmware json spdlog mustache maddy)
   FetchContent_GetProperties(${dependency})
   if(NOT ${dependency}_POPULATED)
     FetchContent_Populate(${dependency})
