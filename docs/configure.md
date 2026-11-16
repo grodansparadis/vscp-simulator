@@ -24,6 +24,8 @@ Settings in the configuration file take precedence over the command line.
 
 ## Interfaces
 
+For setup instructions and examples for each transport, see [How to use](how_to_use.md).
+
 The simulated node is connected with one of the VSCP client interfaces. Either give the interface on the command line, or set it in the `interface` object of the configuration file. All keys in the `interface` object except `type` and `connect-timeout` are handed to the client, so every setting the VSCP client supports (filters, TLS, encryption keys...) can be used. Command line values are only used for settings that are not in the configuration file.
 
 | Interface | Defaults | Typical command line |

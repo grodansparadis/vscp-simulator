@@ -1,7 +1,7 @@
 
 ---
 
-![Very Simple Control Protocol](./images/logo_100.png "Very Simple Control Protocol")
+![Very Simulrator ](./images/logo_100.png "Very Simple Control Protocol")
 
 Document created: *${/var/creation-time}*  
 Describe software version: ${/var/document-version}  

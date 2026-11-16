@@ -8,6 +8,7 @@
 ![](./images/vscp-simulator.png)
 
 * [Download and build](setting_up_the_system.md)
+* [How to use: transports](how_to_use.md)
 * [Using and configuring the simulator](configure.md)
 * [Release notes](release_notes.md)
 
@@ -16,12 +17,6 @@ This is the official documentation for the VSCP Simulator. Software that is part
 Apart from going through this document you can read all about and download VSCP from [the VSCP site](https://www.vscp.org "The VSCP site"). 
 
 **VSCP is free.** Free to use. Free to change. Free to do whatever you want to do with it. VSCP is not owned by anyone. VSCP will stay free and gratis forever.
-
----
-
-${/var/creation-time}  
-This document is licensed under [Creative Commons BY 4.0](https://creativecommons.org/licenses/by/4.0/) and can be freely copied, redistributed, remixed, transformed, built upon as long as you give credits to the author.
-
 
  ---
 

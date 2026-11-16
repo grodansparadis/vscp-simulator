@@ -10,6 +10,8 @@ VSCP Works is licensed under the MIT License so it can be used freely in open an
 
 VSCP Works can be [downloaded here](https://github.com/grodansparadis/vscp-simulator) in both source and in binary form. Select the latest release and download the binary for your platform or download the source and build it yourself.
 
+After installation, see [How to use](how_to_use.md) to choose a transport and connect the simulated node. The guide covers SocketCAN, TCP/IP, UDP, multicast, WebSocket 1 and 2, MQTT, CANAL drivers and Level II drivers.
+
 ---
 
 [filename](./bottom_copyright.md ':include')
