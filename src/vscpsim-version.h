@@ -25,10 +25,10 @@
 
 #define VSCPSIM_VERSION_YEAR  26
 #define VSCPSIM_VERSION_MONTH 11
-#define VSCPSIM_VERSION_PATCH 10
+#define VSCPSIM_VERSION_PATCH 11
 
-#define VSCPSIM_VERSION_STR   "26.11.10"
-#define VSCPSIM_VERSION       0x1A0B000AUL
+#define VSCPSIM_VERSION_STR   "26.11.11"
+#define VSCPSIM_VERSION       0x1A0B000BUL
 
 #define VSCPSIM_VERSION_CODE(year, month, patch) (((unsigned long) (year) << 24) | ((unsigned long) (month) << 16) | (patch))
 
