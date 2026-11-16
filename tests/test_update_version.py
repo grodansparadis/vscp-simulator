@@ -7,6 +7,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
@@ -21,7 +22,9 @@ class UpdateVersionTest(unittest.TestCase):
     def setUp(self):
         self.dir = tempfile.mkdtemp()
         self.header = pathlib.Path(self.dir) / "vscpsim-version.h"
+        self.variables = pathlib.Path(self.dir) / "variables.xml"
         shutil.copy(HEADER, self.header)
+        shutil.copy(ROOT / "docs" / "variables.xml", self.variables)
 
     def tearDown(self):
         shutil.rmtree(self.dir)
@@ -30,8 +33,10 @@ class UpdateVersionTest(unittest.TestCase):
         self.header.write_text(update_version.write_version(self.header.read_text(), version))
 
     def run_update(self, date):
-        update_version.main(["--header", str(self.header), "--date", date])
-        return update_version.read_version(self.header.read_text())
+        update_version.main(["--header", str(self.header), "--variables", str(self.variables), "--date", date])
+        version = update_version.read_version(self.header.read_text())
+        self.assertEqual("%d.%d.%d" % version, ET.fromstring(self.variables.read_text()).findtext("document-version"))
+        return version
 
     def test_repository_header_is_valid(self):
         update_version.read_version(HEADER.read_text())
@@ -66,8 +71,31 @@ class UpdateVersionTest(unittest.TestCase):
 
     def test_check_does_not_change(self):
         before = self.header.read_text()
-        update_version.main(["--header", str(self.header), "--check"])
+        variables_before = self.variables.read_text()
+        update_version.main(["--header", str(self.header), "--variables", str(self.variables), "--check"])
         self.assertEqual(before, self.header.read_text())
+        self.assertEqual(variables_before, self.variables.read_text())
+
+    def test_document_update_preserves_other_metadata(self):
+        text = '<var>\n    <creation-time>2026-11-16 13:55</creation-time>\n    <document-version>0.0.2</document-version>\n</var>'
+        self.variables.write_text(text)
+        self.set_version((26, 11, 4))
+        self.run_update("2026-11")
+        self.assertEqual(text.replace("0.0.2", "26.11.5"), self.variables.read_text())
+
+    def test_invalid_document_metadata_leaves_header_unchanged(self):
+        for text in (
+            "<var>",
+            "<var></var>",
+            "<var><document-version>1</document-version><document-version>2</document-version></var>",
+        ):
+            with self.subTest(text=text):
+                self.variables.write_text(text)
+                before = self.header.read_text()
+                with self.assertRaises((ValueError, ET.ParseError)):
+                    self.run_update("2026-11")
+                self.assertEqual(before, self.header.read_text())
+                self.assertEqual(text, self.variables.read_text())
 
     def test_cmake_reads_the_same_fields(self):
         # CMakeLists.txt takes the project version from the header

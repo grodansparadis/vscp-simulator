@@ -9,3 +9,7 @@ VSCP Simulator is build to work on Windows, Linux and MacOS. It is a [Qt based a
 VSCP Works is licensed under the MIT License so it can be used freely in open and closed project.
 
 VSCP Works can be [downloaded here](https://github.com/grodansparadis/vscp-simulator) in both source and in binary form. Select the latest release and download the binary for your platform or download the source and build it yourself.
+
+---
+
+[filename](./bottom_copyright.md ':include')

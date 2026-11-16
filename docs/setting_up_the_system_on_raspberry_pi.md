@@ -41,3 +41,7 @@ With a CAN HAT (for example one with an MCP2515) the Raspberry Pi gets a `can0` 
 sudo ip link set can0 up type can bitrate 125000
 vscpsim -i socketcan -c can0 -b 0
 ```
+
+---
+
+[filename](./bottom_copyright.md ':include')

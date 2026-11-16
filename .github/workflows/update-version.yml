@@ -1,6 +1,6 @@
 name: Update version
 
-# Bumps the simulator version (src/vscpsim-version.h) on every push to
+# Bumps the simulator and document version on every push to
 # main: year.month.patch, where patch counts the pushes in the month and
 # starts at 0 in a new month. See tools/update_version.py.
 
@@ -47,7 +47,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             version=$(python3 -B tools/update_version.py)
-            git add src/vscpsim-version.h
+            git add src/vscpsim-version.h docs/variables.xml
             git commit -m "Update version to ${version} [skip ci]"
             if git push origin HEAD:main; then
               echo "Version ${version}"

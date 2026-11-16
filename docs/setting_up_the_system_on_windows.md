@@ -41,3 +41,8 @@ cmake --install build --prefix C:\vscpsim
 `cmake --install` copies `vscpsim.exe` and the Qt runtime to `C:\vscpsim\bin`. Copy the DLLs from `C:\vcpkg\installed\x64-windows\bin` to the same folder.
 
 The `socketcan` interface is not available on Windows. Use `canal` with a CANAL driver (DLL) for CAN hardware, for example a CAN4VSCP adapter.
+
+
+---
+
+[filename](./bottom_copyright.md ':include')

@@ -45,3 +45,7 @@ vscpsim -i socketcan -c vcan0 -b 0
 ```
 
 `candump vcan0` and `cansend` from the `can-utils` package show and send frames on the bus.
+
+---
+
+[filename](./bottom_copyright.md ':include')

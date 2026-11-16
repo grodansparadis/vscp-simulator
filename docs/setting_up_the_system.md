@@ -53,7 +53,7 @@ The pages for each platform list the packages to install:
 
 ## Interfaces per platform
 
-All interfaces work on all platforms except `socketcan`, which only exists on Linux (including the Raspberry Pi). See [Configure the simulator](configure.md) and the [README](https://github.com/grodansparadis/vscp-simulator#interfaces) for the interfaces and their settings.
+All interfaces work on all platforms except `socketcan`, which only exists on Linux (including the Raspberry Pi). See [Interfaces](configure.md#interfaces) for the interfaces and their settings.
 
 ## Running without a desktop
 
@@ -62,3 +62,7 @@ All interfaces work on all platforms except `socketcan`, which only exists on Li
 ```bash
 QT_QPA_PLATFORM=offscreen vscpsim -i udp -b 0
 ```
+
+---
+
+[filename](./bottom_copyright.md ':include')

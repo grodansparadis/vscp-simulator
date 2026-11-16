@@ -7,13 +7,13 @@ Used by the "Update version" GitHub workflow on every push to main:
   * new month (or year)                          -> patch = 0
 
 The version lives in src/vscpsim-version.h. CMake reads it from there for
-the project version.
+the project version. docs/variables.xml receives the same document-version.
 
 Usage:
-  tools/update_version.py [--header PATH] [--date YYYY-MM] [--check]
+  tools/update_version.py [--header PATH] [--variables PATH] [--date YYYY-MM] [--check]
 
   --date   Use this year/month instead of the current UTC date (tests).
-  --check  Only validate the header, do not change it.
+  --check  Only validate the header and document metadata, do not change them.
 """
 
 import argparse
@@ -21,8 +21,10 @@ import datetime
 import pathlib
 import re
 import sys
+import xml.etree.ElementTree as ET
 
 DEFAULT_HEADER = pathlib.Path(__file__).resolve().parent.parent / "src" / "vscpsim-version.h"
+DEFAULT_VARIABLES = pathlib.Path(__file__).resolve().parent.parent / "docs" / "variables.xml"
 
 FIELDS = ("YEAR", "MONTH", "PATCH")
 PATCH_MAX = 0xFFFF  # 16 bits in VSCPSIM_VERSION
@@ -34,6 +36,7 @@ def define_pattern(name):
 
 STR_PATTERN = re.compile(r'^(#define\s+VSCPSIM_VERSION_STR\s+)"[^"]*"(.*)$', re.MULTILINE)
 NUM_PATTERN = re.compile(r"^(#define\s+VSCPSIM_VERSION\s+)0x[0-9A-Fa-f]+UL(.*)$", re.MULTILINE)
+DOCUMENT_PATTERN = re.compile(r"(<document-version>)[^<]*(</document-version>)")
 
 
 def read_version(text):
@@ -74,15 +77,26 @@ def write_version(text, version):
     return text
 
 
+def write_document_version(text, version):
+    root = ET.fromstring(text)
+    if root.tag != "var" or len(root.findall("document-version")) != 1 or len(DOCUMENT_PATTERN.findall(text)) != 1:
+        raise ValueError("Document metadata must contain exactly one /var/document-version")
+    value = "%d.%d.%d" % version
+    return DOCUMENT_PATTERN.sub(lambda m: "%s%s%s" % (m.group(1), value, m.group(2)), text)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--header", type=pathlib.Path, default=DEFAULT_HEADER)
+    parser.add_argument("--variables", type=pathlib.Path, default=DEFAULT_VARIABLES)
     parser.add_argument("--date", help="YYYY-MM to use instead of the current UTC date")
-    parser.add_argument("--check", action="store_true", help="only validate the header")
+    parser.add_argument("--check", action="store_true", help="only validate the header and document metadata")
     args = parser.parse_args(argv)
 
     text = args.header.read_text(encoding="utf-8")
+    variables = args.variables.read_text(encoding="utf-8")
     current = read_version(text)
+    write_document_version(variables, current)
     if args.check:
         print("%d.%d.%d" % current)
         return 0
@@ -92,8 +106,10 @@ def main(argv=None):
     else:
         date = datetime.datetime.now(datetime.timezone.utc)
     version = next_version(current, date.year % 100, date.month)
+    updated_variables = write_document_version(variables, version)
 
     args.header.write_text(write_version(text, version), encoding="utf-8")
+    args.variables.write_text(updated_variables, encoding="utf-8")
     print("%d.%d.%d" % version)
     return 0
 

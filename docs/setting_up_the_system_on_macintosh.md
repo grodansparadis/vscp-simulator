@@ -35,3 +35,7 @@ cmake --install build --prefix ~/vscpsim
 `cmake --install` puts `vscpsim.app` in the given folder with Qt deployed into the bundle.
 
 The `socketcan` interface is not available on macOS. Use `canal` with a CANAL driver for CAN hardware.
+
+---
+
+[filename](./bottom_copyright.md ':include')

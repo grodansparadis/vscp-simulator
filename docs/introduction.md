@@ -19,3 +19,7 @@ First tab when the simulator is in bootloader mode. You can manually switch to f
 The simulation have buttons, checkboxes and sliders. All issue events and registers can be set to control them. RGP colors can be set and read. The simulator can also be controlled by the VSCP protocol.
 
 The MDF for the simulator is available [here](http://eurosource.se/vscpsim_1.xml).
+
+---
+
+[filename](./bottom_copyright.md ':include')
