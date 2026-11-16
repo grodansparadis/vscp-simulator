@@ -5,6 +5,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: build-raspberry-pi-armhf-${{ github.ref }}
   cancel-in-progress: true
@@ -66,13 +69,14 @@ jobs:
                 libcurl4-openssl-dev
               cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
               cmake --build build --parallel "$(nproc)"
+              QT_QPA_PLATFORM=offscreen build/vscpsim --version
+              QT_QPA_PLATFORM=offscreen build/vscpsim --help
               DESTDIR=/src/staging cmake --install build
               tar -C /src/staging -czf "/src/vscpsim-linux-$DEB_ARCH.tar.gz" .
             '
 
       - name: Write SHA256SUMS
         id: sha256sums
-        continue-on-error: true
         shell: bash
         run: |
           bash "${GITHUB_WORKSPACE//\\//}/.github/scripts/write-sha256sums.sh" "SHA256SUMS-vscpsim-linux-${{ matrix.deb_arch }}" <<'SHA256SUMS_PATTERNS'

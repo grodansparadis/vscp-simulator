@@ -1,6 +1,16 @@
 name: AppImage
 
-on: [push]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-appimage-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -109,7 +119,17 @@ jobs:
       # https://forum.qt.io/topic/154845/libmimerapi-so-not-found/4
       run: ./linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage  
 
+    - name: Write SHA256SUMS
+      id: sha256sums
+      run: |
+        bash .github/scripts/write-sha256sums.sh SHA256SUMS-vscp-simulator <<'SHA256SUMS_PATTERNS'
+        build/vscpsim*.AppImage
+        SHA256SUMS_PATTERNS
+
     - uses: actions/upload-artifact@v4
       with:
         name: vscp-simulator
-        path: ${{github.workspace}}/build/vscpsim*.AppImage
+        path: |
+          build/vscpsim*.AppImage
+          ${{ steps.sha256sums.outputs.file }}
+        if-no-files-found: error

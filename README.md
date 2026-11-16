@@ -7,6 +7,7 @@
 [![Windows](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-windows.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-windows.yml?query=branch%3Amain+is%3Asuccess)
 [![Raspberry Pi arm64](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-arm64.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-arm64.yml?query=branch%3Amain+is%3Asuccess)
 [![Raspberry Pi armhf](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-armhf.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/build-raspberry-pi-armhf.yml?query=branch%3Amain+is%3Asuccess)
+[![Documentation](https://github.com/grodansparadis/vscp-simulator/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/grodansparadis/vscp-simulator/actions/workflows/pages.yml)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <img src="https://vscp.org/images/logo.png" width="100">
@@ -35,7 +36,9 @@ The following transport mechanisms are currently available
 
 See [Using and configuring the simulator](docs/configure.md) for command-line switches, interfaces, firmware and bootloader modes, the configuration file format, and simulations.
 
-The [documentation home page](docs/README.md) provides the full manual.
+The [published documentation](https://grodansparadis.github.io/vscp-simulator/) provides the full manual. The [Markdown sources](docs/README.md) are also available in this repository.
+
+The *Documentation* workflow uploads the static Docsify site from `docs/` and deploys it to GitHub Pages on pushes to `main`, including after the version updater completes. Pull requests build the site artifact without deploying. Set **Settings > Pages > Build and deployment > Source** to **GitHub Actions** when enabling this workflow.
 
 ## Version
 
@@ -45,7 +48,7 @@ The same workflow updates `document-version` in [docs/variables.xml](docs/variab
 
 ## Download
 
-vscpsim is built for Linux (x86_64 AppImage), Raspberry Pi OS 64-bit (arm64) and 32-bit (armhf), macOS (Apple silicon) and Windows (x64) on every push. Click a build badge above to see the successful runs and download the artifact from a run page (GitHub only serves artifacts to signed-in users), or download the newest builds of all platforms with
+vscpsim is built for Linux (x86_64 tarball and AppImage), Raspberry Pi OS 64-bit (arm64) and 32-bit (armhf), macOS (Apple silicon) and Windows (x64) on pushes and pull requests. The workflows can also be started manually. Click a build badge above to see the successful runs and download the artifact from a run page (GitHub only serves artifacts to signed-in users), or download the newest builds of all platforms with
 
 ```bash
 scripts/download-artifacts.sh            # needs the GitHub CLI: gh auth login
@@ -54,12 +57,13 @@ scripts/download-artifacts.sh            # needs the GitHub CLI: gh auth login
 | Platform | Artifact | Run it |
 | -------- | -------- | ------ |
 | Linux x86_64 | `vscp-simulator` | `chmod +x vscpsim-*.AppImage && ./vscpsim-*.AppImage` |
+| Linux x86_64 (system Qt) | `vscpsim-linux-x86_64` | `sudo tar -C / -xzf vscpsim-linux-x86_64.tar.gz`, then `vscpsim` |
 | Raspberry Pi 64-bit | `vscpsim-linux-arm64` | `sudo tar -C / -xzf vscpsim-linux-arm64.tar.gz`, then `vscpsim` |
 | Raspberry Pi 32-bit | `vscpsim-linux-armhf` | `sudo tar -C / -xzf vscpsim-linux-armhf.tar.gz`, then `vscpsim` |
 | macOS | `vscpsim-macos-arm64` | unpack, then `vscpsim.app/Contents/MacOS/vscpsim` |
 | Windows x64 | `vscpsim-windows-x64` | unpack, then `bin\vscpsim.exe` |
 
-Every artifact has a `SHA256SUMS-<artifact>` file (`sha256sum -c SHA256SUMS-<artifact>`). The Raspberry Pi builds use the Qt 6 of the system: `sudo apt install libqt6widgets6 libqt6qml6 libmosquitto1 libexpat1 libcurl4 libssl3`. See the [setup documentation](docs/setting_up_the_system.md) for each platform.
+Every artifact has a `SHA256SUMS-<artifact>` file (`sha256sum -c SHA256SUMS-<artifact>`). The Linux tarball and Raspberry Pi builds use the Qt 6 of the system: `sudo apt install libqt6widgets6 libqt6qml6 libmosquitto1 libexpat1 libcurl4 libssl3`. The x86_64 tarball targets Ubuntu 24.04 or compatible systems; Raspberry Pi tarballs target Debian bookworm. See the [setup documentation](docs/setting_up_the_system.md) for each platform.
 
 ## Build from source
 

@@ -1,4 +1,4 @@
-# VSCP Works +
+# VSCP Simulator
 
 ![VSCP logo](./images/logo_100.png)
 
@@ -6,6 +6,10 @@
 **Doc update:** ${/var/creation-time}       
 
 ![](./images/vscp-simulator.png)
+
+* [Download and build](setting_up_the_system.md)
+* [Using and configuring the simulator](configure.md)
+* [Release notes](release_notes.md)
 
 This is the official documentation for the VSCP Simulator. Software that is part of the VSCP & Friends package. VSCP is an IoT framework mainly built for resource limited devices.
 

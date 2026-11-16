@@ -1,77 +1,67 @@
 name: Linux Build
 
-on: [push]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-linux-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
+    name: Linux x86_64
+    runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v4
 
-      # https://github.com/marketplace/actions/install-qt
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v4
-      with:
-        version: 6.8.*
-        host: 'linux'
-        target: 'desktop'
-        arch: 'linux_gcc_64'
-        modules: 'qtcharts qtconnectivity qtserialbus qtserialport qtwebsockets'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential cmake ninja-build git \
+            qt6-base-dev qt6-declarative-dev \
+            libmosquitto-dev libexpat1-dev libssl-dev libcurl4-openssl-dev pandoc
 
-      # https://github.com/actions/checkout
-    - name: Fetch repository
-      uses: actions/checkout@v4
+      - name: Test version updater
+        run: python3 -B tests/test_update_version.py
 
-    - name: Update before installing packages
-      run: sudo apt-get update
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=/usr
 
-    - name: Install libmosquitto-dev manually
-      run: sudo apt-get install libmosquitto-dev
+      - name: Build
+        run: cmake --build build --parallel
 
-    - name: Install pandoc (man pages)
-      run: sudo apt-get install pandoc
-    
-    - name: Install libexpat-dev manually
-      run: sudo apt-get install libexpat-dev
+      - name: Smoke test
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          build/vscpsim --version
+          build/vscpsim --help
 
-    - name: Install libssl-dev manually
-      run: sudo apt-get install libssl-dev
+      - name: Install and package
+        run: |
+          DESTDIR="$GITHUB_WORKSPACE/staging" cmake --install build
+          tar -C staging -czf vscpsim-linux-x86_64.tar.gz .
 
-    - name: Install libcurl4-openssl-dev manually 
-      run: sudo apt install libcurl4-openssl-dev  
+      - name: Write SHA256SUMS
+        id: sha256sums
+        run: |
+          bash .github/scripts/write-sha256sums.sh SHA256SUMS-vscpsim-linux-x86_64 <<'SHA256SUMS_PATTERNS'
+          vscpsim-linux-x86_64.tar.gz
+          SHA256SUMS_PATTERNS
 
-    - name: Install libwebsockets-dev 
-      run: sudo apt install libwebsockets-dev   
-
-    - name: Install FUSE manually
-      run: sudo apt install libfuse2
-
-    - name: Install sqlite3
-      run: sudo apt install libsqlite3-dev  
-
-#    - name: Install paho manually
-#      run: cd paho && mkdir build && cd build && sudo cmake -DPAHO_WITH_SSL=true .. && sudo make install
-       
-    - name: Setup cmake
-      uses: jwlawson/actions-setup-cmake@v2 
-    
-    - name: Create Build Environment
-      run: |
-        mkdir build && cd build
-        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
-
-    - name: Build vscp-simulator
-      working-directory: ${{github.workspace}}/build
-      shell: bash
-      # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: |
-        make -j$(nproc)
-        make install DESTDIR=AppDir
-
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vscpsim-linux-x86_64
+          path: |
+            vscpsim-linux-x86_64.tar.gz
+            ${{ steps.sha256sums.outputs.file }}
+          if-no-files-found: error

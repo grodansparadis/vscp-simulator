@@ -20,7 +20,7 @@
 
 
 * Appendix
-  * [History](./history.md)
+  * [History](https://github.com/grodansparadis/vscp-simulator/blob/main/README_CHANGES.md)
   * [Release Notes](./release_notes.md)
 
 * Other documentation

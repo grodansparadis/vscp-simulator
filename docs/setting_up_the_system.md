@@ -5,6 +5,7 @@ The VSCP Simulator (`vscpsim`) runs on Linux, Windows, macOS and the Raspberry P
 | Platform | Download (CI artifact) | Contents |
 | -------- | ---------------------- | -------- |
 | Linux x86_64 | `vscp-simulator` (AppImage workflow) | `vscpsim-*.AppImage`, runs on most distributions |
+| Linux x86_64 (system Qt) | `vscpsim-linux-x86_64` (Linux Build workflow) | `vscpsim-linux-x86_64.tar.gz`, built on Ubuntu 24.04 |
 | Raspberry Pi 64-bit | `vscpsim-linux-arm64` | `vscpsim-linux-arm64.tar.gz`, built on Debian bookworm |
 | Raspberry Pi 32-bit | `vscpsim-linux-armhf` | `vscpsim-linux-armhf.tar.gz`, built on Debian bookworm |
 | macOS (Apple silicon) | `vscpsim-macos-arm64` | `vscpsim-macos-arm64.tar.gz` with `vscpsim.app` |
@@ -12,7 +13,7 @@ The VSCP Simulator (`vscpsim`) runs on Linux, Windows, macOS and the Raspberry P
 
 ## Downloading a build
 
-Every push to the repository builds all platforms on GitHub. The build badges at the top of the [README](https://github.com/grodansparadis/vscp-simulator#readme) show the state of each platform; click a badge to see its successful runs and download the artifact from a run page. GitHub only serves artifacts to signed-in users.
+Pushes and pull requests build all platforms on GitHub; each workflow can also be started manually. The standard Linux, Raspberry Pi, Windows and macOS builds run `vscpsim --version` and `vscpsim --help` with Qt's offscreen platform before packaging. The build badges at the top of the [README](https://github.com/grodansparadis/vscp-simulator#readme) show the state of each platform; click a badge to see its successful runs and download the artifact from a run page. GitHub only serves artifacts to signed-in users.
 
 The script `scripts/download-artifacts.sh` in the repository downloads the newest artifacts and checks them. It needs the [GitHub CLI](https://cli.github.com/) (`gh auth login` once):
 
