@@ -20,7 +20,7 @@ jobs:
     name: macOS arm64
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Qt 6.8 links the AGL framework, which newer Xcode SDKs no longer have
       - name: Install Qt
@@ -65,7 +65,7 @@ jobs:
           vscpsim-macos-arm64.tar.gz
           SHA256SUMS_PATTERNS
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: vscpsim-macos-arm64
           path: |

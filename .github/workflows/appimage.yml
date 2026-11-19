@@ -28,7 +28,7 @@ jobs:
     steps:
     # https://github.com/actions/checkout  
     - name: Fetch repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Update before installing packages
       run: sudo apt-get update
@@ -126,7 +126,7 @@ jobs:
         build/vscpsim*.AppImage
         SHA256SUMS_PATTERNS
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: vscp-simulator
         path: |
